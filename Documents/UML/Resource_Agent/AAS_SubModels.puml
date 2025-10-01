@@ -1,0 +1,89 @@
+@startuml "Resource_Agent_Submodels"
+allowmixing
+
+package "Resource Agent Shell" {
+left to right direction
+  entity "Header" as Header {
+    * idShort : String
+    * id : String
+    * assetInformation : Dictionary<String, String>
+    * assetKind : String
+    * globalAssetId : String
+    * assetType : String
+  }
+  package "<<List{Submodel}>> \nSubmodels" {
+      package "<<Submodel>>\nOperational State" {
+        entity "Current State" as CurrentState {
+          * idShort : String : "Current State"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "VARIABLE"
+          * value : String : "Idle"
+          * valueType : String : "String"
+        }
+        entity "Historical data" as HistoricalData {
+          * idShort : String : "Historical data"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "Parameter"
+          * value : String : "2023-10-01T12:00:00Z:Idle;2023-10-01T12:05:00Z:Running"
+          * valueType : String : "String"
+        }
+    }
+
+    package "<<Submodel>> \nKnowledge"{
+        entity "Resource Constraints" as ResourceConstraints {
+          * idShort : String : "Resource Constraints"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "Parameter"
+          * value : String : "Max Depth: 10cm;Min Depth: 1cm; Max Rpm : 5000 ;Min Rpm : 1000 "
+          * valueType : String : "String"
+        }
+        entity "Environmental Conditions" as EnvironmentalConditions {
+          * idShort : String : "Environmental Conditions"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "Parameter"
+          * value : String : "Max Temp: 80C;Min Temp: 10C"
+          * valueType : String : "String"
+        }
+    }
+    package "<<Submodel>> \nCapability" {
+      entity "Skill" as Skill {
+          * idShort : String : "Skill"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "Parameter"
+          * value : String : "Drilling , Moving"
+          * valueType : String : "String"
+        }
+      entity "Drill" as Drill {
+          * idShort : String : "Drill"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "Operation"
+          * input : "Depth : xs:double, Rpm : xs:integer"
+          * output : "Hole : xs:double"
+    }
+    entity "MoveXY" as MoveXY {
+          * idShort : String : "Move"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "Operation"
+          * input : "X-Axis : xs:double, Y-Axis : xs:double"
+          * output : "Position : xs:double"
+    }
+  }
+  package "<<Submodel>> \nInteraction and Scheduling"{
+     entity "Endpoints" as Endpoints {
+          * idShort : String : "Endpoints"
+          * id : String
+          * kind : String : "Instance"
+          * category : String : "Parameter"
+          * value : String
+          * valueType : String : "String"
+  }
+}
+
+@enduml

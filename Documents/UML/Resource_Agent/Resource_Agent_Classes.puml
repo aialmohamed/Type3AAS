@@ -1,0 +1,230 @@
+@startuml "Resource Agent Classes"
+
+skin rose
+
+allowmixing
+
+left to right direction
+
+package "AAS-Agent-interface" {
+
+  component "MainInterfaceApp" as MainInterfaceApp {
+  }
+  component "RESTClient" as RESTClient {
+
+    class "AssetRepository" as AssetRepository {
+      + createAas(aas_payload: jsonString): jsonString
+      + getAas(ass_id: String): jsonString
+      + updateAas(ass_id: String, aas_payload: jsonString): jsonString
+      + deleteAas(ass_id: String): void
+    }
+    class "SubmodelRepository" as SubmodelRepository {
+      + createSubmodel(submodel_payload: jsonString): jsonString
+      + updateSubmodel(sm_id: String, submodel_payload: jsonString): jsonString
+      + deleteSubmodel(sm_id: String): void
+      + getSubmodelValue(sm_id: String): jsonString
+      + setSubmodelValue(sm_id: String, value: jsonString): void
+
+      + createSubmodelElement(submodel_element_payload: jsonString): jsonString
+      + getSubmodelElement(submodel_element_id: String): jsonString
+      + updateSubmodelElement(submodel_element_id: String, submodel_element_payload: jsonString): jsonString
+      + deleteSubmodelElement(submodel_element_id: String): void
+    }
+    class "RESTClient" as RESTClientClass {
+      - client: RestClient
+      - Session : ClientSession
+      - ClientUtils : ClientUtils
+      + SubmodelRepository : SubmodelRepository
+      + AssetRepository : AssetRepository
+
+      + __aenter__(): RESTClient
+      + __aexit__(): void
+      + getAssetInformation(ass_id: String): jsonString
+      + getSubmodelInformation(sm_id: String): jsonString
+      }
+      class "AASEvent" as AASEventClass {
+        - ClientUtils : ClientUtils
+        - Broker : String
+        - Port : int
+        - Topics : list<String>
+
+        + StartClient(): void
+        + StopClient(): void
+
+
+        + onAASCreated(ass_id: String): void
+        + onAASUpdated(ass_id: String): void
+        + onAASDeleted(ass_id: String): void
+
+        + onSubmodelCreated(sm_id: String): void
+        + onSubmodelUpdated(sm_id: String): void
+        + onSubmodelDeleted(sm_id: String): void
+      }
+      class "ClientUtils" as ClientUtilsClass {
+        + ClientConfigurationPath: String
+        
+        + getClientUrl(): String
+        + getClientPort(): int
+        + getClientEndpoint(endpoint: String): String
+        + getAASJsonDirPath(): String
+        + getAllAASIds(): List<String>
+        + getAllTopics(): List<String>
+        + create_aas_from_file(aas_file_path: String): jsonString
+        + create_submodel_from_file(submodel_file_path: String): jsonString
+
+      }
+
+      RESTClientClass *-- ClientUtilsClass : 1
+      AASEventClass  *-- ClientUtilsClass : 1
+      RESTClientClass *-- SubmodelRepository : 1
+      RESTClientClass *-- AssetRepository : 1
+  }
+
+  component "DataTranslator" as DataTranslator {
+
+    enum "AASDataTypes" as AASDataTypes {
+      STATE
+      COMMAND
+    }
+    note bottom of AASDataTypes #lightgreen
+    The Submodels mainly have 2 types of data the concern the Agent 
+    - STATE: e.g Current State, Historical Data
+    - COMMAND: e.g Skill
+    so this enum defines those two types to be used in the AASDataModel
+    end note
+
+    dataClass "AASDataModel" as AASDataModel {
+      + data_type: AASDataTypes
+      + value: any
+      + timestamp: String
+    }
+    note bottom of AASDataModel #lightgreen
+    Represents a generic AAS data 
+    model with a data type, value, and timestamp.
+    where if the data type is command then the value is
+    ASL string that contains a command to be executed by the resource
+    agent e.g "Drill at 3000 rpm for 5cm depth"
+    end note
+
+    enum "SubmodelTypes" as SubmodelTypes {
+      STATE
+      SENSOR
+      ACTUATOR
+    }
+    note bottom of SubmodelTypes #lightgreen
+    Those three Types define the mapping of the submodel id /
+    submodelElement id.
+    e.g data from real asset is State data --> map to submodel id "Current State"
+    end note
+    dataClass "ResourceDataModel" as ResourceDataModel {
+      + submodel_id : String
+      + value: any
+      + timestamp: String
+    }
+    note bottom of ResourceDataModel #lightgreen
+    Represents a generic submodel/submodelElement data 
+      model with a submodel ID, value, and timestamp.
+    end note
+    
+    abstract class DataParser {
+      + parse(data: jsonString): any
+    }
+
+    class AASDataModelToResourceDataParser {
+      - ResourceDataModel : ResourceDataModel
+      - SubmodelTypes : SubmodelTypes
+      + parse(): jsonString
+      - parse_submodel_id(): String
+      - parse_value(): any
+      - parse_timestamp(): String
+    }
+    class ResourceDataModelToAASDataModelParser {
+      - AASDataModel : AASDataModel
+      + parse(): jsonString
+      - parse_data_type(): AASDataTypes
+      - parse_value(): any
+      - parse_timestamp(): String
+    }
+
+    class "DataTranslator" as DataTranslatorClass {
+      - DataTranslatorConfiguration : DataTranslatorUtils
+      - AASDataModelToResourceDataParser : AASDataModelToResourceDataParser
+      - ResourceDataModelToAASDataModelParser : ResourceDataModelToAASDataModelParser
+      
+      
+      + translate_aas_to_resource(aas_data: jsonString): jsonString
+      + translate_resource_to_aas(resource_data: jsonString): jsonString
+    }
+    class "DataTranslatorUtils" {
+      + DataTranslatorConfigurationPath: String
+      + getDataTranslatorConfig(): jsonString
+    }
+
+    DataTranslatorClass *-- DataTranslatorUtils : 1
+    DataTranslatorClass *-- AASDataModelToResourceDataParser : 1
+    DataTranslatorClass *-- ResourceDataModelToAASDataModelParser : 1
+    AASDataModelToResourceDataParser ..|> DataParser
+    ResourceDataModelToAASDataModelParser ..|> DataParser
+    AASDataModel -- AASDataTypes : 1
+    ResourceDataModel -- SubmodelTypes : 1
+    AASDataModelToResourceDataParser -- ResourceDataModel : 1
+    ResourceDataModelToAASDataModelParser -- AASDataModel : 1
+  }
+
+  component "BDIAgentInterface" as BDIAgentInterface {
+
+       dataclass "CommandModel" as CommandModel {
+         + action: String
+         + parameters: Dictionary<String, any>
+       }
+       class "CommandBuilder" as CommandBuilder {
+          + parse_command(data: jsonString): CommandModel
+          + push_command(command: CommandModel): void
+       }
+
+
+       class "SubmodelStateExtractor" as SubmodelStateExtractor {
+          + extract_state(data: jsonString): RawResourceDataModel
+          + update_state(data: RawResourceDataModel): jsonString
+       }
+
+
+       class "ResourceDataParser" as ResourceDataParser {
+          + parse_resource_data(data: jsonString): RawResourceDataModel
+       }
+       enum "ResourceDataType" as ResourceDataType {
+          STATE
+          SENSOR
+          ACTUATOR
+       }
+       dataclass "RawResourceDataModel" as RawResourceDataModel {
+         + DataType : ResourceDataType
+         + value: any
+         + timestamp: String
+       }
+      class "BDIAgentInterface" as BDIAgentInterfaceClass {
+        - CommandBuilder : CommandBuilder
+        - SubmodelStateExtractor : SubmodelStateExtractor
+        - ResourceDataParser : ResourceDataParser
+
+        + receive_data_from_agent(data: jsonString): RawResourceDataModel
+        + send_data_to_agent(data: jsonString): jsonString
+      }
+
+      BDIAgentInterfaceClass *-- CommandBuilder
+      BDIAgentInterfaceClass *-- SubmodelStateExtractor : 1
+      BDIAgentInterfaceClass *-- ResourceDataParser : 1
+      CommandBuilder -- CommandModel : 1
+      ResourceDataParser -- RawResourceDataModel : 1
+      SubmodelStateExtractor -- RawResourceDataModel : 1
+      RawResourceDataModel -- ResourceDataType : 1
+
+  }
+  MainInterfaceApp *-- RESTClientClass : 1
+  MainInterfaceApp *-- DataTranslatorClass : 1
+  MainInterfaceApp *-- BDIAgentInterfaceClass : 1
+  
+}
+
+
+@enduml

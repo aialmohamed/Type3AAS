@@ -1,0 +1,22 @@
+@startuml "Resource_Agent_Sequence"
+
+
+skin rose 
+participant "BDI Agent" as BDIAgent
+participant "Machine(Resource)" as Machine
+participant "BDI Agent Interface" as BDIAgentInterface
+participant "Data Translator" as DataTranslator
+participant "AAS Client" as AASClient
+participant "AAS Server" as AASServer
+
+BDIAgent -> Machine: ReadStatus()
+Machine --> BDIAgent: StatusData
+BDIAgent -> BDIAgentInterface: UpdateStatus(StatusData)
+BDIAgentInterface -> DataTranslator: TranslateToAASFormat(StatusData)
+DataTranslator -> AASClient: UpdateSubmodelValue(OperationalState, TranslatedData)
+AASClient -> AASServer: PUT /submodel/{id}/value
+AASServer --> AASClient: 200 OK
+
+
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml "System Level_Negotiation"
+
+
+Actor "Operator" as Operator
+participant "Production AAS" as ProductionAAS
+participant "Resource AAS 1" as ResourceAAS1
+participant "Resource AAS 2" as ResourceAAS2
+
+
+Operator -> ProductionAAS: Request Production Order (e.g. , Drill Hole (Depth: 5cm, Rpm: 3000) at (X:10cm, Y:20cm) by (Time: 12:00PM))
+activate ProductionAAS
+ProductionAAS -> ProductionAAS : create List of Candidate Resources
+ProductionAAS -> ResourceAAS1: Request Capability and Time Availability
+activate ResourceAAS1
+ResourceAAS1 -> ResourceAAS1 : Retrieve Capability and Time Availability from Submodels
+ResourceAAS1 --> ProductionAAS: Respond with Capability and Time Availability
+deactivate ResourceAAS1
+ProductionAAS -> ResourceAAS2: Request Capability and Time Availability
+activate ResourceAAS2
+ResourceAAS2 -> ResourceAAS2 : Retrieve Capability and Time Availability from Submodels
+ResourceAAS2 --> ProductionAAS: Respond with Capability and Time Availability
+deactivate ResourceAAS2
+ProductionAAS -> ProductionAAS : Evaluate Capabilities and Time Availabilities
+ProductionAAS --> Operator: Confirm Resource Assignment and Schedule
+deactivate ProductionAAS
+@enduml 

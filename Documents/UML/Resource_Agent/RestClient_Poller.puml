@@ -1,0 +1,20 @@
+@startuml "RESTClient Poller"
+
+skin rose
+
+allowmixing
+component "RESTClient" as RESTClient {
+
+  component "AsyncPoller" as AsyncPoller {
+    class "AsyncPoller" {
+
+      }
+
+  }
+
+  class "RESTClient" {
+
+    }
+}
+
+@enduml

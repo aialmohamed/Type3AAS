@@ -1,0 +1,139 @@
+@startuml "Production_Agent_Submodels"
+
+allowmixing
+
+package "Production Agent Shell" {
+left to right direction
+  entity "Header" as Header {
+    * idShort : String
+    * id : String
+    * assetInformation : Dictionary<String, String>
+    * assetKind : String
+    * globalAssetId : String
+    * assetType : String
+  }
+  package "<<List{Submodel}>> \nSubmodels" {
+   package "<<Submodel>>\n ProcessPlan"{
+    entity "Nodes" as Nodes {
+      * idShort : String : "Nodes"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<OPERATIONAL>"
+      * value : List<ProcessNode>
+      * valueType : String : "List<ProcessNode>"
+    }
+    entity "Edges" as Edges {
+      * idShort : String : "Edges"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<OPERATIONAL>"
+      * value : List<ProcessEdge>
+      * valueType : String : "List<ProcessEdge>"
+    }
+    entity "Entry and Exit" as EntryAndExit {
+      * idShort : String : "Entry and Exit"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<PARARAMETER>"
+      * value : Dictionary<String, String>
+      * valueType : String : "Dictionary<String, String>"
+    }
+    entity "Requiered Input and Output" as RequiredInputAndOutput {
+      * idShort : String : "Requiered Input and Output"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<PARARAMETER>"
+      * value : Dictionary<String, String>
+      * valueType : String : "Dictionary<String, String>"
+    }
+    entity "Preconditions" as Preconditions {
+      * idShort : String : "Preconditions"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<PARARAMETER>"
+      * value : Dictionary<String, String>
+      * valueType : String : "Dictionary<String, String>"
+    }
+    entity "Postconditions" as Postconditions {
+      * idShort : String : "Postconditions"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<PARARAMETER>"
+      * value : Dictionary<String, String>
+      * valueType : String : "Dictionary<String, String>"
+    }
+    entity "Requiered Capabilities" as RequiredCapabilities {
+      * idShort : String : "Requiered Capabilities"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<PARARAMETER>"
+      * value : Dictionary<String, String>
+      * valueType : String : "Dictionary<String, String>"
+    }
+   } 
+   package "<<Submodel>>\n Services Catalog"{
+    entity "Services" as Services {
+      * idShort : String : "Services"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Collection<PARARAMETER>"
+      * value : Dictionary<String, String>
+      * valueType : String : "Dictionary<String, String>"
+   }
+  }
+  package "<<Submodel>>\n ExcutionState and Tracking"  {
+    entity "Current Node" as CurrentNode {
+      * idShort : String : "Current Node"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "VARIABLE"
+      * value : String : "NodeID_1"
+      * valueType : String : "String"
+    }
+    entity "Token Position" as TokenPosition {
+      * idShort : String : "Token Position"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "VARIABLE"
+      * value : String : "Position in NodeID_1"
+      * valueType : String : "String"
+    }
+    entity "Timestamps" as Timestamps {
+      * idShort : String : "Timestamps"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Parameter"
+      * value : String : "2023-10-01T12:00:00Z:NodeID_1;2023-10-01T12:05:00Z:NodeID_2"
+      * valueType : String : "String"
+    }
+    entity "Step Staus" as StepStatus {
+      * idShort : String : "Step Staus"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Parameter"
+      * value : String : "NodeID_1:Completed;NodeID_2:InProgress"
+      * valueType : String : "String"
+    }
+    entity "Measuread parameters" as MeasuredParameters {
+      * idShort : String : "Measured parameters"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Parameter"
+      * value : String : "NodeID_1:Depth=5cm,Rpm=3000;NodeID_2:Depth=3cm,Rpm=2500"
+      * valueType : String : "String"
+    }
+  }
+  package "<<Submodel>>\n Interface and Endpoitns" {
+    entity "SkillCall Endpoints" as SkillCallEndpoints {
+      * idShort : String : "SkillCall Endpoints"
+      * id : String
+      * kind : String : "Instance"
+      * category : String : "Parameter"
+      * value : String : "http://production-agent.local/skillcall"
+      * valueType : String : "String"
+    } 
+  }
+}
+
+
+@enduml

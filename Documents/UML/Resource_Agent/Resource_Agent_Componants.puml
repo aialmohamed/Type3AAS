@@ -1,0 +1,45 @@
+@startuml "Resource Agent Componanats"
+
+allowmixing
+skin rose
+Top to bottom direction
+package "Resource Agent Shell" {
+  component "AAS Submodels" as AAS_Submodels 
+  component "AAS REST Server" as AAS_REST_Server
+  AAS_Submodels --> AAS_REST_Server : "Expose Submodels"
+}
+
+package "AAS-Agent Interface" {
+  component "Async Poller" as Async_Poller
+  component "REST Client" as REST_Client
+  component "Data Translator" as Data_Translator
+  component "BDI Agent Interface" as BDI_Agent_Interface
+  AAS_REST_Server --> Async_Poller : "Poll Data"
+  Async_Poller --> REST_Client : "Fetch Data"
+  REST_Client --> Data_Translator : "Raw AAS Data"
+  Data_Translator --> BDI_Agent_Interface : "ASL Data"
+  BDI_Agent_Interface --> Data_Translator : "Asset Data"
+  Data_Translator --> REST_Client : "AAS-Asset Data"
+  REST_Client --> AAS_REST_Server : "PUT Data"
+}
+
+package "BDI Agent Core" {
+  component "Agent Core" as Agent_Core
+  component "Asset Interface" as Asset_Interface
+  component "Interface Router" as Interface_Router
+  
+  BDI_Agent_Interface --> Interface_Router : "ASL Data"
+  Interface_Router --> Agent_Core : "ASL Data"
+  Agent_Core --> Interface_Router : "Asset Data"
+  Interface_Router --> BDI_Agent_Interface : "Asset Data"
+  Agent_Core --> Asset_Interface : "Asset Commands"
+  Asset_Interface --> Agent_Core : "Asset Data"
+
+}
+package "Asset Layer" {
+  component "Resource Asset" as Resource_Asset
+  Asset_Interface --> Resource_Asset : "Asset Commands"
+  Resource_Asset --> Asset_Interface : "Asset Data"
+}
+
+@enduml

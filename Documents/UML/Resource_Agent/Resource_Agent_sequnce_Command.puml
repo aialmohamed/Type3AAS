@@ -1,0 +1,27 @@
+@startuml "Resource_Agent_Sequence_Command"
+
+
+skin rose 
+participant "ProductionAgent" as ProductionAgent
+participant "BDI Agent" as BDIAgent
+participant "BDI Agent Interface" as BDIAgentInterface
+participant "Data Translator" as DataTranslator
+participant "AAS Client" as AASClient
+participant "AAS Server" as AASServer
+participant "Machine(Resource)" as Machine
+
+ProductionAgent -> BDIAgent: request_Drill(depth,rpm)
+BDIAgent -> BDIAgentInterface: GetSkill("Drill")
+BDIAgentInterface -> DataTranslator: TranslateToAASFormat("Drill", depth, rpm)
+DataTranslator -> AASClient: Invoke
+AASClient -> AASServer: GET /submodel/{id}/invoke
+AASServer --> AASClient: 200 OK, "Drill at 3000 rpm for 5cm depth"
+AASClient --> DataTranslator: ASL Command
+DataTranslator --> BDIAgentInterface: ASL Command
+BDIAgentInterface -> BDIAgent: ASL Command
+BDIAgent -> Machine: ExecuteCommand("Drill at 3000 rpm for 5cm depth")
+
+
+
+
+@enduml

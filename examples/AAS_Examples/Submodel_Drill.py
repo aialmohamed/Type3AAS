@@ -4,7 +4,7 @@ import basyx
 from basyx.aas import model
 import basyx.aas.adapter.json as json_adapter
 import basyx.aas.model.datatypes as datatypes
-
+import pprint
 
 
 submodel = model.Submodel(
@@ -56,4 +56,4 @@ aashell.update()
 #data = json_adapter.json_serialization.write_aas_json_file(file="data.json", stripped=True, data=obj_store)
 res = json_adapter.json_serialization.object_store_to_json(data=obj_store,encoder=json_adapter.json_serialization.AASToJsonEncoder)
 
-print(res)
+pprint.pprint(res)

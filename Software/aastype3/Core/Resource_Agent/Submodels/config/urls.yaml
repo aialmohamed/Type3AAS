@@ -1,0 +1,4 @@
+urls:
+  - root_url: "http://localhost:8081"
+  - shells: "/shells"
+  - submodels: "/submodels"

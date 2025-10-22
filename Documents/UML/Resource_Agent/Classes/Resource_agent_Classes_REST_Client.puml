@@ -1,0 +1,78 @@
+@startuml "Resource Agent Classes"
+
+skin rose
+
+allowmixing
+  component "RESTClient" as RESTClient {
+
+    class "AssetRepository" as AssetRepository {
+      + createAas(aas_payload: jsonString): jsonString
+      + getAas(ass_id: String): jsonString
+      + updateAas(ass_id: String, aas_payload: jsonString): jsonString
+      + deleteAas(ass_id: String): void
+    }
+    class "SubmodelRepository" as SubmodelRepository {
+      + createSubmodel(submodel_payload: jsonString): jsonString
+      + updateSubmodel(sm_id: String, submodel_payload: jsonString): jsonString
+      + deleteSubmodel(sm_id: String): void
+      + getSubmodelValue(sm_id: String): jsonString
+      + setSubmodelValue(sm_id: String, value: jsonString): void
+
+      + createSubmodelElement(submodel_element_payload: jsonString): jsonString
+      + getSubmodelElement(submodel_element_id: String): jsonString
+      + updateSubmodelElement(submodel_element_id: String, submodel_element_payload: jsonString): jsonString
+      + deleteSubmodelElement(submodel_element_id: String): void
+    }
+    class "RESTClient" as RESTClientClass {
+      - client: RestClient
+      - Session : ClientSession
+      - ClientUtils : ClientUtils
+      + SubmodelRepository : SubmodelRepository
+      + AssetRepository : AssetRepository
+
+      + __aenter__(): RESTClient
+      + __aexit__(): void
+      + getAssetInformation(ass_id: String): jsonString
+      + getSubmodelInformation(sm_id: String): jsonString
+      }
+      class "AASEvent" as AASEventClass {
+        - ClientUtils : ClientUtils
+        - Broker : String
+        - Port : int
+        - Topics : list<String>
+
+        + StartClient(): void
+        + StopClient(): void
+
+
+        + onAASCreated(ass_id: String): void
+        + onAASUpdated(ass_id: String): void
+        + onAASDeleted(ass_id: String): void
+
+        + onSubmodelCreated(sm_id: String): void
+        + onSubmodelUpdated(sm_id: String): void
+        + onSubmodelDeleted(sm_id: String): void
+      }
+      class "ClientUtils" as ClientUtilsClass {
+        + ClientConfigurationPath: String
+        
+        + getClientUrl(): String
+        + getClientPort(): int
+        + getClientEndpoint(endpoint: String): String
+        + getAASJsonDirPath(): String
+        + getAllAASIds(): List<String>
+        + getAllTopics(): List<String>
+        + create_aas_from_file(aas_file_path: String): jsonString
+        + create_submodel_from_file(submodel_file_path: String): jsonString
+
+      }
+
+      RESTClientClass *-- ClientUtilsClass : 1
+      AASEventClass  *-- ClientUtilsClass : 1
+      RESTClientClass *-- SubmodelRepository : 1
+      RESTClientClass *-- AssetRepository : 1
+  }
+
+
+
+@enduml

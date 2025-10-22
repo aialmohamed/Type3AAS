@@ -1,0 +1,14 @@
+@startuml "Resource Agent Entry Point"
+
+skin rose
+allowmixing
+
+component "DataTranslator" as DataTranslatorClass
+component "BDIAgentInterface" as BDIAgentInterfaceClass
+component "RESTClient" as RESTClientClass
+component "MainInterfaceApp" as MainInterfaceApp
+
+  MainInterfaceApp *-- RESTClientClass : 1
+  MainInterfaceApp *-- DataTranslatorClass : 1
+  MainInterfaceApp *-- BDIAgentInterfaceClass : 1
+@enduml

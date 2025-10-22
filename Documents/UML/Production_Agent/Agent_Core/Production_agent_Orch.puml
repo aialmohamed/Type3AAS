@@ -1,0 +1,63 @@
+@startuml "Resource_BDI_Orchestration"
+
+skin rose 
+allowmixing
+left to right direction
+package "Orchestration Core" {
+  class "Orchestrator" as Orchestrator {
+    - handleAcceptedBehavior : HandleAcceptedProposalBehavior
+    - handleNonAcceptedBehavior : HandleNonAcceptedProposalBehavior
+    - handleServiceToSkillsBehavior : HandleServiceToSkillsBehavior
+    - handleAllocateSkillToResourceBehavior : HandleAllocateSkillToResourceBehavior
+    - handleReleaseResourceBehavior : HandleReleaseResourceBehavior
+    - NegotiationCore : NegotiationCore
+    - OrchestrationToAASInterface : OrchestrationInterface
+
+
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+
+  }
+
+}
+
+package "Orchestration Behaviors"  as OrchestrationBehaviors {
+  abstract class "OneShotBehavior" as OneShotBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleAcceptedProposalBehavior" as HandleAcceptedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleNonAcceptedProposalBehavior" as HandleNonAcceptedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleServiceToSkillsBehavior" as HandleServiceToSkillsBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleAllocateSkillToResourceBehavior" as HandleAllocateSkillToResourceBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleReleaseResourceBehavior" as HandleReleaseResourceBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  OneShotBehavior <|-- HandleAcceptedProposalBehavior
+  OneShotBehavior <|-- HandleNonAcceptedProposalBehavior
+  OneShotBehavior <|-- HandleServiceToSkillsBehavior
+  OneShotBehavior <|-- HandleAllocateSkillToResourceBehavior
+  OneShotBehavior <|-- HandleReleaseResourceBehavior
+}
+
+
+@enduml

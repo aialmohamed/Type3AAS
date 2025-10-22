@@ -1,0 +1,55 @@
+@startuml "Neogtiation"
+
+skin rose
+allowmixing
+left to right direction
+package "Negotiation Core" {
+  class "NegotiationCore" as NegotiationCore {
+    - createProposalBehavior : CreateProposalBehavior
+    - evaluateProposalBehavior : EvaluateProposalBehavior
+    - processAcceptedProposalBehavior : ProcessAcceptedProposalBehavior
+    - processRejectedProposalBehavior : ProcessRejectedProposalBehavior
+
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+  }
+}
+package "Negotiation Behaviors"  as NegotiationBehaviors {
+    abstract class "OneShotBehavior" as OneShotBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  abstract class "CyclicBehavior" as CyclicBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "CreateProposalBehavior" as CreateProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "EvaluateProposalBehavior" as EvaluateProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ProcessAcceptedProposalBehavior" as ProcessAcceptedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ProcessRejectedProposalBehavior" as ProcessRejectedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  CyclicBehavior <|-- EvaluateProposalBehavior
+  OneShotBehavior <|-- CreateProposalBehavior
+  OneShotBehavior <|-- ProcessAcceptedProposalBehavior
+  OneShotBehavior <|-- ProcessRejectedProposalBehavior
+}
+
+
+@enduml

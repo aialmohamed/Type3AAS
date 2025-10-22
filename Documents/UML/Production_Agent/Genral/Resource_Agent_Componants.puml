@@ -1,0 +1,41 @@
+@startuml "Production Agent Components"
+
+allowmixing
+skin rose
+Top to bottom direction
+package "Production Agent Shell" {
+  component "AAS Submodels" as AAS_Submodels 
+  component "AAS REST Server" as AAS_REST_Server
+  AAS_Submodels --> AAS_REST_Server : "Expose Submodels"
+}
+
+package "AAS-Agent Interface" {
+  component "REST Client" as REST_Client
+  component "Data Translator" as Data_Translator
+  component "Production Agent Interface" as Production_Agent_Interface
+
+  REST_Client --> Data_Translator : "Raw Orchestration Data"
+  Data_Translator --> Production_Agent_Interface : "Orchestration Data"
+  Production_Agent_Interface --> Data_Translator : "Production Data"
+  Data_Translator --> REST_Client : "Production-AAS Data"
+  REST_Client --> AAS_REST_Server : "PUT Data"
+  AAS_REST_Server --> REST_Client : "GET Data"
+}
+
+package "Production Agent Core" {
+  component "Orchestration Agent Core" as Orchestration_Agent_Core
+  component "Resource Interface" as Resource_Interface
+
+  Production_Agent_Interface --> Orchestration_Agent_Core : "Orchestration Data"
+  Orchestration_Agent_Core --> Production_Agent_Interface : "Production Data"
+  Orchestration_Agent_Core --> Resource_Interface : "Orchestration Commands"
+  Resource_Interface --> Orchestration_Agent_Core : "Resource Data"
+
+}
+package "Resource Agent/s" {
+  component "Resource Agent" as Resource_Agent
+  Resource_Interface --> Resource_Agent : "Orchestration Commands \n (Over XMPP)" 
+  Resource_Agent --> Resource_Interface : "Resource Data \n (Over XMPP)"
+}
+
+@enduml

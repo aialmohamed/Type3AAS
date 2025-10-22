@@ -1,0 +1,116 @@
+@startuml "Production Agent Core"
+
+
+skin rose 
+allowmixing
+
+left to right direction
+package "Orchestration Core" {
+  class "Orchestrator" as Orchestrator {
+    - handleAcceptedBehavior : HandleAcceptedProposalBehavior
+    - handleNonAcceptedBehavior : HandleNonAcceptedProposalBehavior
+    - handleServiceToSkillsBehavior : HandleServiceToSkillsBehavior
+    - handleAllocateSkillToResourceBehavior : HandleAllocateSkillToResourceBehavior
+    - handleReleaseResourceBehavior : HandleReleaseResourceBehavior
+    - NegotiationCore : NegotiationCore
+    - OrchestrationToAASInterface : OrchestrationInterface
+
+
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+
+  }
+
+}
+package "Negotiation Core" {
+  class "NegotiationCore" as NegotiationCore {
+    - createProposalBehavior : CreateProposalBehavior
+    - evaluateProposalBehavior : EvaluateProposalBehavior
+    - processAcceptedProposalBehavior : ProcessAcceptedProposalBehavior
+    - processRejectedProposalBehavior : ProcessRejectedProposalBehavior
+
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+  }
+}
+package "Negotiation Behaviors"  as NegotiationBehaviors {
+    abstract class "OneShotBehavior" as OneShotBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  abstract class "CyclicBehavior" as CyclicBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "CreateProposalBehavior" as CreateProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "EvaluateProposalBehavior" as EvaluateProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ProcessAcceptedProposalBehavior" as ProcessAcceptedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ProcessRejectedProposalBehavior" as ProcessRejectedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  CyclicBehavior <|-- EvaluateProposalBehavior
+  OneShotBehavior <|-- CreateProposalBehavior
+  OneShotBehavior <|-- ProcessAcceptedProposalBehavior
+  OneShotBehavior <|-- ProcessRejectedProposalBehavior
+}
+package "Orchestration Behaviors"  as OrchestrationBehaviors {
+  abstract class "OneShotBehavior" as OneShotBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleAcceptedProposalBehavior" as HandleAcceptedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleNonAcceptedProposalBehavior" as HandleNonAcceptedProposalBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleServiceToSkillsBehavior" as HandleServiceToSkillsBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleAllocateSkillToResourceBehavior" as HandleAllocateSkillToResourceBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "HandleReleaseResourceBehavior" as HandleReleaseResourceBehavior {
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  OneShotBehavior <|-- HandleAcceptedProposalBehavior
+  OneShotBehavior <|-- HandleNonAcceptedProposalBehavior
+  OneShotBehavior <|-- HandleServiceToSkillsBehavior
+  OneShotBehavior <|-- HandleAllocateSkillToResourceBehavior
+  OneShotBehavior <|-- HandleReleaseResourceBehavior
+}
+
+Orchestrator *-- NegotiationCore : 1  
+NegotiationCore *-- NegotiationBehaviors : 4
+Orchestrator *-- OrchestrationBehaviors : 5
+
+
+
+@enduml

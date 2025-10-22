@@ -1,0 +1,60 @@
+@startuml "Resource_BDI_Agent"
+
+skin rose 
+allowmixing
+
+component "BDIAgentInterface" as BDIAgentInterface
+
+package "Resource BDI Core" {
+
+  class "EntryPoint" as EntryPoint{
+    - agent : ResourceAgent
+    + async main() : void
+  }
+  abstract class "BDIAgent" as BDIAgent{
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+  }
+  class "ResourceAgent" as ResourceAgent{
+    - resourceProposalEvaluationBehavior : ResourceProposalEvaluationBehavior
+    - resourceDeclineProposalBehavior      : ResourceDeclineProposalBehavior
+    - resourceAcceptProposalBehavior       : ResourceAcceptProposalBehavior
+    - resourceExecuteOnAssetBehavior       : ResourceExecuteOnAssetBehavior
+    - resourceGetAssetDataBehavior         : ResourceGetAssetDataBehavior
+    - resourceAgentTemplates : ResourceAgentTemplates
+    - resourceAsset : ResourceAssetInterface
+    - BDIAgentASSInterface : BDIAgentInterface
+
+
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+  }
+  class "ResourceAgentTemplates" as ResourceAgentTemplates{
+    - template_proposal : Template
+    - template_register : Template
+    - template_decline : Template
+    - template_accept : Template
+    - template_execute : Template
+    - template_get_data : Template
+
+    + get_proposal_template() : Template
+    + get_register_template() : Template
+    + get_decline_template() : Template
+    + get_accept_template() : Template
+    + get_execute_template() : Template
+    + get_get_data_template() : Template
+  }
+  class "ResourceAssetInterface" as ResourceAssetInterface{
+    - Endpoints : Dictionary<String, String>
+    + execute_on_asset(params : Dictionary<String, Object>) : Dictionary<String, Object>
+    + get_asset_data(params : Dictionary<String, Object>) : Dictionary<String, Object>
+  }
+
+  BDIAgent <|-- ResourceAgent
+  ResourceAgent *-- ResourceAssetInterface : 1 
+  ResourceAgent *-- ResourceAgentTemplates : 1 
+  EntryPoint *-- ResourceAgent : 1
+  BDIAgentInterface *-- ResourceAgent : 1
+
+}
+@enduml

@@ -1,0 +1,56 @@
+@startuml "Resource_BDI_Behaviours"
+
+skin rose 
+
+allowmixing
+
+package "BehaviorCore" {
+
+  abstract class "OneShotBehavior" as OneShotBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  abstract class "CyclicBehavior" as CyclicBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  
+  class "ResourceProposalEvaluationBehavior" as ResourceProposalEvaluationBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceDeclineProposalBehavior" as ResourceDeclineProposalBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceAcceptProposalBehavior" as ResourceAcceptProposalBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceExecuteOnAssetBehavior" as ResourceExecuteOnAssetBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceGetAssetDataBehavior" as ResourceGetAssetDataBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+
+  CyclicBehavior <|-- ResourceProposalEvaluationBehavior
+  OneShotBehavior <|-- ResourceDeclineProposalBehavior
+  OneShotBehavior <|-- ResourceAcceptProposalBehavior
+  OneShotBehavior <|-- ResourceExecuteOnAssetBehavior
+  OneShotBehavior <|-- ResourceGetAssetDataBehavior
+
+}
+
+
+
+@enduml

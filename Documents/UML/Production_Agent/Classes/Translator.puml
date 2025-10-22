@@ -1,0 +1,95 @@
+@startuml
+
+skin rose 
+allowmixing
+
+  component "DataTranslator" as DataTranslator {
+
+    enum "AASDataTypes" as AASDataTypes {
+      STATE
+      COMMAND
+    }
+    note bottom of AASDataTypes #lightgreen
+    The Submodels mainly have 2 types of data the concern the Agent
+    - STATE: e.g Current State, Historical Data
+    - COMMAND: e.g Skill
+    so this enum defines those two types to be used in the OrchestrationDataModel
+    end note
+
+    dataClass "AASDataModel" as AASDataModel {
+      + data_type: AASDataTypes
+      + value: any
+      + timestamp: String
+    }
+    note bottom of AASDataModel #lightgreen
+    Represents a generic AAS data 
+    model with a data type, value, and timestamp.
+    where if the data type is command then the value is
+    ASL string that contains a command to be executed by the resource
+    agent e.g "Drill at 3000 rpm for 5cm depth"
+    end note
+
+    enum "SubmodelTypes" as SubmodelTypes {
+      STATE
+    }
+    note bottom of SubmodelTypes #lightgreen
+    Those three Types define the mapping of the submodel id /
+    submodelElement id.
+    e.g data from real asset is State data --> map to submodel id "Current State"
+    end note
+    dataClass "ProductionDataModel" as ProductionDataModel {
+      + submodel_id : String
+      + value: any
+      + timestamp: String
+    }
+    note bottom of ProductionDataModel #lightgreen
+    Represents a generic submodel/submodelElement data 
+      model with a submodel ID, value, and timestamp.
+    end note
+    
+    abstract class DataParser {
+      + parse(data: jsonString): any
+    }
+
+    class AASDataModelToProductionDataParser {
+      - ProductionDataModel : ProductionDataModel
+      - SubmodelTypes : SubmodelTypes
+      + parse(): jsonString
+      - parse_submodel_id(): String
+      - parse_value(): any
+      - parse_timestamp(): String
+    }
+    class ProductionDataModelToAASDataModelParser {
+      - AASDataModel : AASDataModel
+      + parse(): jsonString
+      - parse_data_type(): AASDataTypes
+      - parse_value(): any
+      - parse_timestamp(): String
+    }
+
+    class "DataTranslator" as DataTranslatorClass {
+      - DataTranslatorConfiguration : DataTranslatorUtils
+      - AASDataModelToProductionDataParser : AASDataModelToProductionDataParser
+      - ProductionDataModelToAASDataModelParser : ProductionDataModelToAASDataModelParser
+
+      + translate_aas_to_production(aas_data: jsonString): jsonString
+      + translate_production_to_aas(resource_data: jsonString): jsonString
+    }
+    class "DataTranslatorUtils" {
+      + DataTranslatorConfigurationPath: String
+      + getDataTranslatorConfig(): jsonString
+    }
+
+    DataTranslatorClass *-- DataTranslatorUtils : 1
+    DataTranslatorClass *-- AASDataModelToProductionDataParser : 1
+    DataTranslatorClass *-- ProductionDataModelToAASDataModelParser : 1
+    AASDataModelToProductionDataParser ..|> DataParser
+    ProductionDataModelToAASDataModelParser ..|> DataParser
+    AASDataModel -- AASDataTypes : 1
+    ProductionDataModel -- SubmodelTypes : 1
+    AASDataModelToProductionDataParser -- ProductionDataModel : 1
+    ProductionDataModelToAASDataModelParser -- AASDataModel : 1
+  }
+
+
+@enduml

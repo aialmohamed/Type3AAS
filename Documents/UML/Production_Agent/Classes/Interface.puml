@@ -1,0 +1,43 @@
+@startuml
+
+skin rose 
+allowmixing
+  component "OrchestrationInterface" as OrchestrationInterfaceComponent {
+
+       class "SubmodelStateExtractor" as SubmodelStateExtractor {
+          + extract_state(data: jsonString): RawResourceDataModel
+          + update_state(data: RawResourceDataModel): jsonString
+       }
+
+
+       class "ProductionDataParser" as ProductionDataParser {
+          + parse_production_data(data: jsonString): RawProductionDataModel
+       }
+       enum "ProductionDataType" as ProductionDataType {
+          STATE
+       }
+       dataclass "RawProductionDataModel" as RawProductionDataModel {
+         + DataType : ProductionDataType
+         + value: any
+         + timestamp: String
+       }
+      class "OrchestrationInterface" as OrchestrationInterface {
+        - CommandBuilder : CommandBuilder
+        - SubmodelStateExtractor : SubmodelStateExtractor
+        - ProductionDataParser : ProductionDataParser
+
+        + receive_data_from_agent(data: jsonString): RawProductionDataModel
+        + send_data_to_agent(data: jsonString): jsonString
+      }
+
+      OrchestrationInterface *-- SubmodelStateExtractor : 1
+      OrchestrationInterface *-- ProductionDataParser : 1
+      ProductionDataParser -- RawProductionDataModel : 1
+      SubmodelStateExtractor -- RawProductionDataModel : 1
+      RawProductionDataModel -- ProductionDataType : 1
+
+  }
+
+
+
+@enduml

@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{acronym}
+\usepackage{booktabs}
+\usepackage{tabularx,ragged2e,booktabs,babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{longtable}
+\usepackage[table,xcdraw]{xcolor}
+\setcounter{secnumdepth}{4}
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\geometry{margin=1in}
+
+% Title
+\title{AAS Type3 - System Architecture}
+\author{Ahmed Ibrahim Almohamed}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+
+\begin{abstract}
+  This document provides a comprehensive overview of the system architecture for the AAS Type3 project. It details the system components, their interactions, and the overall design principles guiding the architecture.
+\end{abstract}
+\newpage
+\tableofcontents
+
+\newpage
+\include{System_overview}
+
+\newpage
+\include{System_Components}
+
+\newpage
+\include{Classes_and_Objects}
+
+\newpage
+\include{Flows_and_State_Machine}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

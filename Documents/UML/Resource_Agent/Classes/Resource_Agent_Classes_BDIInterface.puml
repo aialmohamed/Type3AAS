@@ -1,0 +1,56 @@
+@startuml "Resource Agent Classes BDI Interface"
+
+skin rose
+allowmixing
+  component "BDIAgentInterface" as BDIAgentInterface {
+
+       dataclass "CommandModel" as CommandModel {
+         + action: String
+         + parameters: Dictionary<String, any>
+       }
+       class "CommandBuilder" as CommandBuilder {
+          + parse_command(data: jsonString): CommandModel
+          + push_command(command: CommandModel): void
+       }
+
+
+       class "SubmodelStateExtractor" as SubmodelStateExtractor {
+          + extract_state(data: jsonString): RawResourceDataModel
+          + update_state(data: RawResourceDataModel): jsonString
+       }
+
+
+       class "ResourceDataParser" as ResourceDataParser {
+          + parse_resource_data(data: jsonString): RawResourceDataModel
+       }
+       enum "ResourceDataType" as ResourceDataType {
+          STATE
+          SENSOR
+          ACTUATOR
+       }
+       dataclass "RawResourceDataModel" as RawResourceDataModel {
+         + DataType : ResourceDataType
+         + value: any
+         + timestamp: String
+       }
+      class "BDIAgentInterface" as BDIAgentInterfaceClass {
+        - CommandBuilder : CommandBuilder
+        - SubmodelStateExtractor : SubmodelStateExtractor
+        - ResourceDataParser : ResourceDataParser
+
+        + receive_data_from_agent(data: jsonString): RawResourceDataModel
+        + send_data_to_agent(data: jsonString): jsonString
+      }
+
+      BDIAgentInterfaceClass *-- CommandBuilder
+      BDIAgentInterfaceClass *-- SubmodelStateExtractor : 1
+      BDIAgentInterfaceClass *-- ResourceDataParser : 1
+      CommandBuilder -- CommandModel : 1
+      ResourceDataParser -- RawResourceDataModel : 1
+      SubmodelStateExtractor -- RawResourceDataModel : 1
+      RawResourceDataModel -- ResourceDataType : 1
+
+  }
+
+
+@enduml

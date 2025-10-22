@@ -1,0 +1,106 @@
+@startuml "Resource_BDI_Core_classes"
+
+skin rose 
+allowmixing
+
+left to right direction
+
+package "Resource BDI Core" {
+
+  class "EntryPoint" as EntryPoint{
+    - agent : ResourceAgent
+    + async main() : void
+  }
+  abstract class "BDIAgent" as BDIAgent{
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+  }
+  class "ResourceAgent" as ResourceAgent{
+    - resourceProposalEvaluationBehavior : ResourceProposalEvaluationBehavior
+    - resourceDeclineProposalBehavior      : ResourceDeclineProposalBehavior
+    - resourceAcceptProposalBehavior       : ResourceAcceptProposalBehavior
+    - resourceExecuteOnAssetBehavior       : ResourceExecuteOnAssetBehavior
+    - resourceGetAssetDataBehavior         : ResourceGetAssetDataBehavior
+    - resourceAgentTemplates : ResourceAgentTemplates
+    - resourceAsset : ResourceAssetInterface
+
+
+    + setup() : void
+    + add_custom_actions(agent,term,intention) : void
+  }
+  class "ResourceAgentTemplates" as ResourceAgentTemplates{
+    - template_proposal : Template
+    - template_register : Template
+    - template_decline : Template
+    - template_accept : Template
+    - template_execute : Template
+    - template_get_data : Template
+
+    + get_proposal_template() : Template
+    + get_register_template() : Template
+    + get_decline_template() : Template
+    + get_accept_template() : Template
+    + get_execute_template() : Template
+    + get_get_data_template() : Template
+  }
+  class "ResourceAssetInterface" as ResourceAssetInterface{
+    - Endpoints : Dictionary<String, String>
+    + execute_on_asset(params : Dictionary<String, Object>) : Dictionary<String, Object>
+    + get_asset_data(params : Dictionary<String, Object>) : Dictionary<String, Object>
+  }
+
+  BDIAgent <|-- ResourceAgent
+  ResourceAgent *-- ResourceAssetInterface : 1 
+  ResourceAgent *-- ResourceAgentTemplates : 1 
+  EntryPoint *-- ResourceAgent : 1
+
+}
+
+package "BehaviorCore" {
+
+  abstract class "OneShotBehavior" as OneShotBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  abstract class "CyclicBehavior" as CyclicBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  
+  class "ResourceProposalEvaluationBehavior" as ResourceProposalEvaluationBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceDeclineProposalBehavior" as ResourceDeclineProposalBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceAcceptProposalBehavior" as ResourceAcceptProposalBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceExecuteOnAssetBehavior" as ResourceExecuteOnAssetBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+  class "ResourceGetAssetDataBehavior" as ResourceGetAssetDataBehavior{
+    + run() : void
+    + on_start() : void
+    + on_end() : void
+  }
+
+  CyclicBehavior <|-- ResourceProposalEvaluationBehavior
+  OneShotBehavior <|-- ResourceDeclineProposalBehavior
+  OneShotBehavior <|-- ResourceAcceptProposalBehavior
+  OneShotBehavior <|-- ResourceExecuteOnAssetBehavior
+  OneShotBehavior <|-- ResourceGetAssetDataBehavior
+
+}
+BehaviorCore --* ResourceAgent : *..5
+@enduml

@@ -1,4 +1,4 @@
-\section{Classes and Objects}
+9\section{Classes and Objects}
 
 In this section a breakdown of the main classes and objects used in the system architecture is provided. Each class is described in terms of its attributes, methods, and relationships with other classes.
 
@@ -9,12 +9,13 @@ In this subsection a detailed breakdown of the classes representing the AAS-Agen
 \subsubsection{Submodels definition}
 In this subsection is the definition of the submodels of the Resource AAS.
 Figure \ref{fig:submodel_classes} shows the class diagram representing the Resource Submodel, while Table \ref{tab:submodels_overview} provides an overview of each submodel along with its elements and definitions.
-\begin{figure}[ht]
+\begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\textwidth]{Images/Classes_Resource/Submodels/Submodels.png}
+    \includesvg[width=0.9\textwidth,inkscapelatex=false]{Images/Classes_Resource/Submodels/Submodels.svg}
     \caption{Class diagram representing the Resource Submodel.}
     \label{fig:submodel_classes}
 \end{figure}
+
 \begin{table}[ht]
   \centering
   \caption{Overview of Resource Submodels and their elements}
@@ -40,7 +41,7 @@ This subsection provides a detailed breakdown of the classes representing the RE
 Figure \ref{fig:rest_client_classes} shows the class diagram representing the REST Client.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/Classes_Resource/REST_Client.png}
+    \includesvg[width=0.9\textwidth,inkscapelatex=false]{Images/Classes_Resource/REST_Client.svg}
     \caption{Class diagram representing the REST Client.}
     \label{fig:rest_client_classes}
 \end{figure}
@@ -57,7 +58,7 @@ This subsection provides a detailed breakdown of the classes representing the AA
 Figure \ref{fig:aas_agent_interface_classes} shows the class diagram representing the AAS-Agent Interface.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/Classes_Resource/DataTranslator.png}
+    \includesvg[width=0.8\textwidth,inkscapelatex=false]{Images/Classes_Resource/DataTranslator.svg}
     \caption{Class diagram representing the AAS-Agent Interface.}
     \label{fig:aas_agent_interface_classes}
 \end{figure}
@@ -75,7 +76,7 @@ This subsection provides a detailed breakdown of the classes representing the BD
 Figure \ref{fig:bdi_agent_core_classes} shows the class diagram representing the BDI Agent Core.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/Classes_Resource/BDI_Core/Agent_core.png}
+    \includesvg[width=0.9\textwidth,inkscapelatex=false]{Images/Classes_Resource/BDI_Core/Agent_core.svg}
     \caption{Class diagram representing the BDI Agent Core.}
     \label{fig:bdi_agent_core_classes}
 \end{figure}
@@ -85,7 +86,7 @@ Mainly each agent core contians an Agent core where the BDI Agent lives and Beha
 In the figure \ref{fig:bdi_agent_core_classes} is the Agent Core represented ,while in figure \ref{fig:bdi_agent_behaviours_classes} are the different behaviours of the agent represented.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{Images/Classes_Resource/BDI_Core/Behaviours.png}
+    \includesvg[width=0.95\textwidth,inkscapelatex=false]{Images/Classes_Resource/BDI_Core/Behaviours.svg}
     \caption{Class diagram representing the BDI Agent Behaviours.}
     \label{fig:bdi_agent_behaviours_classes}
 \end{figure}
@@ -108,7 +109,7 @@ Figure \ref{fig:prod_submodel_classes} shows the class diagram representing the 
 model, while Table \ref{tab:prod_submodels_overview} provides an overview of each submodel along with its elements and definitions.
 \begin{figure}[ht]  
     \centering
-    \includegraphics[width=0.7\textwidth]{Images/Production_Classes/Submodels.png}
+    \includesvg[width=0.7\textwidth,inkscapelatex=false]{Images/Production_Classes/Submodels.svg}
     \caption{Class diagram representing the Production Submodel.}
     \label{fig:prod_submodel_classes}
 \end{figure}
@@ -149,7 +150,7 @@ Similar to the Resource AAS REST client, this subsection provides a detailed bre
 Figure \ref{fig:prod_rest_client_classes} shows the class diagram representing the REST Client.
 \begin{figure}[ht]
     \centering  
-    \includegraphics[width=0.99\textwidth]{Images/Production_Classes/Client.png}
+    \includesvg[width=0.99\textwidth,inkscapelatex=false]{Images/Production_Classes/Client.svg}
     \caption{Class diagram representing the REST Client.}
     \label{fig:prod_rest_client_classes}
 \end{figure}
@@ -164,7 +165,7 @@ This subsection provides a detailed breakdown of the classes representing the Pr
 Figure \ref{fig:prod_aas_agent_Translator_classes} shows the class diagram representing the Production AAS-Agent Interface.
 \begin{figure}[ht]
     \centering  
-    \includegraphics[width=0.8\textwidth]{Images/Production_Classes/Translator.png}
+    \includesvg[width=0.8\textwidth,inkscapelatex=false]{Images/Production_Classes/Translator.svg}
     \caption{Class diagram representing the Production AAS-Agent Interface.}
     \label{fig:prod_aas_agent_Translator_classes}
 \end{figure}
@@ -176,7 +177,7 @@ The \emph{Production AAS to Production Data Parser} class is a concrete implemen
 The Interface is showen in figure \ref{fig:prod_aas_agent_interface_classes}.
 \begin{figure}[ht]
     \centering  
-    \includegraphics[width=0.8\textwidth]{Images/Production_Classes/Interface.png}
+    \includesvg[width=0.8\textwidth,inkscapelatex=false]{Images/Production_Classes/Interface.svg}
     \caption{Class diagram representing the Production AAS-Agent Interface.}
     \label{fig:prod_aas_agent_interface_classes}
 \end{figure}
@@ -188,7 +189,7 @@ This subsection provides a detailed breakdown of the classes representing the Or
 The orchestration Core is represented in figure \ref{fig:orchestration_core_classes}.
 \begin{figure}[ht]
     \centering  
-    \includegraphics[width=0.9\textwidth]{Images/Production_Classes/Agent_Core/Orch_Core.png}
+    \includesvg[width=0.9\textwidth,inkscapelatex=false]{Images/Production_Classes/Agent_Core/Orch_Core.svg}
     \caption{Class diagram representing the Orchestration Core.}
     \label{fig:orchestration_core_classes}
 \end{figure}
@@ -204,7 +205,7 @@ This is also represented by and Agent class in the \textbf{SPADE} framework.
 It also have defined behaviours that are represented in the figure. \ref{fig:negotiation_core_classes}.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/Production_Classes/Agent_Core/Negotiation_Core.png}
+    \includesvg[width=0.9\textwidth,inkscapelatex=false]{Images/Production_Classes/Agent_Core/Negotiation_Core.svg}
     \caption{Class diagram representing the Negotiation Core.}
     \label{fig:negotiation_core_classes}
 \end{figure}

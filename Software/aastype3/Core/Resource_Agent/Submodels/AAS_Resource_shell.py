@@ -1,12 +1,12 @@
 
 from basyx.aas import model
-from basyx.aas.adapter.json import json_deserialization , json_serialization
+from basyx.aas.adapter.json import json_serialization
 from aastype3.Core.Resource_Agent.Submodels.Utils import Shell_utills
 import json
-import requests
 import aiohttp
 import pathlib
-import os
+
+
 class AAS_Resource_shell:
   """
   Class to create the Shell for the resource Agent.
@@ -108,7 +108,7 @@ class AAS_Resource_shell:
               return {"error": response_text, "status": response.status}
 
 
-  async def update_shell(self):
+  async def publish_shell(self):
     aas_data = self.get_data_for_update()
 
     aas_response = await self.post_shell(aas_data)

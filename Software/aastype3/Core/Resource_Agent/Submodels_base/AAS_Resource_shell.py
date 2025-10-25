@@ -1,7 +1,7 @@
 
 from basyx.aas import model
 from basyx.aas.adapter.json import json_serialization
-from aastype3.Core.Resource_Agent.Submodels.Utils import Shell_utills
+from aastype3.Core.Resource_Agent.Submodels_base.Utils import Shell_utills
 import json
 import aiohttp
 import pathlib

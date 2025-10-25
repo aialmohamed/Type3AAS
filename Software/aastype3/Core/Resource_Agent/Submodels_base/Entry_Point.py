@@ -1,9 +1,9 @@
 import asyncio
-from aastype3.Core.Resource_Agent.Submodels.AAS_Resource_shell import AAS_Resource_shell
-from aastype3.Core.Resource_Agent.Submodels.submodels.AAS_Submodel_Operational_State import AAS_Submodel_Operational_State
-from aastype3.Core.Resource_Agent.Submodels.submodels.AAS_Submodel_Knowledge import AAS_Submodel_Knowledge
-from aastype3.Core.Resource_Agent.Submodels.submodels.AAS_Submodel_Capablities import AAS_Submodel_Capabilities
-from aastype3.Core.Resource_Agent.Submodels.submodels.AAS_Submodel_Interaction import AAS_Submodel_Interaction
+from aastype3.Core.Resource_Agent.Submodels_base.AAS_Resource_shell import AAS_Resource_shell
+from aastype3.Core.Resource_Agent.Submodels_base.submodels.AAS_Submodel_Operational_State import AAS_Submodel_Operational_State
+from aastype3.Core.Resource_Agent.Submodels_base.submodels.AAS_Submodel_Knowledge import AAS_Submodel_Knowledge
+from aastype3.Core.Resource_Agent.Submodels_base.submodels.AAS_Submodel_Capablities import AAS_Submodel_Capabilities
+from aastype3.Core.Resource_Agent.Submodels_base.submodels.AAS_Submodel_Interaction import AAS_Submodel_Interaction
 
 
 

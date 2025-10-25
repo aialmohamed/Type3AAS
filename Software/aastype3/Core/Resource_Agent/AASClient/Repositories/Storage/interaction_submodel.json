@@ -1,0 +1,85 @@
+{
+    "modelType": "Submodel",
+    "kind": "Instance",
+    "id": "https://THU.de/RA_1_SM_Interaction",
+    "description": [
+        {
+            "language": "en",
+            "text": "Submodel for the Interaction of the Resource Agent"
+        }
+    ],
+    "displayName": [
+        {
+            "language": "en",
+            "text": "Interaction Submodel"
+        }
+    ],
+    "idShort": "RA_1_SM_Interaction",
+    "submodelElements": [
+        {
+            "modelType": "SubmodelElementCollection",
+            "semanticId": {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "https://THU.de/Properties/Endpoints"
+                    }
+                ],
+                "type": "ExternalReference"
+            },
+            "description": [
+                {
+                    "language": "en",
+                    "text": "Collection of interaction endpoints"
+                }
+            ],
+            "displayName": [
+                {
+                    "language": "en",
+                    "text": "Endpoints"
+                }
+            ],
+            "idShort": "Endpoints",
+            "value": [
+                {
+                    "modelType": "Property",
+                    "value": "opc.tcp://Place_Holder:4840/freeopcua/server/",
+                    "valueType": "xs:string",
+                    "category": "CONSTANT",
+                    "description": [
+                        {
+                            "language": "en",
+                            "text": "OPC UA endpoint of the machine"
+                        }
+                    ],
+                    "displayName": [
+                        {
+                            "language": "en",
+                            "text": "Machine OPC UA Endpoint"
+                        }
+                    ],
+                    "idShort": "Machine_OPCUA_Endpoint"
+                },
+                {
+                    "modelType": "Property",
+                    "value": "mqtt://Place_Holder:1883",
+                    "valueType": "xs:string",
+                    "category": "CONSTANT",
+                    "description": [
+                        {
+                            "language": "en",
+                            "text": "MQTT Broker endpoint for communication"
+                        }
+                    ],
+                    "displayName": [
+                        {
+                            "language": "en",
+                            "text": "MQTT Broker Endpoint"
+                        }
+                    ],
+                    "idShort": "MQTT_Broker_Endpoint"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,200 @@
+{
+    "modelType": "Submodel",
+    "kind": "Instance",
+    "id": "https://THU.de/RA_1_SM_Knowledge",
+    "description": [
+        {
+            "language": "en",
+            "text": "Submodel for the Knowledge of the Resource Agent"
+        }
+    ],
+    "displayName": [
+        {
+            "language": "en",
+            "text": "Knowledge Submodel"
+        }
+    ],
+    "idShort": "RA_1_SM_Knowledge",
+    "submodelElements": [
+        {
+            "modelType": "SubmodelElementCollection",
+            "semanticId": {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "https://THU.de/Properties/Resource_Constraints"
+                    }
+                ],
+                "type": "ExternalReference"
+            },
+            "category": "VARIABLE",
+            "description": [
+                {
+                    "language": "en",
+                    "text": "Collection of Resource Constraints"
+                }
+            ],
+            "displayName": [
+                {
+                    "language": "en",
+                    "text": "Resource Constraints"
+                }
+            ],
+            "idShort": "Resource_Constraints",
+            "value": [
+                {
+                    "modelType": "SubmodelElementCollection",
+                    "category": "PARAMETER",
+                    "description": [
+                        {
+                            "language": "en",
+                            "text": "Maximum depth the resource can operate"
+                        }
+                    ],
+                    "displayName": [
+                        {
+                            "language": "en",
+                            "text": "Max Depth"
+                        }
+                    ],
+                    "idShort": "MaxDepth",
+                    "value": [
+                        {
+                            "modelType": "Property",
+                            "value": "20.0",
+                            "valueType": "xs:double",
+                            "category": "PARAMETER",
+                            "description": [
+                                {
+                                    "language": "en",
+                                    "text": "Maximum Depth Value"
+                                }
+                            ],
+                            "displayName": [
+                                {
+                                    "language": "en",
+                                    "text": "Max Depth Value"
+                                }
+                            ],
+                            "idShort": "MaxDepthValue"
+                        },
+                        {
+                            "modelType": "Property",
+                            "value": "centimeters",
+                            "valueType": "xs:string",
+                            "category": "CONSTANT",
+                            "description": [
+                                {
+                                    "language": "en",
+                                    "text": "Unit of Maximum Depth Value"
+                                }
+                            ],
+                            "displayName": [
+                                {
+                                    "language": "en",
+                                    "text": "Max Depth Unit"
+                                }
+                            ],
+                            "idShort": "MaxDepthUnit"
+                        },
+                        {
+                            "modelType": "Property",
+                            "value": "cm",
+                            "valueType": "xs:string",
+                            "category": "CONSTANT",
+                            "description": [
+                                {
+                                    "language": "en",
+                                    "text": "Short Unit of Maximum Depth Value"
+                                }
+                            ],
+                            "displayName": [
+                                {
+                                    "language": "en",
+                                    "text": "Max Depth Unit Short"
+                                }
+                            ],
+                            "idShort": "MaxDepthUnitShort"
+                        }
+                    ]
+                },
+                {
+                    "modelType": "SubmodelElementCollection",
+                    "category": "PARAMETER",
+                    "description": [
+                        {
+                            "language": "en",
+                            "text": "Minimum depth the resource can operate"
+                        }
+                    ],
+                    "displayName": [
+                        {
+                            "language": "en",
+                            "text": "Min Depth"
+                        }
+                    ],
+                    "idShort": "MinDepth",
+                    "value": [
+                        {
+                            "modelType": "Property",
+                            "value": "1.0",
+                            "valueType": "xs:double",
+                            "category": "PARAMETER",
+                            "description": [
+                                {
+                                    "language": "en",
+                                    "text": "Minimum Depth Value"
+                                }
+                            ],
+                            "displayName": [
+                                {
+                                    "language": "en",
+                                    "text": "Min Depth Value"
+                                }
+                            ],
+                            "idShort": "MinDepthValue"
+                        },
+                        {
+                            "modelType": "Property",
+                            "value": "centimeters",
+                            "valueType": "xs:string",
+                            "category": "CONSTANT",
+                            "description": [
+                                {
+                                    "language": "en",
+                                    "text": "Unit of Minimum Depth Value"
+                                }
+                            ],
+                            "displayName": [
+                                {
+                                    "language": "en",
+                                    "text": "Min Depth Unit"
+                                }
+                            ],
+                            "idShort": "MinDepthUnit"
+                        },
+                        {
+                            "modelType": "Property",
+                            "value": "cm",
+                            "valueType": "xs:string",
+                            "category": "CONSTANT",
+                            "description": [
+                                {
+                                    "language": "en",
+                                    "text": "Short Unit of Minimum Depth Value"
+                                }
+                            ],
+                            "displayName": [
+                                {
+                                    "language": "en",
+                                    "text": "Min Depth Unit Short"
+                                }
+                            ],
+                            "idShort": "MinDepthUnitShort"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "modelType": "Submodel",
+    "kind": "Instance",
+    "id": "https://THU.de/RA_1_SM_Operational_State",
+    "description": [
+        {
+            "language": "en",
+            "text": "Submodel for the Operational State of the Resource Agent"
+        }
+    ],
+    "displayName": [
+        {
+            "language": "en",
+            "text": "Operational State Submodel"
+        }
+    ],
+    "idShort": "RA_1_SM_Operational_State",
+    "submodelElements": [
+        {
+            "modelType": "Property",
+            "semanticId": {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "https://THU.de/Properties/Current_Operational_State"
+                    }
+                ],
+                "type": "ExternalReference"
+            },
+            "value": "Idle",
+            "valueType": "xs:string",
+            "category": "VARIABLE",
+            "idShort": "Current_Operational_State"
+        },
+        {
+            "modelType": "Property",
+            "semanticId": {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "https://THU.de/Properties/Historical_Operational_Data"
+                    }
+                ],
+                "type": "ExternalReference"
+            },
+            "value": "No Data",
+            "valueType": "xs:string",
+            "category": "PARAMETER",
+            "idShort": "Historical_Operational_Data"
+        }
+    ]
+}

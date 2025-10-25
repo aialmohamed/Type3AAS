@@ -4,11 +4,8 @@ from typing import Any, Dict, List
 from fastapi import FastAPI, Request, HTTPException
 import uvicorn
 from basyx.aas import model
-from basyx.aas.adapter.json import json_deserialization, json_serialization
 import basyx.aas.model.datatypes as datatypes
-datatypes.Double
 
-model.Property
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger("drill_invoker")
 

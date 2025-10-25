@@ -1,0 +1,8 @@
+submodel_ids:
+  - Capabilities Submodel: https://THU.de/RA_1_SM_Capabilities
+  - Interaction Submodel: https://THU.de/RA_1_SM_Interaction
+  - Knowledge Submodel: https://THU.de/RA_1_SM_Knowledge
+  - Operational State Submodel: https://THU.de/RA_1_SM_Operational_State
+shell_id:
+  - Resource Agent Shell 1: https://THU.de/ResourceAgent_1
+base_url: http://localhost:8081

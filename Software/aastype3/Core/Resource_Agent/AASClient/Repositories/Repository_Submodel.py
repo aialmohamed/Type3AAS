@@ -1,7 +1,7 @@
 
 import json
 from typing import Any
-from aastype3.Core.Resource_Agent.AASClient.Repositories.Repository_base import RepositoryBase
+from aastype3.Core.Resource_Agent.AASClient.Repositories.base.Repository_base import RepositoryBase
 import aiohttp
 import asyncio
 from basyx.aas import model

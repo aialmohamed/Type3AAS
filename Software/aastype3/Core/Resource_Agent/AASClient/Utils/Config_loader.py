@@ -1,6 +1,6 @@
 
 import pathlib
-from typing import Any
+from typing import Any, List
 import yaml
 
 
@@ -27,49 +27,85 @@ class IdConfigLoader:
         return self.data["shell_id"][0].get(key, {})
     
 
-
+# region Submodel IDs
 
     def get_Interaction_submodel_id(self, key: str = "Interaction Submodel") -> Any:
         if self.data is None:
             self.load_yaml()
-        return self.data["submodel_ids"][1].get(key, {})
+        return self.data["submodels"][1].get(key, {})[0].get("id", {})
     def get_Capabilities_submodel_id(self, key: str = "Capabilities Submodel") -> Any:
         if self.data is None:
             self.load_yaml()
-        return self.data["submodel_ids"][0].get(key, {})
+        return self.data["submodels"][0].get(key, {})[0].get("id", {})
     def get_Operational_State_submodel_id(self, key: str = "Operational State Submodel") -> Any:
         if self.data is None:
             self.load_yaml()
-        return self.data["submodel_ids"][3].get(key, {})
+        return self.data["submodels"][3].get(key, {})[0].get("id", {})
     def get_Knowledge_submodel_id(self, key: str = "Knowledge Submodel") -> Any:
         if self.data is None:
             self.load_yaml()
-        return self.data["submodel_ids"][2].get(key, {})
+        return self.data["submodels"][2].get(key, {})[0].get("id", {})
     def get_base_url(self, key: str = "base_url") -> Any:
         if self.data is None:
             self.load_yaml()
         return self.data.get(key, {})
+# endregion
+
+#region Submodel Elements
+    def get_Capabilities_submodel_elements(self,key: str= "Capabilities Submodel") -> List[str]:
+        if self.data is None:
+            self.load_yaml()
+        val = self.data["submodels"][0].get(key, {})[1].get("elements", {})
+        res = []
+        for v in val:
+            for k,v in v.items():
+                res.append(v)
+        return res
+
+    def get_Interaction_submodel_elements(self, key: str = "Interaction Submodel") -> List[str]:
+        if self.data is None:
+            self.load_yaml()
+        val = self.data["submodels"][1].get(key, {})[1].get("elements", {})
+        res = []
+        for v in val:
+            for k,v in v.items():
+                res.append(v)
+        return res
+
+    def get_Operational_State_submodel_elements(self, key: str = "Operational State Submodel") -> List[str]:
+        if self.data is None:
+            self.load_yaml()
+        val = self.data["submodels"][3].get(key, {})[1].get("elements", {})
+        res = []
+        for v in val:
+                for k,v in v.items():
+                    res.append(v)
+        return res
+
+
+    def get_Knowledge_submodel_elements(self, key: str = "Knowledge Submodel") -> List[str]:
+        if self.data is None:
+            self.load_yaml()
+        val = self.data["submodels"][2].get(key, {})[1].get("elements", {})
+        res = []
+        for v in val:
+                for k,v in v.items():
+                    res.append(v)
+        return res
+
+# endregion
 
 
 
-""" Example usage
+
 def main():
     loader = IdConfigLoader()
     config_data = loader.load_yaml()
-    print(config_data)
+    #print(config_data)
     capabilities_submodel_id = loader.get_Capabilities_submodel_id()
     print(f"Capabilities Submodel ID: {capabilities_submodel_id}")
-    interaction_submodel_id = loader.get_Interaction_submodel_id()
-    print(f"Interaction Submodel ID: {interaction_submodel_id}")
-    operational_state_submodel_id = loader.get_Operational_State_submodel_id()
-    print(f"Operational State Submodel ID: {operational_state_submodel_id}")
-    knowledge_submodel_id = loader.get_Knowledge_submodel_id()
-    print(f"Knowledge Submodel ID: {knowledge_submodel_id}")
-    shell_id = loader.get_shell_id()
-    print(f"Shell ID: {shell_id}")
-    base_url = loader.get_base_url()
-    print(f"Base URL: {base_url}")
+    elements = loader.get_Capabilities_submodel_elements()
+    print(f"Capabilities Submodel Elements: {elements}")
 
 if __name__ == "__main__":
     main()
-"""

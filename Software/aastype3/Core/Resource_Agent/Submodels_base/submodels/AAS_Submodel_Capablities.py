@@ -65,6 +65,12 @@ class AAS_Submodel_Capabilities(AASSubmodelBase):
         )
         self.sm_element_movexy = model.Operation(
           id_short="MoveXY_Capability",
+             qualifier=[model.Qualifier(
+              kind=model.QualifierKind.CONCEPT_QUALIFIER,
+              type_="invocationDelegation",
+              value_type=datatypes.String,
+              value="http://host.docker.internal:8090/movexy_invocation"
+          )],
           input_variable=[
               model.Property(
                   id_short="Target_X",

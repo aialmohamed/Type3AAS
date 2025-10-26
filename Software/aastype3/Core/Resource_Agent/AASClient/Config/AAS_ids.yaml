@@ -1,8 +1,32 @@
-submodel_ids:
-  - Capabilities Submodel: https://THU.de/RA_1_SM_Capabilities
-  - Interaction Submodel: https://THU.de/RA_1_SM_Interaction
-  - Knowledge Submodel: https://THU.de/RA_1_SM_Knowledge
-  - Operational State Submodel: https://THU.de/RA_1_SM_Operational_State
+submodels:
+  - Capabilities Submodel: 
+      - id: https://THU.de/RA_1_SM_Capabilities
+      - elements :
+          - Drill: Drill_Capability
+          - MoveXY: MoveXY_Capability
+  - Interaction Submodel: 
+      - id: https://THU.de/RA_1_SM_Interaction
+      - elements :
+          - Endpoints : Endpoints
+          - Machine OPC UA Endpoint: Machine_OPCUA_Endpoint
+          - MQTT Broker Endpoint: MQTT_Broker_Endpoint
+  - Knowledge Submodel: 
+      - id: https://THU.de/RA_1_SM_Knowledge
+      - elements :
+          - Resource Constraints: Resource_Constraints
+          - Max Depth: MaxDepth
+          - Max Depth Value : MaxDepthValue
+          - Max Depth Unit : MaxDepthUnit
+          - Max Depth Unit Short : MaxDepthUnitShort
+          - Min Depth: MinDepth
+          - Min Depth Value : MinDepthValue
+          - Min Depth Unit : MinDepthUnit
+          - Min Depth Unit Short : MinDepthUnitShort
+  - Operational State Submodel: 
+      - id: https://THU.de/RA_1_SM_Operational_State
+      - elements :
+          - Current Operational Data : Current_Operational_State
+          - Historical Operational Data: Historical_Operational_Data
 shell_id:
   - Resource Agent Shell 1: https://THU.de/ResourceAgent_1
 base_url: http://localhost:8081

@@ -206,13 +206,11 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             return await self.get_submodel_elements_from_collection(op_sm_id, ep_sme_id, opcua_ep_sme_id)
       
 
-      async def get_Interaction_OPCUA_Endpoint_Value(self) -> model.Property:
+      async def getvalue_Interaction_OPCUA_Endpoint(self) -> model.Property:
             op_sm_id = self.loader.get_Interaction_submodel_id()
             ep_sme_id = self.loader.get_Interaction_submodel_elements()[0]
             opcua_ep_sme_id = self.loader.get_Interaction_submodel_elements()[1]
-            value_sme_id = self.loader.get_Interaction_submodel_elements()[3]
-            _id = f"{opcua_ep_sme_id}.{value_sme_id}"
-            return await self.get_submodel_elements_from_collection(op_sm_id, ep_sme_id, _id)
+            return await self.get_submodel_elements_from_collection(op_sm_id, ep_sme_id, opcua_ep_sme_id)
       
       async def get_Interaction_MQTT_Endpoint(self) -> model.SubmodelElement:
             op_sm_id = self.loader.get_Interaction_submodel_id()
@@ -220,13 +218,11 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             mqtt_ep_sme_id = self.loader.get_Interaction_submodel_elements()[2]
             return await self.get_submodel_elements_from_collection(op_sm_id, ep_sme_id, mqtt_ep_sme_id)
 
-      async def get_Interaction_MQTT_Endpoint_Value(self) -> model.Property:
+      async def getvalue_Interaction_MQTT_Endpoint(self) -> model.Property:
             op_sm_id = self.loader.get_Interaction_submodel_id()
             ep_sme_id = self.loader.get_Interaction_submodel_elements()[0]
             mqtt_ep_sme_id = self.loader.get_Interaction_submodel_elements()[2]
-            value_sme_id = self.loader.get_Interaction_submodel_elements()[4]
-            _id = f"{mqtt_ep_sme_id}.{value_sme_id}"
-            return await self.get_submodel_elements_from_collection(op_sm_id, ep_sme_id, _id)
+            return await self.get_submodel_element_value_from_collection(op_sm_id, ep_sme_id, mqtt_ep_sme_id)
 #endregion
 
 # region Capabilities Submodel Elements Getters

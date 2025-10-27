@@ -11,7 +11,7 @@ class AAS_Resource_shell:
   """
   Class to create the Shell for the resource Agent.
   """
-  def __init__(self,submodels = []):
+  def __init__(self,submodels = [],test_aas:bool=False):
     self.shell_file_path = pathlib.Path(__file__).parent / "shells" / "AAS_Resource_shell.json"
     self.shell_information =  None
     self.id = None
@@ -25,18 +25,32 @@ class AAS_Resource_shell:
     self.submodels_refs = {model.ModelReference.from_referable(sm) for sm in submodels} 
 
     self.obj_store : model.DictObjectStore[model.Identifiable] = model.DictObjectStore()
+    self._shell_id = ""
+    self._shell_id_short = ""
+    self._global_asset_id = ""
+    self._check_test_aas(test_aas)
   
+  def _check_test_aas(self,test_aas:bool):
+    if test_aas:
+      self._shell_id = "https://THU.de/ResourceAgent_1_Test_AAS"
+      self._shell_id_short = "RA_1_Test_Shell"
+      self._global_asset_id = "RA_1_Test_Global_Asset_ID"
+    else:
+      self._shell_id = "https://THU.de/ResourceAgent_1"
+      self._shell_id_short = "RA_1_Shell"
+      self._global_asset_id = "RA_1_Global_Asset_ID"
+    return 
   
   def set_shell(self):
-    self.id = "https://THU.de/ResourceAgent_1"
+    self.id = self._shell_id
     self.asset_kind = model.AssetKind.INSTANCE
-    self.global_asset_id = "RA_1_Global_Asset_ID"
+    self.global_asset_id = self._global_asset_id
     
 
     self.shell_information = model.AssetInformation(asset_kind=self.asset_kind,
                                                     global_asset_id=self.global_asset_id)
     self.asset_shell = model.AssetAdministrationShell( id_=self.id,
-                                                      id_short="RA_1_Shell",
+                                                      id_short=self._shell_id_short,
                                                       asset_information=self.shell_information,
                                                       display_name=[{"language": "en", "text": "Resource Agent Shell 1"}],
                                                       submodel=self.submodels_refs

@@ -32,7 +32,7 @@ class RepositoryBase():
     # Add the submodel reference to the shell
     shell.submodel.add(model.ModelReference.from_referable(submodel))
     shell.update()
-    await self.update_shell_by_id(shell)
+    await self._update_shell_by_id(shell)
     return shell
   
   async def get_shell_by_id(self, shell_id: str) -> model.AssetAdministrationShell:
@@ -49,10 +49,11 @@ class RepositoryBase():
         data = await resp.json()
         json_string = json.dumps(data,cls=json_serialization.AASToJsonEncoder)
         shell = json.loads(json_string,cls=json_deserialization.AASFromJsonDecoder)
+        resp.raise_for_status()
         return shell
       
 
-  async def update_shell_by_id(self, shell: model.AssetAdministrationShell) -> Any:
+  async def _update_shell_by_id(self, shell: model.AssetAdministrationShell) -> Any:
     """_summary_
     Update an existing Asset Administration Shell by its ID.
     Args:
@@ -192,7 +193,7 @@ class RepositoryBase():
     shell = await self.get_shell_by_id(self.loader.get_shell_id())
     shell.submodel.remove(model.ModelReference.from_referable(target_sm))
     shell.update()
-    await self.update_shell_by_id(shell)
+    await self._update_shell_by_id(shell)
     encoded_id = self._b64url_no_pad(identifier)
     url = f"{self.loader.get_base_url()}/submodels/{encoded_id}"
     # Now delete the submodel itself

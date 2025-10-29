@@ -125,7 +125,7 @@ class SubmodelElementRepositoryBase():
 
 # endregion
 
-# region Read Methods for Submodel Elements
+# region Get Methods for Submodel Elements
   async def get_submodel_element_by_id(self, submodel_id: str, element_id: str) -> Any:
     """
     Get a submodel element by its ID.
@@ -144,6 +144,7 @@ class SubmodelElementRepositoryBase():
         json_string = json.dumps(data,cls=json_serialization.AASToJsonEncoder)
         element = json.loads(json_string,cls=json_deserialization.AASFromJsonDecoder)
         print("Submodel Element Type:", type(element))
+        resp.raise_for_status()
         return element
 
   async def get_submodel_elements_from_collection(self, submodel_id: str, collection_id: str, element_id: str) -> Any:
@@ -164,6 +165,7 @@ class SubmodelElementRepositoryBase():
         json_string = json.dumps(data,cls=json_serialization.AASToJsonEncoder)
         elements = json.loads(json_string,cls=json_deserialization.AASFromJsonDecoder)
         print("Submodel Element Collection Type:", type(elements))
+        resp.raise_for_status()
         return elements
     
   async def get_submodel_element_value_by_id(self, submodel_id: str, element_id: str) -> Any:
@@ -182,7 +184,6 @@ class SubmodelElementRepositoryBase():
           data = await resp.json()
           json_string = json.dumps(data,cls=json_serialization.AASToJsonEncoder)
           element = json.loads(json_string,cls=json_deserialization.AASFromJsonDecoder)
-          print("Submodel Element Type:", type(element))
           return element
 
   async def get_submodel_element_value_from_collection(self, submodel_id: str, collection_id: str, element_id: str) -> Any:
@@ -246,7 +247,6 @@ class SubmodelElementRepositoryBase():
         Any: The result of the operation.
     """
     encoded_submodel_id = self._b64url_no_pad(submodel_id)
-    print("Invoking operation on element ID:", encoded_submodel_id)
     url_element = f"{self.loader.get_base_url()}/submodels/{encoded_submodel_id}/submodel-elements/{element_id}/invoke?async={Async_flag}"
     headers = {"Content-Type": "application/json", "Accept": "application/json"}
     async with self._session.post(url_element, json=input_params, headers=headers) as resp:
@@ -266,6 +266,20 @@ class SubmodelElementRepositoryBase():
               return out.get("value")
             return out
           return data
+                # handle delegation failure (registry indicates delegation target error)
+        if resp.status == 424:
+          # try to return a structured error so caller can act on it
+          delegation_error = None
+          try:
+            delegation_error = json.loads(text)
+          except Exception:
+            delegation_error = text
+          return {
+            "success": False,
+            "status": 424,
+            "message" : "Either the invokation server is down or not Implemented the operation.",
+            "delegation_error": delegation_error
+          }
 
         # non-success -> raise with server body for debugging
         raise Exception(f"Invoke failed: status={resp.status}, body={text}")

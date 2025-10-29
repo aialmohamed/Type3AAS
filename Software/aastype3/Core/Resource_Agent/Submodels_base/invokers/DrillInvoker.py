@@ -1,3 +1,4 @@
+import asyncio
 import json
 import logging
 from typing import Any, Dict, List
@@ -101,7 +102,8 @@ async def invoke_operation(request: Request):
         except Exception:
             raise HTTPException(status_code=400, detail="First input is not numeric")
 
-        result = depth * depth
+        result = depth
+        await asyncio.sleep(3)  # simulate processing delay
         response_var = {
             "modelType": "OperationVariable",
             "value": {

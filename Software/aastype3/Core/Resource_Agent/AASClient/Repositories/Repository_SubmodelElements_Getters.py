@@ -1,9 +1,11 @@
 
 from typing import Any
+from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
 import aiohttp
 from basyx.aas import model
 import asyncio
 from aastype3.Core.Resource_Agent.AASClient.Repositories.base.Repository_base_SubmodelElement import SubmodelElementRepositoryBase
+import json
 
 class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
       """
@@ -24,8 +26,7 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             cs_sme_id = self.loader.get_Operational_State_submodel_elements()[0]
             return await self.get_submodel_element_by_id(op_sm_id, cs_sme_id)
 
-
-      async def get_Operational_State_Historical_States(self) -> model.Property:
+      async def get_Operational_State_TimeSlots_Operational_Data(self) -> model.Property:
             op_sm_id = self.loader.get_Operational_State_submodel_id()
             hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
             return await self.get_submodel_element_by_id(op_sm_id, hs_sme_id)
@@ -35,12 +36,69 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             cs_sme_id = self.loader.get_Operational_State_submodel_elements()[0]
             return await self.get_submodel_element_value_by_id(op_sm_id, cs_sme_id)
       
-
-      async def getvalue_Operational_State_Historical_States(self) -> Any:
+      async def getvalue_Operational_State_TimeSlots_Operational_Data(self) -> Any:
             op_sm_id = self.loader.get_Operational_State_submodel_id()
             hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
             return await self.get_submodel_element_value_by_id(op_sm_id, hs_sme_id)
+      
+      async def get_Operational_State_Free_Slots(self) -> model.Property:
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            free_slots_sme_id = self.loader.get_Operational_State_submodel_elements()[2]
+            return await self.get_submodel_elements_from_collection(op_sm_id, hs_sme_id, free_slots_sme_id)
+      
+      async def getvalue_Operational_State_Free_Slots(self) -> Any:
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            free_slots_sme_id = self.loader.get_Operational_State_submodel_elements()[2]
+            return await self.get_submodel_element_value_from_collection(op_sm_id, hs_sme_id, free_slots_sme_id)
+      
+      async def get_Operational_State_Booked_Slots(self) -> model.Property:
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            booked_slots_sme_id = self.loader.get_Operational_State_submodel_elements()[3]
+            return await self.get_submodel_elements_from_collection(op_sm_id, hs_sme_id, booked_slots_sme_id)
+      
+      async def getvalue_Operational_State_Booked_Slots(self) -> Any:
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            booked_slots_sme_id = self.loader.get_Operational_State_submodel_elements()[3]
+            return await self.get_submodel_element_value_from_collection(op_sm_id, hs_sme_id, booked_slots_sme_id)
+      
+      async def get_Operational_State_Slot_Duration(self) -> model.Property:
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            slot_duration_sme_id = self.loader.get_Operational_State_submodel_elements()[4]
+            return await self.get_submodel_elements_from_collection(op_sm_id, hs_sme_id, slot_duration_sme_id)
+      
+      async def getvalue_Operational_State_Slot_Duration(self) -> Any:
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            hs_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            slot_duration_sme_id = self.loader.get_Operational_State_submodel_elements()[4]
+            return await self.get_submodel_element_value_from_collection(op_sm_id, hs_sme_id, slot_duration_sme_id)
+      
+      async def get_time_slot_manager_from_server(self) -> TimeSlotDataType:
+            """Fetch time slots from server and create synchronized manager."""
+            try:
+                  # Fetch JSON strings from server
+                  free_slots_json = await self.getvalue_Operational_State_Free_Slots()
+                  booked_slots_json = await self.getvalue_Operational_State_Booked_Slots()
+                  
+                  # Create manager and parse JSON
+                  manager = TimeSlotDataType(start_time="08:00", end_time="17:00", duration_minutes=30)
+                  manager.free_slots = json.loads(free_slots_json) if free_slots_json else []
+                  manager.booked_slots = json.loads(booked_slots_json) if booked_slots_json else []
 
+                  return manager
+                  
+            except Exception as e:
+                  print(f"✗ Error: {e}")
+                  import traceback
+                  traceback.print_exc()
+                  # Fallback
+                  manager = TimeSlotDataType(start_time="08:00", end_time="17:00", duration_minutes=30)
+                  manager.get_free_slots()
+                  return manager
 
 # endregion
 
@@ -210,7 +268,7 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             op_sm_id = self.loader.get_Interaction_submodel_id()
             ep_sme_id = self.loader.get_Interaction_submodel_elements()[0]
             opcua_ep_sme_id = self.loader.get_Interaction_submodel_elements()[1]
-            return await self.get_submodel_elements_from_collection(op_sm_id, ep_sme_id, opcua_ep_sme_id)
+            return await self.get_submodel_element_value_from_collection(op_sm_id, ep_sme_id, opcua_ep_sme_id)
       
       async def get_Interaction_MQTT_Endpoint(self) -> model.SubmodelElement:
             op_sm_id = self.loader.get_Interaction_submodel_id()

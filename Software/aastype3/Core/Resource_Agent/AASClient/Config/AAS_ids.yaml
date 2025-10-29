@@ -26,7 +26,10 @@ submodels:
       - id: https://THU.de/RA_1_SM_Operational_State
       - elements :
           - Current Operational Data : Current_Operational_State
-          - Historical Operational Data: Historical_Operational_Data
+          - Time Slots Operational Data: TimeSlots_Operational_Data
+          - Free Slots: Free_Slots
+          - Booked Slots: Booked_Slots
+          - Slot Duration : Slot_Duration
 shell_id:
   - Resource Agent Shell 1: https://THU.de/ResourceAgent_1
 base_url: http://localhost:8081

@@ -1,4 +1,6 @@
+import json
 from typing import Any
+from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
 import aiohttp
 from basyx.aas import model
 import asyncio
@@ -12,7 +14,7 @@ class SubmodelElementRepositoryUpdate(SubmodelElementRepositoryBase):
       """
       def __init__(self, session: aiohttp.ClientSession):
             super().__init__(session)
-      
+
 # region  Operational State Elements Update Methods
       async def update_Operational_State_Current_State(self, new_state: str) :
             op_sm_id = self.loader.get_Operational_State_submodel_id()
@@ -20,11 +22,38 @@ class SubmodelElementRepositoryUpdate(SubmodelElementRepositoryBase):
             await  self.update_submodel_element_value_by_id(op_sm_id, cs_sme_id, new_state)
 
 
-      async def update_Operational_State_Historical_Data(self, new_data: str) :
+      async def update_Operational_State_TimeSlots_Operational_Data_Time(self, new_data: str) :
             op_sm_id = self.loader.get_Operational_State_submodel_id()
             hd_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
             await  self.update_submodel_element_value_by_id(op_sm_id, hd_sme_id, new_data)
-# endregion 
+      
+      async def update_Operational_State_TimeSlots_Operational_Data_Free_Slots(self, new_free_slots: str) :
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            tsod_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            free_slots_sme_id = self.loader.get_Operational_State_submodel_elements()[2]
+            await  self.update_submodel_element_value_from_collection(op_sm_id,tsod_sme_id,free_slots_sme_id, new_free_slots)
+      
+      async def update_Operational_State_TimeSlots_Operational_Data_Booked_Slots(self, new_booked_slots: str) :
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            tsod_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            print(f"DEBUG: Updating booked slots with ID {tsod_sme_id}")
+            booked_slots_sme_id = self.loader.get_Operational_State_submodel_elements()[3]
+            await  self.update_submodel_element_value_from_collection(op_sm_id,tsod_sme_id,booked_slots_sme_id, new_booked_slots)
+      
+      async def update_Operational_State_TimeSlots_Operational_Data_Slot_Duration(self, new_duration: str) :
+            op_sm_id = self.loader.get_Operational_State_submodel_id()
+            tsod_sme_id = self.loader.get_Operational_State_submodel_elements()[1]
+            slot_duration_sme_id = self.loader.get_Operational_State_submodel_elements()[4]
+            await  self.update_submodel_element_value_from_collection(op_sm_id,tsod_sme_id,slot_duration_sme_id, new_duration)
+      
+      async def update_time_manager_to_server(self, time_slot_manager: TimeSlotDataType):
+            """Update time slot manager on the server."""
+            free_slots_json = json.dumps(time_slot_manager.free_slots)
+            booked_slots_json = json.dumps(time_slot_manager.booked_slots)
+            await self.update_Operational_State_TimeSlots_Operational_Data_Free_Slots(free_slots_json)
+            await self.update_Operational_State_TimeSlots_Operational_Data_Booked_Slots(booked_slots_json)
+
+# endregion
 
 # region Knowledge Submodel Elements Update Methods
       async def update_Knowledge_MaxDepth_Collection_Value(self, new_value: str) :

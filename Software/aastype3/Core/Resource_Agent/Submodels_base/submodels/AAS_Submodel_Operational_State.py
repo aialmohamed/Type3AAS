@@ -2,15 +2,17 @@ from basyx.aas import model
 import basyx.aas.model.datatypes as datatypes
 from aastype3.Core.Resource_Agent.Submodels_base.submodels.AAS_Submodel_base import AASSubmodelBase
 from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
-
+from aastype3.Core.Resource_Agent.Datamodels.ResourceConfig_DataType import ResourceConfig 
 
 class AAS_Submodel_Operational_State(AASSubmodelBase):
     """
     Submodel for the Operational State of the Resource Agent.
     Inherits from AASSubmodelBase.
     """
-    def __init__(self):
-        self.time_slot_manager = TimeSlotDataType(start_time="08:00", end_time="17:00", duration_minutes=30)
+    def __init__(self, resource_config: ResourceConfig):
+        
+        self.resource_config = resource_config
+        self.time_slot_manager = TimeSlotDataType(start_time=f"{resource_config.slot_start_time}", end_time=f"{resource_config.slot_end_time}", duration_minutes=resource_config.slot_duration_minutes)
         super().__init__()
         
     
@@ -21,7 +23,7 @@ class AAS_Submodel_Operational_State(AASSubmodelBase):
         semantic_reference = model.ExternalReference(
         (model.Key(
             type_=model.KeyTypes.GLOBAL_REFERENCE,
-            value='https://THU.de/Properties/Current_Operational_State'
+            value=f"https://THU.de/Properties/{self.resource_config.resource_name}_Current_Operational_State"
             ),)
         )
         self.sm_element_current_state = model.Property(
@@ -29,7 +31,9 @@ class AAS_Submodel_Operational_State(AASSubmodelBase):
           value_type=datatypes.String,
           category="VARIABLE",
           value="Idle",  # Initial state could also be "Idle" , "Running" , "Error", "Done"
-          semantic_id=semantic_reference
+          semantic_id=semantic_reference,
+          display_name=[{"language": "en", "text": f"{self.resource_config.resource_name} Current Operational State"}],
+          description=[{"language": "en", "text": "Current operational state of the resource"}]
         )
 
 
@@ -45,13 +49,13 @@ class AAS_Submodel_Operational_State(AASSubmodelBase):
         semantic_reference = model.ExternalReference(
         (model.Key(
             type_=model.KeyTypes.GLOBAL_REFERENCE,
-            value='https://THU.de/Properties/TimeSlots_Operational_Data'
+            value=f"https://THU.de/Properties/{self.resource_config.resource_name}_TimeSlots_Operational_Data"
             ),)
         )
         self.sm_element_time_slots_data = model.SubmodelElementCollection(
-          id_short="TimeSlots_Operational_Data",
+          id_short=f"{self.resource_config.resource_name}_TimeSlots_Operational_Data",
           semantic_id=semantic_reference,
-          display_name=[{"language": "en", "text": "Time Slots Operational Data"}],
+          display_name=[{"language": "en", "text": f"{self.resource_config.resource_name} Time Slots Operational Data"}],
           value=[
               model.Property(
                   id_short="Free_Slots",
@@ -77,10 +81,10 @@ class AAS_Submodel_Operational_State(AASSubmodelBase):
         self.get_submodel_elements().append(self.sm_element_time_slots_data)
     def create_submodel(self):
       self._submodel = model.Submodel(
-      id_ = "https://THU.de/RA_1_SM_Operational_State",
-      id_short="RA_1_SM_Operational_State",
+      id_ = f"https://THU.de/{self.resource_config.resource_name}_RA_Operational_State",
+      id_short=f"{self.resource_config.resource_name}_RA_Operational_State",
       description=[{"language": "en", "text": "Submodel for the Operational State of the Resource Agent"}],
-      display_name=[{"language": "en", "text": "Operational State Submodel"}],
+      display_name=[{"language": "en", "text": f"{self.resource_config.resource_name} Operational State Submodel"}],
       
     )
       self.create_submodel_elements()

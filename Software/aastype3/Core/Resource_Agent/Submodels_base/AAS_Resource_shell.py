@@ -1,4 +1,5 @@
 
+from aastype3.Core.Resource_Agent.Datamodels.ResourceConfig_DataType import ResourceConfig
 from basyx.aas import model
 from basyx.aas.adapter.json import json_serialization
 from aastype3.Core.Resource_Agent.Submodels_base.Utils import Shell_utills
@@ -11,7 +12,7 @@ class AAS_Resource_shell:
   """
   Class to create the Shell for the resource Agent.
   """
-  def __init__(self,submodels = [],test_aas:bool=False):
+  def __init__(self, resource_config: ResourceConfig, submodels = []):
     self.shell_file_path = pathlib.Path(__file__).parent / "shells" / "AAS_Resource_shell.json"
     self.shell_information =  None
     self.id = None
@@ -23,36 +24,23 @@ class AAS_Resource_shell:
     self.shell_url = self.utils.get_shells_endpoint(self.configs)
     self.submodels = submodels
     self.submodels_refs = {model.ModelReference.from_referable(sm) for sm in submodels} 
-
     self.obj_store : model.DictObjectStore[model.Identifiable] = model.DictObjectStore()
-    self._shell_id = ""
-    self._shell_id_short = ""
-    self._global_asset_id = ""
-    self._check_test_aas(test_aas)
+
+    self.resource_config = resource_config
   
-  def _check_test_aas(self,test_aas:bool):
-    if test_aas:
-      self._shell_id = "https://THU.de/ResourceAgent_1_Test_AAS"
-      self._shell_id_short = "RA_1_Test_Shell"
-      self._global_asset_id = "RA_1_Test_Global_Asset_ID"
-    else:
-      self._shell_id = "https://THU.de/ResourceAgent_1"
-      self._shell_id_short = "RA_1_Shell"
-      self._global_asset_id = "RA_1_Global_Asset_ID"
-    return 
   
   def set_shell(self):
-    self.id = self._shell_id
+    self.id = f"https://THU.de/ResourceAgent_{self.resource_config.resource_name}"
     self.asset_kind = model.AssetKind.INSTANCE
-    self.global_asset_id = self._global_asset_id
     
 
     self.shell_information = model.AssetInformation(asset_kind=self.asset_kind,
-                                                    global_asset_id=self.global_asset_id)
+                                                    global_asset_id=self.resource_config.aas_global_id
+                                                    )
     self.asset_shell = model.AssetAdministrationShell( id_=self.id,
-                                                      id_short=self._shell_id_short,
+                                                      id_short=self.resource_config.aas_short_id,
                                                       asset_information=self.shell_information,
-                                                      display_name=[{"language": "en", "text": "Resource Agent Shell 1"}],
+                                                      display_name=[{"language": "en", "text": f"Resource Agent Shell {self.resource_config.resource_name}"}],
                                                       submodel=self.submodels_refs
                                                       )
 

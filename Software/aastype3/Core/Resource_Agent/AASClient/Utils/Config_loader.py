@@ -21,10 +21,14 @@ class IdConfigLoader:
         return self.data.get(key, {})
     
 
-    def get_shell_id(self, key: str = "Resource Agent Shell 1") -> Any:
+    def get_shell_id(self, key: str = "Resource Agent Shell") -> Any:
         if self.data is None:
             self.load_yaml()
         return self.data["shell_id"][0].get(key, {})
+    def get_machines_id(self, key: str = "machines") -> Any:
+        if self.data is None:
+            self.load_yaml()
+        return self.data.get(key, {})
     
 
 # region Submodel IDs

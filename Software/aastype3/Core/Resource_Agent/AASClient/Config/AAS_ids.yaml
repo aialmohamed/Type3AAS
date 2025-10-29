@@ -1,19 +1,19 @@
 submodels:
   - Capabilities Submodel: 
-      - id: https://THU.de/RA_1_SM_Capabilities
+      - id: https://THU.de/_RA_Capabilities
       - elements :
           - Drill: Drill_Capability
           - MoveXY: MoveXY_Capability
   - Interaction Submodel: 
-      - id: https://THU.de/RA_1_SM_Interaction
+      - id: https://THU.de/_RA_Interaction
       - elements :
-          - Endpoints : Endpoints
+          - Endpoints : _Endpoints
           - Machine OPC UA Endpoint: Machine_OPCUA_Endpoint
           - MQTT Broker Endpoint: MQTT_Broker_Endpoint
   - Knowledge Submodel: 
-      - id: https://THU.de/RA_1_SM_Knowledge
+      - id: https://THU.de/_RA_Knowledge
       - elements :
-          - Resource Constraints: Resource_Constraints
+          - Resource Constraints: _Resource_Constraints
           - Max Depth: MaxDepth
           - Max Depth Value : MaxDepthValue
           - Max Depth Unit : MaxDepthUnit
@@ -23,13 +23,16 @@ submodels:
           - Min Depth Unit : MinDepthUnit
           - Min Depth Unit Short : MinDepthUnitShort
   - Operational State Submodel: 
-      - id: https://THU.de/RA_1_SM_Operational_State
+      - id: https://THU.de/_RA_Operational_State
       - elements :
           - Current Operational Data : Current_Operational_State
-          - Time Slots Operational Data: TimeSlots_Operational_Data
+          - Time Slots Operational Data: _TimeSlots_Operational_Data
           - Free Slots: Free_Slots
           - Booked Slots: Booked_Slots
           - Slot Duration : Slot_Duration
 shell_id:
-  - Resource Agent Shell 1: https://THU.de/ResourceAgent_1
+  - Resource Agent Shell : https://THU.de/ResourceAgent_
 base_url: http://localhost:8081
+machines:
+  - Drill Machine 1: Drill_1
+  - Drill Machine 2: Drill_2

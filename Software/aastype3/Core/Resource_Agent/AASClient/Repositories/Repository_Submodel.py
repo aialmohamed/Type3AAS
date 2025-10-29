@@ -11,10 +11,16 @@ import basyx.aas.model.datatypes as datatypes
 
 
 class RepositorySubmodel(RepositoryBase):
-    def __init__(self, session: aiohttp.ClientSession):
+    def __init__(self, session: aiohttp.ClientSession, prefix: str = ""):
         super().__init__(session)
         self._object_store : model.DictObjectStore[model.Identifiable] = model.DictObjectStore()
-
+        self.prefix = prefix
+    def _inject_prefix_for_submode(self,prefix:str,submodel_id:str):
+        return submodel_id.replace("_RA_",f"{prefix}_RA_")
+    def _inject_prefix_for_shell_id(self,prefix:str,shell_id:str):
+        #https://THU.de/ResourceAgent_
+        return shell_id.replace("ResourceAgent_",f"ResourceAgent_{prefix}")
+    
 # region Submodels Retrieval and Storage
     async def get_Capabilities_submodel_and_store(self) -> model.Submodel:
       """
@@ -23,7 +29,8 @@ class RepositorySubmodel(RepositoryBase):
       Returns:
           model.Submodel: The retrieved Capabilities submodel.
       """
-      identifier = self.loader.get_Capabilities_submodel_id()
+      
+      identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Capabilities_submodel_id())
       capabilities_submodel = await self.get_submodel_by_identifier(identifier)
       return capabilities_submodel
     
@@ -33,7 +40,7 @@ class RepositorySubmodel(RepositoryBase):
       Returns:
           model.Submodel: The retrieved Interaction submodel.
       """
-      identifier = self.loader.get_Interaction_submodel_id()
+      identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Interaction_submodel_id())
       interaction_submodel = await self.get_submodel_by_identifier(identifier)
       return interaction_submodel
 
@@ -43,7 +50,7 @@ class RepositorySubmodel(RepositoryBase):
       Returns:
           model.Submodel: The retrieved Operational State submodel.
       """
-      identifier = self.loader.get_Operational_State_submodel_id()
+      identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Operational_State_submodel_id())
       operational_state_submodel = await self.get_submodel_by_identifier(identifier)
       return operational_state_submodel
 
@@ -53,7 +60,7 @@ class RepositorySubmodel(RepositoryBase):
       Returns:
           model.Submodel: The retrieved Knowledge submodel.
       """
-      identifier = self.loader.get_Knowledge_submodel_id()
+      identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Knowledge_submodel_id())
       knowledge_submodel = await self.get_submodel_by_identifier(identifier)
       return knowledge_submodel
     
@@ -69,7 +76,7 @@ class RepositorySubmodel(RepositoryBase):
       Returns:
           Any: The response from the update operation.
       """
-      identifier = self.loader.get_Capabilities_submodel_id()
+      identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Capabilities_submodel_id())
       return await self.update_submodel_by_identifier(identifier, submodel_data)
 
     async def update_Interaction_submodel(self, submodel_data: model.Submodel) -> Any:
@@ -81,7 +88,7 @@ class RepositorySubmodel(RepositoryBase):
         Returns:
             Any: The response from the update operation.
         """
-        identifier = self.loader.get_Interaction_submodel_id()
+        identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Interaction_submodel_id())
         return await self.update_submodel_by_identifier(identifier, submodel_data)
     async def update_Operational_State_submodel(self, submodel_data: model.Submodel) -> Any:
         """
@@ -92,7 +99,7 @@ class RepositorySubmodel(RepositoryBase):
         Returns:
             Any: The response from the update operation.
         """
-        identifier = self.loader.get_Operational_State_submodel_id()
+        identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Operational_State_submodel_id())
         return await self.update_submodel_by_identifier(identifier, submodel_data)
     async def update_Knowledge_submodel(self, submodel_data: model.Submodel) -> Any:
         """
@@ -103,7 +110,7 @@ class RepositorySubmodel(RepositoryBase):
         Returns:
             Any: The response from the update operation.
         """
-        identifier = self.loader.get_Knowledge_submodel_id()
+        identifier = self._inject_prefix_for_submode(self.prefix, self.loader.get_Knowledge_submodel_id())
         return await self.update_submodel_by_identifier(identifier, submodel_data)
 # endregion
 
@@ -118,7 +125,8 @@ class RepositorySubmodel(RepositoryBase):
             Any: The response from the create operation.
         """
         submodel = await self.create_submodel_base(submodel_data)
-        await self.add_submodel_to_shell(self.loader.get_shell_id(), submodel_data)
+        shell_id = self._inject_prefix_for_shell_id(self.prefix, self.loader.get_shell_id())
+        await self.add_submodel_to_shell(shell_id, submodel_data)
         return submodel
 # endregion
 

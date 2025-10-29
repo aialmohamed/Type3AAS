@@ -1,4 +1,5 @@
 
+from aastype3.Core.Resource_Agent.Datamodels.ResourceConfig_DataType import ResourceConfig
 from basyx.aas import model 
 import basyx.aas.model.datatypes as datatypes
 from aastype3.Core.Resource_Agent.Submodels_base.submodels.AAS_Submodel_base import AASSubmodelBase
@@ -8,19 +9,20 @@ class AAS_Submodel_Interaction(AASSubmodelBase):
     """
     Submodel representing Interaction capabilities of the AAS.
     """
-    def __init__(self):
+    def __init__(self, resource_config: ResourceConfig):
+        self.resource_config = resource_config
         super().__init__()
     def create_submodel_elements(self):
         semantic_reference = model.ExternalReference(
         (model.Key(
             type_=model.KeyTypes.GLOBAL_REFERENCE,
-            value='https://THU.de/Properties/Endpoints'
+            value=f'https://THU.de/Properties/{self.resource_config.resource_name}_Endpoints'
             ),)
         )
         sm_element_endpoints = model.SubmodelElementCollection(
-            id_short="Endpoints",
+            id_short=f"{self.resource_config.resource_name}_Endpoints",
             description=[{"language": "en", "text": "Collection of interaction endpoints"}],
-            display_name=[{"language": "en", "text": "Endpoints"}],
+            display_name=[{"language": "en", "text": f"{self.resource_config.resource_name} Endpoints"}],
             semantic_id=semantic_reference,
             value=[
                 model.Property(
@@ -44,10 +46,10 @@ class AAS_Submodel_Interaction(AASSubmodelBase):
         self.get_submodel_elements().append(sm_element_endpoints)
     def create_submodel(self):
         self._submodel = model.Submodel(
-            id_="https://THU.de/RA_1_SM_Interaction",
-            id_short="RA_1_SM_Interaction",
+            id_=f"https://THU.de/{self.resource_config.resource_name}_RA_Interaction",
+            id_short=f"{self.resource_config.resource_name}_RA_Interaction",
             description=[{"language": "en", "text": "Submodel for the Interaction of the Resource Agent"}],
-            display_name=[{"language": "en", "text": "Interaction Submodel"}],
+            display_name=[{"language": "en", "text": f"{self.resource_config.resource_name} Interaction Submodel"}],
         )
         self.create_submodel_elements()
         for element in self._submodel_elements:

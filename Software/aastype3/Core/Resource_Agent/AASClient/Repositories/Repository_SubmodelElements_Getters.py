@@ -256,6 +256,9 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             _id = f"{mindepth_sme_id}.{unit_sme_id}"
             return await self.get_submodel_elements_from_collection(op_sm_id, rc_sme_id, _id)
       
+      async def getvalue_MaxMinDepth(self) -> Any:
+            return f"{await self.getvalue_Knowledge_MaxDepth_Collection_Value()}, {await self.getvalue_Knowledge_MinDepth_Collection_Value()}"
+      
 #endregion
 
 # region Interaction Submodel Elements Getters
@@ -295,6 +298,7 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
 #endregion
 
 # region Capabilities Submodel Elements Getters
+
       async def get_Capabilities_Drill_Capability(self) -> model.Operation:
             cap_sm_id = self._inject_prefix_for_submode(self.prefix,self.loader.get_Capabilities_submodel_id())
             drill_cap_sme_id = self.loader.get_Capabilities_submodel_elements()[0]
@@ -319,6 +323,16 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             payload = await self._invoke_operation_payload(cap_sm_id, move_xy_cap_sme_id, {"Target_X": x, "Target_Y": y})
             result = await self.invoke_operation_on_submodel_element(cap_sm_id, move_xy_cap_sme_id, payload, Async_flag=async_flage)
             return result
+      
+      async def get_Capabilities_Supported_Skills(self) -> model.Property:
+            cap_sm_id = self._inject_prefix_for_submode(self.prefix,self.loader.get_Capabilities_submodel_id())
+            skill_list_sme_id = self.loader.get_Capabilities_submodel_elements()[2]
+            return await self.get_submodel_element_by_id(cap_sm_id, skill_list_sme_id)
+      
+      async def getvalue_Capabilities_Supported_Skills(self) -> Any:
+            cap_sm_id = self._inject_prefix_for_submode(self.prefix,self.loader.get_Capabilities_submodel_id())
+            skill_list_sme_id = self.loader.get_Capabilities_submodel_elements()[2]
+            return await self.get_submodel_element_value_by_id(cap_sm_id, skill_list_sme_id)
 
 # endregion
 

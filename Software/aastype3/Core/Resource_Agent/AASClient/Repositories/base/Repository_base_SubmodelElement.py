@@ -203,7 +203,6 @@ class SubmodelElementRepositoryBase():
           data = await resp.json()
           json_string = json.dumps(data,cls=json_serialization.AASToJsonEncoder)
           element = json.loads(json_string,cls=json_deserialization.AASFromJsonDecoder)
-          print("Submodel Element Type:", type(element))
           return element
 # endregion
 

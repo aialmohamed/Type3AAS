@@ -18,6 +18,15 @@ class AAS_Submodel_Capabilities(AASSubmodelBase):
         """
         for name, oper in self.resource_config.capabilities.items():
             self.get_submodel_elements().append(oper)
+        sm_em_skill_list = model.Property(
+            id_short="Supported_Skills",
+            value_type=datatypes.String,
+            category="PARAMETER",
+            description=[{"language": "en", "text": "List of supported skills by the Resource Agent"}],
+            display_name=[{"language": "en", "text": "Supported Skills"}],
+            value=",".join(self.resource_config.capabilities.keys())
+        )
+        self.get_submodel_elements().append(sm_em_skill_list)
 
     def create_submodel(self):
       self._submodel = model.Submodel(

@@ -4,6 +4,7 @@ submodels:
       - elements :
           - Drill: Drill_Capability
           - MoveXY: MoveXY_Capability
+          - SkillList : Supported_Skills
   - Interaction Submodel: 
       - id: https://THU.de/_RA_Interaction
       - elements :

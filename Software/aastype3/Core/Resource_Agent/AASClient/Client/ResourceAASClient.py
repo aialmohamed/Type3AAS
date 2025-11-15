@@ -54,11 +54,7 @@ class ResourceAASClient:
 
 async def main():
     async with ResourceAASClient(prefix="Drill_1") as client:
-        result = await client.allocate_time_slot("13:30-14:00")
-        print(f"DEBUG: Allocation result for slot 13:30-14:00: {result}")
-    async with ResourceAASClient(prefix="Drill_2") as client:
-        result = await client.allocate_time_slot("13:00-13:20")
-        print(f"DEBUG: Release result for slot 13:00-13:20: {result}")
-
+        skills = await client.SubmodelElementRepositoryGetters.get_Interaction_MQTT_Endpoint()
+        print(f"Supported Skills: {skills.id_short}")
 if __name__ == "__main__":
     asyncio.run(main()) 

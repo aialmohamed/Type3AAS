@@ -1,6 +1,7 @@
 # Implementation of Spade PubSub
 
 we are using ```Prosody``` which is a ```XMPP``` server .
+We used ```ejabberd``` but it seems it lacks support where ```Prosody``` is tested with ```Spade python```.
 
 
 - [Implementation of Spade PubSub](#implementation-of-spade-pubsub)

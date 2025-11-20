@@ -28,15 +28,13 @@ class NeogotitaionPubliserBehaviour(OneShotBehaviour):
         print("Publishing negotiation message")
         cfp_message = CfpPubSubMessage()
         cfp_message.skills = "Drill_Capability"
-        cfp_message.at_time = "10:30"
-        cfp_message.Input_arguments = {"X": 3, "Y": 5, "Depth": 9 , "RPM":1500}
+        cfp_message.at_time = "10:00-10:30"
+        cfp_message.Input_arguments = {"X": 3, "Y": 5, "Depth": 15 , "RPM":1500}
         message_to_publish = cfp_message.create_message_to_publish()
         
         print(f"Publishing: {message_to_publish}")  # Debug
         
         await self.agent.pubsub.publish("pubsub.localhost", "production_negotiation", message_to_publish)
-    async def on_end(self):
-        await self.agent.stop()
 
 class InformBehaviour(OneShotBehaviour):
    async def on_start(self):
@@ -50,6 +48,19 @@ class InformBehaviour(OneShotBehaviour):
         await asyncio.sleep(1)
         print("Inform behaviour finished")
 
+class ReceiveViolationBehaviour(CyclicBehaviour):
+    async def on_start(self):
+        # create subscription to the violations topic
+        await self.agent.pubsub.subscribe("pubsub.localhost", "violations_topic")
+        self.agent.pubsub.set_on_item_published(self.on_message)
+    async def run(self):
+        await asyncio.sleep(3)
+    async def on_message(self, message: slixmpp.stanza.Message):
+        violation_message = CfpPubSubMessage(message=message)
+        message_raw = violation_message.parse_message_raw() 
+        print(f"Received violation message: {message_raw}")
+        #self.kill()
+
 class SimpleProductionAgent(PubSubMixin,BDIAgent):
     def __init__(self, jid, password,asl_path):
         super().__init__(jid, password,asl_path)
@@ -59,7 +70,6 @@ class SimpleProductionAgent(PubSubMixin,BDIAgent):
     async def setup(self):
       self.cfp_template = Template()
       self.cfp_template.set_metadata("performative", "cfp")
-      await self.pubsub.create("pubsub.localhost","production_negotiation")
 
 
 async def main():
@@ -71,6 +81,8 @@ async def main():
     #agent.add_behaviour(inform_behaviour)
     publish_behaviour = NeogotitaionPubliserBehaviour()
     agent.add_behaviour(publish_behaviour)
+    receive_violation_behaviour = ReceiveViolationBehaviour()
+    agent.add_behaviour(receive_violation_behaviour)
     
     await agent.start(auto_register=True)
 

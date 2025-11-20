@@ -61,13 +61,13 @@ class AAS_Submodel_Operational_State(AASSubmodelBase):
                   id_short="Free_Slots",
                   value_type=datatypes.String,
                   category="PARAMETER",
-                  value=self.time_slot_manager.get_free_slots_json()
+                  value=self.time_slot_manager.get_free_slots_csv()
               ),
               model.Property(
                   id_short="Booked_Slots",
                   value_type=datatypes.String,
                   category="PARAMETER",
-                  value=self.time_slot_manager.get_booked_slots_json()
+                  value=self.time_slot_manager.get_booked_slots_csv()
               ),
               model.Property(
                   id_short="Slot_Duration",

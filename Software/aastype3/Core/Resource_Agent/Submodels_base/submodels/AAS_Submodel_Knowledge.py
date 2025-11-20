@@ -94,7 +94,15 @@ class AAS_Submodel_Knowledge(AASSubmodelBase):
                     display_name=[{"language": "en", "text": "Min Depth Unit Short"}]
                   )
                 ]
-              )
+              ),
+              model.Property(
+              id_short= "ContraintType",
+              value_type=datatypes.String,
+              value="Depth",
+              category="CONSTANT",
+              description=[{"language": "en", "text": "Type of Constraint"}],
+              display_name=[{"language": "en", "text": "Constraint Type"}]
+            )
           ]    
         )  
         self.get_submodel_elements().append(self.sm_element_resource_constraints)

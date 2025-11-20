@@ -1,5 +1,5 @@
 
-from typing import Any
+from typing import Any, List
 from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
 import aiohttp
 from basyx.aas import model
@@ -64,6 +64,7 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
             op_sm_id = self._inject_prefix_for_submode(self.prefix,self.loader.get_Operational_State_submodel_id())
             hs_sme_id = self._inject_prefix_for_collection_id(self.prefix,self.loader.get_Operational_State_submodel_elements()[1])
             free_slots_sme_id = self.loader.get_Operational_State_submodel_elements()[2]
+            
             return await self.get_submodel_element_value_from_collection(op_sm_id, hs_sme_id, free_slots_sme_id)
 
       async def get_Operational_State_Booked_Slots(self) -> model.Property:
@@ -259,6 +260,21 @@ class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
       async def getvalue_MaxMinDepth(self) -> Any:
             return f"{await self.getvalue_Knowledge_MaxDepth_Collection_Value()}, {await self.getvalue_Knowledge_MinDepth_Collection_Value()}"
       
+      async def get_Knowledge_Constraints_Type(self) -> model.Property:
+            op_sm_id = self._inject_prefix_for_submode(self.prefix,self.loader.get_Knowledge_submodel_id())
+            rc_sme_id = self._inject_prefix_for_collection_id(self.prefix,self.loader.get_Knowledge_submodel_elements()[0])
+            constraint_type_sme_id = self.loader.get_Knowledge_submodel_elements()[9]
+            return await self.get_submodel_elements_from_collection(op_sm_id, rc_sme_id, constraint_type_sme_id)
+      
+      async def getvalue_Knowledge_Constraints_Type(self) -> Any:
+            op_sm_id = self._inject_prefix_for_submode(self.prefix,self.loader.get_Knowledge_submodel_id())
+            rc_sme_id = self._inject_prefix_for_collection_id(self.prefix,self.loader.get_Knowledge_submodel_elements()[0])
+            constraint_type_sme_id = self.loader.get_Knowledge_submodel_elements()[9]
+            return await self.get_submodel_element_value_from_collection(op_sm_id, rc_sme_id, constraint_type_sme_id)
+      async def getvalue_constraints_types(self) -> Any:
+            p_max = await self.get_Knowledge_MaxDepth_Collection()
+            p_min = await self.get_Knowledge_MinDepth_Collection()
+            return f"{p_max.id_short},{p_min.id_short}"
 #endregion
 
 # region Interaction Submodel Elements Getters

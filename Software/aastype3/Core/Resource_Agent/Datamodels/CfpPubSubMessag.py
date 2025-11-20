@@ -43,4 +43,15 @@ class CfpPubSubMessage:
         except Exception as e:
             print(f"✗ Error parsing: {e}")
             return {}
+    
+    def parse_message_raw(self) -> str:
+        """Parse any JSON message (with or without HTML encoding)."""
+        try:
+            message_text = str(self.message)
+            match = re.search(r'<payload[^>]*>(.*?)</payload>', message_text)
+            raw_message = match.group(1) if match else message_text
+            return raw_message
+        except Exception as e:
+            print(f"✗ Error parsing: {e}")
+            return ""
 

@@ -23,6 +23,7 @@ submodels:
           - Min Depth Value : MinDepthValue
           - Min Depth Unit : MinDepthUnit
           - Min Depth Unit Short : MinDepthUnitShort
+          - Constraints Type: ContraintType
   - Operational State Submodel: 
       - id: https://THU.de/_RA_Operational_State
       - elements :

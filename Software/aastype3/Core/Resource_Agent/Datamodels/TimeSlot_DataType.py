@@ -34,6 +34,12 @@ class TimeSlotDataType:
     def get_free_slots_json(self) -> str:
         """Get free slots as separate JSON string."""
         return json.dumps(self.free_slots)
+    def get_booked_slots_csv(self, sep=",") -> str:
+        """Booked slots as CSV (no [] brackets)."""
+        return sep.join(self.booked_slots)
+    def get_free_slots_csv(self, sep=",") -> str:
+        """Free slots as CSV (no [] brackets)."""
+        return sep.join(self.free_slots)
     
     @classmethod
     def from_dict(cls, data: dict):

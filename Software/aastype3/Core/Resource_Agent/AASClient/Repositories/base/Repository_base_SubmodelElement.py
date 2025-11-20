@@ -164,7 +164,6 @@ class SubmodelElementRepositoryBase():
         data = await resp.json()
         json_string = json.dumps(data,cls=json_serialization.AASToJsonEncoder)
         elements = json.loads(json_string,cls=json_deserialization.AASFromJsonDecoder)
-        print("Submodel Element Collection Type:", type(elements))
         resp.raise_for_status()
         return elements
     
@@ -203,6 +202,7 @@ class SubmodelElementRepositoryBase():
           data = await resp.json()
           json_string = json.dumps(data,cls=json_serialization.AASToJsonEncoder)
           element = json.loads(json_string,cls=json_deserialization.AASFromJsonDecoder)
+          #print(f"Element : {element}, type : {type(element)}")
           return element
 # endregion
 

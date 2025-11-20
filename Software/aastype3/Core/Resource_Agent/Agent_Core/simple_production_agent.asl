@@ -1,6 +1,4 @@
 !init.
 
-
 +!init <-
-  .print("Hello form production ...").
-
+  .print("Hello form production .").

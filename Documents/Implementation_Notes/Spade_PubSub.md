@@ -9,6 +9,7 @@ We used ```ejabberd``` but it seems it lacks support where ```Prosody``` is test
   - [Configuration](#configuration)
   - [adding users](#adding-users)
   - [User as Admin](#user-as-admin)
+  - [Bug : PubSub subscriber Crosstalk](#bug--pubsub-subscriber-crosstalk)
 
 
 
@@ -85,3 +86,17 @@ In order to enable PubSub on the Agents , the Agents must be admin on the XMPP s
 ```lua
   admins = {"username@localhost"}
 ```
+
+## Bug : PubSub subscriber Crosstalk
+when calling ```self.agent.pubsub.set_on_item_published``` somewhere in the agent , That registers a single global callback; each call overwrote the previous one, so the violation handler received counter-proposal payloads (and vice versa).
+Fix:
+Subscribe once per topic and filter inside a shared callback by inspecting :
+```(python)
+    async def callback(self, message):
+        event = message['pubsub_event']
+        node = event['items']['node']
+        payload = event['items']['substanzas'][0]['payload'].text
+        if node == 'callback_topic':
+            # do somthing with payload
+```
+After switching to the pubsub_event plugin interface and dispatching on node, each topic’s handler receives only its own payload, eliminating the cross-talk.

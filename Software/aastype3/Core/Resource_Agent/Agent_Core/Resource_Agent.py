@@ -1,219 +1,21 @@
-import ast
-import base64
+
 from aastype3.Core.Resource_Agent.AASClient.Client.ResourceAASClient import ResourceAASClient
-from aastype3.Core.Resource_Agent.Datamodels.CfpPubSubMessag import CfpPubSubMessage
-from aastype3.Core.Resource_Agent.Datamodels.Violation_Enum import ViolationEnum
-import agentspeak
-import slixmpp.stanza
 import spade
-from spade.behaviour import OneShotBehaviour,CyclicBehaviour
 from spade_bdi.bdi import BDIAgent
 from spade_pubsub.pubsub import PubSubMixin
-import argparse
 import asyncio
-import getpass
-from datetime import datetime, timedelta
-import json
 import os
-
-
-class AgentInitializationBehaviour(OneShotBehaviour):
-    async def run(self):
-        # Constraints are always MAX,MIN values
-        current_state ,skills,skills_constarints,skill_constarints_types,free_time_slots,booked_time_slots = await asyncio.gather(
-            self.agent.resource_client.SubmodelElementRepositoryGetters.getvalue_Operational_State_Current_State(),
-            self.agent.resource_client.SubmodelElementRepositoryGetters.getvalue_Capabilities_Supported_Skills(),
-            self.agent.resource_client.SubmodelElementRepositoryGetters.getvalue_MaxMinDepth(),
-            self.agent.resource_client.SubmodelElementRepositoryGetters.getvalue_Knowledge_Constraints_Type(),
-            self.agent.resource_client.SubmodelElementRepositoryGetters.getvalue_Operational_State_Free_Slots(),
-            self.agent.resource_client.SubmodelElementRepositoryGetters.getvalue_Operational_State_Booked_Slots(),
-            return_exceptions=True  # Continue if one fails
-        )
-
-        await asyncio.sleep(2)  # Simulate some processing delay
-        self.agent.bdi.set_belief("current_state", current_state)
-        self.agent.bdi.set_belief("supported_skills", skills)
-        self.agent.bdi.set_belief("skills_constraints", skills_constarints)
-        self.agent.bdi.set_belief("skills_constraints_types", skill_constarints_types)
-        self.agent.bdi.set_belief("free_time_slots", free_time_slots)
-        self.agent.bdi.set_belief("booked_time_slots", booked_time_slots)
-
-      
-        
-class ProductionRequestBehaviour(CyclicBehaviour):
-    # TODO : i think we need to change this from Pubsub to messages 
-    async def on_start(self):
-        await self.agent.pubsub.subscribe("pubsub.localhost", "production_negotiation")
-        self.agent.pubsub.set_on_item_published(self.on_message)
-        #self.agent.bdi.set_belief("is_cfp_received", False)
-        #self.agent.bdi.remove_belief("is_cfp_received")
-
-    async def run(self):
-        await asyncio.sleep(1)
-
-    async def on_message(self, message: slixmpp.stanza.Message):
-        try:
-            cfp_message = CfpPubSubMessage(message=message)
-            self.agent.received_cfp = cfp_message.parse_message()
-            data = self.agent.received_cfp
-
-            #print("Updating BDI beliefs...")
-            # Retract old -> set new to force +belief events
-            cfp_skills = data.get("skills_required")
-            cfp_at_time = data.get("at_time")
-            input_arguments = data.get("input_arguments")
-
-
-            try: self.agent.bdi.remove_belief("cfp_skill")
-            except Exception: pass
-            self.agent.bdi.set_belief("cfp_skill", cfp_skills)
-
-            try: self.agent.bdi.remove_belief("cfp_at_time")
-            except Exception: pass
-            self.agent.bdi.set_belief("cfp_at_time", cfp_at_time)
-
-            try: self.agent.bdi.remove_belief("cfp_input_arguments")
-            except Exception: pass
-            self.agent.bdi.set_belief("cfp_input_arguments", str(input_arguments))
-
-
-            self.agent.bdi.set_belief("is_cfp_received", True)
-            # for debugging only: yield to the BDI loop, then read back
-            #await asyncio.sleep(5)
-            #print("is_cfp_received now ->", self.agent.bdi.get_belief_value("is_cfp_received"))
-            #self.kill()
-        except Exception as e:
-            import traceback
-            print(f"Error in callback type={type(e).__name__} msg={e!r}")
-            traceback.print_exc()
-
-
-class CFPProcessingBehaviour(OneShotBehaviour):
-    async def on_start(self):
-        self.agent.cfp_not_valid_message = []
-        self.violation_flag = False
-        self.violation_Idle_flag = False
-        self.violation_skill_flag = False
-        self.violation_constraint_not_found_flag = False
-        self.violation_constraint_flag = False
-        self.skipping_constraint_check_flag = False
-
-
-    async def run(self):
-        #self.agent.bdi.set_belief("is_cfp_valid", False)
-        #print("Processing CFP...")
-        input_arguments = self.agent.bdi.get_belief_value("cfp_input_arguments")
-        input_arguments = self.agent.utils.to_dict(input_arguments)
-        #print(f"Input Arguments (raw): {input_arguments.keys()}")
-        cfp_skills = self.agent.bdi.get_belief_value("cfp_skill")[0]
-        #print(f"CFP Skills Required: {cfp_skills}")
-        try:
-            current_state = self.agent.bdi.get_belief_value("current_state")[0]
-            allowed_states = ["Idle","Free"]
-
-            # 1 - check state :
-            if current_state not in allowed_states:
-                self.agent.cfp_not_valid_message.append(ViolationEnum.RESOURCE_NOT_IN_IDLE_FREE_VIOLATION.name)
-                self.violation_Idle_flag = True
-                
-            else :
-                self.violation_Idle_flag = False
-            # 2- check matching skills 
-            resource_skills = self.agent.bdi.get_belief_value("supported_skills")
-            if cfp_skills not in resource_skills:
-                self.violation_skill_flag = True
-                self.agent.cfp_not_valid_message.append(ViolationEnum.SKILL_MISMATCH_VIOLATION.name)
-            else :
-                self.violation_skill_flag = False
-            # 3 - check input arguments within constraints
-            constraint_types = self.agent.bdi.get_belief_value("skills_constraints_types")[0]
-            constraints = list(self.agent.bdi.get_belief_value("skills_constraints"))
-            
-            if not constraint_types in input_arguments.keys():
-                self.violation_constraint_not_found_flag = True
-                self.agent.cfp_not_valid_message.append(ViolationEnum.CONSTRAINT_NOT_FOUND_VIOLATION.name)
-            else :
-                self.violation_constraint_not_found_flag = False
-            # check the value of the input that we match to the contraint if the constraint type found
-            if  constraint_types in input_arguments.keys():
-                tageted_input = input_arguments[constraint_types] 
-                min_constraint, max_constraint = map(float, sorted(constraints))
-                tageted_input = float(tageted_input)
-                if not (min_constraint <= tageted_input <= max_constraint):
-                    self.violation_constraint_flag = True
-                    self.agent.cfp_not_valid_message.append(ViolationEnum.CONSTRAINT_VIOLATION.name)
-                else :
-                    self.violation_constraint_flag = False
-            else:
-                self.skipping_constraint_check_flag = True
-                self.agent.cfp_not_valid_message.append(ViolationEnum.SKIPPING_CONSTRAINT_CHECK_VIOLATION.name)
-            # finaly set the belief
-            if (self.violation_Idle_flag or self.violation_skill_flag or 
-                self.violation_constraint_not_found_flag or self.violation_constraint_flag or
-                self.skipping_constraint_check_flag):
-                self.violation_flag = True
-            else:
-                self.violation_flag = False
-
-            self.agent.bdi.set_belief("is_cfp_valid", not self.violation_flag)
-        except Exception as e:
-            print(f"Error processing CFP: {e}")
-
-class InformProductionAgent(OneShotBehaviour):
-    def __init__(self):
-        self.violation_string = ""
-        super().__init__()
-    async def on_start(self):
-        print("Publishing skill state...")
-        self.violation_string = ','.join(self.agent.cfp_not_valid_message)
-        print(self.violation_string)
-        print("Skill state published.")
-
-    async def run(self):
-        # create a publisher 
-        if self.violation_string == "":
-            print("No violations to report.")
-            return
-        await self.agent.pubsub.publish("pubsub.localhost","violations_topic",self.violation_string)
-        # then we need some how to snap back to the ProductionRequestBehaviour to wait for new CFPs
-        #await asyncio.sleep(4)
-        self.agent.bdi.set_belief("snap_back_to_listen", True)
-        #self.agent.production_request_behaviour.start()
-
-
-
-class TimeSlotProcessingBehaviour(OneShotBehaviour):
-    async def on_start(self):
-        self.cfp_at_time = self.agent.bdi.get_belief_value("cfp_at_time")[0]
-        self.free_time_slots = self.agent.bdi.get_belief_value("free_time_slots")
-        self.booked_time_slots  = self.agent.bdi.get_belief_value("booked_time_slots")
-        self.new_cfp_proposal = CfpPubSubMessage()
-        #print("type of CFP at_time:", type(self.cfp_at_time))
-        #print("type of free_time_slots:", type(self.free_time_slots))
-        #print("type of booked_time_slots:", type(self.booked_time_slots))
-        
-        #print(f"free slots (parsed): {self.free_time_slots}")
-        #print(f"booked slots (parsed): {self.booked_time_slots}")
-    async def run(self):
-        print("Processing time slots...")
-        print(f"CFP at_time: {self.cfp_at_time}")
-        print(f"Currently booked time slots: {self.booked_time_slots}")
-        if self.cfp_at_time in self.booked_time_slots:
-            print(f"Time slot {self.cfp_at_time} is already booked. Cannot proceed.")
-            # here is logic for the new preposal
-            self.new_cfp_proposal.skills = self.agent.bdi.get_belief_value("cfp_skill")[0]
-            self.new_cfp_proposal.at_time = list(self.free_time_slots) if self.free_time_slots else "No Available Slot"
-            self.new_cfp_proposal.Input_arguments = self.agent.bdi.get_belief_value("cfp_input_arguments")
-            self.new_cfp_proposal.Input_arguments = self.agent.utils.to_dict(self.new_cfp_proposal.Input_arguments)
-            self.agent.bdi.set_belief("new_cfp_proposal", self.new_cfp_proposal.create_message_to_publish())
-        else:
-            print(f"Time slot {self.cfp_at_time} is available. Booking now...")
-            # here is the go next logic
-        await asyncio.sleep(1) 
-        print("Time slots processed.")
-
-
-
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.Utils import Utils
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.ProductionRqBehv import ProductionRequestBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.CFPProcessBehv import CFPProcessingBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.InformProdctionBehv import InformProductionAgent
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.TimeSlotBehv import TimeSlotProcessingBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.PrepartionBehv import PreparationForExecutionBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.TaskExcutionBehv import TaskExcutionBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.OnDoneBehv import OnDoneBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.DrillingBehv import DrillInvokerBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.MoveXYBehv import MoveXYInvokerBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.AgentIntiBehv import AgentInitializationBehaviour
 
 
 class ResourceAgent(PubSubMixin,BDIAgent):
@@ -224,8 +26,8 @@ class ResourceAgent(PubSubMixin,BDIAgent):
         self.received_cfp = None
         self.cfp_not_valid_message = []
         self.utils = Utils()
-        
-        
+
+    
     async def setup(self):
         #print("Setting up Resource Agent...")
         await self.resource_client.initialize_aas_client()
@@ -266,30 +68,43 @@ class ResourceAgent(PubSubMixin,BDIAgent):
             self.add_behaviour(time_slot_behaviour)
             #print("Action: Time slot processing initiated.")
             yield
+        @actions.add(".prepare_excution",0)
+        def _prepare_excution(agent, term, intention):
+            preparation_behaviour = PreparationForExecutionBehaviour()
+            self.add_behaviour(preparation_behaviour)
+            yield
+        @actions.add(".excute_task",0)
+        def _excute_task(agent, term, intention):
+            # Placeholder for execution action
+            #print("Action: Executing task via BDI action.")
+            excution_behaviour = TaskExcutionBehaviour()
+            self.add_behaviour(excution_behaviour)
+            # Add execution logic here
+            yield
+        @actions.add(".drill",0)
+        def _drill(agent, term, intention):
+            drill_behaviour = DrillInvokerBehaviour()
+            self.add_behaviour(drill_behaviour)
+            yield
+        @actions.add(".move_xy",0)
+        def _move_xy(agent, term, intention):
+            move_xy_behaviour = MoveXYInvokerBehaviour()
+            self.add_behaviour(move_xy_behaviour)
+            yield
+        @actions.add(".operation_done",0)
+        def _operation_done(agent, term, intention):
+            self.bdi.set_belief("execution_finished", True)
+            yield
+        @actions.add(".on_done",0)
+        def _on_done(agent, term, intention):
+            on_done_behaviour = OnDoneBehaviour()
+            self.add_behaviour(on_done_behaviour)
+            yield
 
 
 
 
-class Utils:
-    def __init__(self):
-        pass
-    def to_dict(self,value):
-        if isinstance(value, dict):
-            return value
-        if isinstance(value, (list, tuple)):
-            s = ",".join(str(x) for x in value)
-        else:
-            s = str(value)
-        s = s.strip()
-        # try JSON (double quotes) then Python literal (single quotes)
-        try:
-            return json.loads(s)
-        except Exception:
-            pass
-        try:
-            return ast.literal_eval(s)
-        except Exception:
-            return {}
+
 
 
 

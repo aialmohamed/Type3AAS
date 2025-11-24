@@ -76,7 +76,7 @@ class DrillMachineShell:
               kind=model.QualifierKind.CONCEPT_QUALIFIER,
               type_="invocationDelegation",
               value_type=datatypes.String,
-              value="http://host.docker.internal:8090/movexy_invocation"
+              value="http://host.docker.internal:8092/movexy_invocation"
           )],
           input_variable=[
               model.Property(

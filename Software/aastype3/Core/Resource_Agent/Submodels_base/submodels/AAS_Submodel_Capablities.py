@@ -24,7 +24,7 @@ class AAS_Submodel_Capabilities(AASSubmodelBase):
             category="PARAMETER",
             description=[{"language": "en", "text": "List of supported skills by the Resource Agent"}],
             display_name=[{"language": "en", "text": "Supported Skills"}],
-            value=",".join(self.resource_config.capabilities.keys())
+            value=",".join(name.lower() for name in self.resource_config.capabilities.keys())
         )
         self.get_submodel_elements().append(sm_em_skill_list)
 

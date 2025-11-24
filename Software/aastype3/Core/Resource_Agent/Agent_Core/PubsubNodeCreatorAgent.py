@@ -27,6 +27,8 @@ class PubsubNodeCreatorAgent(PubSubMixin,Agent):
         await self.pubsub.create("pubsub.localhost","production_negotiation")
         await self.pubsub.create("pubsub.localhost","capability_state_updates")
         await self.pubsub.create("pubsub.localhost","violations_topic")
+        await self.pubsub.create("pubsub.localhost","counter_proposals_topic")
+        await self.pubsub.create("pubsub.localhost","job_completion_topic")
         print(f"PubSub node 'production_negotiation' created on pubsub.localhost by agent {self.jid}.")
 
 async def main():

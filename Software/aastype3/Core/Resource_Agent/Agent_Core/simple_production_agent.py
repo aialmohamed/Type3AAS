@@ -1,100 +1,146 @@
-import argparse
 import asyncio
-import getpass
-from datetime import datetime, timedelta
-from aastype3.Core.Resource_Agent.AASClient.Client.ResourceAASClient import ResourceAASClient
-
 import pathlib
-from aastype3.Core.Resource_Agent.Datamodels.CfpPubSubMessag import CfpPubSubMessage
-import agentspeak
-import spade
-from spade.behaviour import PeriodicBehaviour, TimeoutBehaviour,CyclicBehaviour,OneShotBehaviour
+import json
+from spade.behaviour import CyclicBehaviour, OneShotBehaviour
 from spade.template import Template
-import spade_bdi
-from spade_bdi.bdi import BDIAgent
-from spade.message import Message
 from spade_pubsub.pubsub import PubSubMixin
-import slixmpp.stanza
-
-
-#agent : simple_product_agent@localhost
-
-
+from spade_bdi.bdi import BDIAgent
+from aastype3.Core.Resource_Agent.Datamodels.CfpPubSubMessag import CfpPubSubMessage
 
 
 class NeogotitaionPubliserBehaviour(OneShotBehaviour):
-
     async def run(self):
         print("Publishing negotiation message")
         cfp_message = CfpPubSubMessage()
-        cfp_message.skills = "Drill_Capability"
+        cfp_message.skills = "movexy_capability"
         cfp_message.at_time = "10:00-10:30"
-        cfp_message.Input_arguments = {"X": 3, "Y": 5, "Depth": 15 , "RPM":1500}
+        self.agent.last_requested_slot = cfp_message.at_time
+        cfp_message.Input_arguments = {"X": 60, "Y": 50, "Depth": 5, "RPM": 1500}
         message_to_publish = cfp_message.create_message_to_publish()
-        
-        print(f"Publishing: {message_to_publish}")  # Debug
-        
-        await self.agent.pubsub.publish("pubsub.localhost", "production_negotiation", message_to_publish)
+        await self.agent.pubsub.publish(
+            "pubsub.localhost", "production_negotiation", message_to_publish
+        )
 
-class InformBehaviour(OneShotBehaviour):
-   async def on_start(self):
-       self.cfp_message = Message("simple_resource_agent@localhost")
-       self.cfp_message.set_metadata("performative", "inform")
-       self.cfp_message.body = "Skills_needed: Drilling, At_time :10:30 ,X: 3 , Y:5 ,Depth:9"
-   async def run(self):
-        print("Inform behaviour started")
-        await self.send(self.cfp_message)
-        print("Inform message sent")
-        await asyncio.sleep(1)
-        print("Inform behaviour finished")
 
 class ReceiveViolationBehaviour(CyclicBehaviour):
-    async def on_start(self):
-        # create subscription to the violations topic
-        await self.agent.pubsub.subscribe("pubsub.localhost", "violations_topic")
-        self.agent.pubsub.set_on_item_published(self.on_message)
     async def run(self):
-        await asyncio.sleep(3)
-    async def on_message(self, message: slixmpp.stanza.Message):
-        violation_message = CfpPubSubMessage(message=message)
-        message_raw = violation_message.parse_message_raw() 
-        print(f"Received violation message: {message_raw}")
-        #self.kill()
+        await asyncio.sleep(1)
 
-class SimpleProductionAgent(PubSubMixin,BDIAgent):
-    def __init__(self, jid, password,asl_path):
-        super().__init__(jid, password,asl_path)
-        
-        
-    
+    async def handle_violation(self, payload: str):
+        print(f"Handling violation with payload: {payload}")
+
+
+class ReceiveJobCompletionBehaviour(CyclicBehaviour):
+    async def run(self):
+        await asyncio.sleep(1)
+
+    async def handle_job_completion(self, payload: str):
+        print(f"Handling job completion with payload: {payload}")
+
+class ReciveCounterProposalBehaviour(CyclicBehaviour):
+    async def run(self):
+        await asyncio.sleep(1)
+
+    async def handle_counter_proposal(self, payload: str):
+        print(f"Handling counter proposal with payload: {payload}")
+        cfp_message = CfpPubSubMessage(payload=payload)
+        parsed = cfp_message.parse_message() or {}
+        free_slots = parsed.get("at_time") or []
+        requested = getattr(self.agent, "last_requested_slot", None)
+
+        def next_after(slots, current):
+            if not slots:
+                return None
+            if not current:
+                return slots[0]
+            for slot in slots:
+                if slot.split("-")[0] > current.split("-")[0]:
+                    return slot
+            return slots[0]
+
+        chosen = next_after(free_slots, requested)
+        if not chosen:
+            print("No available alternative slot.")
+            return
+
+        parsed["at_time"] = chosen
+        self.agent.last_requested_slot = chosen
+        await self.agent.pubsub.publish(
+            "pubsub.localhost", "production_negotiation", json.dumps(parsed)
+        )
+        self.kill()
+
+
+class SimpleProductionAgent(PubSubMixin, BDIAgent):
+    def __init__(self, jid, password, asl_path):
+        self.at_time = None
+        self.last_requested_slot = "10:00-10:30"
+        super().__init__(jid, password, asl_path)
+
     async def setup(self):
-      self.cfp_template = Template()
-      self.cfp_template.set_metadata("performative", "cfp")
+        self.cfp_template = Template()
+        self.cfp_template.set_metadata("performative", "cfp")
+        await self.pubsub.subscribe("pubsub.localhost", "violations_topic")
+        await self.pubsub.subscribe("pubsub.localhost", "counter_proposals_topic")
+        await self.pubsub.subscribe("pubsub.localhost", "job_completion_topic")
+        self.pubsub.set_on_item_published(self._on_pubsub_event)
+        print(
+            "Current subscriptions:",
+            await self.pubsub.get_node_subscriptions(
+                "pubsub.localhost", "production_negotiation"
+            ),
+        )
+
+    async def _on_pubsub_event(self, message):
+        try:
+            event = message["pubsub_event"]
+            node = event["items"]["node"]
+            payload_elem = event["items"]["substanzas"][0]["payload"]
+            payload = (
+                payload_elem.text if hasattr(payload_elem, "text") else str(payload_elem)
+            )
+        except Exception as exc:
+            print(f"Failed to parse pubsub event: {exc}")
+            return
+
+        if node == "violations_topic":
+            await self.receive_violation_behaviour.handle_violation(payload)
+        elif node == "counter_proposals_topic":
+            await self.receive_counter_proposal_behaviour.handle_counter_proposal(
+                payload
+            )
+        elif node == "job_completion_topic":
+            await self.receive_job_completion_behaviour.handle_job_completion(
+                payload
+            )
+
+    def add_behaviours(self):
+        self.receive_violation_behaviour = ReceiveViolationBehaviour()
+        self.add_behaviour(self.receive_violation_behaviour)
+        self.receive_counter_proposal_behaviour = ReciveCounterProposalBehaviour()
+        self.add_behaviour(self.receive_counter_proposal_behaviour)
+        self.add_behaviour(NeogotitaionPubliserBehaviour())
+        self.receive_job_completion_behaviour = ReceiveJobCompletionBehaviour()
+        self.add_behaviour(self.receive_job_completion_behaviour)
 
 
 async def main():
     asl = pathlib.Path(__file__).parent / "simple_production_agent.asl"
-    agent = SimpleProductionAgent("simple_product_agent@localhost", "password123", str(asl))
-
-
-    inform_behaviour = InformBehaviour()
-    #agent.add_behaviour(inform_behaviour)
-    publish_behaviour = NeogotitaionPubliserBehaviour()
-    agent.add_behaviour(publish_behaviour)
-    receive_violation_behaviour = ReceiveViolationBehaviour()
-    agent.add_behaviour(receive_violation_behaviour)
-    
+    agent = SimpleProductionAgent(
+        "simple_product_agent@localhost", "password123", str(asl)
+    )
+    agent.add_behaviours()
     await agent.start(auto_register=True)
-
-    
-    try : 
+    try:
         while True:
             await asyncio.sleep(1)
     except KeyboardInterrupt:
-        print("Interrupted by user, stopping...")
+        pass
     finally:
         await agent.stop()
 
+
 if __name__ == "__main__":
+    import spade
+
     spade.run(main())
-    

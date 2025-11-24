@@ -14,11 +14,11 @@
 // Upon reciving CFP from Production agent we gonna process the cfp and update the cfp data 
 +is_cfp_received(true) <-
   -is_cfp_received(true);
-  .print("EVENT: CFP received , procssing the cfp");
-  //.process_cfp.
+  .print("EVENT: CFP received , procssing Time slots");
   .process_time_slots.
 
 // Upon processing the cfp 
+
 +is_cfp_valid(false) <-
   -is_cfp_valid(false);
   .print("Either mismatch skill or constarint violated or state is not idle , informing the PA !");
@@ -27,8 +27,8 @@
 
 +is_cfp_valid(true) <-
   -is_cfp_valid(true);
-  .print("No violation -> processong Timeslots").
-  //.process_time_slots.
+  .print("No violation -> preparing for Execution");
+  .prepare_excution.
 
 +snap_back_to_listen(true) <-
   -snap_back_to_listen(true);
@@ -36,8 +36,43 @@
   .check_request.
 
 
++is_requested_time_slot_booked(true) <-
+  -is_requested_time_slot_booked(true);
+  .print("Time Slot is booked , Sending Counter CFP ! ").
+  //.wait_for_response_new_cfp.
+  
 
++is_requested_time_slot_booked(false)<-
+  -is_requested_time_slot_booked(false);
+  .print("Time Slot is free ! , validating CFP !");
+  .process_cfp.
 
++is_ready_for_execution(true)<-
+  -is_ready_for_execution(true);
+  .print("The Resource is set for excution ! ");
+  .excute_task.
+
++is_ready_for_execution(false)<-
+  -is_ready_for_execution(false);
+  .print("The Resource is NOT set for excution ! ").
+
++excute_skills(drill_capability) <-
+  -excute_skills(drill_capability);
+  .print("Drilling");
+  .move_xy;
+  .drill;
+  .operation_done.
+
++excute_skills(movexy_capability) <-
+  -excute_skills(movexy_capability);
+  .print("Moving");
+  .move_xy;
+  .operation_done.
+
++execution_finished(true)<-
+  -execution_finished(true);
+  .print("Excution is Done , Cleaning .... ");
+  .on_done.
 
 //////////////////////////////////////////////////////////////////////////////////////
 // debugging
@@ -76,3 +111,20 @@
 +cfp_input_arguments(Args) <-
   .print("CFP input arguments : " , Args).
 
++new_cfp_proposal(Data) <-
+  .print("New CFP proposal: " , Data).
+
++is_time_slot_booked(State)<-
+  .print("Time Slot booked ? " , State).
+
++is_ready_for_execution(State)<-
+  .print("Is resource ready for excution? " , State).
++excute_skills(skills)<-
+  .print("Executing ....  ",skills).
++drill_operation_result(DrillResult)<-
+  .print("Drilling Result : ",DrillResult).
+
++move_xy_operation_result(MoveResult)<-
+  .print("Movement Result : ",MoveResult).
++execution_finished(State)<-
+  .print("Excution Is done , cleaning Up!").

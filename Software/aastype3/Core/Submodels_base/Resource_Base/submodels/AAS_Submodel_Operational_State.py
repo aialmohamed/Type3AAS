@@ -1,6 +1,6 @@
 from basyx.aas import model 
 import basyx.aas.model.datatypes as datatypes
-from aastype3.Core.Resource_Agent.Submodels_base.submodels.AAS_Submodel_base import AASSubmodelBase
+from aastype3.Core.Submodels_base.Resource_Base.submodels.AAS_Submodel_base import AASSubmodelBase
 from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
 from aastype3.Core.Resource_Agent.Datamodels.ResourceConfig_DataType import ResourceConfig 
 

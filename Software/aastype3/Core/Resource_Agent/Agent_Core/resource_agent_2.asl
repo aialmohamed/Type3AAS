@@ -6,7 +6,7 @@
 
 // initilze the agent and grabe the needed beliefs
 +!setup <-
-  .print("Agent started : Drilling Machine 1");
+  .print("Agent started : Drilling Machine 2");
   .initialize_agent;
   .check_request.
   
@@ -38,7 +38,7 @@
 
 +is_requested_time_slot_booked(true) <-
   -is_requested_time_slot_booked(true);
-  .print("Time Slot is booked , Sending Counter CFP ! ").
+  .print("Time Slot is booked or not in the free time slots of the resource , Sending Counter CFP ! ").
   //.wait_for_response_new_cfp.
   
 

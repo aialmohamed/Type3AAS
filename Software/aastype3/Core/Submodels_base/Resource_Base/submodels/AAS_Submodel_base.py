@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List
-from aastype3.Core.Resource_Agent.Submodels_base.Utils import Shell_utills
+from aastype3.Core.Submodels_base.Utils import Shell_utills
 import aiohttp
 from basyx.aas import model
 from basyx.aas.adapter.json import json_serialization

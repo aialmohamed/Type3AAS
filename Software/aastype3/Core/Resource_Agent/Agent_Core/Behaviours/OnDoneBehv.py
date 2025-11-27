@@ -12,4 +12,4 @@ class OnDoneBehaviour(OneShotBehaviour):
         await self.agent.resource_client.release_time_slot(time_slot)
         # inform the PA :
         task = self.agent.bdi.get_belief_value("cfp_skill")[0] 
-        await self.agent.pubsub.publish("pubsub.localhost","job_completion_topic",f"Task {task} completed successfully.")
+        await self.agent.pubsub.publish("pubsub.localhost","job_completion_topic",f"Task {task} completed successfully from : {self.agent.jid.bare}.")

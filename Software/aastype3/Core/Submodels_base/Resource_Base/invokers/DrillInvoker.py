@@ -63,7 +63,49 @@ def _opvars_to_properties(opvars: List[Dict[str, Any]]) -> List[model.Property]:
     return props
 
 
-@app.post("/drill_invocation")
+@app.post("/drill_invocation_1")
+async def invoke_operation(request: Request):
+    try:
+        body = await request.json()
+    except Exception:
+        raw = await request.body()
+        body = json.loads(raw.decode("utf-8", "replace") or "[]")
+
+    logger.info(
+        "Invocation request from=%s headers=%s",
+        getattr(request.client, "host", None),
+        dict(request.headers),
+    )
+    logger.info("Invocation body:\n%s", json.dumps(body, indent=4, ensure_ascii=False))
+
+    properties = _opvars_to_properties(body)
+    if not properties:
+        raise HTTPException(status_code=400, detail="Failed to map inputs to Properties")
+
+    try:
+        depth = float(properties[0].value)
+    except Exception:
+        raise HTTPException(status_code=400, detail="First input is not numeric")
+
+    await asyncio.sleep(3)
+    response = [
+        {
+            "modelType": "OperationVariable",
+            "value": {
+                "modelType": "Property",
+                "idShort": "Drill_Result",
+                "value": str(depth),
+                "valueType": "xs:string",
+                "category": "PARAMETER",
+                "displayName": [{"language": "en", "text": "Drill Result"}],
+                "description": [{"language": "en", "text": "Result of the drilling operation"}],
+            },
+        }
+    ]
+    logger.info("Returning response JSON:\n%s", json.dumps(response, indent=2))
+    return response
+
+@app.post("/drill_invocation_2")
 async def invoke_operation(request: Request):
     try:
         body = await request.json()

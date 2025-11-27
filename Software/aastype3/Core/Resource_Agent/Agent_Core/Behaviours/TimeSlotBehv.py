@@ -16,7 +16,7 @@ class TimeSlotProcessingBehaviour(OneShotBehaviour):
 
     async def run(self):
 
-        if self.cfp_at_time in self.booked_time_slots:
+        if self.cfp_at_time in self.booked_time_slots or self.cfp_at_time not in self.free_time_slots:
             cfp_skill = self.agent.bdi.get_belief_value("cfp_skill")
             self.new_cfp_proposal.resource_id = str(self.agent.jid.bare)
             self.new_cfp_proposal.skills = cfp_skill[0] if isinstance(cfp_skill, (list, tuple)) else cfp_skill

@@ -56,7 +56,48 @@ def _opvars_to_properties(opvars: List[Dict[str, Any]]) -> List[model.Property]:
             props.append(prop)
     return props
 
-@app.post("/movexy_invocation")
+@app.post("/movexy_invocation_1")
+async def invoke_operation(request: Request):
+    try:
+        body = await request.json()
+    except Exception:
+        raw = await request.body()
+        body = json.loads(raw.decode("utf-8", "replace") or "[]")
+
+    logger.info("MoveXY request from=%s body=%s", getattr(request.client, "host", None), body)
+    props = _opvars_to_properties(body)
+    if len(props) < 2:
+        raise HTTPException(status_code=400, detail="Need Target_X and Target_Y")
+
+    def _get_value(prop: model.Property, fallback: float = 0.0) -> float:
+        try:
+            return float(prop.value)
+        except Exception:
+            return fallback
+
+    x_target = _get_value(props[0])
+    y_target = _get_value(props[1])
+
+    await asyncio.sleep(2)
+
+    response = [
+        {
+            "modelType": "OperationVariable",
+            "value": {
+                "modelType": "Property",
+                "idShort": "Move_Result",
+                "valueType": "xs:string",
+                "category": "PARAMETER",
+                "displayName": [{"language": "en", "text": "Move Result"}],
+                "description": [{"language": "en", "text": "Result of the move operation"}],
+                "value": str(x_target),
+            },
+        }
+    ]
+    logger.info("MoveXY response: %s", response)
+    return response
+
+@app.post("/movexy_invocation_2")
 async def invoke_operation(request: Request):
     try:
         body = await request.json()

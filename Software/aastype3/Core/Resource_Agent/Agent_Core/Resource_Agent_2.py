@@ -87,10 +87,10 @@ class ResourceAgent(PubSubMixin,BDIAgent):
             yield
 
 async def main():
-    asl_path = os.path.join(os.path.dirname(__file__), "resource_agent.asl")
+    asl_path = os.path.join(os.path.dirname(__file__), "resource_agent_2.asl")
     print(f"Looking for ASL file at: {asl_path}")
-    resource_client = ResourceAASClient(prefix="Drill_1")
-    a = ResourceAgent("resource_agent_1@localhost", "password123", asl_path, resource_client=resource_client)
+    resource_client = ResourceAASClient(prefix="Drill_2")
+    a = ResourceAgent("resource_agent_2@localhost", "password123", asl_path, resource_client=resource_client)
     await a.start(auto_register=True)
     try : 
         while True:

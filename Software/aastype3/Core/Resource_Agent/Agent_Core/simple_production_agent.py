@@ -65,9 +65,10 @@ class ReciveCounterProposalBehaviour(CyclicBehaviour):
 
         parsed["at_time"] = chosen
         self.agent.last_requested_slot = chosen
-        await self.agent.pubsub.publish(
-            "pubsub.localhost", "production_negotiation", json.dumps(parsed)
-        )
+        print(f"Proposing new time slot: {chosen}")
+        #await self.agent.pubsub.publish(
+            #"pubsub.localhost", "production_negotiation", json.dumps(parsed)
+            #)
         self.kill()
 
 

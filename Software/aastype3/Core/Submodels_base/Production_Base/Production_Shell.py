@@ -1,19 +1,15 @@
-
-from aastype3.Core.Resource_Agent.Datamodels.ResourceConfig_DataType import ResourceConfig
+from aastype3.Core.Resource_Agent.Datamodels.ProductionConfig_DataType import ProductionConfig
 from basyx.aas import model
 from basyx.aas.adapter.json import json_serialization
-from aastype3.Core.Resource_Agent.Submodels_base.Utils import Shell_utills
+from aastype3.Core.Submodels_base.Utils import Shell_utills
 import json
 import aiohttp
 import pathlib
 
 
-class AAS_Resource_shell:
-  """
-  Class to create the Shell for the resource Agent.
-  """
-  def __init__(self, resource_config: ResourceConfig, submodels = []):
-    self.shell_file_path = pathlib.Path(__file__).parent / "shells" / "AAS_Resource_shell.json"
+class AAS_Production_Shell:
+  def __init__(self, production_config: ProductionConfig, submodels = []):
+    self.shell_file_path = pathlib.Path(__file__).parent / "shells" / "AAS_Production_shell.json"
     self.shell_information =  None
     self.id = None
     self.asset_shell = None
@@ -26,25 +22,21 @@ class AAS_Resource_shell:
     self.submodels_refs = {model.ModelReference.from_referable(sm) for sm in submodels} 
     self.obj_store : model.DictObjectStore[model.Identifiable] = model.DictObjectStore()
 
-    self.resource_config = resource_config
-  
-  
+    self.production_config = production_config
   def set_shell(self):
-    self.id = f"https://THU.de/ResourceAgent_{self.resource_config.resource_name}"
+    self.id = f"https://THU.de/ProductionAgent_{self.production_config.production_name}"
     self.asset_kind = model.AssetKind.INSTANCE
     
 
     self.shell_information = model.AssetInformation(asset_kind=self.asset_kind,
-                                                    global_asset_id=self.resource_config.aas_global_id
+                                                    global_asset_id=self.production_config.aas_global_id
                                                     )
     self.asset_shell = model.AssetAdministrationShell( id_=self.id,
-                                                      id_short=self.resource_config.aas_short_id,
+                                                      id_short=self.production_config.aas_short_id,
                                                       asset_information=self.shell_information,
-                                                      display_name=[{"language": "en", "text": f"Resource Agent Shell {self.resource_config.resource_name}"}],
+                                                      display_name=[{"language": "en", "text": f"Production Agent Shell {self.production_config.production_name}"}],
                                                       submodel=self.submodels_refs
                                                       )
-
-    
   def get_shell_id(self):
     return self.asset_shell.id
   def get_shell_information(self):
@@ -53,17 +45,13 @@ class AAS_Resource_shell:
     return self.asset_shell.asset_information.asset_kind
   def get_global_asset_id(self):
     return self.asset_shell.asset_information.global_asset_id
-  
-
   def serialize_shell(self):
     json_string = json.dumps(self.asset_shell, cls=json_serialization.StrippedAASToJsonEncoder, indent=4)
     return json_string
-  
   def creating_object_store(self):
     self.asset_shell.update()
     self.obj_store.add(self.asset_shell)
     return self.obj_store
-  
   def creating_file(self):
     json_serialization.write_aas_json_file(self.shell_file_path,self.obj_store)
 
@@ -121,4 +109,3 @@ class AAS_Resource_shell:
         print(f"Error posting AAS: {aas_response['error']}")
         return
     print(f"AAS posted successfully: {aas_response}")
-

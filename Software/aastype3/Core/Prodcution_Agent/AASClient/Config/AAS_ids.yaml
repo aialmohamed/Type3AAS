@@ -1,0 +1,30 @@
+submodels:
+  - Execution Tracking Submodel: 
+      - id: https://THU.de/_PA_Execution_Tracking
+      - elements :
+          - Current Node: Current_Node
+          - Token Position: Token_Position
+          - Time Stamp : Time_Stamp
+          - Step Status : Step_Status
+  - Interface and Endpoints Submodel: 
+      - id: https://THU.de/_PA_Interface_Endpoints
+      - elements :
+          - Interface Endpoints : _Interface_Endpoints
+          - Drill Command Invocation Endpoint: Drill_Command_Invocation_Endpoint
+          - Move Command Invocation Endpoint: Move_Command_Invocation_Endpoint
+  - Process Plan Submodel: 
+      - id: https://THU.de/_PA_Process_Plan
+      - elements :
+          - Production Nodes: _Nodes
+          - Move Node: Move_Node
+          - Drill Node : Drill_Node
+          - Production Edges : _Edges
+          - Edge 1  : Edge_1
+          - Entry Point: Entry_Point
+          - Exit Point: Exit_Point
+          - Production Preconditon  : Preconditions
+          - Production Postcondition  : Postconditions
+          - Required Capabilities: Required_Capabilities
+shell_id:
+  - Production Agent Shell : https://THU.de/ProductionAgent_
+base_url: http://localhost:8081

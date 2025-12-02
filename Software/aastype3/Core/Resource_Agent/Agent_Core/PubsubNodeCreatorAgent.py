@@ -2,7 +2,7 @@
 
 import base64
 from aastype3.Core.Resource_Agent.AASClient.Client.ResourceAASClient import ResourceAASClient
-from aastype3.Core.Resource_Agent.Datamodels.CfpPubSubMessag import CfpPubSubMessage
+from aastype3.Core.Datamodels.CfpPubSubMessag import CfpPubSubMessage
 import agentspeak
 import slixmpp.stanza
 import spade
@@ -24,11 +24,18 @@ class PubsubNodeCreatorAgent(PubSubMixin,Agent):
         
     async def setup(self):
         print(f"Agent {self.jid} starting PubSub node creation...")
+        # Resource - Producation Nodes 
         await self.pubsub.create("pubsub.localhost","production_negotiation")
         await self.pubsub.create("pubsub.localhost","capability_state_updates")
         await self.pubsub.create("pubsub.localhost","violations_topic")
         await self.pubsub.create("pubsub.localhost","counter_proposals_topic")
         await self.pubsub.create("pubsub.localhost","job_completion_topic")
+        await self.pubsub.create("pubsub.localhost","negotiation_message_topic")
+        await self.pubsub.create("pubsub.localhost","pa_negotation_responses")
+
+
+        # Production Nodes 
+        await self.pubsub.create("pubsub.localhost","pa_user_service_request")
         print(f"PubSub node 'production_negotiation' created on pubsub.localhost by agent {self.jid}.")
 
 async def main():

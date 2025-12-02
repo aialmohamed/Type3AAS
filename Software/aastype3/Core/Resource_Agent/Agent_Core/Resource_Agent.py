@@ -1,5 +1,6 @@
 
 from aastype3.Core.Resource_Agent.AASClient.Client.ResourceAASClient import ResourceAASClient
+from aastype3.Core.Datamodels.NegotiationMessage import NegotiationMessage
 import spade
 from spade_bdi.bdi import BDIAgent
 from spade_pubsub.pubsub import PubSubMixin
@@ -16,6 +17,7 @@ from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.OnDoneBehv import OnDone
 from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.DrillingBehv import DrillInvokerBehaviour
 from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.MoveXYBehv import MoveXYInvokerBehaviour
 from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.AgentIntiBehv import AgentInitializationBehaviour
+from aastype3.Core.Resource_Agent.Agent_Core.Behaviours.NegotiationRespBehv import NegotationResponseBehaviour
 
 
 class ResourceAgent(PubSubMixin,BDIAgent):
@@ -23,8 +25,11 @@ class ResourceAgent(PubSubMixin,BDIAgent):
         super().__init__(jid, password, asl, actions)
         self.resource_client = resource_client
         self.production_request_behaviour = ProductionRequestBehaviour()
+        self.negotation_response_behaviour = NegotationResponseBehaviour()
         self.received_cfp = None
         self.cfp_not_valid_message = []
+        self.new_cfp_proposal = NegotiationMessage()
+        self.new_cfp_proposal.resource_id = str(self.jid.bare)
         self.utils = Utils()
 
     async def setup(self):
@@ -84,6 +89,10 @@ class ResourceAgent(PubSubMixin,BDIAgent):
         def _on_done(agent, term, intention):
             on_done_behaviour = OnDoneBehaviour()
             self.add_behaviour(on_done_behaviour)
+            yield
+        @actions.add(".handle_negotiation_response",0)
+        def _handle_negotiation_response(agent, term, intention):
+            self.add_behaviour(self.negotation_response_behaviour)
             yield
 
 async def main():

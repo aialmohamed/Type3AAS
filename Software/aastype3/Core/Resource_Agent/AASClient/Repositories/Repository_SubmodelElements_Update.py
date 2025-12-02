@@ -1,6 +1,6 @@
 import json
 from typing import Any
-from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
+from aastype3.Core.Datamodels.TimeSlot_DataType import TimeSlotDataType
 import aiohttp
 from basyx.aas import model
 import asyncio

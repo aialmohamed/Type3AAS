@@ -5,15 +5,15 @@ from spade.behaviour import CyclicBehaviour, OneShotBehaviour
 from spade.template import Template
 from spade_pubsub.pubsub import PubSubMixin
 from spade_bdi.bdi import BDIAgent
-from aastype3.Core.Resource_Agent.Datamodels.CfpPubSubMessag import CfpPubSubMessage
+from aastype3.Core.Datamodels.CfpPubSubMessag import CfpPubSubMessage
 
 
 class NeogotitaionPubliserBehaviour(OneShotBehaviour):
     async def run(self):
         print("Publishing negotiation message")
         cfp_message = CfpPubSubMessage()
-        cfp_message.skills = "movexy_capability"
-        cfp_message.at_time = "10:00-10:30"
+        cfp_message.skills = "drill_capability"
+        cfp_message.at_time = "10:30-11:00"
         self.agent.last_requested_slot = cfp_message.at_time
         cfp_message.Input_arguments = {"X": 60, "Y": 50, "Depth": 5, "RPM": 1500}
         message_to_publish = cfp_message.create_message_to_publish()
@@ -22,12 +22,21 @@ class NeogotitaionPubliserBehaviour(OneShotBehaviour):
         )
 
 
-class ReceiveViolationBehaviour(CyclicBehaviour):
+class ReceiveNegotiationMessageBehaviour(CyclicBehaviour):
     async def run(self):
         await asyncio.sleep(1)
 
-    async def handle_violation(self, payload: str):
-        print(f"Handling violation with payload: {payload}")
+    async def handle_negotiation_message(self, payload: str):
+        await asyncio.sleep(2)
+        # check for violations and respond
+        print(f"Handling negotiation message with payload: {payload}")
+        parsed = json.loads(payload)
+        violations = parsed.get("violations", [])
+        if not violations:
+            await self.agent.pubsub.publish("pubsub.localhost", "pa_negotation_responses", "yes")
+        else:
+            await self.agent.pubsub.publish("pubsub.localhost", "pa_negotation_responses", "no")
+        
 
 
 class ReceiveJobCompletionBehaviour(CyclicBehaviour):
@@ -82,6 +91,7 @@ class SimpleProductionAgent(PubSubMixin, BDIAgent):
         self.cfp_template = Template()
         self.cfp_template.set_metadata("performative", "cfp")
         await self.pubsub.subscribe("pubsub.localhost", "violations_topic")
+        await self.pubsub.subscribe("pubsub.localhost", "negotiation_message_topic")
         await self.pubsub.subscribe("pubsub.localhost", "counter_proposals_topic")
         await self.pubsub.subscribe("pubsub.localhost", "job_completion_topic")
         self.pubsub.set_on_item_published(self._on_pubsub_event)
@@ -104,8 +114,8 @@ class SimpleProductionAgent(PubSubMixin, BDIAgent):
             print(f"Failed to parse pubsub event: {exc}")
             return
 
-        if node == "violations_topic":
-            await self.receive_violation_behaviour.handle_violation(payload)
+        if node == "negotiation_message_topic":
+            await self.receive_negotiation_message_behaviour.handle_negotiation_message(payload)
         elif node == "counter_proposals_topic":
             await self.receive_counter_proposal_behaviour.handle_counter_proposal(
                 payload
@@ -116,8 +126,8 @@ class SimpleProductionAgent(PubSubMixin, BDIAgent):
             )
 
     def add_behaviours(self):
-        self.receive_violation_behaviour = ReceiveViolationBehaviour()
-        self.add_behaviour(self.receive_violation_behaviour)
+        self.receive_negotiation_message_behaviour = ReceiveNegotiationMessageBehaviour()
+        self.add_behaviour(self.receive_negotiation_message_behaviour)
         self.receive_counter_proposal_behaviour = ReciveCounterProposalBehaviour()
         self.add_behaviour(self.receive_counter_proposal_behaviour)
         self.add_behaviour(NeogotitaionPubliserBehaviour())

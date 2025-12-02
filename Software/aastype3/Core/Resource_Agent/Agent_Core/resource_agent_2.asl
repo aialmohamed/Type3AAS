@@ -15,37 +15,27 @@
 +is_cfp_received(true) <-
   -is_cfp_received(true);
   .print("EVENT: CFP received , procssing Time slots");
-  .process_time_slots.
+  .process_time_slots;
+  .process_cfp.
 
 // Upon processing the cfp 
 
-+is_cfp_valid(false) <-
-  -is_cfp_valid(false);
-  .print("Either mismatch skill or constarint violated or state is not idle , informing the PA !");
-  .inform_production_agent.
++is_negotiation_message_ready(true) <-
+  -is_negotiation_message_ready(true);
+  .print("Informing the PA with the Negotation Resoponse");
+  .inform_production_agent;
+  .handle_negotiation_response.
 
 
-+is_cfp_valid(true) <-
-  -is_cfp_valid(true);
-  .print("No violation -> preparing for Execution");
++is_negotiation_response_positive(true) <-
+  -is_negotiation_response_positive(true);
+  .print("The negotation was positive -> preparing for excution");
   .prepare_excution.
 
-+snap_back_to_listen(true) <-
-  -snap_back_to_listen(true);
-  .print("Violation Message sent , snapping back to check request");
++is_negotiation_response_positive(false) <-
+  -is_negotiation_response_positive(false);
+  .print("The negotation was negative -> going back to check_request ");
   .check_request.
-
-
-+is_requested_time_slot_booked(true) <-
-  -is_requested_time_slot_booked(true);
-  .print("Time Slot is booked or not in the free time slots of the resource , Sending Counter CFP ! ").
-  //.wait_for_response_new_cfp.
-  
-
-+is_requested_time_slot_booked(false)<-
-  -is_requested_time_slot_booked(false);
-  .print("Time Slot is free ! , validating CFP !");
-  .process_cfp.
 
 +is_ready_for_execution(true)<-
   -is_ready_for_execution(true);
@@ -59,7 +49,7 @@
 +excute_skills(drill_capability) <-
   -excute_skills(drill_capability);
   .print("Drilling");
-  //.move_xy;
+  .move_xy;
   .drill;
   .operation_done.
 

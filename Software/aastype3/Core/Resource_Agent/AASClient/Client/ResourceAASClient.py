@@ -1,5 +1,5 @@
 import json
-from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
+from aastype3.Core.Datamodels.TimeSlot_DataType import TimeSlotDataType
 import aiohttp
 import asyncio
 from typing import Any, Dict, Optional

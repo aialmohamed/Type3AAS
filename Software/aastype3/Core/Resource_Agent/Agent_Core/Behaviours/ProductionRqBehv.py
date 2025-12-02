@@ -2,7 +2,7 @@
 from spade.behaviour import CyclicBehaviour
 import asyncio
 import slixmpp.stanza
-from aastype3.Core.Resource_Agent.Datamodels.CfpPubSubMessag import CfpPubSubMessage
+from aastype3.Core.Datamodels.CfpPubSubMessag import CfpPubSubMessage
 
 
 
@@ -40,6 +40,8 @@ class ProductionRequestBehaviour(CyclicBehaviour):
                 except Exception: pass
                 self.agent.bdi.set_belief("cfp_input_arguments", str(input_arguments))
                 self.agent.bdi.set_belief("is_cfp_received", True)
+            else:
+                pass
         except Exception as e:
             import traceback
             print(f"Error in callback type={type(e).__name__} msg={e!r}")

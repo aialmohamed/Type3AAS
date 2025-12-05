@@ -1,5 +1,3 @@
-
-
 //////////////////////// PLANS 
 
 !setup.
@@ -46,18 +44,43 @@
   -is_ready_for_execution(false);
   .print("The Resource is NOT set for excution ! ").
 
+// ============== EXECUTION PLANS (event-driven) ==============
+
+// Start drill operation - first move, then drill
 +excute_skills(drill_capability) <-
   -excute_skills(drill_capability);
-  .print("Drilling");
-  .move_xy;
-  .drill;
-  .operation_done.
+  +current_operation(drill);
+  .print("Drilling - starting move_xy");
+  .move_xy.
 
+// Start movexy-only operation
 +excute_skills(movexy_capability) <-
   -excute_skills(movexy_capability);
+  +current_operation(movexy);
   .print("Moving");
-  .move_xy;
+  .move_xy.
+
+// When move completes during drill operation, start drilling
++move_xy_completed(true) : current_operation(drill) <-
+  -move_xy_completed(true);
+  .print("Move completed, now drilling");
+  .drill.
+
+// When move completes during movexy-only operation, we're done
++move_xy_completed(true) : current_operation(movexy) <-
+  -move_xy_completed(true);
+  -current_operation(movexy);
+  .print("Move completed, operation done");
   .operation_done.
+
+// When drill completes, we're done
++drill_completed(true) <-
+  -drill_completed(true);
+  -current_operation(drill);
+  .print("Drill completed, operation done");
+  .operation_done.
+
+// ============== END EXECUTION PLANS ==============
 
 +execution_finished(true)<-
   -execution_finished(true);
@@ -109,12 +132,24 @@
 
 +is_ready_for_execution(State)<-
   .print("Is resource ready for excution? " , State).
+
 +excute_skills(skills)<-
   .print("Executing ....  ",skills).
+
 +drill_operation_result(DrillResult)<-
   .print("Drilling Result : ",DrillResult).
 
 +move_xy_operation_result(MoveResult)<-
   .print("Movement Result : ",MoveResult).
+
 +execution_finished(State)<-
   .print("Excution Is done , cleaning Up!").
+
++current_operation(Op) <-
+  .print("Current operation set to: ", Op).
+
++drill_completed(State) <-
+  .print("Drill completed event: ", State).
+
++move_xy_completed(State) <-
+  .print("Move XY completed event: ", State).

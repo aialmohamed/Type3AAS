@@ -33,6 +33,7 @@ class PubsubNodeCreatorAgent(PubSubMixin,Agent):
         await self.pubsub.create("pubsub.localhost","job_completion_topic")
         await self.pubsub.create("pubsub.localhost","negotiation_message_topic")
         await self.pubsub.create("pubsub.localhost","pa_negotation_responses")
+        await self.pubsub.create("pubsub.localhost","execution_tracking_topic")
         
 
 

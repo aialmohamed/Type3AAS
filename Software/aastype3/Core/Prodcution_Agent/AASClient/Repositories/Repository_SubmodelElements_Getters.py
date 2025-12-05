@@ -1,11 +1,9 @@
 
 from typing import Any, List
-from aastype3.Core.Resource_Agent.Datamodels.TimeSlot_DataType import TimeSlotDataType
 import aiohttp
 from basyx.aas import model
 import asyncio
 from aastype3.Core.Prodcution_Agent.AASClient.Repositories.base.Repository_base_SubmodelElement import SubmodelElementRepositoryBase
-import json
 
 class SubmodelElementRepositoryGetters(SubmodelElementRepositoryBase):
       """

@@ -1,4 +1,4 @@
-from aastype3.Core.Resource_Agent.Datamodels.ProductionConfig_DataType import ProductionConfig
+from aastype3.Core.Datamodels.ProductionConfig_DataType import ProductionConfig
 from basyx.aas import model
 from basyx.aas.adapter.json import json_serialization
 from aastype3.Core.Submodels_base.Utils import Shell_utills

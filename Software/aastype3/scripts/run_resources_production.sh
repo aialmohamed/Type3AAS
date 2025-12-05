@@ -13,6 +13,7 @@ NC='\033[0m' # No Color
 PROJECT_ROOT="/home/ahmed/Thesis/Type3AAS"
 VENV_PATH="$PROJECT_ROOT/.venv"
 BASE_PATH="$PROJECT_ROOT/Software/aastype3/Core"
+Simulators_PATH="$PROJECT_ROOT/Software/aastype3/Simulators"
 
 # Activate virtual environment
 echo -e "${YELLOW}Activating virtual environment...${NC}"
@@ -39,26 +40,28 @@ trap cleanup SIGINT SIGTERM
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  Starting Production System Agents${NC}"
 echo -e "${GREEN}========================================${NC}"
-# 1. run the invokers : 
-run_agent "Drill Invoker" "$BASE_PATH/Submodels_base/Resource_Base/invokers/DrillInvoker.py"
-run_agent "Movement Invoker" "$BASE_PATH/Submodels_base/Resource_Base/invokers/MoveXYInvoker.py"
 
+# 1. Run the simulators (4 separate processes for drill and move)
+run_agent "Drill Machine 1 (port 8090)" "$Simulators_PATH/DrillMachine1.py"
+run_agent "MoveXY Machine 1 (port 8092)" "$Simulators_PATH/MoveXYMachine1.py"
+run_agent "Drill Machine 2 (port 8091)" "$Simulators_PATH/DrillMachine2.py"
+run_agent "MoveXY Machine 2 (port 8093)" "$Simulators_PATH/MoveXYMachine2.py"
 
-# 1. Start Resource Agents first (they need to subscribe before CFP is sent)
+# 2. Start Resource Agents first (they need to subscribe before CFP is sent)
 run_agent "Resource Agent 1" "$BASE_PATH/Resource_Agent/Agent_Core/Resource_Agent.py"
 run_agent "Resource Agent 2" "$BASE_PATH/Resource_Agent/Agent_Core/Resource_Agent_2.py"
 
-# 2. Start Execution Core
+# 3. Start Execution Core
 run_agent "Execution Core" "$BASE_PATH/Prodcution_Agent/Agent_Core/Execution_Core/ExecutionCore.py"
 
-# 3. Start Negotiation Core
+# 4. Start Negotiation Core
 run_agent "Negotiation Core" "$BASE_PATH/Prodcution_Agent/Agent_Core/Negotiation_Core/NegotiationCore.py"
 
-# 4. Wait a bit for all agents to be ready
+# 5. Wait a bit for all agents to be ready
 echo -e "${YELLOW}Waiting for agents to initialize...${NC}"
 sleep 3
 
-# 5. Start User Agent (entry point - triggers the workflow)
+# 6. Start User Agent (entry point - triggers the workflow)
 run_agent "User Agent" "$BASE_PATH/Prodcution_Agent/Agent_Core/agent_entrypoint.py"
 
 echo -e "${GREEN}========================================${NC}"

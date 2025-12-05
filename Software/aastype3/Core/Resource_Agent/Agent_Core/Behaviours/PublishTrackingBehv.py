@@ -6,10 +6,11 @@ import json
 class PublishTrackingBehaviour(OneShotBehaviour):
     """Publishes tracking data to the production agent"""
     
-    def __init__(self, step_name: str, step_status: str):
+    def __init__(self, step_name: str, step_status: str, result: str = None):
         super().__init__()
         self.step_name = step_name
         self.step_status = step_status
+        self.result = result
     
     async def run(self):
         tracking_data = {
@@ -21,10 +22,12 @@ class PublishTrackingBehaviour(OneShotBehaviour):
             "time_slot": self.agent.bdi.get_belief_value("cfp_at_time")[0]
         }
         
+        if self.result:
+            tracking_data["result"] = self.result
+        
         message = json.dumps(tracking_data)
         await self.agent.pubsub.publish(
             "pubsub.localhost",
-            "execution_tracking_topic",  # New topic for tracking
+            "execution_tracking_topic",
             message
         )
-        print(f"[TRACKING] {self.agent.jid.bare}: {self.step_name} -> {self.step_status}")

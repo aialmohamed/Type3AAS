@@ -1,6 +1,6 @@
 
 from typing import Dict
-from aastype3.Core.Resource_Agent.Datamodels.ResourceConfig_DataType import ResourceConfig
+from aastype3.Core.Datamodels.ResourceConfig_DataType import ResourceConfig
 from basyx.aas import model
 import basyx.aas.model.datatypes as datatypes
 
@@ -145,7 +145,7 @@ class SecondDrillMachineShell:
               kind=model.QualifierKind.CONCEPT_QUALIFIER,
               type_="invocationDelegation",
               value_type=datatypes.String,
-              value="http://host.docker.internal:8090/drill_invocation_2"
+              value="http://host.docker.internal:8091/drill_invocation_2"
           )],
           input_variable=[
               model.Property(
@@ -181,7 +181,7 @@ class SecondDrillMachineShell:
               kind=model.QualifierKind.CONCEPT_QUALIFIER,
               type_="invocationDelegation",
               value_type=datatypes.String,
-              value="http://host.docker.internal:8092/movexy_invocation_2"
+              value="http://host.docker.internal:8093/movexy_invocation_2"
           )],
           input_variable=[
               model.Property(

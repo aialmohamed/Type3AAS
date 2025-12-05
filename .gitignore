@@ -208,7 +208,7 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 Server/
-
+reports/
 # LaTeX output (except PDF files)
 *.aux
 *.log

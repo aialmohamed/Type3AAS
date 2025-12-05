@@ -1,5 +1,5 @@
 
-from aastype3.Core.Resource_Agent.Datamodels.ResourceConfig_DataType import ResourceConfig
+from aastype3.Core.Datamodels.ResourceConfig_DataType import ResourceConfig
 from basyx.aas import model
 from basyx.aas.adapter.json import json_serialization
 from aastype3.Core.Submodels_base.Utils import Shell_utills

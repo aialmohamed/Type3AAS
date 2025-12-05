@@ -1,19 +1,28 @@
-
-
-import asyncio
-from aastype3.Core.Prodcution_Agent.Agent_Core.Execution_Behaviour.InformNegotiationCoreServiceBehaviour import InformNegotiationCoreServiceBehaviour
 from spade.behaviour import CyclicBehaviour
+import json
+from aastype3.Core.Report.AgentsReporter import report, EventType
+
 
 class GetUserRequestBehaviour(CyclicBehaviour):
-    def __init__(self):
-        self.inform_negotiation_core_service_behaviour = InformNegotiationCoreServiceBehaviour()
-        super().__init__()
     async def run(self):
-        await asyncio.sleep(1)
+        pass  # Event-driven via handle_user_request
+    
     async def handle_user_request(self, payload: str):
-        self.agent.user_request_template.metadata = {"node":"pa_user_service_request"}
-        self.agent.user_request_template.body = payload
-        print(f"Handling user request with payload: {self.agent.user_request_template.body}")
-        await asyncio.sleep(1)
-        self.agent.add_behaviour(self.inform_negotiation_core_service_behaviour)  # Ensure behaviours are added
-            
+        """Handle incoming user request"""
+        # Start the report
+        #report.start_run()
+        
+        request_data = json.loads(payload)
+        skill = request_data.get('skills_required', 'unknown')
+        time_slot = request_data.get('at_time', 'unknown')
+        
+        report.log(EventType.CFP_RECEIVED, "UserAgent", 
+                   f"New request: {skill} at {time_slot}",
+                   request_data)
+        
+        # Publish to negotiation core
+        await self.agent.pubsub.publish(
+            "pubsub.localhost",
+            "pa_execution_service_topic",
+            payload
+        )

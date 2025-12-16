@@ -17,7 +17,7 @@ class SendNewRequestBehav(OneShotBehaviour):
         cfp_message = CfpPubSubMessage()
         cfp_message.resource_id = str(self.agent.jid.bare)
         cfp_message.skills = "drill_capability"
-        cfp_message.at_time = "10:30-11:00"
+        cfp_message.at_time = "10:30-10:35"
         cfp_message.Input_arguments = {"X": 60, "Y": 50, "Depth": 5, "RPM": 1500}
         message_to_publish = cfp_message.create_message_to_publish()
         await self.agent.pubsub.publish("pubsub.localhost", "pa_user_service_request", message_to_publish)

@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{acronym}
+\geometry{a4paper, portrait, margin=30mm, bmargin=30mm, tmargin=30mm}
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+
+
+\begin{document}
+\include{CoverPage}
+
+
+\newpage
+\begin{abstract}
+This master thesis presents the concept and implementation of a Type3 \ac{AAS} with integration into a Multi-Agent System (MAS) using the Belief-Desire-Intention (BDI) approach. The proposed proactive AAS framework aims to enhance the interoperability and autonomy of industrial assets by leveraging agent-based technologies. The thesis details the design principles, architecture, and implementation strategies employed in developing the AAS, along with a comprehensive evaluation of its performance in a simulated industrial environment. The results demonstrate the effectiveness of the BDI-based MAS integration in enabling dynamic decision-making and adaptive behavior in response to changing operational conditions.
+\end{abstract}
+
+\newpage
+\input{acros}
+\newpage
+\tableofcontents
+\newpage
+
+\include{Chapters/Introduction}
+\newpage
+\include{Chapters/Let_Review}
+\newpage
+\include{Chapters/State_of_The_Art}
+\newpage
+\include{Chapters/Requierments}
+\newpage
+\include{Chapters/Concept}
+\newpage
+\include{Chapters/Implementation}
+\newpage
+\include{Chapters/Eval}
+\newpage
+\include{Chapters/outlook}
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

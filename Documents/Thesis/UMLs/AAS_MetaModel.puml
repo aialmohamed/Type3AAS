@@ -1,0 +1,115 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+' =======================
+' Enumerations
+' =======================
+enum AssetKind {
+  Type
+  Instance
+}
+
+' =======================
+' Core Classes
+' =======================
+class AssetAdministrationShell {
+  +assetInformation: AssetInformation
+}
+
+class AssetInformation {
+  +assetKind: AssetKind
+  +specificAssetId: SpecificAssetId [0..*]
+  +globalAssetId: Reference [0..1]
+  +defaultThumbnail: Resource [0..1]
+}
+
+class SpecificAssetId {
+  +name: string
+  +value: string
+  +externalSubjectId: Reference
+}
+
+class ConceptDescription {
+  +isCaseOf: Reference [0..1]
+}
+
+class DataSpecificationIEC61360 {
+  +preferredName: LangStringSet
+  +shortName: LangStringSet [0..1]
+  +unit: string [0..1]
+  +unitId: Reference [0..1]
+  +sourceOfDefinition: string [0..1]
+  +symbol: string [0..1]
+  +dataType: DataTypeIEC61360 [0..1]
+  +definition: LangStringSet [0..1]
+  +valueFormat: string [0..1]
+  +valueList: ValueList [0..1]
+  +value: string [0..1]
+  +levelType: LevelType [0..1]
+}
+
+' =======================
+' Submodel Structure
+' =======================
+class Submodel {
+  +submodelElement: SubmodelElement [0..*]
+}
+
+abstract class SubmodelElement
+
+class Property {
+  +valueType: DataTypeDefXsd
+  +value: ValueDataType [0..1]
+  +valueId: Reference [0..1]
+}
+
+' =======================
+' Qualifier
+' =======================
+abstract class Qualifier {
+  +kind: QualifierKind [0..1]
+  +type: QualifierType
+  +valueType: DataTypeDefXsd
+  +value: ValueDataType [0..1]
+  +valueId: Reference [0..1]
+}
+
+' =======================
+' External Definitions
+' =======================
+class "Property Definition IEC 61360" <<external>>
+
+' =======================
+' Relationships
+' =======================
+AssetAdministrationShell *-- AssetInformation
+AssetAdministrationShell o-- Submodel
+
+AssetInformation o-- SpecificAssetId
+AssetInformation --> AssetKind
+
+Submodel *-- SubmodelElement
+SubmodelElement <|-- Property
+
+SubmodelElement o-- Qualifier
+
+ConceptDescription o-- DataSpecificationIEC61360
+SubmodelElement ..> ConceptDescription : HasDataSpecification
+Qualifier ..> ConceptDescription : HasSemantics
+SpecificAssetId ..> ConceptDescription : HasSemantics
+
+DataSpecificationIEC61360 ..> "Property Definition IEC 61360" : external reference
+
+' =======================
+' Notes
+' =======================
+note right of SubmodelElement
+Abstract class.
+Other submodel elements:
+- Operations
+- Collections
+- Files
+etc.
+end note
+
+@enduml

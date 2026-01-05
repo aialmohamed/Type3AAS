@@ -1,0 +1,316 @@
+\chapter{Appendix}
+\label{app:appendix}
+
+\section{Detailed Use Cases and Requirements}
+\label{app:requirements}
+
+This appendix provides the detailed specifications for use cases and system requirements summarized in Chapter~\ref{ch:requirements}.
+
+
+\subsection{Use Case Specifications}
+\label{app:usecases}
+%==============================================================================
+% UC1: Startup
+%==============================================================================
+\begin{longtable}{>{\bfseries\raggedright}p{3.5cm} p{10.5cm}}
+\caption{Use Case UC1: System Startup} \label{tab:uc1_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Attribute} & \textcolor{white}{Description} \\
+\midrule
+\endfirsthead
+\multicolumn{2}{c}{\tablename\ \thetable{} -- UC1: System Startup (continued)} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Attribute} & \textcolor{white}{Description} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+Identifier & UC1 \\
+\rowcolor{lightgray}
+Name & System Startup \\
+Description & The SmartDrillSystem initializes all components and prepares for operation. \\
+\rowcolor{lightgray}
+Actors & Operator \\
+Preconditions & The SmartDrillSystem is shut down. \\
+\rowcolor{lightgray}
+Trigger & The Operator starts the SmartDrillSystem. \\
+Standard Procedure & 
+1. The Operator starts the SmartDrillSystem (via GUI or CLI). \newline
+2. The SmartDrillSystem initializes all system components. \newline
+3. The SmartDrillSystem triggers UC2: AAS Register. \newline
+4. The SmartDrillSystem displays ``ResourceAAS Register Message''. \newline
+5. The SmartDrillSystem continues with UC3: DrillingOrder. \\
+\rowcolor{lightgray}
+Alternative Procedure & 
+2a. If initialization fails $\rightarrow$ display ``SystemComponentsFailMessage''. \newline
+2b. Retry initialization. \newline
+3a. If registration fails $\rightarrow$ display ``AASRegistryFailureMessage''. \newline
+3b. Restart UC1 at step 2. \\
+Postconditions & SmartDrillSystem is in UC3: DrillingOrder OR retrying UC1. \\
+\rowcolor{lightgray}
+Related Use Cases & UC2: AAS Register \\
+\end{longtable}
+
+
+%==============================================================================
+% UC3: Drilling Order
+%==============================================================================
+\begin{longtable}{>{\bfseries\raggedright}p{3.5cm} p{10.5cm}}
+\caption{Use Case UC3: Drilling Order} \label{tab:uc3_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Attribute} & \textcolor{white}{Description} \\
+\midrule
+\endfirsthead
+\multicolumn{2}{c}{\tablename\ \thetable{} -- UC3: Drilling Order (continued)} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Attribute} & \textcolor{white}{Description} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+Identifier & UC3 \\
+\rowcolor{lightgray}
+Name & Drilling Order \\
+Description & The Operator submits a DrillingOrder to the SmartDrillSystem, which coordinates execution through agent negotiation. \\
+\rowcolor{lightgray}
+Actors & Operator \\
+Preconditions & The SmartDrillSystem is initialized. \\
+\rowcolor{lightgray}
+Trigger & The Operator initiates a DrillingOrder. \\
+Standard Procedure & 
+1. The SmartDrillingSystem displays ``ReadyForOrder'' message. \newline
+2. The System prompts the Operator to input DrillingParameters. \newline
+3. The Operator inputs DrillingParameters (depth, diameter, material). \newline
+4. The Operator submits the DrillingOrder. \newline
+5. The System delegates the DrillingOrder to the ProductionAAS. \newline
+6. The ProductionAAS retrieves registered ResourceAAS from Registry. \newline
+7. The ProductionAAS negotiates with all ResourceAAS. \newline
+8. The ProductionAAS sends ProductionPlan to the winning ResourceAAS. \newline
+9. The ResourceAAS starts executing the ProductionPlan. \newline
+10. The ResourceAAS triggers UC4: Drill. \newline
+11. The ResourceAAS publishes DrillingStatusEvent. \newline
+12. Upon UC4 completion, ResourceAAS publishes ``DoneMessage''. \newline
+13. The System continues with UC3 at step 1. \\
+\rowcolor{lightgray}
+Alternative Procedure & 
+4a. Invalid DrillingParameters $\rightarrow$ display ``InvalidInputTypeMessage'' $\rightarrow$ return to step 3. \newline
+11a. UC4 fails $\rightarrow$ publish ``FailMessage'' $\rightarrow$ display ``FailToDrillMessage'' $\rightarrow$ continue at step 3. \\
+Postconditions & SmartDrillSystem is in UC3: DrillingOrder OR UC5: Shutdown. \\
+\rowcolor{lightgray}
+Related Use Cases & UC2: AAS Register, UC4: Drill \\
+\end{longtable}
+
+%==============================================================================
+% UC5: System Shutdown
+%==============================================================================
+\begin{longtable}{>{\bfseries\raggedright}p{3.5cm} p{10.5cm}}
+\caption{Use Case UC5: System Shutdown} \label{tab:uc5_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Attribute} & \textcolor{white}{Description} \\
+\midrule
+\endfirsthead
+\multicolumn{2}{c}{\tablename\ \thetable{} -- UC5: System Shutdown (continued)} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Attribute} & \textcolor{white}{Description} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+Identifier & UC5 \\
+\rowcolor{lightgray}
+Name & System Shutdown \\
+Description & The SmartDrillSystem performs a graceful shutdown of all components. \\
+\rowcolor{lightgray}
+Actors & Operator \\
+Preconditions & SmartDrillSystem is in UC1: Startup OR UC3: DrillingOrder. \\
+\rowcolor{lightgray}
+Trigger & The Operator initiates system shutdown. \\
+Standard Procedure & 
+1. The Operator initiates shutdown of the SmartDrillSystem. \newline
+2. The System stops all active ProductionAAS and pending DrillingOrders. \newline
+3. The System deregisters all ResourceAAS from the Registry. \newline
+4. The System displays ``ShutdownMessage''. \\
+\rowcolor{lightgray}
+Postconditions & SmartDrillingSystem is shut down. \\
+Related Use Cases & n/A \\
+\end{longtable}
+
+\newpage
+
+\subsection{System Specifications}
+\label{app:req_specs}
+\begin{longtable}{>{\raggedright}p{1.2cm} >{\raggedright}p{2.8cm} >{\raggedright}p{7cm} >{\centering}p{1.2cm} >{\centering\arraybackslash}p{1.2cm}}
+\caption{System Specification Requirements} \label{tab:req_system_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Title} & \textcolor{white}{Description} & \textcolor{white}{Severity} & \textcolor{white}{UC} \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\tablename\ \thetable{} -- System Specifications (continued)} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Title} & \textcolor{white}{Description} & \textcolor{white}{Severity} & \textcolor{white}{UC} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+REQ\_1 & System Components & The System shall contain: \newline 1. One or more ResourceAAS \newline 2. One or more ProductionAAS \newline 3. EventBroker \newline 4. AAS Registry & High & UC1 \\
+\rowcolor{lightgray}
+REQ\_2 & AAS Communication & The System shall have standardized communication between AASs. & High & UC3 \\
+REQ\_3 & AAS Events & The System shall allow AASs to communicate over Events via an EventBroker. & High & UC3, UC4 \\
+\rowcolor{lightgray}
+REQ\_4 & AAS Registry & The System shall register all AASs. & High & UC2 \\
+REQ\_5 & Resource-Asset Communication & The System shall create standardized communication between ResourceAAS and PhysicalAsset. & High & UC4 \\
+\rowcolor{lightgray}
+REQ\_6 & System Autonomy & The System's AAS components shall react autonomously to each other and to external triggers. & High & UC3, UC4 \\
+REQ\_7 & System Intelligence & The System shall contain decision-making capabilities. & High & UC3 \\
+\rowcolor{lightgray}
+REQ\_8 & System Collaboration & The System's AAS components shall perform interdependent processes. & High & UC3 \\
+\end{longtable}
+
+%==============================================================================
+% ResourceAAS Specifications
+%==============================================================================
+\subsection{ResourceAAS Specifications}
+
+\begin{longtable}{>{\raggedright}p{1.2cm} >{\raggedright}p{2.8cm} >{\raggedright}p{7cm} >{\centering}p{1.2cm} >{\centering\arraybackslash}p{1.2cm}}
+\caption{ResourceAAS Requirements} \label{tab:req_resource_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Title} & \textcolor{white}{Description} & \textcolor{white}{Severity} & \textcolor{white}{UC} \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\tablename\ \thetable{} -- ResourceAAS Requirements (continued)} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Title} & \textcolor{white}{Description} & \textcolor{white}{Severity} & \textcolor{white}{UC} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+REQ\_10 & ResourceAAS Components & The ResourceAAS shall contain: \newline 1. Agent Interface (FIPA ACL) \newline 2. Agent Runtime \newline 3. AAS Submodels \newline 4. AAS Asset Interface & High & UC1 \\
+\rowcolor{lightgray}
+REQ\_11 & ResourceAAS Event & The ResourceAAS shall publish and subscribe to events on system level. & High & UC3, UC4 \\
+REQ\_12 & ResourceAAS Submodels & The ResourceAAS shall contain: \newline 1. Operational State Submodel \newline 2. Knowledge Submodel \newline 3. Capability Submodel \newline 4. Interaction and Scheduling Submodel & Mid & UC4 \\
+\rowcolor{lightgray}
+REQ\_13 & ResourceAAS Runtime & The ResourceAAS shall have a BDI Agent Runtime. & High & UC3, UC4 \\
+REQ\_14 & Asset Interface & The ResourceAAS shall communicate with the Physical Asset via suited protocol. & High & UC4 \\
+\rowcolor{lightgray}
+REQ\_15 & Agent Interface & The ResourceAAS shall communicate via FIPA ACL protocol. & High & UC3 \\
+REQ\_16 & Operational State Submodel & Contains: current state, performance KPIs, historical data. & Mid & UC4 \\
+\rowcolor{lightgray}
+REQ\_17 & Knowledge Submodel & Contains: resource constraints, environmental conditions. & Low & UC4 \\
+REQ\_18 & Capability Submodel & Contains: skills, service descriptions. & Mid & UC3 \\
+\rowcolor{lightgray}
+REQ\_19 & Interaction Submodel & Contains: communication endpoints, collaboration protocols. & Mid & UC3 \\
+REQ\_20 & Negotiation & ResourceAAS shall negotiate using time availability as weight. & High & UC3 \\
+\end{longtable}
+
+%==============================================================================
+% ProductionAAS Specifications
+%==============================================================================
+\subsection{ProductionAAS Specifications}
+
+\begin{longtable}{>{\raggedright}p{1.2cm} >{\raggedright}p{2.8cm} >{\raggedright}p{7cm} >{\centering}p{1.2cm} >{\centering\arraybackslash}p{1.2cm}}
+\caption{ProductionAAS Requirements} \label{tab:req_production_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Title} & \textcolor{white}{Description} & \textcolor{white}{Severity} & \textcolor{white}{UC} \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\tablename\ \thetable{} -- ProductionAAS Requirements (continued)} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Title} & \textcolor{white}{Description} & \textcolor{white}{Severity} & \textcolor{white}{UC} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+REQ\_21 & ProductionAAS Components & The ProductionAAS shall contain: \newline 1. Agent Interface \newline 2. Agent Runtime \newline 3. AAS Submodels & High & UC1 \\
+\rowcolor{lightgray}
+REQ\_22 & ProductionAAS Events & Shall publish and subscribe to events on system level. & High & UC3 \\
+REQ\_23 & ProductionAAS Submodels & Shall contain: \newline 1. Identification Submodel \newline 2. Process Plan Submodel \newline 3. Services Catalog Submodel \newline 4. Interface and Endpoints Submodel \newline 5. Execution State and Tracking Submodel & High & UC3 \\
+\rowcolor{lightgray}
+REQ\_24 & Agent Interface & Shall communicate via FIPA ACL protocol. & High & UC3 \\
+REQ\_25 & Runtime & Shall have an Agent Runtime. & High & UC3 \\
+\rowcolor{lightgray}
+REQ\_26 & Identification Submodel & Contains: IDs, version, owner, product context. & Mid & UC3 \\
+REQ\_27 & Process Plan Submodel & Contains: nodes (tasks), edges, entry/exit, capabilities. & Mid & UC3 \\
+\rowcolor{lightgray}
+REQ\_28 & Services Catalog & Contains: machine skills with callable operations. & Mid & UC3 \\
+REQ\_29 & Interface Submodel & Contains: REST/OPC UA/MQTT endpoints, schemas. & Mid & UC3 \\
+\rowcolor{lightgray}
+REQ\_30 & Execution State Submodel & Contains: current node, timestamps, step status. & Mid & UC3, UC4 \\
+REQ\_31 & Negotiation & Shall negotiate using time availability as weight. & High & UC3 \\
+\end{longtable}
+
+%==============================================================================
+% MAS/BDI Specifications
+%==============================================================================
+\subsection{MAS/BDI Specifications}
+
+\begin{longtable}{>{\raggedright}p{1.2cm} >{\raggedright}p{2.8cm} >{\raggedright}p{7cm} >{\centering}p{1.2cm} >{\centering\arraybackslash}p{1.2cm}}
+\caption{MAS/BDI Requirements} \label{tab:req_mas_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Title} & \textcolor{white}{Description} & \textcolor{white}{Severity} & \textcolor{white}{UC} \\
+\midrule
+\bottomrule
+
+REQ\_32 & Agent Beliefs & The AAS shall contain a defined Agent belief set for each ResourceAAS. & High & UC4 \\
+\rowcolor{lightgray}
+REQ\_33 & Agent Desires & The AAS shall contain defined Agent objectives for each ResourceAAS. & High & UC3 \\
+REQ\_34 & Agent Intentions & The AAS shall contain defined Agent plans for each ResourceAAS. & High & UC4 \\
+\end{longtable}
+
+%==============================================================================
+% Non-Functional Requirements
+%==============================================================================
+\subsection{Non-Functional Requirements}
+
+\begin{longtable}{>{\raggedright}p{1.2cm} >{\raggedright}p{2.5cm} >{\raggedright}p{8.5cm} >{\centering\arraybackslash}p{1.2cm}}
+\caption{Non-Functional Requirements} \label{tab:req_nonfunc_app} \\
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{ID} & \textcolor{white}{Category} & \textcolor{white}{Description} & \textcolor{white}{Severity} \\
+\midrule
+\bottomrule
+
+NFR\_1 & Interoperability & All AAS components shall comply with IDTA AAS specification (Part 1 and Part 2). & High \\
+\rowcolor{lightgray}
+NFR\_2 & Scalability & The system shall support adding new ResourceAAS without modifying existing components. & Mid \\
+NFR\_3 & Reliability & The system shall handle component failures gracefully with appropriate error messages. & High \\
+\rowcolor{lightgray}
+NFR\_4 & Maintainability & The system architecture shall follow modular design principles. & Mid \\
+NFR\_5 & Performance & Agent negotiation shall complete within $<$ 5 seconds for the proof-of-concept. & Mid \\
+\end{longtable}

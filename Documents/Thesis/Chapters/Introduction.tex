@@ -1,6 +1,87 @@
-\section{Introduction}
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,
-  title=About this chapter]
-  This chapter introduces the fundamental concepts and motivations behind the development of Type3 Asset Administration Shells (AAS) and their integration with Multi-Agent Systems (MAS) using the Belief-Desire-Intention (BDI) approach. It outlines the significance of AAS in the context of Industry 4.0, highlighting their role in enhancing asset management and interoperability. 
-  We also go over the other chapters of this thesis to give a brief overview of the content covered.
-\end{tcolorbox}
+\chapter{Introduction}
+%\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,
+%  title=About this chapter]
+%  This chapter introduces the fundamental concepts and motivations behind the development of Type3 Asset Administration Shells (AAS) and their integration with Multi-Agent Systems (MAS) using the Belief-Desire-Intention (BDI) approach. It outlines the significance of AAS in the context of Industry 4.0, highlighting their role in enhancing asset management and interoperability. 
+%  We also go over the other chapters of this thesis to give a brief overview of the content covered.
+%\end{tcolorbox}
+
+% ----- Context and motivation -----
+The manufacturing industry is undergoing a fundamental transformation driven by the fourth industrial revolution,
+commonly referred to as Industry 4.0. This transformation is characterized by \ac{CPS},
+intelligent automation, and the convergence of technologies including mechatronic systems,
+controllers, on-board computation, big data, machine learning, and the \ac{IIoT} \cite{lasi2014industry}.
+
+Industry 4.0 holds the promise of increased flexibility in manufacturing, along with mass customization, better quality, and improved productivity \cite{zhong2017intelligent}.
+Its vision encompasses ecosystems of smart factories with intelligent and autonomous shop-floor entities \cite{vaidya2018industry}.
+To provide a structured approach for implementing this vision, the Platform Industrie 4.0 working group developed the Reference Architectural Model Industrie 4.0 (\ac{RAMI4.0}) \cite{fraile2019reference}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=10cm]{Images/RAMI40.png}
+    \caption{Reference Architectural Model Industrie 4.0 (RAMI 4.0) \cite{lindner2023digital}}
+    \label{fig:RAMI4.0}
+\end{figure} \\
+\ac{RAMI4.0} is a three-dimensional map showing how to approach the deployment of Industry 4.0 in a structured manner, ensuring that all participants involved share a common perspective and develop a common understanding \cite{lindner2023digital}.
+The model encompasses three axes: the product life cycle and value stream (distinguishing between types and instances),
+the hierarchy levels representing different participants within the network,
+and six interoperability layers covering everything from business processes to communication standards to physical components \cite{lindner2023digital}.
+
+Central to this architectural model is the concept of the \ac{DT}.
+A digital twin can be defined as an evolving digital profile of the historical
+and current behavior of a physical object or process that helps
+optimize business performance \cite{vanderhorn2021digital}.
+Digital twins allow industry to detect physical issues sooner,
+predict outcomes more accurately, and build better products \cite{vanderhorn2021digital}.
+As the adoption of Industry 4.0 advances, digital twins prove invaluable for testing and simulating new parameters and design variants \cite{attaran2023impact}.
+
+To fully realize the potential of digital twins in industrial settings,
+standardization is essential \cite{inigo2020towards}.
+The \ac{AAS} has emerged as a key enabler in this regard.
+The \ac{AAS} is the logical representation of an asset that enables it to communicate in an Industry 4.0-compliant manner \cite{inigo2020towards}.
+Together with the asset, the \ac{AAS} forms the Industry 4.0 Component (I4.0 Component) \cite{inigo2020towards}.
+
+The \ac{AAS} is the standard digital representation of an industrial asset that plays a pivotal role in enabling interoperable communication among \ac{I4.0} components across the value chain \cite{inigo2020towards}.
+The interoperability between I4.0 components depends crucially on the contents of the administration shell,
+and so it is the main task of the \ac{AAS} to register and make available the data and functions of all relevant assets in a standardized way throughout their life cycle \cite{wei2019review}.
+
+However, as manufacturing systems become increasingly complex, autonomous production becomes essential.
+As \cite{wang2016implementing} note, the increasing complexity caused by global competition, product variety, 
+and individualization demands production systems that are self-organized and capable of autonomous 
+decision-making \cite{wang2016implementing}. In such environments, it becomes impossible to anticipate and 
+automate all relevant constellations through centralized control \cite{antons2024designing}.
+
+% ----- Problem statement -----
+
+While the \ac{AAS} provides a robust framework for standardizing asset representation and communication,
+current implementations predominantly focus on passive data exchange and reactive behavior \cite{leitao2025role}.
+Most existing solutions are limited to passive (providing static metadata) or reactive (responding to external events) functionalities,
+lacking the active behaviors required to support fully autonomous interactions and intelligent decision-making \cite{pereira2025aas}.
+The \ac{Type3AAS}, which is characterized by its proactive capabilities, remains largely unexplored in practice,
+still in its early stages and lacking formal specifications and comprehensive implementation guidelines \cite{leitao2025role}.
+Realizing truly autonomous \ac{I4.0} components requires not only standardized data models but also 
+decision-making capabilities that allow assets to act proactively based on their goals and beliefs.
+This gap motivates the integration of agent-based technologies with the \ac{AAS} concept.
+% ----- Brief conceptual grounding -----
+\ac{MAS} offer a promising paradigm for implementing autonomous behavior in distributed systems.
+In particular, the \ac{BDI} architecture provides a well-established model for rational agents 
+that reason about their beliefs, desires, and intentions to select appropriate actions \cite{rao1995bdi}.
+By combining the standardized structure of the \ac{AAS} with the proactive reasoning capabilities of \ac{BDI} agents,
+it becomes possible to realize \ac{Type3AAS} that can autonomously manage and optimize asset operations.
+
+% ----- Contribution of the thesis -----
+
+This thesis proposes an approach to implementing \ac{Type3AAS} using \ac{MAS} based on the \ac{BDI} architecture.
+The main contributions are:
+\begin{itemize}
+    \item A conceptual integration of \ac{AAS} with \ac{BDI}-based agents
+    \item Foundational submodels for enabling proactive behavior in \ac{AAS}
+    \item A proof-of-concept implementation demonstrated through a production resource use case involving drill machines
+\end{itemize}
+% ----- Structure of the thesis -----
+The remainder of this thesis is structured as follows:
+Chapter~\ref{ch:literature} provides a literature review of \ac{AAS}, \ac{MAS}, and the \ac{BDI} architecture.
+Chapter~\ref{ch:state} examines the current state of the art, including existing frameworks and integration approaches.
+Chapter~\ref{ch:requirements} defines the system requirements and use case.
+Chapter~\ref{ch:concept} presents the conceptual design of the proposed solution.
+Chapter~\ref{ch:implementation} details the implementation.
+Chapter~\ref{ch:evaluation} evaluates the proof of concept.
+Finally, Chapter~\ref{ch:outlook} concludes with an outlook on future research directions.

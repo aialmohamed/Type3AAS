@@ -1,6 +1,8 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
+\usepackage{graphicx,wrapfig,lipsum}
+\graphicspath{{Images/}}
+\usepackage{array}
 \usepackage{setspace}
 \setstretch{1.5}
 \usepackage{geometry}
@@ -16,28 +18,42 @@
 \geometry{a4paper, portrait, margin=30mm, bmargin=30mm, tmargin=30mm}
 \usepackage{tikz,lipsum,lmodern}
 \usepackage[most]{tcolorbox}
-
-
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{svg}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{longtable}  % For tables that span multiple pages
+% Define colors
+\definecolor{headerblue}{RGB}{41, 65, 114}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{mediumgray}{RGB}{230, 230, 230}
 \begin{document}
 \include{CoverPage}
 
 
 \newpage
-\begin{abstract}
-This master thesis presents the concept and implementation of a Type3 \ac{AAS} with integration into a Multi-Agent System (MAS) using the Belief-Desire-Intention (BDI) approach. The proposed proactive AAS framework aims to enhance the interoperability and autonomy of industrial assets by leveraging agent-based technologies. The thesis details the design principles, architecture, and implementation strategies employed in developing the AAS, along with a comprehensive evaluation of its performance in a simulated industrial environment. The results demonstrate the effectiveness of the BDI-based MAS integration in enabling dynamic decision-making and adaptive behavior in response to changing operational conditions.
-\end{abstract}
+\include{Chapters/abstract}
+\input{acros}
 
 \newpage
-\input{acros}
+\listoffigures
+
+\listoftables
+\newpage
+
 \newpage
 \tableofcontents
 \newpage
 
 \include{Chapters/Introduction}
 \newpage
-\include{Chapters/Let_Review}
-\newpage
-\include{Chapters/State_of_The_Art}
+\include{Chapters/Fundamentals}
 \newpage
 \include{Chapters/Requierments}
 \newpage
@@ -48,6 +64,8 @@ This master thesis presents the concept and implementation of a Type3 \ac{AAS} w
 \include{Chapters/Eval}
 \newpage
 \include{Chapters/outlook}
+\newpage
+\include{Chapters/Appendix}
 
 \newpage
 \bibliographystyle{IEEEtran}

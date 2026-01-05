@@ -1,23 +1,118 @@
-\section{System requierments}
-\begin{tcolorbox}
-  [colback=red!5!white,colframe=red!75!black,
-  title=Note]
-  This chapter outlines the system requirements for the proposed Type3 Asset Administration Shell (AAS) integrated with a Multi-Agent System (MAS) using the Belief-Desire-Intention (BDI) approach. It details both functional and non-functional requirements, providing a comprehensive overview of the necessary specifications to ensure successful implementation and operation of the system.
-\end{tcolorbox}
+\chapter{Use Cases and System Requirements}
+\label{ch:requirements}
 
-\subsection{Functional requirements}
-\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,
-  title=About Functional Requirements]
-  This section outlines the functional requirements for the Type3 Asset Administration Shell (AAS) integrated with a Multi-Agent System (MAS) using the Belief-Desire-Intention (BDI) approach. It specifies the essential functionalities that the system must possess to effectively manage and represent industrial assets, facilitate communication and cooperation among agents, and support autonomous decision-making processes. The requirements detailed in this section serve as a foundation for the design and implementation of the proposed system.
-\end{tcolorbox}
+The preceding chapter established the theoretical foundations and identified the research gaps that this thesis addresses. Based on these findings, this chapter derives concrete use cases and system requirements for implementing a \ac{Type3AAS} using \ac{BDI}-based \ac{MAS}. Following the systems engineering approach, the use cases are derived from the research questions identified in Section~\ref{subsec:critical_analysis}, and the system requirements are subsequently derived from these use cases. Detailed specifications are provided in Appendix~\ref{app:requirements}.
 
-\subsection{Non-functional requirements}
-\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,
-  title=About Non-Functional Requirements]
-  This section delineates the non-functional requirements for the Type3 Asset Administration Shell (AAS) integrated with a Multi-Agent System (MAS) using the Belief-Desire-Intention (BDI) approach. It addresses critical aspects such as performance, scalability, security, and usability that are essential for the effective operation and adoption of the system in industrial environments. The non-functional requirements outlined in this section ensure that the system not only meets its functional objectives but also adheres to quality standards necessary for real-world applications.
-\end{tcolorbox}
-\subsection{Usecase}
-\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,
-  title=About Usecase]
-  This section presents a detailed use case scenario for the Type3 Asset Administration Shell (AAS) integrated with a Multi-Agent System (MAS) using the Belief-Desire-Intention (BDI) approach. It illustrates how the system operates in a practical industrial context, highlighting the interactions between the AAS and BDI agents to achieve specific objectives. The use case serves to demonstrate the application of the functional and non-functional requirements outlined in previous sections, providing a concrete example of the system's capabilities and benefits.
-\end{tcolorbox}
+\section{From Research Questions to Use Cases}
+\label{sec:rq_to_uc}
+
+The critical analysis in Chapter~\ref{ch:literature} identified three main contributions that this thesis aims to provide: bidirectional \ac{AAS} integration enabling agents to both read from submodels and invoke Operations, foundational submodels supporting proactive behavior, and a proof-of-concept validation with production resources.
+
+To demonstrate and validate these contributions, a production scenario involving drill machines (in virtual environment) was selected. The \textit{SmartDrillSystem} serves as the proof-of-concept implementation, consisting of multiple \ac{AAS}-represented drill machines (ResourceAAS) that can be orchestrated by production orders (ProductionAAS). This scenario allows the demonstration of all key \ac{Type3AAS} capabilities: autonomous behavior, peer-to-peer communication, negotiation, and proactive decision-making.
+
+\section{System Components}
+\label{sec:system_components}
+
+The SmartDrillSystem comprises four main components that work together to realize \ac{Type3AAS} functionality:
+
+\textbf{ResourceAAS} represents the digital twin of each drill machine, combining the standardized \ac{AAS} structure with a \ac{BDI} agent runtime. Each ResourceAAS maintains submodels describing the asset's operational state, capabilities, and interaction parameters, while the embedded agent provides autonomous decision-making and negotiation capabilities.
+
+\textbf{ProductionAAS} manages production orders and coordinates the allocation of tasks to available resources. When a drilling order is received, the ProductionAAS agent queries the registry for available resources, initiates negotiations based on defined criteria (such as time availability), and delegates the production plan to the selected ResourceAAS.
+
+\textbf{AAS Registry} provides a central discovery service where all \ac{AAS} components register themselves upon initialization. This enables dynamic discovery of available resources without hardcoded dependencies between components.
+
+\textbf{Event Broker} implements an MQTT-based messaging infrastructure that enables asynchronous, event-driven communication between components. This supports real-time status updates and reactive behavior across the distributed system.
+
+\section{Use Cases}
+\label{sec:usecases}
+
+The SmartDrillSystem is specified through three primary use cases that cover the complete lifecycle of the system: Startup, Drilling Order, and Shutdown. Additionally, two included use cases (AAS Registration and Drill Operation) are invoked by the primary use cases to handle specific sub-processes. The relationship between these use cases is illustrated in Figure~\ref{fig:usecase_diagram}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{Images/usecase.png}
+    \caption{Use Case Diagram for the SmartDrillSystem}
+    \label{fig:usecase_diagram}
+\end{figure}
+
+The detailed use case specifications are provided in Appendix~\ref{app:usecases}.
+
+\subsection{UC1: System Startup}
+
+The System Startup use case describes the initialization sequence when an operator starts the SmartDrillSystem. During startup, the system initializes all components including the Event Broker, AAS Registry, ResourceAAS instances, and ProductionAAS. The startup process includes the \textit{AAS Registration} (UC2) sub-process, where each ResourceAAS registers itself with the central registry, making it discoverable for subsequent production orders. Upon successful initialization, the system transitions to the ready state and awaits drilling orders. If any component fails to initialize, the system displays appropriate error messages and attempts retry procedures.
+
+\subsection{UC3: Drilling Order}
+
+The Drilling Order use case represents the core production scenario and demonstrates the key \ac{Type3AAS} capabilities. When an operator submits a drilling order with specified parameters (depth, diameter, material type), the system delegates this order to the ProductionAAS. The ProductionAAS agent then retrieves available resources from the registry and initiates a negotiation process with all registered ResourceAAS agents. Using time availability as the primary negotiation criterion, the ProductionAAS selects the most suitable resource and assigns the production plan. 
+
+The selected ResourceAAS then executes the \textit{Drill Operation} (UC4) sub-process, which handles the actual drilling execution through the bidirectional \ac{AAS} integration. During this sub-process, the ResourceAAS agent updates its beliefs from submodels, forms intentions, and invokes standardized \ac{AAS} Operations on the physical asset. Throughout execution, the ResourceAAS publishes status events, and upon completion, the system returns to the ready state for the next order. Alternative flows handle invalid input parameters and drilling failures with appropriate error handling and recovery procedures.
+
+\subsection{UC5: System Shutdown}
+
+The System Shutdown use case ensures graceful termination of the SmartDrillSystem. When an operator initiates shutdown, the system stops all active production processes, completes or cancels pending drilling orders, deregisters all ResourceAAS from the registry, and terminates all components in the proper sequence. This controlled shutdown procedure prevents data loss and ensures system integrity.
+
+\subsection{Included Use Cases}
+
+In addition to the primary use cases described above, two included use cases support the main workflows:
+
+\textbf{UC2: AAS Registration} is included in UC1 (System Startup) and handles the dynamic registration of ResourceAAS instances with the central registry. Each ResourceAAS sends its identification information, capabilities, and communication endpoints to the registry, enabling participation in subsequent negotiation processes.
+
+\textbf{UC4: Drill Operation} is included in UC3 (Drilling Order) and describes the execution of drilling operations by a ResourceAAS. This use case demonstrates the bidirectional integration between the \ac{BDI} agent and the \ac{AAS}, where beliefs are derived from submodels and intentions are executed through standardized Operations.
+
+\section{System Requirements}
+\label{sec:requirements}
+
+Based on the use cases defined above, this section summarizes the system requirements organized into functional and non-functional categories. The complete requirements specification with detailed descriptions is provided in Appendix~\ref{app:requirements}.
+
+\subsection{Functional Requirements}
+
+The functional requirements are organized into four groups addressing different aspects of the system.
+
+\subsubsection{System Specifications (REQ\_1 -- REQ\_8)}
+
+The system-level requirements define the overall architecture and fundamental capabilities of the SmartDrillSystem. These requirements specify that the system must comprise ResourceAAS, ProductionAAS, an Event Broker, and an AAS Registry as its core components. The system must provide standardized communication between \ac{AAS} instances and support event-based messaging through the broker. Furthermore, the requirements mandate that \ac{AAS} components operate autonomously, possess decision-making capabilities, and collaborate through interdependent processes. These requirements directly address the \ac{Type3AAS} characteristics of autonomy, intelligence, and collaboration identified in Chapter~\ref{ch:literature}.
+
+\subsubsection{ResourceAAS Specifications (REQ\_10 -- REQ\_20)}
+
+The ResourceAAS requirements specify the structure and behavior of drill machine representations. Each ResourceAAS must contain an agent interface supporting FIPA \ac{ACL} communication, a \ac{BDI} agent runtime, standardized submodels, and an asset interface for physical device communication. The required submodels include an Operational State Submodel (tracking current state and performance KPIs), a Knowledge Submodel (capturing resource constraints and environmental conditions), a Capability Submodel (describing available skills and service parameters), and an Interaction and Scheduling Submodel (defining communication endpoints and collaboration protocols). Additionally, the ResourceAAS must support event publishing and subscription, and participate in negotiations with ProductionAAS using time availability as the decision criterion.
+
+\subsubsection{ProductionAAS Specifications (REQ\_21 -- REQ\_31)}
+
+The ProductionAAS requirements define the structure for production order management. Similar to ResourceAAS, each ProductionAAS must contain an agent interface, agent runtime, and specialized submodels. The required submodels include an Identification Submodel (containing order metadata), a Process Plan Submodel (defining tasks, precedences, and required capabilities), a Services Catalog Submodel (listing available machine skills), an Interface and Endpoints Submodel (specifying communication methods), and an Execution State and Tracking Submodel (monitoring current progress and status). The ProductionAAS must coordinate with ResourceAAS through FIPA \ac{ACL} negotiation protocols.
+
+\subsubsection{MAS/BDI Specifications (REQ\_32 -- REQ\_34)}
+
+The \ac{MAS}/\ac{BDI} requirements specify the integration between agent concepts and the \ac{AAS} structure. Each ResourceAAS must maintain defined belief sets derived from its submodels, representing the agent's knowledge about itself and its environment. Agent desires (objectives) must be defined for each resource, representing the goals that drive agent behavior. Finally, agent intentions (plans) must be specified, defining the procedures the agent executes to achieve its objectives. These requirements ensure that the \ac{BDI} architecture is systematically integrated with the \ac{AAS} meta-model.
+
+\subsection{Non-Functional Requirements (NFR\_1 -- NFR\_5)}
+
+Beyond functional capabilities, the system must satisfy quality requirements essential for industrial deployment. The interoperability requirement mandates compliance with IDTA \ac{AAS} specifications to ensure compatibility with the broader Industry 4.0 ecosystem. Scalability requirements ensure that new ResourceAAS can be added without modifying existing components. Reliability requirements specify graceful handling of component failures with appropriate error messages. Maintainability requirements call for modular architecture supporting future extensions. Finally, performance requirements specify that agent negotiations must complete within acceptable time bounds for the proof-of-concept demonstration.
+
+\section{Requirements Traceability}
+\label{sec:traceability}
+
+Table~\ref{tab:traceability} provides a traceability matrix linking the thesis contributions to use cases and requirements, ensuring complete coverage of the research objectives.
+
+\begin{table}[ht]
+\centering
+\caption{Traceability Matrix: Contributions to Requirements}
+\label{tab:traceability}
+\begin{tabular}{>{\raggedright}p{4.5cm} >{\raggedright}p{3cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Thesis Contribution} & \textcolor{white}{Use Cases} & \textcolor{white}{Key Requirements} \\
+\midrule
+Bidirectional AAS Integration & UC3, UC4 & REQ\_5, REQ\_14, REQ\_32, REQ\_34 \\
+\rowcolor{lightgray}
+Foundational Submodels for Proactive Behavior & UC3, UC4 & REQ\_12, REQ\_16--19, REQ\_23, REQ\_26--30 \\
+Proof-of-Concept with Production Resources & UC1--UC5 & All requirements \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Summary}
+\label{sec:req_summary}
+
+This chapter has derived use cases and system requirements for implementing a \ac{Type3AAS} using \ac{BDI}-based \ac{MAS}. Three primary use cases were defined (Startup, Drilling Order, and Shutdown), supported by two included use cases (AAS Registration and Drill Operation) that handle specific sub-processes. From these use cases, 26 functional requirements and 5 non-functional requirements were derived, organized into System Specifications, ResourceAAS Specifications, ProductionAAS Specifications, and MAS/BDI Specifications.
+
+The requirements directly address the research gaps identified in Chapter~\ref{ch:literature}. Bidirectional \ac{AAS} integration is addressed through requirements for agent-asset communication and the mapping of \ac{BDI} components to \ac{AAS} elements. Foundational submodels are specified through detailed submodel requirements for both ResourceAAS and ProductionAAS. The proof-of-concept is enabled through the complete system specification covering all operational scenarios. The following chapter presents the conceptual design that realizes these requirements.

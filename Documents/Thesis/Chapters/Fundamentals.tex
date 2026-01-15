@@ -22,7 +22,7 @@ The asset can be any physical or non-physical entity that has value for an organ
 including production systems, equipment, machines, components, products, raw materials, 
 business processes, software, documents, and even human personnel \cite{idta2023metamodel}.
 
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includegraphics[width=10cm]{Images/AAS_OverViewConcept.png}
     \caption{The Industry 4.0 Component: Asset and its Administration Shell \cite{idta2023metamodel}}
@@ -62,7 +62,7 @@ enabling interoperability and seamless communication within Industry 4.0 environ
 Its meta model defines the structure and key components of the \ac{AAS},
 laying the foundation for effective asset management and integration in modern industrial systems.
 
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includesvg[width=15cm,inkscapelatex=false]{Images/AAS_MetaModel.svg}
     \caption{Asset Administration Shell Meta Model \cite{plattformi40_aas_part1_v3}}
@@ -89,7 +89,7 @@ The Submodel can also have a \textit{Qualifier} attribute, which provides additi
 Finally, the Submodel has a \textit{SemanticId} attribute, which links the submodel to a semantic definition,
 enabling better understanding and interoperability of the submodel's content \cite{plattformi40_aas_part1_v3}.
 
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includesvg[width=15cm,inkscapelatex=false]{Images/Submodel_MetaModel.svg}
     \caption{Submodel Meta Model \cite{plattformi40_aas_part1_v3}}
@@ -172,7 +172,7 @@ Along with the different types of \textit{SubmodelElements}, various \textit{dat
 These \textit{data types} ensure consistency and standardization in representing information within the \ac{AAS} and shown in Figure~\ref{fig:data_types}.
 
 
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includesvg[width=12cm,inkscapelatex=false]{Images/DataTypes_MetaModel.svg}
     \caption{Data Types Meta Model \cite{plattformi40_aas_part1_v3}}
@@ -233,7 +233,7 @@ has specification that are listed as in the table~\ref{tab:type2_specs}.
 Eventing  & subscribe and unsubscribe to events & \cite{plattformi40_aas_part1_v3} \\
 \end{longtable}
 
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includegraphics[width=12cm]{Images/AAS_Types.jpg}
     \caption{Types of Asset Administration Shells \cite{plattformI40_aas_part2}}
@@ -253,7 +253,7 @@ they enable seamless information provision and exchange across the entire lifecy
 This standardization facilitates interoperability and real-time data sharing among heterogeneous assets, 
 independent of manufacturer or application domain \cite{LOPEZ2023103859}.
 In figure~\ref{fig:AAS_Type3_Concept}, the concept of \textit{type3} \ac{AAS} is illustrated.
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includegraphics[width=12cm]{Images/type3_aas.jpg}
     \caption{Concept of Type3 AAS \cite{Sakurada2025_MAS_AAS_Type3}}
@@ -382,7 +382,7 @@ In \ac{MAS}, agents must coordinate their activities to achieve common goals and
 \label{subsec:industrial_agents}
 
 The application of agent technology in industrial settings has given rise to the concept of industrial agents, which are agents specifically designed for manufacturing and production environments \cite{leitao2016smart}. Industrial agents typically operate within a two-layered architecture as illustrated in Figure \ref{fig:industrial_agent_layers}:
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includegraphics[width=12cm]{Images/Industrial_agent_approach.png}
     \caption{Industrial Agent Layers \cite{leitao2021recommendation}}
@@ -443,7 +443,7 @@ A \ac{BDI} agent operates through a continuous reasoning cycle that processes pe
 \end{enumerate}
 
 This cycle enables \ac{BDI} agents to exhibit both reactive behavior (responding to environmental changes) and proactive behavior (pursuing long-term goals), which aligns with the requirements of \ac{Type3AAS} \cite{wooldridge1995intelligent}.
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
     \includegraphics[width=12cm]{Images/BDI_concept.png}
     \caption{BDI Reasoning Cycle \cite{Pokahr2007_JadexConcepts}}
@@ -561,7 +561,7 @@ The selection of appropriate frameworks for implementing \ac{Type3AAS} depends o
 
 Tables~\ref{tab:aas_framework_comparison},\ref{tab:mas_framework_comparison} provides a comparative overview of the discussed frameworks.
 
-\begin{table}[ht]
+\begin{table}[p]
 \centering
 \caption{Comparison of Asset Administration Shell frameworks}
 \label{tab:aas_framework_comparison}
@@ -582,7 +582,7 @@ AASX Package Explorer & C\# & Type 1 & File-based (AASX) \\
 % Table 2: MAS and BDI Frameworks
 % ============================================
 
-\begin{table}[ht]
+\begin{table}[p]
 \centering
 \caption{Comparison of Multi-Agent System and BDI frameworks}
 \label{tab:mas_framework_comparison}
@@ -710,7 +710,7 @@ This thesis addresses the identified limitations by proposing a systematic integ
     
     \item \textbf{Foundational Submodels for Proactive Behavior}: This work defines submodel structures specifically designed to support agent-based \ac{Type3AAS} implementations. These submodels represent goals, capabilities, and behavioral parameters that enable proactive decision-making while maintaining compliance with the \ac{AAS} meta-model. This contribution addresses the lack of standardized templates for agent-related information.
     
-    \item \textbf{Proof-of-Concept with Production Resources}: The proposed approach is validated through a concrete use case involving drill machines as production resources. This demonstration shows the feasibility of implementing \ac{BDI}-based \ac{Type3AAS} in a realistic production scenario, moving beyond purely simulated environments to a more practical validation context.
+    \item \textbf{Proof-of-Concept with Production Resources}: The proposed approach is validated through a concrete use case involving drill machines as production resources. This demonstration shows the feasibility of implementing \ac{BDI}-based \ac{Type3AAS} in a realistic production scenario, demonstrating feasibility in a realistic production scenario with discrete-event simulators that model actual machine behavior and timing.
 \end{enumerate}
 
 By addressing these gaps, this thesis aims to advance the state of the art toward truly interoperable, proactive I4.0 components that leverage the full potential of the \ac{AAS} standard while benefiting from the autonomous capabilities provided by agent technology.

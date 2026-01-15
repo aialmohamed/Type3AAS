@@ -1,0 +1,100 @@
+@startuml Infrastructure_Diagram
+
+scale 2
+
+skinparam backgroundColor white
+skinparam componentBackgroundColor #F8F8F8
+skinparam databaseBackgroundColor #E8FFE8
+skinparam nodeBackgroundColor #FFFFD0
+skinparam rectangleBackgroundColor #F5F5F5
+
+title Type 3 AAS Implementation Infrastructure
+
+' Docker Environment
+rectangle "Docker Environment" as Docker #E8E8FF {
+    
+    node "aas-env\n(Eclipse BaSyx)" as BaSyx #FFE8D0 {
+        component "AAS Server" as AASServer
+        component "REST API" as REST
+        component "Web UI" as WebUI
+    }
+    
+    node "aas-registry" as Registry #FFE8D0 {
+        component "Shell Registry" as ShellReg
+    }
+    
+    database "MongoDB" as Mongo #E8FFE8 {
+        storage "AAS Storage"
+        storage "Submodel Storage"
+    }
+    
+    node "Mosquitto" as MQTT #FFD0D0 {
+        component "MQTT Broker" as MQTTBroker
+    }
+}
+
+' Host Environment
+rectangle "Host Environment" as Host #FFFFD0 {
+    
+    node "Prosody XMPP Server" as Prosody #D0E8FF {
+        component "C2S Interface" as C2S
+        component "PubSub Component\n(pubsub.localhost)" as PubSub
+    }
+    
+    package "SPADE Agents" as Agents #E8FFE8 {
+        
+        rectangle "Production Agent" as PA {
+            component "Execution Core" as ExecCore
+            component "Negotiation Core" as NegCore
+        }
+        
+        rectangle "Resource Agent 1" as RA1 {
+            component "BDI Core" as BDI1
+            component "ASL Plans" as ASL1
+        }
+        
+        rectangle "Resource Agent 2" as RA2 {
+            component "BDI Core" as BDI2
+            component "ASL Plans" as ASL2
+        }
+    }
+    
+    package "Simulators (FastAPI + SimPy)" as Sims #FFE8E8 {
+        component "DrillMachine1\n:8090" as Drill1
+        component "DrillMachine2\n:8091" as Drill2
+        component "MoveXY1\n:8092" as Move1
+        component "MoveXY2\n:8093" as Move2
+    }
+    
+    component "AAS Python SDK\n(BaSyx)" as SDK #D0FFD0
+}
+
+' Connections - Docker internal
+BaSyx --> Mongo : persist
+BaSyx --> MQTTBroker : events
+Registry --> Mongo : query
+
+' Connections - Host to Docker
+SDK --> REST : HTTP/REST
+BaSyx --> Sims : invocationDelegation\n(host.docker.internal)
+
+' Connections - Agent communication
+Agents --> PubSub : XMPP PubSub
+Agents --> SDK : read/write AAS
+
+' Connections - Internal agent
+ExecCore <--> NegCore : pa_execution_service_topic
+PA <--> RA1 : production_negotiation
+PA <--> RA2 : production_negotiation
+
+' Legend
+legend right
+    |= Color |= Component |
+    | <#FFE8D0> | Eclipse BaSyx |
+    | <#E8FFE8> | Storage / Agents |
+    | <#D0E8FF> | XMPP Server |
+    | <#FFE8E8> | Simulators |
+    | <#D0FFD0> | Python SDK |
+endlegend
+
+@enduml

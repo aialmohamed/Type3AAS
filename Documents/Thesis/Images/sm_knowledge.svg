@@ -1,0 +1,1142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="1015px"
+   preserveAspectRatio="none"
+   style="width:683px;height:1015px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 683 1015"
+   width="683px"
+   zoomAndPan="magnify"
+   id="svg1784"
+   sodipodi:docname="sm_knowledge.svg"
+   inkscape:export-filename="sm_knowledge.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1786"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.77339901"
+     inkscape:cx="341.35032"
+     inkscape:cy="508.79299"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1784" />
+  <defs
+     id="defs1519" />
+  <g
+     id="g1782">
+    <!--cluster <<Submodel>>\nKnowledge-->
+    <g
+       class="cluster"
+       data-entity="..Submodel...nKnowledge"
+       data-source-line="7"
+       data-uid="ent0002"
+       id="cluster_..Submodel...nKnowledge">
+      <path
+         d="M8.5,6 L106.1807,6 A3.75,3.75 0 0 1 108.6807,8.5 L115.6807,44.5938 L673.5,44.5938 A2.5,2.5 0 0 1 676,47.0938 L676,1005.5 A2.5,2.5 0 0 1 673.5,1008 L8.5,1008 A2.5,2.5 0 0 1 6,1005.5 L6,8.5 A2.5,2.5 0 0 1 8.5,6"
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path1521" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="6"
+         x2="115.6807"
+         y1="44.5938"
+         y2="44.5938"
+         id="line1523" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="96.6807"
+         x="10"
+         y="20.9951"
+         id="text1525">«Submodel»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="87.1992"
+         x="14.7407"
+         y="37.292"
+         id="text1527">Knowledge</text>
+    </g>
+    <!--cluster <<SubmodelElementCollection>> DrillMachine_Resource_Constraints-->
+    <g
+       class="cluster"
+       data-entity="..SubmodelElementCollection.. DrillMachine_Resource_Constraints"
+       data-uid="ent0004"
+       id="cluster_..SubmodelElementCollection.. DrillMachine_Resource_Constraints">
+      <path
+         d="M32.5,65 L554.7607,65 A3.75,3.75 0 0 1 557.2607,67.5 L564.2607,87.2969 L649.5,87.2969 A2.5,2.5 0 0 1 652,89.7969 L652,843.5 A2.5,2.5 0 0 1 649.5,846 L32.5,846 A2.5,2.5 0 0 1 30,843.5 L30,67.5 A2.5,2.5 0 0 1 32.5,65"
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path1530" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="30"
+         x2="564.2607"
+         y1="87.2969"
+         y2="87.2969"
+         id="line1532" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="521.2607"
+         x="34"
+         y="79.9951"
+         id="text1534">«SubmodelElementCollection» DrillMachine_Resource_Constraints</text>
+    </g>
+    <!--cluster <<SubmodelElement>> Max_Depth-->
+    <g
+       class="cluster"
+       data-entity="..SubmodelElement.. Max_Depth"
+       data-source-line="18"
+       data-uid="ent0005"
+       id="cluster_..SubmodelElement.. Max_Depth">
+      <path
+         d="M56.5,108 L310.8604,108 A3.75,3.75 0 0 1 313.3604,110.5 L320.3604,130.2969 L625.5,130.2969 A2.5,2.5 0 0 1 628,132.7969 L628,450.5 A2.5,2.5 0 0 1 625.5,453 L56.5,453 A2.5,2.5 0 0 1 54,450.5 L54,110.5 A2.5,2.5 0 0 1 56.5,108"
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path1537" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="54"
+         x2="320.3604"
+         y1="130.2969"
+         y2="130.2969"
+         id="line1539" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="253.3604"
+         x="58"
+         y="122.9951"
+         id="text1541">«SubmodelElement» Max_Depth</text>
+    </g>
+    <!--cluster <<SubmodelElement>> Min_Depth-->
+    <g
+       class="cluster"
+       data-entity="..SubmodelElement.. Min_Depth"
+       data-source-line="41"
+       data-uid="ent0009"
+       id="cluster_..SubmodelElement.. Min_Depth">
+      <path
+         d="M58.5,477 L309.1484,477 A3.75,3.75 0 0 1 311.6484,479.5 L318.6484,499.2969 L623.5,499.2969 A2.5,2.5 0 0 1 626,501.7969 L626,819.5 A2.5,2.5 0 0 1 623.5,822 L58.5,822 A2.5,2.5 0 0 1 56,819.5 L56,479.5 A2.5,2.5 0 0 1 58.5,477"
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path1544" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="56"
+         x2="318.6484"
+         y1="499.2969"
+         y2="499.2969"
+         id="line1546" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="249.6484"
+         x="60"
+         y="491.9951"
+         id="text1548">«SubmodelElement» Min_Depth</text>
+    </g>
+    <!--class ConstraintType-->
+    <g
+       class="entity"
+       data-entity="ConstraintType"
+       data-source-line="8"
+       data-uid="ent0003"
+       id="entity_ConstraintType">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="247.8604"
+         x="51"
+         y="862.5"
+         id="rect1551" />
+      <ellipse
+         cx="117.2197"
+         cy="878.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse1553" />
+      <path
+         d="M121.3291,884.5 L113.6104,884.5 L113.6104,872.1094 L121.3291,872.1094 L121.3291,874.2656 L116.0635,874.2656 L116.0635,876.9375 L120.8291,876.9375 L120.8291,879.0938 L116.0635,879.0938 L116.0635,882.3438 L121.3291,882.3438 L121.3291,884.5 Z "
+         fill="#000000"
+         id="path1555" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="106.9209"
+         x="137.7197"
+         y="883.3467"
+         id="text1557">ConstraintType</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="52"
+         x2="297.8604"
+         y1="894.5"
+         y2="894.5"
+         id="line1559" />
+      <ellipse
+         cx="62"
+         cy="908.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1561" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="221.8604"
+         x="71"
+         y="911.4951"
+         id="text1563">idShort :&quot;Resource Constraints&quot;</text>
+      <ellipse
+         cx="62"
+         cy="924.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1565" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="71"
+         y="927.792"
+         id="text1567">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="62"
+         cy="940.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1569" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="161.2256"
+         x="71"
+         y="944.0889"
+         id="text1571">category :&quot;CONSTANT&quot;</text>
+      <ellipse
+         cx="62"
+         cy="957.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1573" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="102.9287"
+         x="71"
+         y="960.3857"
+         id="text1575">value :&quot;Depth&quot;</text>
+      <ellipse
+         cx="62"
+         cy="973.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1577" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="136.4043"
+         x="71"
+         y="976.6826"
+         id="text1579">valueType :&quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="52"
+         x2="297.8604"
+         y1="983.9844"
+         y2="983.9844"
+         id="line1581" />
+    </g>
+    <!--class Max_Depth-->
+    <g
+       class="entity"
+       data-entity="Max_Depth"
+       data-source-line="19"
+       data-uid="ent0006"
+       id="entity_Max_Depth">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="174.6816"
+         x="87.5"
+         y="307.5"
+         id="rect1584" />
+      <ellipse
+         cx="112.6984"
+         cy="323.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse1586" />
+      <path
+         d="M116.8078,329.5 L109.089,329.5 L109.089,317.1094 L116.8078,317.1094 L116.8078,319.2656 L111.5421,319.2656 L111.5421,321.9375 L116.3078,321.9375 L116.3078,324.0938 L111.5421,324.0938 L111.5421,327.3438 L116.8078,327.3438 L116.8078,329.5 Z "
+         fill="#000000"
+         id="path1588" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="120.0186"
+         x="128.9647"
+         y="328.3467"
+         id="text1590">Max Depth Value</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="88.5"
+         x2="261.1816"
+         y1="339.5"
+         y2="339.5"
+         id="line1592" />
+      <ellipse
+         cx="98.5"
+         cy="353.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1594" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.4287"
+         x="107.5"
+         y="356.4951"
+         id="text1596">idShort : &quot;MaxDepth&quot;</text>
+      <ellipse
+         cx="98.5"
+         cy="369.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1598" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="107.5"
+         y="372.792"
+         id="text1600">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="98.5"
+         cy="385.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1602" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.1621"
+         x="107.5"
+         y="389.0889"
+         id="text1604">category : &quot;Property&quot;</text>
+      <ellipse
+         cx="98.5"
+         cy="402.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1606" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="83.0293"
+         x="107.5"
+         y="405.3857"
+         id="text1608">value : 20.0</text>
+      <ellipse
+         cx="98.5"
+         cy="418.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1610" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.6816"
+         x="107.5"
+         y="421.6826"
+         id="text1612">valueType : &quot;Double&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="88.5"
+         x2="261.1816"
+         y1="428.9844"
+         y2="428.9844"
+         id="line1614" />
+    </g>
+    <!--class Max_Depth_Unit-->
+    <g
+       class="entity"
+       data-entity="Max_Depth_Unit"
+       data-source-line="26"
+       data-uid="ent0007"
+       id="entity_Max_Depth_Unit">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="209.9277"
+         x="70"
+         y="143.5"
+         id="rect1617" />
+      <ellipse
+         cx="116.2212"
+         cy="159.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse1619" />
+      <path
+         d="M120.3306,165.5 L112.6118,165.5 L112.6118,153.1094 L120.3306,153.1094 L120.3306,155.2656 L115.0649,155.2656 L115.0649,157.9375 L119.8306,157.9375 L119.8306,160.0938 L115.0649,160.0938 L115.0649,163.3438 L120.3306,163.3438 L120.3306,165.5 Z "
+         fill="#000000"
+         id="path1621" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="108.9854"
+         x="136.7212"
+         y="164.3467"
+         id="text1623">Max Depth Unit</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="71"
+         x2="278.9277"
+         y1="175.5"
+         y2="175.5"
+         id="line1625" />
+      <ellipse
+         cx="81"
+         cy="189.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1627" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="183.9277"
+         x="90"
+         y="192.4951"
+         id="text1629">idShort : &quot;MaxDepth_Unit&quot;</text>
+      <ellipse
+         cx="81"
+         cy="205.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1631" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="90"
+         y="208.792"
+         id="text1633">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="81"
+         cy="221.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1635" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.1621"
+         x="90"
+         y="225.0889"
+         id="text1637">category : &quot;Property&quot;</text>
+      <ellipse
+         cx="81"
+         cy="238.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1639" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="86.0713"
+         x="90"
+         y="241.3857"
+         id="text1641">value : &quot;cm&quot;</text>
+      <ellipse
+         cx="81"
+         cy="254.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1643" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="140.8545"
+         x="90"
+         y="257.6826"
+         id="text1645">valueType : &quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="71"
+         x2="278.9277"
+         y1="264.9844"
+         y2="264.9844"
+         id="line1647" />
+    </g>
+    <!--class Max_Depth_Unit_short-->
+    <g
+       class="entity"
+       data-entity="Max_Depth_Unit_short"
+       data-source-line="33"
+       data-uid="ent0008"
+       id="entity_Max_Depth_Unit_short">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="252.9053"
+         x="359"
+         y="307.5"
+         id="rect1650" />
+      <ellipse
+         cx="406.4961"
+         cy="323.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse1652" />
+      <path
+         d="M410.6055,329.5 L402.8867,329.5 L402.8867,317.1094 L410.6055,317.1094 L410.6055,319.2656 L405.3398,319.2656 L405.3398,321.9375 L410.1055,321.9375 L410.1055,324.0938 L405.3398,324.0938 L405.3398,327.3438 L410.6055,327.3438 L410.6055,329.5 Z "
+         fill="#000000"
+         id="path1654" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="149.4131"
+         x="426.9961"
+         y="328.3467"
+         id="text1656">Max Depth Unit short</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="360"
+         x2="610.9053"
+         y1="339.5"
+         y2="339.5"
+         id="line1658" />
+      <ellipse
+         cx="370"
+         cy="353.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1660" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="226.9053"
+         x="379"
+         y="356.4951"
+         id="text1662">idShort : &quot;MaxDepth_Unit_short&quot;</text>
+      <ellipse
+         cx="370"
+         cy="369.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1664" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="379"
+         y="372.792"
+         id="text1666">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="370"
+         cy="385.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1668" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.1621"
+         x="379"
+         y="389.0889"
+         id="text1670">category : &quot;Property&quot;</text>
+      <ellipse
+         cx="370"
+         cy="402.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1672" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="86.0713"
+         x="379"
+         y="405.3857"
+         id="text1674">value : &quot;cm&quot;</text>
+      <ellipse
+         cx="370"
+         cy="418.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1676" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="140.8545"
+         x="379"
+         y="421.6826"
+         id="text1678">valueType : &quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="360"
+         x2="610.9053"
+         y1="428.9844"
+         y2="428.9844"
+         id="line1680" />
+    </g>
+    <!--class Min_Depth-->
+    <g
+       class="entity"
+       data-entity="Min_Depth"
+       data-source-line="42"
+       data-uid="ent0010"
+       id="entity_Min_Depth">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="174.6816"
+         x="87.5"
+         y="676.5"
+         id="rect1683" />
+      <ellipse
+         cx="114.5441"
+         cy="692.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse1685" />
+      <path
+         d="M118.6535,698.5 L110.9347,698.5 L110.9347,686.1094 L118.6535,686.1094 L118.6535,688.2656 L113.3878,688.2656 L113.3878,690.9375 L118.1535,690.9375 L118.1535,693.0938 L113.3878,693.0938 L113.3878,696.3438 L118.6535,696.3438 L118.6535,698.5 Z "
+         fill="#000000"
+         id="path1687" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.917"
+         x="131.2206"
+         y="697.3467"
+         id="text1689">Min Depth Value</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="88.5"
+         x2="261.1816"
+         y1="708.5"
+         y2="708.5"
+         id="line1691" />
+      <ellipse
+         cx="98.5"
+         cy="722.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1693" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="144.3271"
+         x="107.5"
+         y="725.4951"
+         id="text1695">idShort : &quot;MinDepth&quot;</text>
+      <ellipse
+         cx="98.5"
+         cy="738.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1697" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="107.5"
+         y="741.792"
+         id="text1699">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="98.5"
+         cy="754.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1701" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.1621"
+         x="107.5"
+         y="758.0889"
+         id="text1703">category : &quot;Property&quot;</text>
+      <ellipse
+         cx="98.5"
+         cy="771.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1705" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="74.1221"
+         x="107.5"
+         y="774.3857"
+         id="text1707">value : 1.0</text>
+      <ellipse
+         cx="98.5"
+         cy="787.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1709" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.6816"
+         x="107.5"
+         y="790.6826"
+         id="text1711">valueType : &quot;Double&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="88.5"
+         x2="261.1816"
+         y1="797.9844"
+         y2="797.9844"
+         id="line1713" />
+    </g>
+    <!--class Min_Depth_Unit-->
+    <g
+       class="entity"
+       data-entity="Min_Depth_Unit"
+       data-source-line="49"
+       data-uid="ent0011"
+       id="entity_Min_Depth_Unit">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="205.8262"
+         x="72"
+         y="512.5"
+         id="rect1716" />
+      <ellipse
+         cx="118.2212"
+         cy="528.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse1718" />
+      <path
+         d="M122.3306,534.5 L114.6118,534.5 L114.6118,522.1094 L122.3306,522.1094 L122.3306,524.2656 L117.0649,524.2656 L117.0649,526.9375 L121.8306,526.9375 L121.8306,529.0938 L117.0649,529.0938 L117.0649,532.3438 L122.3306,532.3438 L122.3306,534.5 Z "
+         fill="#000000"
+         id="path1720" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="104.8838"
+         x="138.7212"
+         y="533.3467"
+         id="text1722">Min Depth Unit</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="73"
+         x2="276.8262"
+         y1="544.5"
+         y2="544.5"
+         id="line1724" />
+      <ellipse
+         cx="83"
+         cy="558.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1726" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="179.8262"
+         x="92"
+         y="561.4951"
+         id="text1728">idShort : &quot;MinDepth_Unit&quot;</text>
+      <ellipse
+         cx="83"
+         cy="574.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1730" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="92"
+         y="577.792"
+         id="text1732">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="83"
+         cy="590.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1734" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.1621"
+         x="92"
+         y="594.0889"
+         id="text1736">category : &quot;Property&quot;</text>
+      <ellipse
+         cx="83"
+         cy="607.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1738" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="86.0713"
+         x="92"
+         y="610.3857"
+         id="text1740">value : &quot;cm&quot;</text>
+      <ellipse
+         cx="83"
+         cy="623.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1742" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="140.8545"
+         x="92"
+         y="626.6826"
+         id="text1744">valueType : &quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="73"
+         x2="276.8262"
+         y1="633.9844"
+         y2="633.9844"
+         id="line1746" />
+    </g>
+    <!--class Min_Depth_Unit_short-->
+    <g
+       class="entity"
+       data-entity="Min_Depth_Unit_short"
+       data-source-line="56"
+       data-uid="ent0012"
+       id="entity_Min_Depth_Unit_short">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="248.8037"
+         x="361"
+         y="676.5"
+         id="rect1749" />
+      <ellipse
+         cx="408.4961"
+         cy="692.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse1751" />
+      <path
+         d="M412.6055,698.5 L404.8867,698.5 L404.8867,686.1094 L412.6055,686.1094 L412.6055,688.2656 L407.3398,688.2656 L407.3398,690.9375 L412.1055,690.9375 L412.1055,693.0938 L407.3398,693.0938 L407.3398,696.3438 L412.6055,696.3438 L412.6055,698.5 Z "
+         fill="#000000"
+         id="path1753" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="145.3115"
+         x="428.9961"
+         y="697.3467"
+         id="text1755">Min Depth Unit short</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="362"
+         x2="608.8037"
+         y1="708.5"
+         y2="708.5"
+         id="line1757" />
+      <ellipse
+         cx="372"
+         cy="722.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1759" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="222.8037"
+         x="381"
+         y="725.4951"
+         id="text1761">idShort : &quot;MinDepth_Unit_short&quot;</text>
+      <ellipse
+         cx="372"
+         cy="738.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1763" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="381"
+         y="741.792"
+         id="text1765">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="372"
+         cy="754.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1767" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.1621"
+         x="381"
+         y="758.0889"
+         id="text1769">category : &quot;Property&quot;</text>
+      <ellipse
+         cx="372"
+         cy="771.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1771" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="86.0713"
+         x="381"
+         y="774.3857"
+         id="text1773">value : &quot;cm&quot;</text>
+      <ellipse
+         cx="372"
+         cy="787.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse1775" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="140.8545"
+         x="381"
+         y="790.6826"
+         id="text1777">valueType : &quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="362"
+         x2="608.8037"
+         y1="797.9844"
+         y2="797.9844"
+         id="line1779" />
+    </g>
+    <!--SRC=[pP9VIyCm5CNV-oakUVH1fezZ56JpGMHJxFH9AB6zjc5fKjBKhKY_k-dVjNFTXYWEsfTxJfBxEnpAkLn7RCD4O5aMntSDMe9YGQZ1PmezpQGmIaoz5GqGo6JYf6-Hz97Rzgku5tBDqG-GmAS5W48pdG6PIf5eHPdGooms6asWFohT01V0V2UKIiEOF64YK-LXnvcGshLYmeSna3kZKE5XC_Uena2gp1oVFYoSvSrYsKWVbATevZECTTWRbk-FYQELWIwKtFpcsuDuop4oJ5F9UPM4RSDCCSxdr0kPGBTPsjrPki8Rlj7SCwSRjrgkTc_ZCnAK4hmK2vVvjVRMtOklFDHXFPJRRdP07fMCKUcigzS1mlNeShGxhY84CfFf6szlpGSndWNJVGgt61r3AKs_pKEyY0pnR3jnd0UIOjqzL6ufdCHMMV-RC3-Xh4mCbfM9xsLjx8CfCF4dPRtwSLTRYcrN6uZ3NQr9pgshFPvkLtjKHxhQPJkVhkPMRdq1]-->
+  </g>
+</svg>

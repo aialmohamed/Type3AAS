@@ -1,0 +1,96 @@
+@startuml Resource_Agent_Core_Simple
+ 
+skinparam backgroundColor white
+skinparam classBackgroundColor #F8F8F8
+skinparam classBorderColor #444444
+skinparam packageBackgroundColor #FAFAFA
+
+title Resource Agent Core - Class Overview
+skinparam dpi 300
+
+' Force vertical layout - narrower diagram
+left to right direction
+skinparam nodesep 20
+skinparam ranksep 40
+
+' Main Agent
+class ResourceAgent {
+    - resource_client : ResourceAASClient
+    - utils : Utils
+    ==
+    + setup()
+    + add_custom_actions()
+    __
+    Custom Actions:
+    .initialize_agent
+    .check_request
+    .process_cfp
+    .process_time_slots
+    .prepare_execution
+    .execute_task
+    .drill / .move_xy
+    .on_done
+}
+
+' ASL Plans
+class "resource_agent.asl" as ASL <<ASL>> {
+    **Goals**
+    !setup
+    ==
+    **Event Plans**
+    +is_cfp_received
+    +is_negotiation_ready
+    +is_response_positive
+    +is_ready_for_execution
+    +execute_skills
+    +drill_completed
+    +move_xy_completed
+    +execution_finished
+}
+
+' External - placed at top
+class ResourceAASClient <<facade>>
+class BDIAgent <<SPADE>>
+class PubSubMixin <<SPADE>>
+
+' Behaviour Groups - stacked vertically
+package "Initialization" #FFE8E8 {
+    class InitBehaviour as "AgentInitializationBehaviour"
+}
+
+package "Negotiation" #E8FFE8 {
+    class ReqBehaviour as "ProductionRequestBehaviour"
+    class CFPBehaviour as "CFPProcessingBehaviour"
+    class SlotBehaviour as "TimeSlotProcessingBehaviour"
+    class InformBehaviour as "InformProductionAgent"
+    class RespBehaviour as "NegotiationResponseBehaviour"
+}
+
+package "Execution" #E8E8FF {
+    class PrepBehaviour as "PreparationForExecutionBehaviour"
+    class TaskBehaviour as "TaskExecutionBehaviour"
+    class DrillBehaviour as "DrillInvokerBehaviour"
+    class MoveBehaviour as "MoveXYInvokerBehaviour"
+    class DoneBehaviour as "OnDoneBehaviour"
+    class TrackBehaviour as "PublishTrackingBehaviour"
+}
+
+' Relationships
+BDIAgent <|-- ResourceAgent
+PubSubMixin <|-- ResourceAgent
+ResourceAgent --> ResourceAASClient
+ResourceAgent ..> ASL : loads
+
+ResourceAgent --> InitBehaviour
+ResourceAgent --> ReqBehaviour
+ResourceAgent --> CFPBehaviour
+ResourceAgent --> SlotBehaviour
+ResourceAgent --> InformBehaviour
+ResourceAgent --> RespBehaviour
+ResourceAgent --> PrepBehaviour
+ResourceAgent --> TaskBehaviour
+ResourceAgent --> DrillBehaviour
+ResourceAgent --> MoveBehaviour
+ResourceAgent --> DoneBehaviour
+
+@enduml

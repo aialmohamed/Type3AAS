@@ -1,0 +1,65 @@
+@startuml sm_process_plan
+
+skinparam backgroundColor white
+skinparam classBorderColor #333333
+skinparam classBackgroundColor #F5F5F5
+skinparam stereotypeCBackgroundColor #E8E8E8
+
+title Process Plan Submodel
+
+package "Process_Plan_Submodel" <<Submodel>> #DDEEFF {
+    
+    package "Nodes" <<SubmodelElementCollection>> #E8FFE8 {
+        class "Move_Node" <<Property>> {
+            valueType: xs:string
+            value: "Move Node"
+            category: VARIABLE
+        }
+        
+        class "Drill_Node" <<Property>> {
+            valueType: xs:string
+            value: "Drill Node"
+            category: VARIABLE
+        }
+    }
+    
+    package "Edges" <<SubmodelElementCollection>> #FFE8E8 {
+        class "Edge_1" <<Property>> {
+            valueType: xs:string
+            value: "Move_Node to Drill_Node"
+            category: CONSTANT
+        }
+    }
+    
+    class "Entry_Point" <<Property>> #FFFFD0 {
+        valueType: xs:string
+        value: "Move_Node"
+        category: CONSTANT
+    }
+    
+    class "Exit_Point" <<Property>> #FFFFD0 {
+        valueType: xs:string
+        value: "Drill_Node"
+        category: CONSTANT
+    }
+    
+    class "Preconditions" <<Property>> #E8E8FF {
+        valueType: xs:string
+        value: "Material Available"
+        category: CONSTANT
+    }
+    
+    class "Postconditions" <<Property>> #E8E8FF {
+        valueType: xs:string
+        value: "Operation Completed"
+        category: CONSTANT
+    }
+    
+    class "Required_Capabilities" <<Property>> #FFE8FF {
+        valueType: xs:string
+        value: "[Drill_Capability, MoveXY_Capability]"
+        category: CONSTANT
+    }
+}
+
+@enduml

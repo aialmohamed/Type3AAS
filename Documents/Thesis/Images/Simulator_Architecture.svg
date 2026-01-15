@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="DESCRIPTION"
+   height="783px"
+   preserveAspectRatio="none"
+   style="width:871px;height:783px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 871 783"
+   width="871px"
+   zoomAndPan="magnify"
+   id="svg598"
+   sodipodi:docname="Simulator_Architecture.svg"
+   inkscape:export-filename="Simulator_Architecture.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview600"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.0076628"
+     inkscape:cx="435.6616"
+     inkscape:cy="391.5"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg598" />
+  <title
+     id="title388">Resource Simulator Integration</title>
+  <defs
+     id="defs390" />
+  <g
+     id="g596">
+    <g
+       class="title"
+       data-source-line="7"
+       id="g394">
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="248.3496"
+         x="304.3252"
+         y="22.9951"
+         id="text392">Resource Simulator Integration</text>
+    </g>
+    <!--cluster Agent-->
+    <g
+       class="cluster"
+       data-entity="Agent"
+       data-source-line="10"
+       data-uid="ent0002"
+       id="cluster_Agent">
+      <rect
+         fill="#DDEEFF"
+         height="113"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1;"
+         width="514"
+         x="243"
+         y="44.2969"
+         id="rect396" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="119.9023"
+         x="440.0488"
+         y="59.292"
+         id="text398">ResourceAgent</text>
+    </g>
+    <!--cluster BaSyx-->
+    <g
+       class="cluster"
+       data-entity="BaSyx"
+       data-source-line="19"
+       data-uid="ent0006"
+       id="cluster_BaSyx">
+      <path
+         d="M243,355.2969 C243,345.2969 431,345.2969 431,345.2969 C431,345.2969 619,345.2969 619,355.2969 L619,480.2969 C619,490.2969 431,490.2969 431,490.2969 C431,490.2969 243,490.2969 243,480.2969 L243,355.2969"
+         fill="#E8FFE8"
+         style="stroke:#181818;stroke-width:1;"
+         id="path401" />
+      <path
+         d="M243,355.2969 C243,365.2969 431,365.2969 431,365.2969 C431,365.2969 619,365.2969 619,355.2969"
+         fill="none"
+         style="stroke:#181818;stroke-width:1;"
+         id="path403" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="141.8662"
+         x="360.0669"
+         y="380.292"
+         id="text405">BaSyx AAS Server</text>
+    </g>
+    <!--cluster Simulators (FastAPI + SimPy)-->
+    <g
+       class="cluster"
+       data-entity="Simulators .FastAPI . SimPy."
+       data-source-line="29"
+       data-uid="ent0011"
+       id="cluster_Simulators .FastAPI . SimPy.">
+      <path
+         d="M8.5,547.2969 L243.0771,547.2969 A3.75,3.75 0 0 1 245.5771,549.7969 L252.5771,569.5938 L861.5,569.5938 A2.5,2.5 0 0 1 864,572.0938 L864,773.7969 A2.5,2.5 0 0 1 861.5,776.2969 L8.5,776.2969 A2.5,2.5 0 0 1 6,773.7969 L6,549.7969 A2.5,2.5 0 0 1 8.5,547.2969"
+         fill="#FFE8E8"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path408" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="6"
+         x2="252.5771"
+         y1="569.5938"
+         y2="569.5938"
+         id="line410" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="233.5771"
+         x="10"
+         y="562.292"
+         id="text412">Simulators (FastAPI + SimPy)</text>
+    </g>
+    <!--cluster Sim1-->
+    <g
+       class="cluster"
+       data-entity="Sim1"
+       data-source-line="30"
+       data-uid="ent0012"
+       id="cluster_Sim1">
+      <rect
+         fill="#FFE8E8"
+         height="146"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1;"
+         width="370"
+         x="38"
+         y="598.2969"
+         id="rect415" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="108.5684"
+         x="168.7158"
+         y="613.292"
+         id="text417">DrillMachine1</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="44.5635"
+         x="200.7183"
+         y="629.5889"
+         id="text419">:8090</text>
+    </g>
+    <!--cluster Sim2-->
+    <g
+       class="cluster"
+       data-entity="Sim2"
+       data-source-line="35"
+       data-uid="ent0015"
+       id="cluster_Sim2">
+      <rect
+         fill="#FFE8E8"
+         height="146"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1;"
+         width="384"
+         x="448"
+         y="598.2969"
+         id="rect422" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="138.749"
+         x="570.6255"
+         y="613.292"
+         id="text424">MoveXYMachine1</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="44.5635"
+         x="617.7183"
+         y="629.5889"
+         id="text426">:8092</text>
+    </g>
+    <!--entity Drill-->
+    <g
+       class="entity"
+       data-entity="Drill"
+       data-source-line="11"
+       data-uid="ent0003"
+       id="entity_Drill">
+      <rect
+         fill="#F8F8F8"
+         height="46.2969"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="191.5732"
+         x="541"
+         y="87.2969"
+         id="rect429" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="712.5732"
+         y="92.2969"
+         id="rect431" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="710.5732"
+         y="94.2969"
+         id="rect433" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="710.5732"
+         y="98.2969"
+         id="rect435" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="151.5732"
+         x="556"
+         y="120.292"
+         id="text437">DrillInvokerBehaviour</text>
+    </g>
+    <!--entity Move-->
+    <g
+       class="entity"
+       data-entity="Move"
+       data-source-line="12"
+       data-uid="ent0004"
+       id="entity_Move">
+      <rect
+         fill="#F8F8F8"
+         height="46.2969"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="219.0537"
+         x="286.5"
+         y="87.2969"
+         id="rect440" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="485.5537"
+         y="92.2969"
+         id="rect442" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="483.5537"
+         y="94.2969"
+         id="rect444" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="483.5537"
+         y="98.2969"
+         id="rect446" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="179.0537"
+         x="301.5"
+         y="120.292"
+         id="text448">MoveXYInvokerBehaviour</text>
+    </g>
+    <!--entity Cap-->
+    <g
+       class="entity"
+       data-entity="Cap"
+       data-source-line="20"
+       data-uid="ent0007"
+       id="entity_Cap">
+      <rect
+         fill="#F8F8F8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="110.2393"
+         x="286"
+         y="403.2969"
+         id="rect451" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="376.2393"
+         y="408.2969"
+         id="rect453" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="374.2393"
+         y="410.2969"
+         id="rect455" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="374.2393"
+         y="414.2969"
+         id="rect457" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="70.1504"
+         x="301"
+         y="436.292"
+         id="text459">Capability</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="70.2393"
+         x="301"
+         y="452.5889"
+         id="text461">Submodel</text>
+    </g>
+    <g
+       class="entity"
+       data-entity="GMN8"
+       data-source-line="22"
+       data-uid="ent0009"
+       id="entity_GMN8">
+      <path
+         d="M431,407.2969 L431,430.7969 L396.09,434.7969 L431,438.7969 L431,462.6953 A0,0 0 0 0 431,462.6953 L594.6318,462.6953 A0,0 0 0 0 594.6318,462.6953 L594.6318,417.2969 L584.6318,407.2969 L431,407.2969 A0,0 0 0 0 431,407.2969"
+         fill="#FEFFDD"
+         style="stroke:#181818;stroke-width:0.5;"
+         id="path464" />
+      <path
+         d="M584.6318,407.2969 L584.6318,417.2969 L594.6318,417.2969 L584.6318,407.2969"
+         fill="#FEFFDD"
+         style="stroke:#181818;stroke-width:0.5;"
+         id="path466" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="142.6318"
+         x="437"
+         y="424.3638"
+         id="text468">invocationDelegation:</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="140.0229"
+         x="437"
+         y="439.4966"
+         id="text470">http://localhost:8090/</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="113.2168"
+         x="437"
+         y="454.6294"
+         id="text472">drill_invocation_1</text>
+    </g>
+    <!--entity Env1-->
+    <g
+       class="entity"
+       data-entity="Env1"
+       data-source-line="31"
+       data-uid="ent0013"
+       id="entity_Env1">
+      <rect
+         fill="#F8F8F8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="129.7012"
+         x="254"
+         y="657.2969"
+         id="rect475" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="363.7012"
+         y="662.2969"
+         id="rect477" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="361.7012"
+         y="664.2969"
+         id="rect479" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="361.7012"
+         y="668.2969"
+         id="rect481" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="43.1416"
+         x="269"
+         y="690.292"
+         id="text483">SimPy</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="89.7012"
+         x="269"
+         y="706.5889"
+         id="text485">Environment</text>
+    </g>
+    <!--entity Proc1-->
+    <g
+       class="entity"
+       data-entity="Proc1"
+       data-source-line="32"
+       data-uid="ent0014"
+       id="entity_Proc1">
+      <rect
+         fill="#F8F8F8"
+         height="46.2969"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="138.3418"
+         x="81"
+         y="665.7969"
+         id="rect488" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="199.3418"
+         y="670.7969"
+         id="rect490" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="197.3418"
+         y="672.7969"
+         id="rect492" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="197.3418"
+         y="676.7969"
+         id="rect494" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="98.3418"
+         x="96"
+         y="698.792"
+         id="text496">drill_process()</text>
+    </g>
+    <!--entity Env2-->
+    <g
+       class="entity"
+       data-entity="Env2"
+       data-source-line="36"
+       data-uid="ent0016"
+       id="entity_Env2">
+      <rect
+         fill="#F8F8F8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="129.7012"
+         x="678"
+         y="657.2969"
+         id="rect499" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="787.7012"
+         y="662.2969"
+         id="rect501" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="785.7012"
+         y="664.2969"
+         id="rect503" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="785.7012"
+         y="668.2969"
+         id="rect505" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="43.1416"
+         x="693"
+         y="690.292"
+         id="text507">SimPy</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="89.7012"
+         x="693"
+         y="706.5889"
+         id="text509">Environment</text>
+    </g>
+    <!--entity Proc2-->
+    <g
+       class="entity"
+       data-entity="Proc2"
+       data-source-line="37"
+       data-uid="ent0017"
+       id="entity_Proc2">
+      <rect
+         fill="#F8F8F8"
+         height="46.2969"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="151.1318"
+         x="491.5"
+         y="665.7969"
+         id="rect512" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="622.6318"
+         y="670.7969"
+         id="rect514" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="620.6318"
+         y="672.7969"
+         id="rect516" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="620.6318"
+         y="676.7969"
+         id="rect518" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="111.1318"
+         x="506.5"
+         y="698.792"
+         id="text520">move_process()</text>
+    </g>
+    <!--entity Client-->
+    <g
+       class="entity"
+       data-entity="Client"
+       data-source-line="16"
+       data-uid="ent0005"
+       id="entity_Client">
+      <rect
+         fill="#F8F8F8"
+         height="46.2969"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="173.7109"
+         x="164"
+         y="228.2969"
+         id="rect523" />
+      <rect
+         fill="#F8F8F8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="15"
+         x="317.7109"
+         y="233.2969"
+         id="rect525" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="315.7109"
+         y="235.2969"
+         id="rect527" />
+      <rect
+         fill="#F8F8F8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="4"
+         x="315.7109"
+         y="239.2969"
+         id="rect529" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="133.7109"
+         x="179"
+         y="261.292"
+         id="text531">ResourceAASClient</text>
+    </g>
+    <!--link Agent to Client-->
+    <g
+       class="link"
+       data-entity-1="Agent"
+       data-entity-2="Client"
+       data-source-line="42"
+       data-uid="lnk18"
+       id="link_Agent_Client">
+      <path
+         d="M248.3122,157.712 C248.3018,158.0036 248.2916,158.2957 248.2815,158.5884 C248.2412,159.7592 248.2028,160.9388 248.1666,162.1257 C248.0942,164.4994 248.0305,166.9021 247.9778,169.3209 C247.7669,178.9962 247.73,188.9294 248,198.2969 C248.28,208.1469 248.4949,213.0486 249.0749,222.3086"
+         fill="none"
+         id="Agent-to-Client"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="249.45,228.2969,252.8796,219.0644,249.1374,223.3067,244.8952,219.5645,249.45,228.2969"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon535" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="84.1001"
+         x="249"
+         y="194.3638"
+         id="text537">invoke_drill()</text>
+    </g>
+    <!--link Client to Agent-->
+    <g
+       class="link"
+       data-entity-1="Client"
+       data-entity-2="Agent"
+       data-source-line="47"
+       data-uid="lnk23"
+       id="link_Client_Agent">
+      <path
+         d="M199.55,228.0969 C187.76,220.4469 176.73,210.6169 170,198.2969 C157.535,175.4769 176.9625,154.0444 199.9075,138.1619 C211.38,130.2206 223.7319,123.6669 233.4163,119.0209 C235.8373,117.8595 238.0917,116.8172 240.124,115.9023 C241.1401,115.4449 236.6033,117.4232 237.5014,117.0305"
+         fill="none"
+         id="Client-to-Agent"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="242.9988,114.6266,233.1501,114.5676,238.4176,116.6298,236.3553,121.8974,242.9988,114.6266"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon541" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="67.9961"
+         x="171"
+         y="194.3638"
+         id="text543">drill_result</text>
+    </g>
+    <!--link Agent to Client-->
+    <g
+       class="link"
+       data-entity-1="Agent"
+       data-entity-2="Client"
+       data-source-line="49"
+       data-uid="lnk24"
+       id="g551">
+      <path
+         d="M258.363,157.3457 C258.4084,157.4456 258.454,157.5453 258.4999,157.6449 C258.6834,158.0431 258.8712,158.4392 259.0634,158.8329 C259.4479,159.6203 259.8499,160.398 260.2705,161.1642 C261.1115,162.6965 262.0262,164.1827 263.021,165.6074 C265.0105,168.4569 267.32,171.0606 270,173.2969 C281.68,183.0469 327.89,169.9269 338,181.2969 C353.82,199.0869 339.4799,213.0606 314.8599,225.5606"
+         fill="none"
+         id="Agent-to-Client-1"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="309.51,228.2769,319.3458,227.7691,313.9683,226.0133,315.7241,220.6359,309.51,228.2769"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon547" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="117.8633"
+         x="344"
+         y="194.3638"
+         id="text549">invoke_move_xy()</text>
+    </g>
+    <!--link Client to BaSyx-->
+    <g
+       class="link"
+       data-entity-1="Client"
+       data-entity-2="BaSyx"
+       data-source-line="43"
+       data-uid="lnk19"
+       id="link_Client_BaSyx">
+      <path
+         d="M163.93,270.5769 C147.02,278.1969 131.36,288.9969 121,304.2969 C98.495,337.5369 129.635,369.4269 167.065,393.2431 C185.78,405.1513 206.0675,415.0409 222.0081,422.0717 C229.9784,425.5871 236.862,428.3878 241.919,430.3687 C242.235,430.4925 236.9525,428.4371 237.2541,428.5544"
+         fill="none"
+         id="Client-to-BaSyx"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="242.8456,430.7304,235.909,423.7387,238.186,428.9171,233.0076,431.1941,242.8456,430.7304"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon554" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="85.8013"
+         x="122"
+         y="317.3638"
+         id="text556">POST /invoke</text>
+    </g>
+    <!--link BaSyx to Client-->
+    <g
+       class="link"
+       data-entity-1="BaSyx"
+       data-entity-2="Client"
+       data-source-line="46"
+       data-uid="lnk22"
+       id="link_BaSyx_Client">
+      <path
+         d="M258.1418,345.1782 C258.2247,345.0191 258.3083,344.8603 258.3924,344.7019 C258.729,344.0684 259.0752,343.4406 259.4313,342.8191 C262.2802,337.8464 265.7625,333.2694 270,329.2969 C281.26,318.7369 328.73,332.8269 339,321.2969 C354.88,303.4669 340.5492,289.5349 315.7992,277.0749"
+         fill="none"
+         id="BaSyx-to-Client"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="310.44,274.3769,316.6801,281.9967,314.906,276.6252,320.2774,274.8511,310.44,274.3769"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon560" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="40.752"
+         x="345"
+         y="317.3638"
+         id="text562">Result</text>
+    </g>
+    <!--link Client to BaSyx-->
+    <g
+       class="link"
+       data-entity-1="Client"
+       data-entity-2="BaSyx"
+       data-source-line="50"
+       data-uid="lnk25"
+       id="g570">
+      <path
+         d="M247.35,274.4969 C246.01,283.6969 244.66,294.4769 244,304.2969 C243.5263,311.3731 243.275,318.6686 243.1987,326.0222 C243.1605,329.699 243.1661,333.3904 243.2094,337.0761 C243.2311,338.919 243.2622,340.7604 243.302,342.598 C243.312,343.0574 243.3225,343.5165 243.3335,343.9754 C243.339,344.2048 243.1935,338.4361 243.1993,338.6654"
+         fill="none"
+         id="Client-to-BaSyx-1"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="243.3505,344.6635,247.1224,335.5655,243.2245,339.6651,239.1249,335.7671,243.3505,344.6635"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon566" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="85.8013"
+         x="245"
+         y="317.3638"
+         id="text568">POST /invoke</text>
+    </g>
+    <!--link BaSyx to Sim1-->
+    <g
+       class="link"
+       data-entity-1="BaSyx"
+       data-entity-2="Sim1"
+       data-source-line="44"
+       data-uid="lnk20"
+       id="link_BaSyx_Sim1">
+      <path
+         d="M242.8664,435.6773 C242.7178,435.6772 242.5675,435.6773 242.4153,435.6774 C237.5446,435.6827 230.7873,435.7941 222.6309,436.1952 C206.3181,436.9972 184.4088,438.9575 160.8025,443.5431 C113.59,452.7144 59.59,472.3869 30,514.2969 C8.02,545.4319 11.5525,587.9494 20.8088,623.1019 C25.4369,640.6781 31.4959,656.4131 36.5123,667.9634 C36.8259,668.6853 37.1353,669.3909 37.4401,670.0795 C37.5925,670.4238 35.2968,665.2855 35.4468,665.6213"
+         fill="none"
+         id="BaSyx-to-Sim1"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="37.8937,671.0997,37.8756,661.2509,35.8546,666.5344,30.5711,664.5133,37.8937,671.0997"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon573" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="96.5605"
+         x="31"
+         y="527.3638"
+         id="text575">HTTP Delegate</text>
+    </g>
+    <!--link Sim1 to BaSyx-->
+    <g
+       class="link"
+       data-entity-1="Sim1"
+       data-entity-2="BaSyx"
+       data-source-line="45"
+       data-uid="lnk21"
+       id="link_Sim1_BaSyx">
+      <path
+         d="M37.9789,635.3848 C37.8761,633.4966 37.7934,631.5829 37.7338,629.6481 C36.78,598.6919 41.745,562.3569 65,539.2969 C75.65,528.7369 118.17,537.1069 132,531.2969 C162.775,518.3719 192.0825,495.0344 213.9125,474.6656 C224.8275,464.4813 233.8731,455.0391 240.2981,448.0117 C241.1013,447.1333 241.8634,446.2926 242.5832,445.4929 C242.6732,445.393 238.7528,449.7571 238.8414,449.6584"
+         fill="none"
+         id="Sim1-to-BaSyx"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="242.8511,445.195,233.8609,449.217,239.5097,448.9145,239.8122,454.5633,242.8511,445.195"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon579" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="118.3394"
+         x="162"
+         y="527.3638"
+         id="text581">OperationVariable</text>
+    </g>
+    <!--link BaSyx to Sim2-->
+    <g
+       class="link"
+       data-entity-1="BaSyx"
+       data-entity-2="Sim2"
+       data-source-line="51"
+       data-uid="lnk26"
+       id="link_BaSyx_Sim2">
+      <path
+         d="M260.2515,490.5593 C260.3522,490.7879 260.4541,491.0159 260.557,491.2434 C261.3803,493.0636 262.2731,494.8496 263.2412,496.5864 C265.1775,500.06 267.415,503.3369 270,506.2969 C276.03,513.1969 280.58,510.6869 289,514.2969 C306.38,521.7469 309.73,526.4169 328,531.2969 C343.55,535.4469 387.29,529.4169 400,539.2969 C413.71,549.9444 424.0637,564.345 431.8828,580.0066 C435.7923,587.8373 439.0682,595.9834 441.8131,604.1331 C443.1855,608.2079 444.4252,612.2837 445.545,616.3215 C446.1049,618.3404 446.6348,620.3498 447.1364,622.3448 C447.3871,623.3423 446.2347,618.5009 446.4715,619.4906"
+         fill="none"
+         id="BaSyx-to-Sim2"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="447.8676,625.3259,449.6637,615.6422,446.7042,620.4632,441.8833,617.5037,447.8676,625.3259"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon585" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="96.5605"
+         x="329"
+         y="527.3638"
+         id="text587">HTTP Delegate</text>
+    </g>
+    <!--link Sim2 to BaSyx-->
+    <g
+       class="link"
+       data-entity-1="Sim2"
+       data-entity-2="BaSyx"
+       data-source-line="52"
+       data-uid="lnk27"
+       id="link_Sim2_BaSyx">
+      <path
+         d="M464.1163,597.9603 C463.9455,595.5916 463.7359,593.2162 463.4839,590.8396 C462.4759,581.333 460.7898,571.8065 458.1997,562.6139 C453.0194,544.2288 444.2225,527.1794 430,514.2969 C416.81,502.3469 283.85,517.4769 270,506.2969 C266.9412,503.8294 264.3447,500.9256 262.1432,497.7275 C261.0425,496.1284 260.0405,494.4557 259.129,492.7271 C258.9011,492.295 258.6788,491.8594 258.4621,491.4205 C258.3537,491.2011 258.2468,490.9809 258.1411,490.7599 C258.0883,490.6494 260.5887,495.9685 260.5366,495.8576"
+         fill="none"
+         id="Sim2-to-BaSyx"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="257.9837,490.4278,258.1932,500.2744,260.1111,494.9526,265.4329,496.8706,257.9837,490.4278"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon591" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13"
+         lengthAdjust="spacing"
+         textLength="118.3394"
+         x="443"
+         y="527.3638"
+         id="text593">OperationVariable</text>
+    </g>
+    <!--SRC=[bPDDYzim48Rl-XL3zj24icJZK-f38L-cEImRwh2q40YAFRL5PCd8IdP3sVzUUUHutIIqh0t6ddb6Uj_HkDeBLNB32zZnP9yPVL3fJ4jju2KN5bdLvXDTb5gXijCBy2uQrtS7JRdbErxX5RaOHz6YInfCB5UPl4PhqA7C2YiHlcEb3oP1Y4LnaDmwOgaiPePReHLZds2IEMbGYHHPkoZqpdMKxG6l6kvkFbyieWX-Ct1NQmrwSoEaNAgZtgEPOiwFmjLJ8MKkyKTzn1y_R_9rYhsHj4aCCobS0UkKjj8ciKzILSEvgYcFJwyGepcYOUUEGi-7woLzYgfyyChCZ9Ty9wImfusA3xj2foZzBhmaLccBO4IMMz2_scXz2MSfeUREKM96Rs6RpQqjm-5GEaJckhBX-E7Bmx1DftMhjkzBR4UKGfNIZhuhxKbMh7I7ppDdxZq6_OXNTh9QmkUQN9q6lVDCD3uxfqn7yyYJN2WSRHIf8P-kSjJW5wsXDJTgeOx2Q5MSs- - -HxTmxwWqEi6gwW-8NRal3x_HyrALdus_PGLdMS57PGMtyC9jSKDLqAYYFaTIlp0_zVVtNvi1Wv1EU8zRSjOVi2PU8twQGbWznMiOUexvO9scfeRmRRrUGJCSo2ZOBNugqV-Spzm8lfFT5LeDxXyuIDlTsmiDcn4oFlyF-TI1rzD73GIt30J_CV07]-->
+  </g>
+</svg>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="441px"
+   preserveAspectRatio="none"
+   style="width:509px;height:441px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 509 441"
+   width="509px"
+   zoomAndPan="magnify"
+   id="svg961"
+   sodipodi:docname="sm_interaction.svg"
+   inkscape:export-filename="sm_interaction.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview963"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.7800454"
+     inkscape:cx="254.4879"
+     inkscape:cy="221.06178"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg961" />
+  <defs
+     id="defs875" />
+  <g
+     id="g959">
+    <!--cluster <<Submodel>>\nCapability-->
+    <g
+       class="cluster"
+       data-entity="..Submodel...nCapability"
+       data-source-line="7"
+       data-uid="ent0002"
+       id="cluster_..Submodel...nCapability">
+      <path
+         d="M8.5,6 L106.1807,6 A3.75,3.75 0 0 1 108.6807,8.5 L115.6807,44.5938 L499.5,44.5938 A2.5,2.5 0 0 1 502,47.0938 L502,431.5 A2.5,2.5 0 0 1 499.5,434 L8.5,434 A2.5,2.5 0 0 1 6,431.5 L6,8.5 A2.5,2.5 0 0 1 8.5,6"
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path877" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="6"
+         x2="115.6807"
+         y1="44.5938"
+         y2="44.5938"
+         id="line879" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="96.6807"
+         x="10"
+         y="20.9951"
+         id="text881">«Submodel»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="79.4268"
+         x="18.627"
+         y="37.292"
+         id="text883">Capability</text>
+    </g>
+    <!--cluster <<SubmodelElementCollection>> DrillMachine_Endpoints-->
+    <g
+       class="cluster"
+       data-entity="..SubmodelElementCollection.. DrillMachine_Endpoints"
+       data-source-line="9"
+       data-uid="ent0003"
+       id="cluster_..SubmodelElementCollection.. DrillMachine_Endpoints">
+      <path
+         d="M32.5,65 L462.8242,65 A3.75,3.75 0 0 1 465.3242,67.5 L472.3242,87.2969 L475.5,87.2969 A2.5,2.5 0 0 1 478,89.7969 L478,407.5 A2.5,2.5 0 0 1 475.5,410 L32.5,410 A2.5,2.5 0 0 1 30,407.5 L30,67.5 A2.5,2.5 0 0 1 32.5,65"
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path886" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="30"
+         x2="472.3242"
+         y1="87.2969"
+         y2="87.2969"
+         id="line888" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="429.3242"
+         x="34"
+         y="79.9951"
+         id="text890">«SubmodelElementCollection» DrillMachine_Endpoints</text>
+    </g>
+    <!--class Machine_OPCUA_Endpoint-->
+    <g
+       class="entity"
+       data-entity="Machine_OPCUA_Endpoint"
+       data-source-line="10"
+       data-uid="ent0004"
+       id="entity_Machine_OPCUA_Endpoint">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="416.3457"
+         x="46"
+         y="100.5"
+         id="rect893" />
+      <ellipse
+         cx="157.9351"
+         cy="116.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse895" />
+      <path
+         d="M162.0444,122.5 L154.3257,122.5 L154.3257,110.1094 L162.0444,110.1094 L162.0444,112.2656 L156.7788,112.2656 L156.7788,114.9375 L161.5444,114.9375 L161.5444,117.0938 L156.7788,117.0938 L156.7788,120.3438 L162.0444,120.3438 L162.0444,122.5 Z "
+         fill="#000000"
+         id="path897" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="183.9756"
+         x="178.4351"
+         y="121.3467"
+         id="text899">Machine_OPCUA_Endpoint</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="47"
+         x2="461.3457"
+         y1="132.5"
+         y2="132.5"
+         id="line901" />
+      <ellipse
+         cx="57"
+         cy="146.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse903" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="256.3682"
+         x="66"
+         y="149.4951"
+         id="text905">idShort :&quot;Machine_OPCUA_Endpoint&quot;</text>
+      <ellipse
+         cx="57"
+         cy="162.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse907" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="66"
+         y="165.792"
+         id="text909">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="57"
+         cy="178.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse911" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="165.6758"
+         x="66"
+         y="182.0889"
+         id="text913">category : &quot;CONSTANT&quot;</text>
+      <ellipse
+         cx="57"
+         cy="195.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse915" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="390.3457"
+         x="66"
+         y="198.3857"
+         id="text917">value : &quot;opc.tcp://Place_Holder:4840/freeopcua/server/&quot;</text>
+      <ellipse
+         cx="57"
+         cy="211.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse919" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="140.8545"
+         x="66"
+         y="214.6826"
+         id="text921">valueType : &quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="47"
+         x2="461.3457"
+         y1="221.9844"
+         y2="221.9844"
+         id="line923" />
+    </g>
+    <!--class MQTT_Broker_Endpoint-->
+    <g
+       class="entity"
+       data-entity="MQTT_Broker_Endpoint"
+       data-source-line="17"
+       data-uid="ent0005"
+       id="entity_MQTT_Broker_Endpoint">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="261.3066"
+         x="123.5"
+         y="264.5"
+         id="rect926" />
+      <ellipse
+         cx="168.4463"
+         cy="280.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse928" />
+      <path
+         d="M172.5557,286.5 L164.8369,286.5 L164.8369,274.1094 L172.5557,274.1094 L172.5557,276.2656 L167.29,276.2656 L167.29,278.9375 L172.0557,278.9375 L172.0557,281.0938 L167.29,281.0938 L167.29,284.3438 L172.5557,284.3438 L172.5557,286.5 Z "
+         fill="#000000"
+         id="path930" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="162.9141"
+         x="188.9463"
+         y="285.3467"
+         id="text932">MQTT_Broker_Endpoint</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="124.5"
+         x2="383.8066"
+         y1="296.5"
+         y2="296.5"
+         id="line934" />
+      <ellipse
+         cx="134.5"
+         cy="310.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse936" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="235.3066"
+         x="143.5"
+         y="313.4951"
+         id="text938">idShort :&quot;MQTT_Broker_Endpoint&quot;</text>
+      <ellipse
+         cx="134.5"
+         cy="326.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse940" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="143.5"
+         y="329.792"
+         id="text942">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="134.5"
+         cy="342.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse944" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="165.6758"
+         x="143.5"
+         y="346.0889"
+         id="text946">category : &quot;CONSTANT&quot;</text>
+      <ellipse
+         cx="134.5"
+         cy="359.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse948" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="231.7656"
+         x="143.5"
+         y="362.3857"
+         id="text950">value : &quot;tcp://Place_Holder:1883&quot;</text>
+      <ellipse
+         cx="134.5"
+         cy="375.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse952" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="140.8545"
+         x="143.5"
+         y="378.6826"
+         id="text954">valueType : &quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="124.5"
+         x2="383.8066"
+         y1="385.9844"
+         y2="385.9844"
+         id="line956" />
+    </g>
+    <!--SRC=[hP71IiD054Nt-Of7bYwCOXSXb42D1LtOLX9tGfZEl2P3NcR2P58DadztQhJ54i65CBjptu5xXn7frrg-ILLudaUuis0r65cK5eGqoAtKof66yOeL2FvyddRRMWkaE7vH2MlOLfAqlG_l7e1x4yabOOtA9ffe5COnt1b9zCXuAHNcIoKQBPLjHmk0Ipid-D-1zIPvNXnZFh0Mfj7NFS05I96MsbY8VhCSavLK0YBm7rHhcU9u8fnPBBJf3pHPhz9iiSfETC-emmFI3R-ql8c2O4ECOtwlIQ29Pk7iAjWPHCSx5hHezcY2i_kiRpuTgJNk4qOu_1pXASloMwChD6SJJ83f0QOC_rT_elfr6DxyiUZW3Tu7]-->
+  </g>
+</svg>

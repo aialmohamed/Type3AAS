@@ -1,0 +1,108 @@
+@startuml Repository_Hierarchy_Simple
+
+skinparam backgroundColor white
+skinparam classBackgroundColor #F8F8F8
+skinparam classBorderColor #444444
+skinparam arrowColor #444444
+skinparam packageBackgroundColor #FAFAFA
+skinparam packageBorderColor #CCCCCC
+
+title Resource Agent Repository Class Hierarchy
+
+' Base classes
+abstract class RepositoryBase <<abstract>> {
+    # _session : ClientSession
+    # loader : IdConfigLoader
+    ==
+    + get_submodel_by_identifier()
+    + update_submodel_by_identifier()
+    + create_submodel_base()
+    + delete_submodel_by_identifier_base()
+    --
+    # _b64url_no_pad()
+}
+
+abstract class SubmodelElementRepositoryBase <<abstract>> {
+    # _session : ClientSession
+    # loader : IdConfigLoader
+    ==
+    + get_submodel_element_by_id()
+    + get_submodel_element_value_by_id()
+    + update_submodel_element_value_by_id()
+    + invoke_operation_on_submodel_element()
+    + create_submodel_element()
+    + delete_submodel_element_by_id()
+    --
+    # _invoke_operation_payload()
+    # _element_exists()
+}
+
+' Concrete classes
+class RepositorySubmodel {
+    - prefix : str
+    ==
+    + get_Capabilities_submodel_and_store()
+    + get_Knowledge_submodel_and_store()
+    + get_Operational_State_submodel_and_store()
+    + get_Interaction_submodel_and_store()
+    + update_*_submodel()
+    + create_submodel()
+    + delete_submodel_by_identifier()
+}
+
+class SubmodelElementRepositoryGetters {
+    - prefix : str
+    ==
+    + get_*() : model.SubmodelElement
+    + getvalue_*() : Any
+    + invoke_drill()
+    + invoke_move_xy()
+    + get_time_slot_manager_from_server()
+}
+
+class SubmodelElementRepositoryUpdate {
+    - prefix : str
+    ==
+    + update_Operational_State_*()
+    + update_Knowledge_*()
+    + update_Interaction_*()
+    + update_time_manager_to_server()
+}
+
+class SubmodelElementRepositoryCreateDelete {
+    ==
+    + create_element()
+    + create_element_in_collection()
+    + delete_element()
+    + delete_element_from_collection()
+}
+
+' Client
+class ResourceAASClient <<facade>> {
+    - prefix : str
+    - session : ClientSession
+    ==
+    + SubmodelRepository
+    + SubmodelElementRepositoryGetters
+    + SubmodelElementRepositoryUpdate
+    + SubmodelElementRepositoryCreateDelete
+    --
+    + initialize_aas_client()
+    + allocate_time_slot()
+    + release_time_slot()
+    + close()
+}
+
+' Inheritance
+RepositoryBase <|-- RepositorySubmodel
+SubmodelElementRepositoryBase <|-- SubmodelElementRepositoryGetters
+SubmodelElementRepositoryBase <|-- SubmodelElementRepositoryUpdate
+SubmodelElementRepositoryBase <|-- SubmodelElementRepositoryCreateDelete
+
+' Aggregation
+ResourceAASClient o-- RepositorySubmodel
+ResourceAASClient o-- SubmodelElementRepositoryGetters
+ResourceAASClient o-- SubmodelElementRepositoryUpdate
+ResourceAASClient o-- SubmodelElementRepositoryCreateDelete
+
+@enduml

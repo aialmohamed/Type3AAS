@@ -1,0 +1,65 @@
+@startuml Repository_DataFlow
+
+skinparam backgroundColor white
+skinparam componentBackgroundColor #F5F5F5
+skinparam databaseBackgroundColor #E8F4E8
+skinparam rectangleBackgroundColor #FFF8E8
+
+title Resource Agent Repository Data Flow
+
+actor "ResourceAgent\n(BDI Core)" as Agent
+
+package "ResourceAASClient" {
+    component "SubmodelElement\nRepositoryGetters" as Getters #FFE8E8
+    component "SubmodelElement\nRepositoryUpdate" as Update #E8E8FF
+    component "Repository\nSubmodel" as SubmodelRepo #E8FFE8
+}
+
+cloud "BaSyx AAS Server" {
+    database "Operational State\nSubmodel" as OpState
+    database "Knowledge\nSubmodel" as Knowledge  
+    database "Capabilities\nSubmodel" as Capabilities
+    database "Interaction\nSubmodel" as Interaction
+}
+
+rectangle "Operation Invokers\n(FastAPI)" as Invokers #FFFFD0
+
+' Read operations
+Agent --> Getters : "1. Read beliefs"
+Getters --> OpState : "GET current_state"
+Getters --> Knowledge : "GET constraints"
+Getters --> Capabilities : "GET skills"
+Getters --> Interaction : "GET endpoints"
+
+' Update operations  
+Agent --> Update : "2. Update state"
+Update --> OpState : "PATCH/PUT values"
+
+' Operation invocation
+Agent --> Getters : "3. Invoke operation"
+Getters --> Capabilities : "POST invoke"
+Capabilities --> Invokers : "Delegate via\ninvocationDelegation"
+Invokers --> Capabilities : "Return result"
+Capabilities --> Getters : "Operation result"
+Getters --> Agent : "Return to agent"
+
+' Submodel CRUD
+SubmodelRepo --> OpState : "CRUD"
+SubmodelRepo --> Knowledge : "CRUD"
+SubmodelRepo --> Capabilities : "CRUD"
+SubmodelRepo --> Interaction : "CRUD"
+
+note right of Getters
+    **Naming Convention:**
+    get_*() → model object
+    getvalue_*() → value only
+    invoke_*() → operation call
+end note
+
+note right of Update
+    Updates element values
+    via PATCH requests
+    to BaSyx REST API
+end note
+
+@enduml

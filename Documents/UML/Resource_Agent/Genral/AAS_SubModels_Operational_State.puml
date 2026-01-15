@@ -1,0 +1,42 @@
+@startuml "Resource_Agent_Submodels_OP"
+allowmixing
+
+
+left to right direction
+
+
+package "<<Submodel>>\nOperational State" {
+  entity "Current State" as CurrentState {
+    * idShort : "Current_Operational_State"
+    * kind : "Instance"
+    * category: "VARIABLE",
+    * value : "Idle"
+    * value_type: String,
+  }
+  package "<<SubmodelElementCollection>> TimeSlots"
+  {
+    entity "Free_Slots" as Free_Slots {
+      * idShort : "Free_Slots"
+      * kind : "Instance"
+      * category: "PARAMETER",
+      * value : "[10:00-11:00, 14:00-15:00]"
+      * value_type: String,
+    }
+    entity "Booked_Slots" as Booked_Slots {
+      * idShort : "Booked_Slots"
+      * kind : "Instance"
+      * category: "PARAMETER",
+      * value : "[11:00-12:00, 13:00-14:00]"
+      * value_type: String,
+    }
+    entity "Slot_Duration" as Slot_Duration {
+      * idShort : "Slot_Duration"
+      * kind : "Instance"
+      * category: "PARAMETER",
+      * value : "30 minutes"
+      * value_type: String,
+    }
+  }
+}
+
+@enduml

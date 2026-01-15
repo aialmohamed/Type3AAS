@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="ACTIVITY"
+   height="3289.176"
+   preserveAspectRatio="none"
+   version="1.1"
+   viewBox="0 0 3111.4291 3288.4491"
+   width="3112.1599"
+   zoomAndPan="magnify"
+   id="svg1853"
+   sodipodi:docname="Resource_Agent_State_Machine.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:export-filename="Resource_Agent_State_Machine.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1855"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.23130755"
+     inkscape:cx="1560.6927"
+     inkscape:cy="1627.703"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1853" />
+  <title
+     id="title1599">&lt;size:18&gt;Resource Agent - State Machine&lt;/size&gt;</title>
+  <defs
+     id="defs1601" />
+  <g
+     id="g1851"
+     transform="translate(-34.375,-71.975685)">
+    <g
+       class="title"
+       data-source-line="12"
+       id="g1605">
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="56.25px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="1018.6249"
+         x="1084.2926"
+         y="114.7125"
+         id="text1603">Resource Agent - State Machine</text>
+    </g>
+    <rect
+       fill="none"
+       height="50.9277"
+       style="stroke:none;stroke-width:3.125"
+       width="3105.9602"
+       x="34.375"
+       y="167.98399"
+       id="rect1607" />
+    <rect
+       fill="#fff2cc"
+       height="3190.8784"
+       style="stroke:#fff2cc;stroke-width:3.125"
+       width="820.66418"
+       x="87.5"
+       y="167.98399"
+       id="rect1609" />
+    <circle
+       cx="423.78922"
+       cy="265.78671"
+       fill="#222222"
+       style="stroke:#222222;stroke-width:3.125"
+       id="ellipse1611"
+       r="31.25" />
+    <rect
+       fill="#f1f1f1"
+       height="157.08009"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="635.07843"
+       x="106.25"
+       y="359.53671"
+       id="rect1613" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="436.28229"
+       x="137.5"
+       y="428.49579"
+       id="text1615">Get RA_CurrentState,</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="572.57843"
+       x="137.5"
+       y="475.7858"
+       id="text1617">RA_Skills, RA_FreeTimeSlots</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="358.43961"
+       x="244.5694"
+       y="579.11682"
+       id="rect1619" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="295.93961"
+       x="275.8194"
+       y="648.07593"
+       id="text1621">Update Beliefs</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="568.15033"
+       x="139.7141"
+       y="751.40692"
+       id="rect1623" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="505.6503"
+       x="170.9641"
+       y="820.36591"
+       id="text1625">Subscribe to PA_Request</text>
+    <line
+       style="stroke:#000000;stroke-width:4.6875"
+       x1="87.5"
+       x2="87.5"
+       y1="167.98399"
+       y2="3358.8623"
+       id="line1627" />
+    <rect
+       fill="#d5e8d4"
+       height="3190.8784"
+       style="stroke:#d5e8d4;stroke-width:3.125"
+       width="1288.855"
+       x="788.20343"
+       y="167.98399"
+       id="rect1629" />
+    <path
+       d="m 1601.8448,912.0392 v 54.0527 l -62.5,12.5 62.5,12.5 v 54.0528 h 459.5886 V 943.2892 l -31.25,-31.25 h -428.3386"
+       fill="#feffdd"
+       style="stroke:#181818;stroke-width:1.5625"
+       id="path1631" />
+    <path
+       d="m 2030.1834,912.0392 v 31.25 h 31.25 l -31.25,-31.25"
+       fill="#feffdd"
+       style="stroke:#181818;stroke-width:1.5625"
+       id="path1633" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="216.507"
+       x="1620.5948"
+       y="968.27393"
+       id="text1635">Loop until</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="393.96359"
+       x="1620.5948"
+       y="1019.2017"
+       id="text1637">request published</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="403.3096"
+       x="1136.0352"
+       y="923.6969"
+       id="rect1639" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="340.8096"
+       x="1167.2852"
+       y="992.65588"
+       id="text1641">Wait for Request</text>
+    <rect
+       fill="#f1f1f1"
+       height="157.08009"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="475.01831"
+       x="1100.1808"
+       y="1107.6447"
+       id="rect1643" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="412.51831"
+       x="1131.4308"
+       y="1176.6038"
+       id="text1645">Check Current State</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="393.634"
+       x="1131.4308"
+       y="1223.8937"
+       id="text1647">&amp; Skills Constraints</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="534.1507"
+       x="1070.6146"
+       y="1327.2247"
+       id="rect1649" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="471.6507"
+       x="1101.8646"
+       y="1396.1838"
+       id="text1651">Build &amp; Send Response</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="350.80261"
+       x="1162.2887"
+       y="1499.5148"
+       id="rect1653" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="288.30261"
+       x="1193.5387"
+       y="1568.4738"
+       id="text1655">Wait for Reply</text>
+    <polygon
+       fill="#f1f1f1"
+       points="1337.69,1815.0284 1300.19,1777.5284 1337.69,1740.0284 1375.19,1777.5284 "
+       style="stroke:#181818;stroke-width:6.25"
+       id="polygon1657" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="196.936"
+       x="1356.4399"
+       y="1683.1573"
+       id="text1659">Response</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="179.6188"
+       x="1356.4399"
+       y="1730.4474"
+       id="text1661">Positive?</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="37.5px"
+       lengthAdjust="spacing"
+       textLength="65.515099"
+       x="1234.6748"
+       y="1768.6844"
+       id="text1663">Yes</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="37.5px"
+       lengthAdjust="spacing"
+       textLength="50.9949"
+       x="1375.1899"
+       y="1768.6844"
+       id="text1665">No</text>
+    <rect
+       fill="#f1f1f1"
+       height="157.08009"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="452.9404"
+       x="843.21442"
+       y="1846.2784"
+       id="rect1667" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="305.46109"
+       x="874.46442"
+       y="1915.2374"
+       id="text1669">Book Time Slot</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="390.4404"
+       x="874.46442"
+       y="1962.5275"
+       id="text1671">&amp; Set State = Busy</text>
+    <rect
+       fill="#f1f1f1"
+       height="157.08009"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="525.46228"
+       x="806.95343"
+       y="2065.8584"
+       id="rect1673" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="462.96231"
+       x="838.20343"
+       y="2134.8174"
+       id="text1675">Parse Request to Skills</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="357.63089"
+       x="838.20343"
+       y="2182.1074"
+       id="text1677">&amp; Set Skills Order</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="421.55911"
+       x="1394.9158"
+       y="1846.2784"
+       id="rect1679" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="359.05911"
+       x="1426.1658"
+       y="1915.2374"
+       id="text1681">Return to Waiting</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="421.55911"
+       x="1126.9104"
+       y="3117.8223"
+       id="rect1683" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="359.05911"
+       x="1158.1604"
+       y="3186.7812"
+       id="text1685">Return to Waiting</text>
+    <circle
+       cx="1337.6899"
+       cy="3324.4873"
+       fill="none"
+       style="stroke:#222222;stroke-width:3.125"
+       id="ellipse1687"
+       r="34.375" />
+    <circle
+       cx="1337.6899"
+       cy="3324.4873"
+       fill="#222222"
+       style="stroke:#222222;stroke-width:3.125"
+       id="ellipse1689"
+       r="18.75" />
+    <line
+       style="stroke:#000000;stroke-width:4.6875"
+       x1="788.20343"
+       x2="788.20343"
+       y1="167.98399"
+       y2="3358.8623"
+       id="line1691" />
+    <rect
+       fill="#99ccff"
+       height="3190.8784"
+       style="stroke:#99ccff;stroke-width:3.125"
+       width="1019.5267"
+       x="2077.0583"
+       y="167.98399"
+       id="rect1693" />
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="314.89871"
+       x="2448.2227"
+       y="2285.4385"
+       id="rect1695" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="252.3987"
+       x="2479.4727"
+       y="2354.3977"
+       id="text1697">Invoke Skills</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="506.39951"
+       x="2352.4724"
+       y="2457.7285"
+       id="rect1699" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="443.89951"
+       x="2383.7224"
+       y="2526.6875"
+       id="text1701">Wait for Service Done</text>
+    <polygon
+       fill="#f1f1f1"
+       points="2605.6721,2725.9521 2568.1721,2688.4521 2605.6721,2650.9521 2643.1721,2688.4521 "
+       style="stroke:#181818;stroke-width:6.25"
+       id="polygon1703" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="148.912"
+       x="2624.4221"
+       y="2641.3711"
+       id="text1705">Result?</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="37.5px"
+       lengthAdjust="spacing"
+       textLength="98.657204"
+       x="2469.5149"
+       y="2679.6082"
+       id="text1707">Done</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="37.5px"
+       lengthAdjust="spacing"
+       textLength="92.889397"
+       x="2643.1721"
+       y="2679.6082"
+       id="text1709">Error</text>
+    <rect
+       fill="#f1f1f1"
+       height="204.3701"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="494.33899"
+       x="2095.8083"
+       y="2757.2021"
+       id="rect1711" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="431.83899"
+       x="2127.0583"
+       y="2826.1611"
+       id="text1713">Report Success to PA</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="337.08041"
+       x="2127.0583"
+       y="2873.4512"
+       id="text1715">Set State = Free</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="294.4122"
+       x="2127.0583"
+       y="2920.7412"
+       id="text1717">Free Time Slot</text>
+    <rect
+       fill="#f1f1f1"
+       height="109.79"
+       rx="39.0625"
+       ry="39.0625"
+       style="stroke:#181818;stroke-width:6.25"
+       width="431.43771"
+       x="2652.6475"
+       y="2757.2021"
+       id="rect1719" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="40.625px"
+       lengthAdjust="spacing"
+       textLength="368.93771"
+       x="2683.8975"
+       y="2826.1611"
+       id="text1721">Report Error to PA</text>
+    <polygon
+       fill="#f1f1f1"
+       points="2605.6721,3055.3223 2568.1721,3017.8223 2605.6721,2980.3223 2643.1721,3017.8223 "
+       style="stroke:#181818;stroke-width:6.25"
+       id="polygon1723" />
+    <line
+       style="stroke:#000000;stroke-width:4.6875"
+       x1="2077.0583"
+       x2="2077.0583"
+       y1="167.98399"
+       y2="3358.8623"
+       id="line1725" />
+    <line
+       style="stroke:#000000;stroke-width:4.6875"
+       x1="3143.4602"
+       x2="3143.4602"
+       y1="167.98399"
+       y2="3358.8623"
+       id="line1727" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="423.78922"
+       x2="423.78922"
+       y1="297.03671"
+       y2="359.53671"
+       id="line1729" />
+    <polygon
+       fill="#181818"
+       points="436.2892,328.2867 423.7892,340.7867 411.2892,328.2867 423.7892,359.5367 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1731" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="423.78922"
+       x2="423.78922"
+       y1="516.61682"
+       y2="579.11682"
+       id="line1733" />
+    <polygon
+       fill="#181818"
+       points="436.2892,547.8668 423.7892,560.3668 411.2892,547.8668 423.7892,579.1168 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1735" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="423.78922"
+       x2="423.78922"
+       y1="688.90692"
+       y2="751.40692"
+       id="line1737" />
+    <polygon
+       fill="#181818"
+       points="436.2892,720.1569 423.7892,732.6569 411.2892,720.1569 423.7892,751.4069 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1739" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1337.6899"
+       x2="1337.6899"
+       y1="1033.4869"
+       y2="1107.6447"
+       id="line1741" />
+    <polygon
+       fill="#181818"
+       points="1350.19,1076.3947 1337.69,1088.8947 1325.19,1076.3947 1337.69,1107.6447 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1743" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1337.6899"
+       x2="1337.6899"
+       y1="1264.7247"
+       y2="1327.2247"
+       id="line1745" />
+    <polygon
+       fill="#181818"
+       points="1350.19,1295.9747 1337.69,1308.4747 1325.19,1295.9747 1337.69,1327.2247 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1747" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1337.6899"
+       x2="1337.6899"
+       y1="1437.0148"
+       y2="1499.5148"
+       id="line1749" />
+    <polygon
+       fill="#181818"
+       points="1350.19,1468.2648 1337.69,1480.7648 1325.19,1468.2648 1337.69,1499.5148 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1751" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1069.6846"
+       x2="1069.6846"
+       y1="2003.3585"
+       y2="2065.8584"
+       id="line1753" />
+    <polygon
+       fill="#181818"
+       points="1082.1846,2034.6085 1069.6846,2047.1085 1057.1846,2034.6085 1069.6846,2065.8585 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1755" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1300.1899"
+       x2="1069.6846"
+       y1="1777.5284"
+       y2="1777.5284"
+       id="line1757" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1069.6846"
+       x2="1069.6846"
+       y1="1777.5284"
+       y2="1846.2784"
+       id="line1759" />
+    <polygon
+       fill="#181818"
+       points="1082.1846,1815.0284 1069.6846,1827.5284 1057.1846,1815.0284 1069.6846,1846.2784 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1761" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1375.1899"
+       x2="1605.6953"
+       y1="1777.5284"
+       y2="1777.5284"
+       id="line1763" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1605.6953"
+       x2="1605.6953"
+       y1="1777.5284"
+       y2="1846.2784"
+       id="line1765" />
+    <polygon
+       fill="#181818"
+       points="1618.1953,1815.0284 1605.6953,1827.5284 1593.1953,1815.0284 1605.6953,1846.2784 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1767" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1069.6846"
+       x2="1069.6846"
+       y1="2222.9385"
+       y2="2238.5635"
+       id="line1769" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1069.6846"
+       x2="2605.6721"
+       y1="2238.5635"
+       y2="2238.5635"
+       id="line1771" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2605.6721"
+       x2="2605.6721"
+       y1="2238.5635"
+       y2="2285.4385"
+       id="line1773" />
+    <polygon
+       fill="#181818"
+       points="2618.1721,2254.1885 2605.6721,2266.6885 2593.1721,2254.1885 2605.6721,2285.4385 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1775" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1337.6899"
+       x2="1337.6899"
+       y1="1609.3048"
+       y2="1740.0284"
+       id="line1777" />
+    <polygon
+       fill="#181818"
+       points="1350.19,1708.7784 1337.69,1721.2784 1325.19,1708.7784 1337.69,1740.0284 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1779" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1337.6899"
+       x2="1337.6899"
+       y1="3227.6123"
+       y2="3290.1123"
+       id="line1781" />
+    <polygon
+       fill="#181818"
+       points="1350.19,3258.8623 1337.69,3271.3623 1325.19,3258.8623 1337.69,3290.1123 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1783" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2605.6721"
+       x2="2605.6721"
+       y1="2395.2285"
+       y2="2457.7285"
+       id="line1785" />
+    <polygon
+       fill="#181818"
+       points="2618.1721,2426.4786 2605.6721,2438.9786 2593.1721,2426.4786 2605.6721,2457.7286 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1787" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2568.1721"
+       x2="2342.9778"
+       y1="2688.4521"
+       y2="2688.4521"
+       id="line1789" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2342.9778"
+       x2="2342.9778"
+       y1="2688.4521"
+       y2="2757.2021"
+       id="line1791" />
+    <polygon
+       fill="#181818"
+       points="2355.4779,2725.9521 2342.9779,2738.4521 2330.4779,2725.9521 2342.9779,2757.2021 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1793" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2643.1721"
+       x2="2868.3662"
+       y1="2688.4521"
+       y2="2688.4521"
+       id="line1795" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2868.3662"
+       x2="2868.3662"
+       y1="2688.4521"
+       y2="2757.2021"
+       id="line1797" />
+    <polygon
+       fill="#181818"
+       points="2880.8662,2725.9521 2868.3662,2738.4521 2855.8662,2725.9521 2868.3662,2757.2021 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1799" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2342.9778"
+       x2="2342.9778"
+       y1="2961.5723"
+       y2="3017.8223"
+       id="line1801" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2342.9778"
+       x2="2568.1721"
+       y1="3017.8223"
+       y2="3017.8223"
+       id="line1803" />
+    <polygon
+       fill="#181818"
+       points="2536.9221,3030.3223 2549.4221,3017.8223 2536.9221,3005.3223 2568.1721,3017.8223 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1805" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2868.3662"
+       x2="2868.3662"
+       y1="2866.9922"
+       y2="3017.8223"
+       id="line1807" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2868.3662"
+       x2="2643.1721"
+       y1="3017.8223"
+       y2="3017.8223"
+       id="line1809" />
+    <polygon
+       fill="#181818"
+       points="2674.4221,3030.3223 2661.9221,3017.8223 2674.4221,3005.3223 2643.1721,3017.8223 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1811" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2605.6721"
+       x2="2605.6721"
+       y1="2567.5186"
+       y2="2650.9521"
+       id="line1813" />
+    <polygon
+       fill="#181818"
+       points="2618.1721,2619.7021 2605.6721,2632.2021 2593.1721,2619.7021 2605.6721,2650.9521 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1815" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="423.78922"
+       x2="423.78922"
+       y1="861.1969"
+       y2="876.8219"
+       id="line1817" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="423.78922"
+       x2="1337.6899"
+       y1="876.8219"
+       y2="876.8219"
+       id="line1819" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1337.6899"
+       x2="1337.6899"
+       y1="876.8219"
+       y2="923.6969"
+       id="line1821" />
+    <polygon
+       fill="#181818"
+       points="1350.19,892.4469 1337.69,904.9469 1325.19,892.4469 1337.69,923.6969 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1823" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2605.6721"
+       x2="2605.6721"
+       y1="3055.3223"
+       y2="3070.9473"
+       id="line1825" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="2605.6721"
+       x2="1337.6899"
+       y1="3070.9473"
+       y2="3070.9473"
+       id="line1827" />
+    <line
+       style="stroke:#181818;stroke-width:6.25"
+       x1="1337.6899"
+       x2="1337.6899"
+       y1="3070.9473"
+       y2="3117.8223"
+       id="line1829" />
+    <polygon
+       fill="#181818"
+       points="1350.19,3086.5723 1337.69,3099.0723 1325.19,3086.5723 1337.69,3117.8223 "
+       style="stroke:#181818;stroke-width:3.125"
+       id="polygon1831" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="13.9069"
+       x="251.7845"
+       y="208.5938"
+       id="text1833"> </text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       font-weight="bold"
+       lengthAdjust="spacing"
+       textLength="309.94571"
+       x="265.69141"
+       y="208.5938"
+       id="text1835">Initialization</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="13.9069"
+       x="575.63708"
+       y="208.5938"
+       id="text1837"> </text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="13.9069"
+       x="1273.6206"
+       y="208.5938"
+       id="text1839"> </text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       font-weight="bold"
+       lengthAdjust="spacing"
+       textLength="290.20691"
+       x="1287.5275"
+       y="208.5938"
+       id="text1841">Negotiation</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="13.9069"
+       x="1577.7344"
+       y="208.5938"
+       id="text1843"> </text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="13.9069"
+       x="2451.9294"
+       y="208.5938"
+       id="text1845"> </text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       font-weight="bold"
+       lengthAdjust="spacing"
+       textLength="241.97079"
+       x="2465.8362"
+       y="208.5938"
+       id="text1847">Execution</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="43.75px"
+       lengthAdjust="spacing"
+       textLength="13.9069"
+       x="2707.8071"
+       y="208.5938"
+       id="text1849"> </text>
+    <!--SRC=[VLDjInj14Fv-lsAWq6gmLAC5lLXBaceHMfMSHGe1sUpEvOQxx5vtvs8LVtndSp4vGPeF-J3Fx3mlC_S1hckc1JsXWTnvyAYCcbK8moEeb3L1gngXzcIPx3m99TbQURM0cTBbtBl6ch6hvE53GOmTtDG4X_lxtGhcggdumbdEX0yEZZhWK3CjYH-tw64NzTuzRA5-1meFj12XU4U62-WVTncriuQOdCtuKImPKWkflC4wSjwWlor8bnP3W7wICB4yEGr2c1uSdqqmkCPhoMMEbk4ZPAmOuQVI1Lay_HJxpfBa-LsUvtsjdw7NkxJ2hIfwKb52hmVFIM3bEKc_8yDaU3zkl9TXgqbxKokLhAIg2diHlF28jxJ0h78S1adwgpQHS8GLOHuBMJCBsjCCWHtS3Eyd-AV1m8Cemdp6OtCKHLpXt8cAZOBqJX6lDhtfjqxcUfeNdC8FvsfePDVLrFgs0UfcLb4eq2Jfk41Tmbft6y7KleTMDeoT3UoLd4hKDsgeCY0WMYDaeHOK1wy4rDMZoAKSTbxmgRrnGM9RujTTu08jxFp6i9k0_DAHSoN4J226iYB6jGhu0gCcoBHLuuto0LyCndXQWPiNhTphkFD1WfNqxbovDSa4kV4sFef2vURRcGPPLfs85yfZmYSdMkTvJFZyB-fcc- -bNReIrnnTkndw9Sa1VNCMjwxbWzWuZSX6HUsyA6sqZlUusl3KTkt6-vZQ-B-DvCNCkNmk_lMaLQcTCzYw-C-Tl953O5Sd_m00]-->
+  </g>
+  <metadata
+     id="metadata1974">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>&lt;size:18&gt;Resource Agent - State Machine&lt;/size&gt;</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

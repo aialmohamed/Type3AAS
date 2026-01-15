@@ -1,0 +1,2055 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="DESCRIPTION"
+   height="1073.7198"
+   preserveAspectRatio="none"
+   version="1.1"
+   viewBox="0 0 2342.1865 1073.7198"
+   width="2342.1865"
+   zoomAndPan="magnify"
+   id="svg1053"
+   sodipodi:docname="Infrastructure_Diagram.svg"
+   inkscape:export-filename="Infrastructure_Diagram.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1055"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.39159949"
+     inkscape:cx="1169.5623"
+     inkscape:cy="542.64626"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1053" />
+  <title
+     id="title605">Type 3 AAS Implementation Infrastructure</title>
+  <defs
+     id="defs607" />
+  <g
+     id="g1051"
+     transform="translate(-6.5,-12.358381)">
+    <g
+       class="title"
+       data-source-line="8"
+       id="g611">
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="335.43259"
+         x="1004.1855"
+         y="22.9951"
+         id="text609">Type 3 AAS Implementation Infrastructure</text>
+    </g>
+    <!--cluster Docker-->
+    <g
+       class="cluster"
+       data-entity="Docker"
+       data-source-line="11"
+       data-uid="ent0002"
+       id="cluster_Docker">
+      <rect
+         fill="#e8e8ff"
+         height="400"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1"
+         width="758"
+         x="1487"
+         y="556.79688"
+         id="rect613" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="160.80859"
+         x="1785.5957"
+         y="571.79199"
+         id="text615">Docker Environment</text>
+    </g>
+    <!--cluster BaSyx-->
+    <g
+       class="cluster"
+       data-entity="BaSyx"
+       data-source-line="13"
+       data-uid="ent0003"
+       id="cluster_BaSyx">
+      <polygon
+         fill="#ffe8d0"
+         points="2203,741.7969 1764,741.7969 1764,617.7969 1774,607.7969 2213,607.7969 2213,731.7969 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon618" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="2203"
+         x2="2213"
+         y1="617.79688"
+         y2="607.79688"
+         id="line620" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="1764"
+         x2="2203"
+         y1="617.79688"
+         y2="617.79688"
+         id="line622" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="2203"
+         x2="2203"
+         y1="617.79688"
+         y2="741.79688"
+         id="line624" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="61.625999"
+         x="1953.687"
+         y="633.79199"
+         id="text626">aas-env</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="121.3379"
+         x="1923.8311"
+         y="650.08893"
+         id="text628">(Eclipse BaSyx)</text>
+    </g>
+    <!--cluster Registry-->
+    <g
+       class="cluster"
+       data-entity="Registry"
+       data-source-line="19"
+       data-uid="ent0007"
+       id="cluster_Registry">
+      <polygon
+         fill="#ffe8d0"
+         points="1714,741.7969 1519,741.7969 1519,633.7969 1529,623.7969 1724,623.7969 1724,731.7969 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon631" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="1714"
+         x2="1724"
+         y1="633.79688"
+         y2="623.79688"
+         id="line633" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="1519"
+         x2="1714"
+         y1="633.79688"
+         y2="633.79688"
+         id="line635" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="1714"
+         x2="1714"
+         y1="633.79688"
+         y2="741.79688"
+         id="line637" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="95.313499"
+         x="1569.8433"
+         y="649.79199"
+         id="text639">aas-registry</text>
+    </g>
+    <!--cluster Mongo-->
+    <g
+       class="cluster"
+       data-entity="Mongo"
+       data-source-line="23"
+       data-uid="ent0009"
+       id="cluster_Mongo">
+      <path
+         d="m 1599,816.7969 c 0,-10 179,-10 179,-10 0,0 179,0 179,10 v 98 c 0,10 -179,10 -179,10 0,0 -179,0 -179,-10 v -98"
+         fill="#e8ffe8"
+         style="stroke:#181818;stroke-width:1"
+         id="path642" />
+      <path
+         d="m 1599,816.7969 c 0,10 179,10 179,10 0,0 179,0 179,-10"
+         fill="none"
+         style="stroke:#181818;stroke-width:1"
+         id="path644" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="75.448196"
+         x="1740.2759"
+         y="841.79199"
+         id="text646">MongoDB</text>
+    </g>
+    <!--cluster MQTT-->
+    <g
+       class="cluster"
+       data-entity="MQTT"
+       data-source-line="28"
+       data-uid="ent0012"
+       id="cluster_MQTT">
+      <polygon
+         fill="#ffd0d0"
+         points="2211,921.7969 2057,921.7969 2057,829.7969 2067,819.7969 2221,819.7969 2221,911.7969 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon649" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="2211"
+         x2="2221"
+         y1="829.79688"
+         y2="819.79688"
+         id="line651" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="2057"
+         x2="2211"
+         y1="829.79688"
+         y2="829.79688"
+         id="line653" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="2211"
+         x2="2211"
+         y1="829.79688"
+         y2="921.79688"
+         id="line655" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="79.672897"
+         x="2095.1636"
+         y="845.79199"
+         id="text657">Mosquitto</text>
+    </g>
+    <!--cluster Host-->
+    <g
+       class="cluster"
+       data-entity="Host"
+       data-source-line="34"
+       data-uid="ent0014"
+       id="cluster_Host">
+      <rect
+         fill="#ffffd0"
+         height="463.5"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1"
+         width="2109"
+         x="7"
+         y="44.296902"
+         id="rect660" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="141.9209"
+         x="990.53961"
+         y="59.292"
+         id="text662">Host Environment</text>
+    </g>
+    <!--cluster Prosody-->
+    <g
+       class="cluster"
+       data-entity="Prosody"
+       data-source-line="36"
+       data-uid="ent0015"
+       id="cluster_Prosody">
+      <polygon
+         fill="#d0e8ff"
+         points="817,436.2969 445,436.2969 445,327.2969 455,317.2969 827,317.2969 827,426.2969 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon665" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="817"
+         x2="827"
+         y1="327.29691"
+         y2="317.29691"
+         id="line667" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="445"
+         x2="817"
+         y1="327.29691"
+         y2="327.29691"
+         id="line669" />
+      <line
+         style="stroke:#181818;stroke-width:1"
+         x1="817"
+         x2="817"
+         y1="327.29691"
+         y2="436.29691"
+         id="line671" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="170.8848"
+         x="546.55762"
+         y="343.29199"
+         id="text673">Prosody XMPP Server</text>
+    </g>
+    <!--cluster Agents-->
+    <g
+       class="cluster"
+       data-entity="Agents"
+       data-source-line="41"
+       data-uid="ent0018"
+       id="cluster_Agents">
+      <path
+         d="m 861.5,95.2969 h 113.5811 a 3.75,3.75 0 0 1 2.5,2.5 l 7,19.7969 H 1919.5 a 2.5,2.5 0 0 1 2.5,2.5 v 353.2031 a 2.5,2.5 0 0 1 -2.5,2.5 h -1058 a 2.5,2.5 0 0 1 -2.5,-2.5 v -375.5 a 2.5,2.5 0 0 1 2.5,-2.5"
+         fill="#e8ffe8"
+         style="stroke:#000000;stroke-width:1.5"
+         id="path676" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="859"
+         x2="984.58112"
+         y1="117.5938"
+         y2="117.5938"
+         id="line678" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="112.5811"
+         x="863"
+         y="110.292"
+         id="text680">SPADE Agents</text>
+    </g>
+    <!--cluster PA-->
+    <g
+       class="cluster"
+       data-entity="PA"
+       data-source-line="43"
+       data-uid="ent0019"
+       id="cluster_PA">
+      <rect
+         fill="#f5f5f5"
+         height="281.5"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1"
+         width="271"
+         x="907"
+         y="154.29691"
+         id="rect683" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="138.0313"
+         x="973.48438"
+         y="169.29201"
+         id="text685">Production Agent</text>
+    </g>
+    <!--cluster RA1-->
+    <g
+       class="cluster"
+       data-entity="RA1"
+       data-source-line="48"
+       data-uid="ent0022"
+       id="cluster_RA1">
+      <rect
+         fill="#f5f5f5"
+         height="113"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1"
+         width="312"
+         x="1218"
+         y="322.79691"
+         id="rect688" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="139.3916"
+         x="1304.3042"
+         y="337.79199"
+         id="text690">Resource Agent 1</text>
+    </g>
+    <!--cluster RA2-->
+    <g
+       class="cluster"
+       data-entity="RA2"
+       data-source-line="53"
+       data-uid="ent0025"
+       id="cluster_RA2">
+      <rect
+         fill="#f5f5f5"
+         height="113"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:1"
+         width="312"
+         x="1570"
+         y="322.79691"
+         id="rect693" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="139.3916"
+         x="1656.3042"
+         y="337.79199"
+         id="text695">Resource Agent 2</text>
+    </g>
+    <!--cluster Sims-->
+    <g
+       class="cluster"
+       data-entity="Sims"
+       data-source-line="59"
+       data-uid="ent0028"
+       id="cluster_Sims">
+      <path
+         d="m 41.5,145.7969 h 234.5771 a 3.75,3.75 0 0 1 2.5,2.5 l 7,19.7969 H 410.5 a 2.5,2.5 0 0 1 2.5,2.5 v 271.2031 a 2.5,2.5 0 0 1 -2.5,2.5 h -369 a 2.5,2.5 0 0 1 -2.5,-2.5 v -293.5 a 2.5,2.5 0 0 1 2.5,-2.5"
+         fill="#ffe8e8"
+         style="stroke:#000000;stroke-width:1.5"
+         id="path698" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="39"
+         x2="285.57709"
+         y1="168.0938"
+         y2="168.0938"
+         id="line700" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="233.5771"
+         x="43"
+         y="160.79201"
+         id="text702">Simulators (FastAPI + SimPy)</text>
+    </g>
+    <!--entity AASServer-->
+    <g
+       class="entity"
+       data-entity="AASServer"
+       data-source-line="14"
+       data-uid="ent0004"
+       id="entity_AASServer">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="118.4014"
+         x="2052"
+         y="671.79688"
+         id="rect705" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="2150.4014"
+         y="676.79688"
+         id="rect707" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="2148.4014"
+         y="678.79688"
+         id="rect709" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="2148.4014"
+         y="682.79688"
+         id="rect711" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="78.401398"
+         x="2067"
+         y="704.79199"
+         id="text713">AAS Server</text>
+    </g>
+    <!--entity REST-->
+    <g
+       class="entity"
+       data-entity="REST"
+       data-source-line="15"
+       data-uid="ent0005"
+       id="entity_REST">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="102.6104"
+         x="1913.5"
+         y="671.79688"
+         id="rect716" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1996.1104"
+         y="676.79688"
+         id="rect718" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1994.1104"
+         y="678.79688"
+         id="rect720" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1994.1104"
+         y="682.79688"
+         id="rect722" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="62.610401"
+         x="1928.5"
+         y="704.79199"
+         id="text724">REST API</text>
+    </g>
+    <!--entity WebUI-->
+    <g
+       class="entity"
+       data-entity="WebUI"
+       data-source-line="16"
+       data-uid="ent0006"
+       id="entity_WebUI">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="90.1689"
+         x="1788"
+         y="671.79688"
+         id="rect727" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1858.1689"
+         y="676.79688"
+         id="rect729" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1856.1689"
+         y="678.79688"
+         id="rect731" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1856.1689"
+         y="682.79688"
+         id="rect733" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="50.1689"
+         x="1803"
+         y="704.79199"
+         id="text735">Web UI</text>
+    </g>
+    <!--entity ShellReg-->
+    <g
+       class="entity"
+       data-entity="ShellReg"
+       data-source-line="20"
+       data-uid="ent0008"
+       id="entity_ShellReg">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="136.5439"
+         x="1562.5"
+         y="671.79688"
+         id="rect738" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1679.0439"
+         y="676.79688"
+         id="rect740" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1677.0439"
+         y="678.79688"
+         id="rect742" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1677.0439"
+         y="682.79688"
+         id="rect744" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="96.5439"
+         x="1577.5"
+         y="704.79199"
+         id="text746">Shell Registry</text>
+    </g>
+    <!--entity AAS Storage-->
+    <g
+       class="entity"
+       data-entity="AAS Storage"
+       data-source-line="24"
+       data-uid="ent0010"
+       id="entity_AAS Storage">
+      <rect
+         fill="#f1f1f1"
+         height="36.296902"
+         rx="35"
+         ry="35"
+         style="stroke:#181818;stroke-width:0.5"
+         width="107.2676"
+         x="1826.5"
+         y="864.79688"
+         id="rect749" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="87.267601"
+         x="1836.5"
+         y="887.79199"
+         id="text751">AAS Storage</text>
+    </g>
+    <!--entity Submodel Storage-->
+    <g
+       class="entity"
+       data-entity="Submodel Storage"
+       data-source-line="25"
+       data-uid="ent0011"
+       id="entity_Submodel Storage">
+      <rect
+         fill="#f1f1f1"
+         height="36.296902"
+         rx="35"
+         ry="35"
+         style="stroke:#181818;stroke-width:0.5"
+         width="149.46581"
+         x="1642.5"
+         y="864.79688"
+         id="rect754" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="129.46581"
+         x="1652.5"
+         y="887.79199"
+         id="text756">Submodel Storage</text>
+    </g>
+    <!--entity MQTTBroker-->
+    <g
+       class="entity"
+       data-entity="MQTTBroker"
+       data-source-line="29"
+       data-uid="ent0013"
+       id="entity_MQTTBroker">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="131.0547"
+         x="2073.5"
+         y="859.79688"
+         id="rect759" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="2184.5547"
+         y="864.79688"
+         id="rect761" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="2182.5547"
+         y="866.79688"
+         id="rect763" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="2182.5547"
+         y="870.79688"
+         id="rect765" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="91.054703"
+         x="2088.5"
+         y="892.79199"
+         id="text767">MQTT Broker</text>
+    </g>
+    <!--entity SDK-->
+    <g
+       class="entity"
+       data-entity="SDK"
+       data-source-line="66"
+       data-uid="ent0033"
+       id="entity_SDK">
+      <rect
+         fill="#d0ffd0"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="154.3174"
+         x="1946"
+         y="357.29691"
+         id="rect770" />
+      <rect
+         fill="#d0ffd0"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="2080.3174"
+         y="362.29691"
+         id="rect772" />
+      <rect
+         fill="#d0ffd0"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="2078.3174"
+         y="364.29691"
+         id="rect774" />
+      <rect
+         fill="#d0ffd0"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="2078.3174"
+         y="368.29691"
+         id="rect776" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="114.3174"
+         x="1961"
+         y="390.29199"
+         id="text778">AAS Python SDK</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="54.564499"
+         x="1961"
+         y="406.5889"
+         id="text780">(BaSyx)</text>
+    </g>
+    <!--entity C2S-->
+    <g
+       class="entity"
+       data-entity="C2S"
+       data-source-line="37"
+       data-uid="ent0016"
+       id="entity_C2S">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="134.6982"
+         x="675.5"
+         y="365.79691"
+         id="rect783" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="790.19818"
+         y="370.79691"
+         id="rect785" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="788.19818"
+         y="372.79691"
+         id="rect787" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="788.19818"
+         y="376.79691"
+         id="rect789" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="94.698196"
+         x="690.5"
+         y="398.79199"
+         id="text791">C2S Interface</text>
+    </g>
+    <!--entity PubSub-->
+    <g
+       class="entity"
+       data-entity="PubSub"
+       data-source-line="38"
+       data-uid="ent0017"
+       id="entity_PubSub">
+      <rect
+         fill="#f8f8f8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="178.57809"
+         x="461.5"
+         y="357.29691"
+         id="rect794" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="620.07812"
+         y="362.29691"
+         id="rect796" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="618.07812"
+         y="364.29691"
+         id="rect798" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="618.07812"
+         y="368.29691"
+         id="rect800" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="138.57809"
+         x="476.5"
+         y="390.29199"
+         id="text802">PubSub Component</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="129.91701"
+         x="476.5"
+         y="406.5889"
+         id="text804">(pubsub.localhost)</text>
+    </g>
+    <!--entity ExecCore-->
+    <g
+       class="entity"
+       data-entity="ExecCore"
+       data-source-line="44"
+       data-uid="ent0020"
+       id="entity_ExecCore">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="146.29201"
+         x="931"
+         y="197.29691"
+         id="rect807" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1057.292"
+         y="202.29691"
+         id="rect809" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1055.292"
+         y="204.29691"
+         id="rect811" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1055.292"
+         y="208.29691"
+         id="rect813" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="106.292"
+         x="946"
+         y="230.29201"
+         id="text815">Execution Core</text>
+    </g>
+    <!--entity NegCore-->
+    <g
+       class="entity"
+       data-entity="NegCore"
+       data-source-line="45"
+       data-uid="ent0021"
+       id="entity_NegCore">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="158.4736"
+         x="931"
+         y="365.79691"
+         id="rect818" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1069.4736"
+         y="370.79691"
+         id="rect820" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1067.4736"
+         y="372.79691"
+         id="rect822" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1067.4736"
+         y="376.79691"
+         id="rect824" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="118.4736"
+         x="946"
+         y="398.79199"
+         id="text826">Negotiation Core</text>
+    </g>
+    <!--entity BDI1-->
+    <g
+       class="entity"
+       data-entity="BDI1"
+       data-source-line="49"
+       data-uid="ent0023"
+       id="entity_BDI1">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="101.6738"
+         x="1404"
+         y="365.79691"
+         id="rect829" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1485.6738"
+         y="370.79691"
+         id="rect831" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1483.6738"
+         y="372.79691"
+         id="rect833" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1483.6738"
+         y="376.79691"
+         id="rect835" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="61.673801"
+         x="1419"
+         y="398.79199"
+         id="text837">BDI Core</text>
+    </g>
+    <!--entity ASL1-->
+    <g
+       class="entity"
+       data-entity="ASL1"
+       data-source-line="50"
+       data-uid="ent0024"
+       id="entity_ASL1">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="107.792"
+         x="1261"
+         y="365.79691"
+         id="rect840" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1348.792"
+         y="370.79691"
+         id="rect842" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1346.792"
+         y="372.79691"
+         id="rect844" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1346.792"
+         y="376.79691"
+         id="rect846" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="67.792"
+         x="1276"
+         y="398.79199"
+         id="text848">ASL Plans</text>
+    </g>
+    <!--entity BDI2-->
+    <g
+       class="entity"
+       data-entity="BDI2"
+       data-source-line="54"
+       data-uid="ent0026"
+       id="entity_BDI2">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="101.6738"
+         x="1756"
+         y="365.79691"
+         id="rect851" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1837.6738"
+         y="370.79691"
+         id="rect853" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1835.6738"
+         y="372.79691"
+         id="rect855" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1835.6738"
+         y="376.79691"
+         id="rect857" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="61.673801"
+         x="1771"
+         y="398.79199"
+         id="text859">BDI Core</text>
+    </g>
+    <!--entity ASL2-->
+    <g
+       class="entity"
+       data-entity="ASL2"
+       data-source-line="55"
+       data-uid="ent0027"
+       id="entity_ASL2">
+      <rect
+         fill="#f8f8f8"
+         height="46.296902"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="107.792"
+         x="1613"
+         y="365.79691"
+         id="rect862" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="1700.792"
+         y="370.79691"
+         id="rect864" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1698.792"
+         y="372.79691"
+         id="rect866" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="1698.792"
+         y="376.79691"
+         id="rect868" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="67.792"
+         x="1628"
+         y="398.79199"
+         id="text870">ASL Plans</text>
+    </g>
+    <!--entity Drill1-->
+    <g
+       class="entity"
+       data-entity="Drill1"
+       data-source-line="60"
+       data-uid="ent0029"
+       id="entity_Drill1">
+      <rect
+         fill="#f8f8f8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="135.7168"
+         x="63"
+         y="188.79691"
+         id="rect873" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="178.7168"
+         y="193.79691"
+         id="rect875" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="176.7168"
+         y="195.79691"
+         id="rect877" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="176.7168"
+         y="199.79691"
+         id="rect879" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="95.716797"
+         x="78"
+         y="221.79201"
+         id="text881">DrillMachine1</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="40.345699"
+         x="78"
+         y="238.0889"
+         id="text883">:8090</text>
+    </g>
+    <!--entity Drill2-->
+    <g
+       class="entity"
+       data-entity="Drill2"
+       data-source-line="61"
+       data-uid="ent0030"
+       id="entity_Drill2">
+      <rect
+         fill="#f8f8f8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="135.7168"
+         x="234"
+         y="188.79691"
+         id="rect886" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="349.7168"
+         y="193.79691"
+         id="rect888" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="347.7168"
+         y="195.79691"
+         id="rect890" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="347.7168"
+         y="199.79691"
+         id="rect892" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="95.716797"
+         x="249"
+         y="221.79201"
+         id="text894">DrillMachine2</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="40.345699"
+         x="249"
+         y="238.0889"
+         id="text896">:8091</text>
+    </g>
+    <!--entity Move1-->
+    <g
+       class="entity"
+       data-entity="Move1"
+       data-source-line="62"
+       data-uid="ent0031"
+       id="entity_Move1">
+      <rect
+         fill="#f8f8f8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="104.5928"
+         x="78.5"
+         y="357.29691"
+         id="rect899" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="163.0928"
+         y="362.29691"
+         id="rect901" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="161.0928"
+         y="364.29691"
+         id="rect903" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="161.0928"
+         y="368.29691"
+         id="rect905" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="64.592796"
+         x="93.5"
+         y="390.29199"
+         id="text907">MoveXY1</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="40.345699"
+         x="93.5"
+         y="406.5889"
+         id="text909">:8092</text>
+    </g>
+    <!--entity Move2-->
+    <g
+       class="entity"
+       data-entity="Move2"
+       data-source-line="63"
+       data-uid="ent0032"
+       id="entity_Move2">
+      <rect
+         fill="#f8f8f8"
+         height="62.5938"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5"
+         width="104.5928"
+         x="218.5"
+         y="357.29691"
+         id="rect912" />
+      <rect
+         fill="#f8f8f8"
+         height="10"
+         style="stroke:#181818;stroke-width:0.5"
+         width="15"
+         x="303.0928"
+         y="362.29691"
+         id="rect914" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="301.0928"
+         y="364.29691"
+         id="rect916" />
+      <rect
+         fill="#f8f8f8"
+         height="2"
+         style="stroke:#181818;stroke-width:0.5"
+         width="4"
+         x="301.0928"
+         y="368.29691"
+         id="rect918" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="64.592796"
+         x="233.5"
+         y="390.29199"
+         id="text920">MoveXY2</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="40.345699"
+         x="233.5"
+         y="406.5889"
+         id="text922">:8093</text>
+    </g>
+    <!--link BaSyx to Mongo-->
+    <g
+       class="link"
+       data-entity-1="BaSyx"
+       data-entity-2="Mongo"
+       data-source-line="70"
+       data-uid="lnk34"
+       id="link_BaSyx_Mongo">
+      <path
+         d="m 2197.989,741.8182 c -0.091,0.1991 -0.1822,0.3976 -0.2749,0.5955 -0.1854,0.3958 -0.3754,0.7892 -0.5699,1.18 -0.389,0.7817 -0.7963,1.5528 -1.2227,2.3116 -0.8529,1.5174 -1.7823,2.9852 -2.7948,4.3875 -2.0251,2.8047 -4.3829,5.3478 -7.1267,7.5041 -12.23,9.61 -547.17,22.9 -559,33 -3.875,3.3087 -7.0992,7.1811 -9.7741,11.4282 -0.6688,1.0618 -1.3032,2.147 -1.9048,3.2527 -0.1504,0.2764 -0.2988,0.5541 -0.4452,0.833 -0.073,0.1395 2.6021,-5.0545 2.5299,-4.9145"
+         fill="none"
+         id="BaSyx-to-Mongo"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="1614.6579,806.7301 1622.3356,800.5613 1616.9478,802.2853 1615.2239,796.8976 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon926" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="43.849602"
+         x="2090"
+         y="778.86377"
+         id="text928">persist</text>
+    </g>
+    <!--link BaSyx to MQTTBroker-->
+    <g
+       class="link"
+       data-entity-1="BaSyx"
+       data-entity-2="MQTTBroker"
+       data-source-line="71"
+       data-uid="lnk35"
+       id="link_BaSyx_MQTTBroker">
+      <path
+         d="m 2191.2656,741.8049 c -0.069,0.2163 -0.1378,0.4327 -0.2069,0.649 -0.5525,1.7308 -1.1104,3.4623 -1.6715,5.1851 -1.1222,3.4457 -2.2572,6.8566 -3.3872,10.1579 -12.3,35.94 -26.0572,71.4829 -35.8572,96.1829"
+         fill="none"
+         id="BaSyx-to-MQTTBroker"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="2147.93,859.5569 2154.9672,852.6664 2149.774,854.9093 2147.5311,849.7161 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon932" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="43.798801"
+         x="2184"
+         y="778.86377"
+         id="text934">events</text>
+    </g>
+    <!--link Registry to Mongo-->
+    <g
+       class="link"
+       data-entity-1="Registry"
+       data-entity-2="Mongo"
+       data-source-line="72"
+       data-uid="lnk36"
+       id="link_Registry_Mongo">
+      <path
+         d="m 1540.2536,741.9784 c 0.072,0.2151 0.1448,0.4302 0.2175,0.6452 0.5814,1.7203 1.1752,3.4388 1.7799,5.1459 1.2095,3.4141 2.4628,6.7824 3.749,10.0274 11.135,28.105 26.085,58.5825 38.3975,82.2887 3.0781,5.9266 5.9914,11.4299 8.639,16.3672 1.3238,2.4687 2.5812,4.7958 3.7596,6.9635 0.5892,1.0839 1.1586,2.1279 1.7067,3.1299 0.137,0.2505 -2.6102,-4.7637 -2.4758,-4.5185"
+         fill="none"
+         id="Registry-to-Mongo"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="1598.9099,867.2897 1598.0935,857.4748 1596.5074,862.9047 1591.0775,861.3187 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon938" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="37.527302"
+         x="1558"
+         y="778.86377"
+         id="text940">query</text>
+    </g>
+    <!--link SDK to REST-->
+    <g
+       class="link"
+       data-entity-1="SDK"
+       data-entity-2="REST"
+       data-source-line="75"
+       data-uid="lnk37"
+       id="link_SDK_REST">
+      <path
+         d="m 2017.17,420.3369 c -11.69,61.28 -36.6359,192.0362 -46.8359,245.5162"
+         fill="none"
+         id="SDK-to-REST"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="1969.21,671.7469 1974.8253,663.6556 1970.1467,666.8354 1966.967,662.1568 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon944" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="71.315903"
+         x="1997"
+         y="536.86377"
+         id="text946">HTTP/REST</text>
+    </g>
+    <!--link BaSyx to Sims-->
+    <g
+       class="link"
+       data-entity-1="BaSyx"
+       data-entity-2="Sims"
+       data-source-line="76"
+       data-uid="lnk38"
+       id="link_BaSyx_Sims">
+      <path
+         d="m 2212.0091,606.266 c 0.046,-2.1888 0.083,-4.4054 0.1098,-6.6482 0.2183,-17.9426 -0.1795,-37.5628 -1.6189,-58.0434 -5.7575,-81.9225 -28.18,-177.6125 -94.5,-234.7775 -53.28,-45.93 -1194.74,-51.62 -1265,-55 -98.455,-4.735 -208.99,-12.2775 -295.3875,-18.6775 -43.1988,-3.2 -80.3631,-6.1144 -106.9659,-8.2494 -13.3014,-1.0675 -23.9625,-1.9402 -31.4172,-2.5562 -0.9318,-0.0771 -1.8136,-0.1501 -2.6441,-0.2189 -0.4153,-0.0345 5.1617,0.4288 4.7721,0.3965"
+         fill="none"
+         id="BaSyx-to-Sims"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="413.378,221.9947 422.016,226.726 418.3609,222.4086 422.6783,218.7534 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon950" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="138.252"
+         x="2210.2759"
+         y="385.8638"
+         id="text952">invocationDelegation</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="140.8037"
+         x="2209"
+         y="400.99661"
+         id="text954">(host.docker.internal)</text>
+    </g>
+    <!--link Agents to PubSub-->
+    <g
+       class="link"
+       data-entity-1="Agents"
+       data-entity-2="PubSub"
+       data-source-line="79"
+       data-uid="lnk39"
+       id="link_Agents_PubSub">
+      <path
+         d="m 858.8981,223.7671 c -0.5201,0.1616 -1.0634,0.3308 -1.6292,0.5077 -1.1316,0.3536 -2.3534,0.7377 -3.6608,1.1515 -2.6148,0.8275 -5.5722,1.774 -8.8356,2.8343 -13.0537,4.2413 -31.005,10.3038 -51.5225,17.8613 -41.035,15.115 -92.335,36.21 -135.25,60.675 -25.3,14.42 -46.7452,30.2841 -66.8352,46.6241"
+         fill="none"
+         id="Agents-to-PubSub"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="586.51,357.2069 596.0161,354.6312 590.389,354.0519 590.9682,348.4248 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon958" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="89.006798"
+         x="703"
+         y="294.8638"
+         id="text960">XMPP PubSub</text>
+    </g>
+    <!--link Agents to SDK-->
+    <g
+       class="link"
+       data-entity-1="Agents"
+       data-entity-2="SDK"
+       data-source-line="80"
+       data-uid="lnk40"
+       id="link_Agents_SDK">
+      <path
+         d="m 1922.3277,326.3953 c 2.2499,1.0894 4.4862,2.1939 6.7061,3.3103 17.7587,8.9313 29.3706,15.4585 43.6306,24.3235"
+         fill="none"
+         id="Agents-to-SDK"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="1977.76,357.1969 1972.2284,349.0481 1973.5137,354.5571 1968.0047,355.8423 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon964" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="96.795403"
+         x="1844"
+         y="294.8638"
+         id="text966">read/write AAS</text>
+    </g>
+    <!--link ExecCore to NegCore-->
+    <g
+       class="link"
+       data-entity-1="ExecCore"
+       data-entity-2="NegCore"
+       data-source-line="83"
+       data-uid="lnk41"
+       id="link_ExecCore_NegCore">
+      <path
+         d="m 997.1968,249.4036 c -2.53,11.37 -3.9368,19.6033 -5.1968,32.3933 -2.86,29.17 2.8849,56.6656 9.0549,78.0256"
+         fill="none"
+         id="ExecCore-NegCore"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="998.5,243.5469 992.6407,251.4632 997.414,248.4275 1000.4497,253.2008 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon970" />
+      <polygon
+         fill="#181818"
+         points="1002.72,365.5869 1004.0653,355.8303 1001.3324,360.7833 996.3795,358.0504 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon972" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="178.32471"
+         x="993"
+         y="294.8638"
+         id="text974">pa_execution_service_topic</text>
+    </g>
+    <!--link PA to RA1-->
+    <g
+       class="link"
+       data-entity-1="PA"
+       data-entity-2="RA1"
+       data-source-line="84"
+       data-uid="lnk42"
+       id="link_PA_RA1">
+      <path
+         d="m 1179.9771,250.9588 c 0.3117,0.9267 -1.0502,-3.1224 -0.7257,-2.1575 5.1927,15.4381 11.9767,35.6081 18.7599,55.7756 6.7831,20.1675 13.5653,40.3325 18.7542,55.7606 0.3243,0.9643 0.6424,1.91 0.9538,2.8361 0.078,0.2315 -1.7573,-5.2251 -1.6803,-4.9961"
+         fill="none"
+         id="PA-RA1"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="1178.0643,245.2718 1177.1422,255.0774 1179.6583,250.0109 1184.7248,252.527 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon978" />
+      <polygon
+         fill="#181818"
+         points="1217.9517,363.8645 1218.874,354.0589 1216.3578,359.1253 1211.2914,356.6091 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon980" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="150.61079"
+         x="1196"
+         y="294.8638"
+         id="text982">production_negotiation</text>
+    </g>
+    <!--link PA to RA2-->
+    <g
+       class="link"
+       data-entity-1="PA"
+       data-entity-2="RA2"
+       data-source-line="85"
+       data-uid="lnk43"
+       id="link_PA_RA2">
+      <path
+         d="m 1184.3171,224.7068 c 1.9571,0.4655 -0.2384,-0.0565 2.2328,0.5316 9.8847,2.3523 23.7178,5.6464 40.1798,9.5725 32.9241,7.8522 76.3641,18.2322 119.7653,28.661 86.8025,20.8575 173.45,41.91 175.505,43.325 17.47,12.005 31.155,31.385 40.6225,48.1787 2.3669,4.1985 4.4702,8.2353 6.3031,11.9548 0.2291,0.4649 0.454,0.9249 0.6746,1.3796 0.1104,0.2274 -2.3837,-4.9524 -2.2755,-4.7277"
+         fill="none"
+         id="PA-RA2"
+         style="stroke:#181818;stroke-width:1" />
+      <polygon
+         fill="#181818"
+         points="1178.4799,223.3185 1186.3102,229.2924 1183.3443,224.4754 1188.1612,221.5095 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon986" />
+      <polygon
+         fill="#181818"
+         points="1569.9281,368.9881 1569.6269,359.1439 1567.7586,364.4833 1562.4192,362.615 "
+         style="stroke:#181818;stroke-width:1"
+         id="polygon988" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="13px"
+         lengthAdjust="spacing"
+         textLength="150.61079"
+         x="1492"
+         y="294.8638"
+         id="text990">production_negotiation</text>
+    </g>
+    <g
+       class="legend"
+       data-source-line="88"
+       id="g1049">
+      <rect
+         fill="none"
+         height="111.7813"
+         rx="7.5"
+         ry="7.5"
+         style="stroke:#000000;stroke-width:1"
+         width="186.9893"
+         x="2144.8145"
+         y="973.79688"
+         id="rect993" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="41.213902"
+         x="2154.6885"
+         y="993.79199"
+         id="text995">Color</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="90.241203"
+         x="2205.6504"
+         y="993.79199"
+         id="text997">Component</text>
+      <rect
+         fill="#ffe8d0"
+         height="16.2969"
+         style="stroke:none;stroke-width:1"
+         width="50.961899"
+         x="2149.8145"
+         y="997.09381"
+         id="rect999" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="4.4502001"
+         x="2149.8145"
+         y="1010.0889"
+         id="text1001"> </text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="97.207001"
+         x="2205.2266"
+         y="1010.0889"
+         id="text1003">Eclipse BaSyx</text>
+      <rect
+         fill="#e8ffe8"
+         height="16.2969"
+         style="stroke:none;stroke-width:1"
+         width="50.961899"
+         x="2149.8145"
+         y="1013.3906"
+         id="rect1005" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="4.4502001"
+         x="2149.8145"
+         y="1026.3857"
+         id="text1007"> </text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="117.127"
+         x="2205.2266"
+         y="1026.3857"
+         id="text1009">Storage / Agents</text>
+      <rect
+         fill="#d0e8ff"
+         height="16.2969"
+         style="stroke:none;stroke-width:1"
+         width="50.961899"
+         x="2149.8145"
+         y="1029.6875"
+         id="rect1011" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="4.4502001"
+         x="2149.8145"
+         y="1042.6826"
+         id="text1013"> </text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="88.915001"
+         x="2205.2266"
+         y="1042.6826"
+         id="text1015">XMPP Server</text>
+      <rect
+         fill="#ffe8e8"
+         height="16.2969"
+         style="stroke:none;stroke-width:1"
+         width="50.961899"
+         x="2149.8145"
+         y="1045.9844"
+         id="rect1017" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="4.4502001"
+         x="2149.8145"
+         y="1058.9795"
+         id="text1019"> </text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="74.860397"
+         x="2205.2266"
+         y="1058.9795"
+         id="text1021">Simulators</text>
+      <rect
+         fill="#d0ffd0"
+         height="16.2969"
+         style="stroke:none;stroke-width:1"
+         width="50.961899"
+         x="2149.8145"
+         y="1062.2812"
+         id="rect1023" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="4.4502001"
+         x="2149.8145"
+         y="1075.2764"
+         id="text1025"> </text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="81.826202"
+         x="2205.2266"
+         y="1075.2764"
+         id="text1027">Python SDK</text>
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2326.8037"
+         y1="980.79688"
+         y2="980.79688"
+         id="line1029" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2326.8037"
+         y1="997.09381"
+         y2="997.09381"
+         id="line1031" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2326.8037"
+         y1="1013.3906"
+         y2="1013.3906"
+         id="line1033" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2326.8037"
+         y1="1029.6875"
+         y2="1029.6875"
+         id="line1035" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2326.8037"
+         y1="1045.9844"
+         y2="1045.9844"
+         id="line1037" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2326.8037"
+         y1="1062.2812"
+         y2="1062.2812"
+         id="line1039" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2326.8037"
+         y1="1078.5781"
+         y2="1078.5781"
+         id="line1041" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2149.8145"
+         x2="2149.8145"
+         y1="980.79688"
+         y2="1078.5781"
+         id="line1043" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2200.7764"
+         x2="2200.7764"
+         y1="980.79688"
+         y2="1078.5781"
+         id="line1045" />
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="2326.8037"
+         x2="2326.8037"
+         y1="980.79688"
+         y2="1078.5781"
+         id="line1047" />
+    </g>
+    <!--SRC=[dLPjYzj64FwkNp4u7vfGxivMA5nD6h0jcvZU5ILoQ0g1OorFP77ohhAxScAQ- - -PVP4iItOQAiFTxiuphvfvLkenvoMJR0ThbZvcKbHyCnE5aF1bcsiCL2DFnQuK7BcUTe3F5hVcru9kc6Phfh27dDyk5lCsaejD7xMW9ngsK19JpNXMd87-Pdv1e7DT8AmE9S9Bc4mIMExA0dSKBTEvuB3adoHJMbQfhYG6mIyGYVGH9SpvFfU26sJGk851Npe0fceboiDa0ly6G8_zOnA10MFg2ld-8ty-JukyL0XJbXo-lh3ATccoczz6GwzhdgQmC32H9oZtAAq6RTtk7FRTF5d195vQfDcS0_sDQtZl8BHylxIOftDXIynoAj31cVER7qURRB4e6gnLj4TqqlLJTmGCxWNFH3IrQBkkkwBbGsaXMOQ-7cupw4kJQhsZ-8jJI2-xUw4-LxdMmlbykrgPjABXfRGiOYh5etyBPk-stlwJwPytGkbBtTELMJFsqFTsltDYAPJO7E33VHotMw0-VnODMotNYNWMKiDpZV8JIz6gqSavO5ojgMWmgq-eKSjghQhrTI5ILcmfHDUh3jYjPqdZvoeVJw8vJ38oeLodskMPLzaiMkMXd3OqY6OkhPxpE6bfTSAUVyMqilYPa2v1SsGsbrJ-maped9qgqU69pjCFmto7IbGoHHSaZDnaJ4QNuvn6owCpsemk0IV97SG5uxvuoTte_yKK-fZ2duyf_EcOmavCPniXtrK5e_5Jy7n114jy1By2dSO7rqYqL8v5JjgYvJUIUL7SitIRSnnzvEFRuUz3HxP6CFelbT2fZ8uguTcX5dlyy8-t7thssUFeCjORVjbWmsuLEiGT7_IMkYs9_gInQl4-7PZnjNUQfOwPu1nj_okugk-KtCmlPqNWhechgzUU7iTGebH4iMr9GqaanhsPlQ3XxBRgvmhbeU_JSf4MtdTW8ZHQzaePmvlLAhwnDyhHetsFOufoJqHXp4HOO6PNbAqXZkkDDNPT9_AYxzOrBPLjL_7ScGaySnWVdft6ZWGz1RNa9imnJGFRt7oHz75YxiU-awNt3yne1ZLHm2jZmZE0AIfxm9fM7XGHRfxYWnPbdWP4HHPiPfs03Lizy2Efj43XPH05TuSKnYOex3-GURRLjdc-_G7k6yOkwaRwvcJmob-yhsbzyYdHGZYkDGX__y5DpSD7aBis3AXritJSU2F7KMwhcxOrucDtavXISGa5tm40]-->
+  </g>
+  <metadata
+     id="metadata1161">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Type 3 AAS Implementation Infrastructure</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

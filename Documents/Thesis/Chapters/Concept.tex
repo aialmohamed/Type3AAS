@@ -1,33 +1,751 @@
 \chapter{Concept}
 \label{ch:concept}
-\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,
-  title=About this chapter]
-  This chapter presents the core concepts underlying the proposed Type3 Asset Administration Shell (AAS) framework and its integration with Multi-Agent Systems (MAS) using the Belief-Desire-Intention (BDI) model. It details the architectural design, key components, and interaction mechanisms that facilitate proactive behavior in industrial assets. The chapter also discusses the theoretical foundations and practical considerations involved in implementing the AAS-MAS integration.
-\end{tcolorbox}
 
-\section{System overview}
-\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,
-  title=About System Overview]
-  This section provides an overview of the proposed Type3 Asset Administration Shell (AAS) integrated with a Multi-Agent System (MAS) using the Belief-Desire-Intention (BDI) approach. It outlines the high-level architecture, key components, and their interactions within the system. The section aims to give readers a comprehensive understanding of how the AAS and MAS work together to achieve enhanced asset management and autonomous decision-making in industrial environments.
-\end{tcolorbox}
-\section{AAS Concept}
-\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,
-  title=About AAS Concept]
-  This section delves into the concept of Asset Administration Shells (AAS) as digital representations of physical assets in Industry 4.0. It discusses the structure, components, and functionalities of AAS, with a focus on Type3 AAS and its advanced capabilities. The section also explores how AAS facilitates interoperability, data exchange, and integration with intelligent systems, setting the stage for its combination with Multi-Agent Systems (MAS).
-\end{tcolorbox}
-\section{AAS-MAS Integration Concept}
-\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,
-  title=About AAS-MAS Integration Concept]
-  This section explores the concept of integrating Asset Administration Shells (AAS) with Multi-Agent Systems (MAS) using the Belief-Desire-Intention (BDI) approach. It discusses the architectural design, communication mechanisms, and interaction protocols that enable seamless collaboration between AAS and BDI agents. The section highlights the benefits of this integration in enhancing asset management, autonomy, and decision-making capabilities within industrial environments.
-\end{tcolorbox}
+This chapter presents the conceptual design for implementing \ac{Type3AAS} using \ac{BDI}-based \ac{MAS}. The design realizes the requirements specified in Chapter~\ref{ch:requirements} through a layered architecture that integrates standardized \ac{AAS} components with autonomous agent behavior. Section~\ref{sec:system_overview} provides an overview of the complete system architecture. Sections~\ref{sec:resource_agent} and \ref{sec:production_agent} detail the design of the ResourceAAS and ProductionAAS components respectively. Finally, Section~\ref{sec:system_interaction} describes the communication and interaction mechanisms that enable collaboration between agents.
 
-\section{BDI Agent Concept}
-\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,
-  title=About BDI Agent Concept]
-  This section delves into the concept of Belief-Desire-Intention (BDI) agents and their role within Multi-Agent Systems (MAS). It discusses the core components of the BDI model, including beliefs, desires, and intentions, and how these elements contribute to autonomous decision-making and goal-oriented behavior in agents. The section also explores the advantages of using BDI agents in industrial applications, particularly in enhancing the functionality and adaptability of Asset Administration Shells (AAS) through intelligent agent integration.
-\end{tcolorbox}
-\section{Proactive AAS Concept}
-\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,
-  title=About Proactive AAS Concept]
-  This section introduces the concept of proactive Asset Administration Shells (AAS) and their capabilities in anticipating and responding to dynamic industrial environments. It discusses the design principles, architectural considerations, and interaction mechanisms that enable AAS to exhibit proactive behavior through integration with Multi-Agent Systems (MAS) using the Belief-Desire-Intention (BDI) approach. The section highlights the benefits of proactive AAS in enhancing asset management, autonomy, and decision-making processes.
-\end{tcolorbox}
+\section{System Overview}
+\label{sec:system_overview}
+
+\subsection{Architectural Layers}
+
+The system architecture follows a two-level design pattern that separates production coordination from resource execution, as illustrated in Figure~\ref{fig:system_levels}. This separation aligns with the industrial agent architecture discussed in Section~\ref{subsec:industrial_agents}, where high-level control handles coordination and decision-making while low-level control manages physical asset interaction.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=12cm]{Images/system_levels.png}
+    \caption{Two-Level System Architecture}
+    \label{fig:system_levels}
+\end{figure}
+
+\textbf{Product Level.} The product level contains the ProductionAAS, which is responsible for managing production orders and coordinating the allocation of tasks to available resources. When a drilling order is received, the ProductionAAS queries the AAS Registry to discover available resources, retrieves their capabilities, and initiates negotiations to select the most suitable resource for the task. The ProductionAAS subscribes to events published by ResourceAAS instances to monitor execution progress and react to status changes.
+
+\textbf{Resource Level.} The resource level contains one or more ResourceAAS instances, each representing a physical drill machine. ResourceAAS components register themselves with the AAS Registry upon initialization, making their capabilities discoverable. During operation, ResourceAAS instances publish status events (started, completed, fault) to the XMPP Broker, enabling real-time monitoring by the ProductionAAS and other system components. When assigned a production task, the ResourceAAS agent autonomously executes the drilling operation by invoking standardized \ac{AAS} Operations on the physical asset.
+
+\subsection{System Components}
+The complete system comprises five main components that work together to realize \ac{Type3AAS} functionality. Figure~\ref{fig:system_architecture} illustrates the overall system architecture and the relationships between components.
+
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=14cm]{Images/system_architecture.png}
+    \caption{SmartDrillSystem Architecture Overview}
+    \label{fig:system_architecture}
+\end{figure}
+
+\textbf{ProductionAAS.} The ProductionAAS serves as the coordination hub for production orders. It combines standardized \ac{AAS} submodels with a \ac{BDI} agent runtime that provides autonomous decision-making capabilities. The ProductionAAS contains submodels for identification, process planning, service cataloging, interface endpoints, and execution tracking. Its agent component implements orchestration logic for task decomposition and negotiation protocols for resource selection. Communication with other components occurs through the Agent Interface, which translates between \ac{AAS} data structures and agent beliefs.
+
+\textbf{ResourceAAS.} Each ResourceAAS represents a digital twin of a physical drill machine, integrating \ac{AAS} standardization with autonomous agent behavior. The ResourceAAS contains submodels describing the asset's operational state, knowledge constraints, capabilities, and interaction parameters. A \ac{BDI} agent runtime provides goal-directed behavior, enabling the resource to autonomously respond to production requests, participate in negotiations, and execute assigned tasks. The AAS Machine Interface connects the digital representation to the physical asset, enabling bidirectional data exchange and operation invocation.
+
+\textbf{AAS Registry.} The AAS Registry provides a centralized discovery service compliant with the \ac{AAS} specification. Upon initialization, each ResourceAAS registers its identification information, endpoint addresses, and capability descriptions with the registry. The ProductionAAS queries the registry to discover available resources that match required capabilities. This decoupled discovery mechanism enables dynamic system reconfiguration without hardcoded dependencies between components.
+
+\textbf{XMPP Broker.} The XMPP Broker implements the event-driven communication infrastructure using the \ac{XMPP} protocol. This choice aligns with the SPADE framework used for agent implementation, which natively supports \ac{XMPP} for agent communication. The broker enables publish-subscribe messaging patterns where ResourceAAS instances publish status events (skill started, completed, or failed) and the ProductionAAS subscribes to receive these updates. This asynchronous communication model supports reactive agent behavior and real-time monitoring.
+
+\textbf{Physical Assets.} The physical drill machines represent the actual manufacturing resources controlled by the system. Each asset connects to its corresponding ResourceAAS through a machine interface that abstracts the underlying communication protocol (such as OPC UA or proprietary interfaces). The ResourceAAS reads sensor data and operational status from the asset and invokes operations to execute drilling tasks.
+\subsection{Component Interactions}
+Figure~\ref{fig:component_interactions} illustrates the interaction patterns between system components during typical operation.
+
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=12cm]{Images/component_interactions.png}
+    \caption{Component Interaction Patterns}
+    \label{fig:component_interactions}
+\end{figure}
+
+The system employs four primary interaction patterns:
+
+\textbf{Registration.} During system startup, each ResourceAAS registers itself with the AAS Registry and the XMPP Broker. Registration with the registry enables discovery by the ProductionAAS, while registration with the broker enables event publication and subscription.
+
+\textbf{Discovery.} When the ProductionAAS receives a production order, it queries the AAS Registry to retrieve references to all registered ResourceAAS instances. The registry returns the endpoint addresses and capability descriptions needed to initiate direct communication with resources.
+
+\textbf{Direct Communication.} The ProductionAAS communicates directly with ResourceAAS instances for operations requiring request-response patterns, such as reading capabilities, scheduling information, and invoking operations. This communication uses the standardized \ac{AAS} REST API, ensuring interoperability with the \ac{AAS} specification.
+
+\textbf{Event-Based Communication.} ResourceAAS instances publish status events to the XMPP Broker, and the ProductionAAS subscribes to receive these events. This pattern supports asynchronous notification of state changes without requiring polling, enabling efficient real-time monitoring of distributed resources.
+
+
+\subsection{Bidirectional AAS Integration}
+
+A key contribution of this design is the bidirectional integration between \ac{BDI} agents and the \ac{AAS} standard. Unlike existing approaches that use \ac{AAS} primarily as a passive data source, this architecture enables agents to both read information from submodels and execute actions through standardized Operations.
+
+\textbf{Beliefs from Submodels.} Agent beliefs are derived from \ac{AAS} submodel data. The Operational State Submodel provides current asset status, the Knowledge Submodel provides constraints and environmental conditions, and the Capability Submodel provides information about available skills. The Agent Interface continuously synchronizes submodel data with the agent's belief base, ensuring that agent decisions reflect the current system state.
+
+\textbf{Intentions through Operations.} Agent intentions are executed through \ac{AAS} Operations defined in the submodels. When an agent commits to executing a drilling task, it invokes the corresponding Operation on the physical asset through the standardized \ac{AAS} API. This approach leverages the Operation element defined in the \ac{AAS} specification, which supports both synchronous and asynchronous invocation patterns.
+
+This bidirectional integration ensures that the autonomous behavior provided by the \ac{BDI} architecture operates within the standardized framework defined by the \ac{AAS} specification, addressing the interoperability requirements identified in Chapter~\ref{ch:literature}.
+
+
+\section{Resource Agent Concept}
+\label{sec:resource_agent}
+
+The ResourceAAS represents the core component for integrating autonomous agent behavior with standardized \ac{AAS} representations of manufacturing resources. This section presents the conceptual design of the ResourceAAS, describing its overall architecture, submodel structure, agent core, and the mechanisms that enable bidirectional integration between the \ac{BDI} agent and the \ac{AAS}.
+
+\subsection{Resource Agent Overview}
+\label{subsec:resource_overview}
+
+The ResourceAAS combines three main architectural elements: the \ac{AAS} structure providing standardized data representation, the \ac{BDI} agent core enabling autonomous behavior, and the interfaces connecting these components to each other and to external systems. Figure~\ref{fig:resource_components} illustrates the high-level component structure of the ResourceAAS.
+
+% Include diagram from slide 5
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=10cm]{Images/resource_components.png}
+    \caption{Resource Agent Component Structure}
+    \label{fig:resource_components}
+\end{figure}
+
+\textbf{Asset Administration Shell.} The \ac{AAS} component provides the standardized digital representation of the drill machine using the Eclipse BaSyx Python SDK. It contains the shell information (identification, asset kind, global asset ID) and a collection of submodels that describe different aspects of the resource. The \ac{AAS} is deployed to a BaSyx AAS Environment server, exposing a REST API that enables external access to submodel data and operation invocation, compliant with the \ac{AAS} API specification defined in Part 2 of the standard.
+
+\textbf{BDI Core.} The \ac{BDI} core implements the agent's autonomous behavior using the SPADE framework combined with the spade\_bdi extension. SPADE (Smart Python Agent Development Environment) provides asynchronous agent communication over \ac{XMPP}, while spade\_bdi adds AgentSpeak-based \ac{BDI} reasoning capabilities. The agent maintains beliefs derived from submodel data, processes desires triggered by external events (such as Call-For-Proposals), and executes intentions through SPADE Behaviours. Agent plans are defined in AgentSpeak Language (ASL) files that specify reactive rules for handling events and achieving goals.
+
+\textbf{AAS-Agent Interface (ResourceAASClient).} The ResourceAASClient serves as the translation layer between the \ac{AAS} REST API and the agent's internal representation. This component implements an asynchronous HTTP client using aiohttp that communicates with the BaSyx server via GET and POST requests. It provides repository classes for reading submodel elements (SubmodelElementRepositoryGetters), updating values (SubmodelElementRepositoryUpdate), and invoking operations. The interface translates \ac{AAS} data structures into Python dictionaries that can be converted to agent beliefs.
+
+\textbf{Operation Invokers.} The physical asset operations are exposed through FastAPI-based HTTP endpoints that implement the invocationDelegation pattern specified in the \ac{AAS} Operation qualifiers. When the BaSyx server receives an operation invocation request, it delegates the call to the corresponding invoker endpoint (e.g., \texttt{/drill\_invocation\_1}), which executes the operation on the physical asset or simulator and returns the result.
+
+Figure~\ref{fig:resource_internal} illustrates the internal connections and data flows within the ResourceAAS architecture.
+
+% Include diagram from slide 6 or 16
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=12cm]{Images/resource_internal.png}
+    \caption{Resource Agent Internal Architecture}
+    \label{fig:resource_internal}
+\end{figure}
+
+The architecture supports three primary data flows:
+
+\textbf{Belief Acquisition.} During agent initialization, the AgentInitializationBehaviour reads submodel data via the ResourceAASClient and populates the agent's belief base. Beliefs include: \texttt{current\_state} from the Operational State Submodel, \texttt{supported\_skills} from the Capabilities Submodel, \texttt{skills\_constraints} from the Knowledge Submodel, and \texttt{free\_time\_slots} / \texttt{booked\_time\_slots} from the Operational State time slot collection.
+
+\textbf{Event Processing.} When the agent receives a Call-For-Proposal (CFP) from the ProductionAAS via \ac{XMPP} publish-subscribe, the CFPProcessingBehaviour validates the request against current beliefs. It checks whether the resource state allows execution, whether the requested skill is supported, and whether input parameters fall within the constraints defined in the Knowledge Submodel.
+
+\textbf{Operation Execution.} When the agent commits to executing a task, the corresponding invoker behaviour (e.g., DrillInvokerBehaviour) retrieves input parameters from beliefs, calls the operation through the ResourceAASClient, and updates beliefs with the result. The operation invocation follows the \ac{AAS} standard, passing through the BaSyx server to the delegated FastAPI endpoint.
+
+\subsection{Resource Agent Submodels}
+\label{subsec:resource_submodels}
+
+The ResourceAAS contains four submodels that provide the standardized data structures supporting agent operation. These submodels are implemented using the Eclipse BaSyx Python SDK and are designed to map directly to the \ac{BDI} components. The following subsections describe each submodel based on the actual implementation.
+
+
+\subsubsection{Operational State Submodel}
+
+The Operational State Submodel captures the current runtime status and scheduling information of the resource. It provides the primary source for agent beliefs about the asset's availability and current condition. Figure~\ref{fig:sm_operational_state} shows the structure of this submodel.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Images/sm_operational_state.pdf}
+    \caption{Operational State Submodel Structure}
+    \label{fig:sm_operational_state}
+\end{figure}
+
+\textbf{Current\_Operational\_State.} This Property element tracks the real-time operational status of the drill machine. The value contains the current state as a string (``Idle'', ``Running'', ``Error'', or ``Done''), with the category set to ``VARIABLE'' indicating runtime mutability. During CFP processing, the agent checks this belief to ensure the resource is in an allowed state (``Idle'' or ``Free'') before accepting new tasks.
+
+\textbf{TimeSlots\_Operational\_Data.} This SubmodelElementCollection manages the resource's scheduling information through three properties:
+\begin{itemize}
+    \item \texttt{Free\_Slots}: JSON-encoded list of available time slots (e.g., ``08:00'', ``08:30'', ``09:00'')
+    \item \texttt{Booked\_Slots}: JSON-encoded list of already allocated time slots
+    \item \texttt{Slot\_Duration}: Integer value representing the duration of each slot in minutes
+\end{itemize}
+The TimeSlotDataType class manages slot allocation and release, ensuring that negotiation decisions are based on actual availability.
+
+\subsubsection{Knowledge Submodel}
+
+The Knowledge Submodel contains constraint information that defines the operational boundaries of the resource. This information is used during CFP validation to determine whether requested parameters are feasible. Figure~\ref{fig:sm_knowledge} shows the structure of this submodel.
+\subsubsection{Knowledge Submodel}
+
+The Knowledge Submodel contains constraint information that defines the operational boundaries of the resource. This information is used during CFP validation to determine whether requested parameters are feasible. Figure~\ref{fig:sm_knowledge} shows the structure of this submodel.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Images/sm_knowledge.pdf}
+    \caption{Knowledge Submodel Structure}
+    \label{fig:sm_knowledge}
+\end{figure}
+
+\textbf{Resource\_Constraints.} This SubmodelElementCollection contains nested collections for each constraint type:
+\begin{itemize}
+    \item \texttt{MaxDepth}: Collection with MaxDepthValue (Double, e.g., 20.0), MaxDepthUnit (``centimeters''), and MaxDepthUnitShort (``cm'')
+    \item \texttt{MinDepth}: Collection with MinDepthValue (Double, e.g., 1.0) and corresponding unit properties
+    \item \texttt{ConstraintType}: Property indicating the parameter being constrained (``Depth'')
+\end{itemize}
+
+During CFP processing, the agent retrieves the constraint type and min/max values, then validates that the requested input parameter falls within the allowed range. If validation fails, a \texttt{CONSTRAINT\_VIOLATION} is added to the negotiation response.
+
+\subsubsection{Capability Submodel}
+
+The Capability Submodel describes the skills and operations that the resource can perform. This submodel directly relates to agent capabilities and contains the Operation elements that enable bidirectional integration. Figure~\ref{fig:sm_capability} shows the structure of this submodel.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Images/sm_capability.pdf}
+    \caption{Capability Submodel Structure}
+    \label{fig:sm_capability}
+\end{figure}
+
+\textbf{Supported\_Skills.} This Property lists the capabilities supported by the resource as a comma-separated string (e.g., ``drill\_capability,movexy\_capability''). The ProductionAAS uses this information during resource discovery to filter resources that can fulfill requested operations.
+
+\textbf{Drill\_Capability.} This Operation element defines the drilling capability with:
+\begin{itemize}
+    \item \texttt{invocationDelegation} qualifier: URL of the FastAPI endpoint
+    \item Input variables: Drill\_Depth (Double) and Drill\_Speed (Double)
+    \item Output variable: Drill\_Result (String)
+\end{itemize}
+
+\textbf{MoveXY\_Capability.} This Operation element defines the positioning capability with:
+\begin{itemize}
+    \item \texttt{invocationDelegation} qualifier: URL of the movement endpoint
+    \item Input variables: Target\_X (Double) and Target\_Y (Double)
+    \item Output variable: Move\_Result (String)
+\end{itemize}
+
+The invocationDelegation pattern enables the BaSyx server to forward operation requests to external services, supporting integration with physical assets or simulators without modifying the \ac{AAS} infrastructure.
+
+\subsubsection{Interaction and Scheduling Submodel}
+
+The Interaction and Scheduling Submodel provides the communication endpoints through which external systems can interact with the ResourceAAS. Figure~\ref{fig:sm_interaction} shows the structure of this submodel.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/sm_interaction.pdf}
+    \caption{Interaction and Scheduling Submodel Structure}
+    \label{fig:sm_interaction}
+\end{figure}
+
+\textbf{Endpoints.} This SubmodelElementCollection contains properties for different communication protocols:
+\begin{itemize}
+    \item \texttt{Machine\_OPCUA\_Endpoint}: OPC UA server address for direct asset communication (placeholder for future integration)
+    \item \texttt{MQTT\_Broker\_Endpoint}: MQTT broker address for event-based communication
+\end{itemize}
+
+The ProductionAAS retrieves these endpoints during the discovery phase to establish appropriate communication channels for negotiation and task assignment.
+
+
+
+\subsection{Resource Agent Repositories}
+\label{subsec:resource_repositories}
+
+The communication between the \ac{BDI} agent and the \ac{AAS} server requires a structured data access layer that abstracts the complexity of REST API interactions. The Repository design pattern~\cite{fowler2002patterns} provides this abstraction, enabling clean separation between agent logic and \ac{AAS} communication. Figure~\ref{fig:repository_architecture} illustrates the repository class hierarchy.
+
+\begin{landscape}
+    
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=24cm]{Images/repository_hierarchy.pdf}
+    \caption{Resource Agent Repository Class Hierarchy}
+    \label{fig:repository_architecture}
+\end{figure}
+\end{landscape}
+\subsubsection{Base Classes}
+
+\textbf{RepositoryBase} serves as the abstract foundation for Submodel-level operations. It encapsulates HTTP session management using aiohttp, Base64 URL-safe encoding for \ac{AAS} identifiers (as required by the BaSyx API), and JSON serialization using BaSyx SDK encoders. This class provides generic CRUD operations for retrieving, updating, creating, and deleting entire Submodels.
+
+\textbf{SubmodelElementRepositoryBase} extends the base functionality for SubmodelElement-level operations. It handles path-based element access using dot notation for nested collections (e.g., \texttt{Collection.Property}), operation invocation with automatic payload construction, and idempotent element creation with existence checks.
+
+
+\subsubsection{Specialized Repositories}
+
+\textbf{RepositorySubmodel} inherits from RepositoryBase and provides Submodel-specific methods for each of the four ResourceAAS submodels. It includes a prefix injection mechanism that enables support for multiple resource instances (e.g., Drill\_1, Drill\_2) by dynamically modifying submodel identifiers.
+
+\textbf{SubmodelElementRepositoryGetters} provides read-only access to submodel elements. It follows a dual naming convention: \texttt{get\_*()} methods return complete BaSyx model objects, while \texttt{getvalue\_*()} methods return only the element values. This class also provides operation invocation methods (\texttt{invoke\_drill()}, \texttt{invoke\_move\_xy()}) and utility methods like \texttt{get\_time\_slot\_manager\_from\_server()} for complex data retrieval.
+
+\textbf{SubmodelElementRepositoryUpdate} provides write operations for modifying submodel element values. It mirrors the getter structure with update methods for each element type across all submodels.
+
+\textbf{SubmodelElementRepositoryCreateDelete} handles element lifecycle management, supporting dynamic addition and removal of submodel elements during runtime.
+
+\textbf{ResourceAASClient} acts as a facade that aggregates all repository instances. It is initialized with a resource prefix and provides a single entry point for agent behaviours to access \ac{AAS} data:
+
+\begin{verbatim}
+class ResourceAASClient:
+    def __init__(self, prefix: str = ""):
+        self.prefix = prefix
+        
+    async def initialize_aas_client(self):
+        self.session = aiohttp.ClientSession()
+        self.SubmodelRepository = RepositorySubmodel(self.session, self.prefix)
+        self.SubmodelElementRepositoryGetters = SubmodelElementRepositoryGetters(
+            self.session, self.prefix)
+        self.SubmodelElementRepositoryUpdate = SubmodelElementRepositoryUpdate(
+            self.session, self.prefix)
+\end{verbatim}
+
+This layered architecture ensures that the agent core remains decoupled from REST API details, facilitating testing and maintenance.
+
+\subsection{Resource Agent Core}
+\label{subsec:resource_agent_core}
+
+The Resource Agent Core implements the \ac{BDI} reasoning cycle that enables autonomous behavior. This subsection describes the agent class structure, the AgentSpeak plans, and the SPADE behaviours that execute agent actions. Figure~\ref{fig:resource_agent_core} illustrates the class architecture.
+
+    
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Images/Resource_Agent_Core_Simple.pdf}
+    \caption{Resource Agent Core Class Architecture}
+    \label{fig:resource_agent_core}
+\end{figure}
+
+\subsubsection{ResourceAgent Class}
+
+The \texttt{ResourceAgent} class extends both \texttt{BDIAgent} and \texttt{PubSubMixin} from the SPADE framework. This dual inheritance combines AgentSpeak-based reasoning with \ac{XMPP} publish-subscribe messaging. The agent maintains a reference to the \texttt{ResourceAASClient} for \ac{AAS} communication and registers custom actions that map AgentSpeak plan actions to SPADE behaviours.
+
+Custom actions are registered in the \texttt{add\_custom\_actions()} method. Each action corresponds to a specific behaviour class. For example, when an AgentSpeak plan executes \texttt{.drill}, the agent instantiates and adds a \texttt{DrillInvokerBehaviour} to its execution queue.
+\subsubsection{AgentSpeak Plans}
+
+The agent's reactive behavior is defined in the \texttt{resource\_agent.asl} file using AgentSpeak syntax. Plans follow the pattern \texttt{+trigger : context <- body}, where the trigger is a belief change, the context is an optional condition, and the body contains actions to execute.
+
+\textbf{Initialization.} The agent starts with the goal \texttt{!setup}, which triggers belief loading from \ac{AAS} submodels and initiates request listening.
+
+\textbf{Negotiation Plans.} When a Call-For-Proposal arrives, the belief \texttt{is\_cfp\_received(true)} triggers validation plans that check time slots, current state, and skill constraints. The result is published back to the ProductionAAS.
+
+\textbf{Execution Plans.} Upon receiving a positive negotiation response, execution plans coordinate the operation sequence. For drilling tasks, the agent first executes \texttt{move\_xy}, then upon completion triggers \texttt{drill}. Context conditions ensure correct sequencing:
+\begin{verbatim}
++move_xy_completed(true) : current_operation(drill) <-
+    .drill.
+\end{verbatim}
+\subsubsection{SPADE Behaviours}
+
+Behaviours implement the actual logic for each agent action. They are organized into three categories:
+
+\textbf{Initialization Behaviours.} \texttt{AgentInitializationBehaviour} reads beliefs from all four submodels concurrently using \texttt{asyncio.gather()}, populating the agent's belief base with current state, supported skills, constraints, and time slot availability.
+
+\textbf{Negotiation Behaviours.} These behaviours handle the Contract Net Protocol interaction:
+\begin{itemize}
+    \item \texttt{ProductionRequestBehaviour}: Listens for CFP messages via \ac{XMPP} PubSub
+    \item \texttt{TimeSlotProcessingBehaviour}: Validates requested time slot availability
+    \item \texttt{CFPProcessingBehaviour}: Validates state, skills, and constraints against the CFP
+    \item \texttt{InformProductionAgent}: Sends the negotiation response with any violations
+    \item \texttt{NegotiationResponseBehaviour}: Processes the ProductionAAS decision
+\end{itemize}
+
+\textbf{Execution Behaviours.} These behaviours execute the actual operations:
+\begin{itemize}
+    \item \texttt{PreparationForExecutionBehaviour}: Prepares the resource (e.g., allocates time slot)
+    \item \texttt{TaskExecutionBehaviour}: Determines which skill to execute based on the CFP
+    \item \texttt{DrillInvokerBehaviour}: Invokes the drill operation via the \ac{AAS} API
+    \item \texttt{MoveXYInvokerBehaviour}: Invokes the positioning operation
+    \item \texttt{PublishTrackingBehaviour}: Publishes execution status events
+    \item \texttt{OnDoneBehaviour}: Performs cleanup and releases allocated resources
+\end{itemize}
+
+
+\subsubsection{Agent State Machine}
+
+Figure~\ref{fig:resource_agent_statemachine} shows the complete state machine of the ResourceAgent, illustrating the flow from initialization through negotiation to execution.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=1.1\textwidth,keepaspectratio]{Images/Resource_Agent_State_Machine.pdf}
+    \caption{Resource Agent State Machine}
+    \label{fig:resource_agent_statemachine}
+\end{figure}
+The state machine comprises six main phases: initialization (loading beliefs from submodels), waiting (listening for CFP requests), CFP processing (validating the request), negotiation response handling (waiting for ProductionAAS decision), execution (performing the requested operation), and cleanup (releasing resources and returning to waiting state).
+
+\subsection{Resource Simulators}
+\label{subsec:resource_simulators}
+To enable testing and validation of the ResourceAAS without physical hardware, the system includes discrete-event simulators that emulate the behavior of drill machines and positioning systems. These simulators implement the same HTTP endpoints as real machine controllers, allowing seamless integration with the \ac{AAS} infrastructure via the invocationDelegation pattern.
+
+\subsubsection{Simulator Architecture}
+
+Each simulator is implemented as a standalone FastAPI application that combines discrete-event simulation with asynchronous HTTP handling. The architecture uses SimPy~\cite{simpy}, a process-based discrete-event simulation framework for Python, to model machine operations with realistic timing behavior. Figure~\ref{fig:simulator_architecture} illustrates the simulator integration.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Images/simulator_architecture.pdf}
+    \caption{Resource Simulator Integration Architecture}
+    \label{fig:simulator_architecture}
+\end{figure}
+
+The simulators expose HTTP endpoints that match the invocationDelegation URLs defined in the Capability Submodel Operations. When the BaSyx server receives an operation invocation request, it forwards the call to the simulator endpoint, which executes the simulated operation and returns \ac{AAS}-compliant results.
+\subsubsection{Drill Machine Simulator}
+
+The \texttt{DrillMachine} simulator models drilling operations with configurable speed factors and setup times. Key components include:
+
+\textbf{Machine State.} The simulator maintains state information including current operational status (Idle/Drilling), last drill depth, jobs completed, and cumulative drill time.
+
+\textbf{Drill Process.} The SimPy process calculates drill duration based on depth and RPM parameters using a simple simulation formula:
+\begin{equation}
+t_{drill} = t_{setup} + depth \times factor_{speed} \times \frac{1500}{RPM}
+\end{equation}
+This formula scales drill time linearly with depth and inversely with RPM, plus a fixed setup time. It is not based on real machining physics but provides a reasonable approximation for simulation purposes, where higher RPM values result in faster drilling and deeper holes require proportionally more time.
+
+\textbf{Resource Management.} A SimPy Resource with capacity 1 ensures mutual exclusion, preventing concurrent operations on the same machine.
+
+\subsubsection{MoveXY Simulator}
+
+The \texttt{MoveXYMachine} simulator models 2D positioning operations. It tracks the current position and calculates movement time based on Euclidean distance:
+\begin{equation}
+t_{move} = t_{setup} + \sqrt{(x_{target} - x_{current})^2 + (y_{target} - y_{current})^2} \times factor_{move}
+\end{equation}
+Similar to the drill formula, this is a simplified simulation model where movement time scales linearly with distance traveled, plus a fixed setup time. The simulator maintains position state between operations, enabling realistic simulation of sequential movements.
+
+\subsubsection{AAS Integration}
+
+Simulators integrate with the \ac{AAS} infrastructure through the invocationDelegation pattern:
+
+\begin{enumerate}
+    \item The ResourceAgent behaviour calls \texttt{invoke\_drill()} on the ResourceAASClient
+    \item The client sends an invocation request to the BaSyx server
+    \item BaSyx reads the invocationDelegation qualifier from the Operation element
+    \item BaSyx forwards the request to the simulator endpoint\\
+    (e.g., \texttt{http://localhost:8090/drill\_invocation\_1})
+    \item The simulator executes the SimPy process and returns \ac{AAS}-compliant OperationVariable results
+    \item The response propagates back through BaSyx to the agent
+\end{enumerate}
+
+This design enables transparent switching between simulators and real machine controllers by modifying only the invocationDelegation URL in the Capability Submodel, without changes to agent code.
+
+\subsubsection{Simulator Instances}
+
+The system includes four simulator instances to support the multi-resource scenario:
+
+\begin{table}[ht]
+\centering
+\caption{Resource Simulator Configuration}
+\label{tab:simulator_config}
+\begin{tabular}{llll}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Simulator} & \textcolor{white}{Port} & \textcolor{white}{Endpoint} & \textcolor{white}{Resource} \\
+\midrule
+DrillMachine1 & 8090 & /drill\_invocation\_1 & Drill\_1 \\
+DrillMachine2 & 8091 & /drill\_invocation\_2 & Drill\_2 \\
+MoveXYMachine1 & 8092 & /movexy\_invocation\_1 & Drill\_1 \\
+MoveXYMachine2 & 8093 & /movexy\_invocation\_2 & Drill\_2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Each drill machine resource has an associated MoveXY simulator, reflecting the physical configuration where positioning and drilling are separate actuators on the same machine.
+
+
+\section{Production Agent Concept}
+\label{sec:production_agent}
+
+The ProductionAAS orchestrates the manufacturing process by coordinating resource agents, managing process plans, and tracking execution progress. Unlike the ResourceAAS which represents physical assets, the ProductionAAS operates at the product level, initiating negotiations with resources and monitoring task completion. This section describes the Production Agent architecture, submodels, and its dual-core design for execution and negotiation.
+
+\subsection{Production Agent Overview}
+\label{subsec:production_overview}
+
+The ProductionAAS follows a similar architectural pattern to the ResourceAAS but serves a different purpose in the system hierarchy. While ResourceAAS agents represent manufacturing capabilities, the ProductionAAS represents production orders and coordinates the execution of process plans across multiple resources. Figure~\ref{fig:production_components} illustrates the Production Agent component structure.
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/production_components.png}
+    \caption{Production Agent Component Structure}
+    \label{fig:production_components}
+\end{figure}
+
+\textbf{ProductionAASClient.} Similar to the ResourceAASClient, this facade aggregates repository classes for accessing Production submodels. It provides methods for reading process plans, updating execution state, and managing interface configurations.
+
+
+\textbf{Asset Administration Shell.} The Production \ac{AAS} contains submodels that describe the production order rather than physical capabilities. These include the Process Plan defining the sequence of operations, Execution Tracking for monitoring progress, and Interface Endpoints for communication configuration. The shell is deployed to the same BaSyx environment as ResourceAAS instances, enabling unified access through the \ac{AAS} API.
+
+\textbf{Dual-Core Agent Architecture.} The Production Agent implements a separation of concerns through two specialized agent cores:
+\begin{itemize}
+    \item \textbf{Execution Core}: Handles user requests, monitors execution progress, and updates the Execution Tracking submodel based on events from resource agents.
+    \item \textbf{Negotiation Core}: Manages the Contract Net Protocol interaction with resource agents, collecting responses and selecting the best-fit resource for task execution.
+\end{itemize}
+
+This separation allows independent scaling and clearer responsibility boundaries compared to a monolithic agent design.
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/production_Internal.png}
+    \caption{Production Agent Internal Architecture}
+    \label{fig:production_internal}
+\end{figure}
+
+
+\subsection{Production Agent Submodels}
+\label{subsec:production_submodels}
+The ProductionAAS contains three submodels that support process definition, execution monitoring, and communication configuration.
+
+\subsubsection{Process Plan Submodel}
+
+The Process Plan Submodel defines the sequence of operations required to fulfill a production order. It uses a graph-based representation with nodes, edges, and control flow elements. Figure~\ref{fig:sm_process_plan} shows the structure of this submodel.
+
+\textbf{Nodes.} A SubmodelElementCollection containing Property elements for each operation in the process. In the drill machine scenario, this includes:
+\begin{itemize}
+    \item \texttt{Move\_Node}: Positioning operation to coordinates X, Y
+    \item \texttt{Drill\_Node}: Drilling operation with depth and RPM parameters
+\end{itemize}
+
+\textbf{Edges.} A SubmodelElementCollection defining the execution sequence between nodes (e.g., ``Move\_Node to Drill\_Node'').
+
+\textbf{Entry\_Point / Exit\_Point.} Properties indicating the first and last nodes in the process plan, enabling the Execution Core to determine where to begin and when execution is complete.
+
+\textbf{Preconditions / Postconditions.} Properties defining the required state before execution can begin and the expected state after completion.
+
+\textbf{Required\_Capabilities.} A list of capabilities needed to execute the process plan (e.g., ``[Drill\_Capability, MoveXY\_Capability]''). The Negotiation Core uses this to filter resource agents during CFP broadcast.
+
+
+\begin{landscape}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=24cm]{Images/sm_process_plan.pdf}
+    \caption{Process Plan Submodel Structure}
+    \label{fig:sm_process_plan}
+\end{figure}
+\end{landscape}
+\subsubsection{Execution Tracking Submodel}
+
+The Execution Tracking Submodel provides real-time visibility into process execution. It is updated by the Execution Core as resource agents report progress. Figure~\ref{fig:sm_execution_tracking} shows the structure.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/sm_execution_tracking.pdf}
+    \caption{Execution Tracking Submodel Structure}
+    \label{fig:sm_execution_tracking}
+\end{figure}
+
+\textbf{Current\_Node.} The node currently being executed in the process plan, updated when resource agents publish tracking events.
+
+\textbf{Token\_Position.} An integer indicating how many steps have been completed, implementing a simple Petri net-style token tracking mechanism.
+
+\textbf{Time\_Stamp.} The timestamp of the last execution update, providing temporal context for monitoring systems.
+
+\textbf{Step\_Status.} The status of the current operation: ``Not Started'', ``running'', ``completed'', or ``failed''.
+
+\subsubsection{Interface Endpoints Submodel}
+
+The Interface Endpoints Submodel as in figure~\ref{fig:sm_interface_endpoints} contains configuration for external communication, similar to the Interaction Submodel in ResourceAAS but focused on command invocation endpoints.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/sm_interface_endpoints.pdf}
+    \caption{Interface Endpoints Submodel Structure}
+    \label{fig:sm_interface_endpoints}
+\end{figure}
+
+\textbf{Endpoints Collection.} Contains properties for:
+\begin{itemize}
+    \item \texttt{Drill\_Command\_Invocation\_Endpoint}: Base URL for drill operation invokers
+    \item \texttt{Move\_Command\_Invocation\_Endpoint}: Base URL for movement operation invokers
+\end{itemize}
+
+
+
+
+\subsection{Production Agent Execution Core}
+\label{subsec:production_execution}
+
+The Execution Core manages the lifecycle of production requests from receipt through completion. It operates as a SPADE agent extending both \texttt{Agent} and \texttt{PubSubMixin} for \ac{XMPP} communication. Figure~\ref{fig:execution_core} illustrates the class architecture.
+
+\begin{landscape}
+    
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=24cm]{Images/execution_core_simple.pdf}
+    \caption{Execution Core Class Architecture}
+    \label{fig:execution_core}
+\end{figure}
+\end{landscape}
+\subsubsection{ExecutionAgent Class}
+
+The \texttt{ExecutionAgent} class serves as the central coordinator for production execution. It maintains several key attributes:
+
+\begin{itemize}
+    \item \texttt{production\_client}: Reference to the ProductionAASClient for accessing submodel data
+    \item \texttt{pubsub\_owner}: Utility for managing \ac{XMPP} PubSub node ownership and subscriptions
+    \item \texttt{negotiation\_result}: Stores the selected resource and parameters from negotiation
+    \item \texttt{token\_position}: Tracks execution progress through the process plan (Petri net-style counter)
+    \item \texttt{current\_request}: Stores the active production request for reference during tracking
+\end{itemize}
+
+During setup, the agent initializes the ProductionAASClient and subscribes to four \ac{XMPP} topics:
+\begin{itemize}
+    \item \texttt{pa\_user\_service\_request}: Receives new production requests
+    \item \texttt{pa\_negotation\_result}: Receives negotiation outcomes from the Negotiation Core
+    \item \texttt{execution\_tracking\_topic}: Receives progress updates from resource agents
+    \item \texttt{job\_completion\_topic}: Receives task completion notifications
+\end{itemize}
+
+\subsubsection{Event Handling}
+
+The \texttt{\_on\_pubsub\_event()} method routes incoming messages to appropriate handlers based on the topic:
+
+\textbf{User Request Handling.} When a message arrives on \texttt{pa\_user\_service\_request}, the agent delegates to \texttt{GetUserRequestBehaviour}, which parses the CFP message and forwards it to the Negotiation Core.
+
+\textbf{Negotiation Result Handling.} The \texttt{\_handle\_negotiation\_result()} method processes the selected resource information, logs the negotiation summary, and triggers execution preparation.
+
+\textbf{Tracking Update Handling.} The \texttt{\_handle\_tracking\_update()} method receives progress events from resource agents during execution. For each update, it increments the token position, updates the Execution Tracking Submodel via the ProductionAASClient, and logs the operation status.
+
+\textbf{Job Completion Handling.} The \texttt{\_handle\_job\_completion()} method finalizes the production run by logging completion status and saving execution reports.
+
+\subsubsection{Behaviours}
+
+The Execution Core uses three behaviours to handle different aspects of request processing:
+
+\textbf{GetUserRequestBehaviour.} Receives and parses user service requests from the \texttt{pa\_user\_service\_request} topic. It extracts the skill requirements, time slot preferences, and input parameters, then publishes the request to the Negotiation Core via \texttt{pa\_execution\_service\_topic}.
+
+\textbf{GetProccesPlanBehaviour.} Retrieves the process plan from the Production AAS, providing the Execution Core with information about the sequence of operations, entry/exit points, and required capabilities.
+
+\textbf{GetNegotiationResultBehaviour.} Processes negotiation results received from the Negotiation Core. Upon receiving a positive result with a selected resource, it prepares the execution context and waits for tracking updates as the resource agent executes the task.
+\subsection{Production Agent Negotiation Core}
+\label{subsec:production_negotiation}
+
+The Negotiation Core implements the Contract Net Protocol initiator role, broadcasting Call-For-Proposals to resource agents and selecting the best candidate for task execution. Like the Execution Core, it operates as a SPADE agent with \ac{XMPP} publish-subscribe capabilities. Figure~\ref{fig:negotiation_core} illustrates the class architecture.
+
+\begin{landscape}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=23cm]{Images/negotiation_core_simple.pdf}
+    \caption{Negotiation Core Class Architecture}
+    \label{fig:negotiation_core}
+\end{figure}
+\end{landscape}
+\subsubsection{NegotiationAgent Class}
+
+The \texttt{NegotiationAgent} class manages the negotiation process with resource agents. It maintains several key attributes:
+
+\begin{itemize}
+    \item \texttt{production\_client}: Reference to the ProductionAASClient for accessing submodel data
+    \item \texttt{pubsub\_owner}: Utility for querying \ac{XMPP} PubSub node subscribers
+    \item \texttt{agents\_subscriptions}: List of resource agent identifiers subscribed to the negotiation topic
+    \item \texttt{received\_responses}: Dictionary tracking responses received from each resource agent
+    \item \texttt{selected\_resource}: Stores the chosen resource after selection completes
+\end{itemize}
+
+During setup, the agent initializes the ProductionAASClient, queries the subscriber list from the \texttt{production\_negotiation} topic, and subscribes to two \ac{XMPP} topics:
+\begin{itemize}
+    \item \texttt{pa\_execution\_service\_topic}: Receives negotiation requests from the Execution Core
+    \item \texttt{negotiation\_message\_topic}: Receives proposal responses from resource agents
+\end{itemize}
+
+The agent publishes to:
+\begin{itemize}
+    \item \texttt{production\_negotiation}: Broadcasts CFP messages to all subscribed resource agents
+    \item \texttt{pa\_negotation\_result}: Publishes the selected resource back to the Execution Core
+\end{itemize}
+
+\subsubsection{Response Tracking}
+
+The \texttt{all\_responses\_received()} method checks whether all expected resource agents have responded. It compares the set of received response keys against the set of subscribed agents, returning true only when all expected responses have arrived. This ensures the selection algorithm has complete information before making a decision.
+
+\subsubsection{Behaviours}
+
+The Negotiation Core uses two main behaviours and two helper behaviours:
+
+\textbf{GetExecutionCoreServiceBehaviour.} Receives negotiation requests from the Execution Core via \texttt{pa\_execution\_service\_topic}. Upon receiving a request, it:
+\begin{enumerate}
+    \item Parses the CFP message containing skill requirements and parameters
+    \item Broadcasts the CFP to all resource agents via the \texttt{production\_negotiation} topic
+    \item Initializes the response tracking dictionary
+\end{enumerate}
+
+\textbf{GetNegotiationResponseBehaviour.} Collects and processes responses from resource agents. For each incoming response on \texttt{negotiation\_message\_topic}, it:
+\begin{enumerate}
+    \item Extracts the sender identifier and response payload
+    \item Stores the response in the \texttt{received\_responses} dictionary
+    \item Checks if all expected responses have been received
+    \item When complete, triggers the resource selection process
+\end{enumerate}
+
+\textbf{FindBestFitResourceBehaviour.} Applies the selection criteria to choose the optimal resource from the collected responses. The selection algorithm:
+\begin{enumerate}
+    \item Filters out responses with violations (invalid proposals)
+    \item Among valid proposals, evaluates based on criteria such as time slot availability
+    \item Returns the best-fit resource identifier
+\end{enumerate}
+
+\textbf{PublishNegotiationResultBehaviour.} Publishes the selection result to \texttt{pa\_negotation\_result}, informing the Execution Core of the chosen resource. The result includes the selected resource identifier, allocated time slot, and original request parameters.
+
+\subsubsection{Contract Net Protocol Flow}
+
+The complete negotiation flow follows the Contract Net Protocol pattern:
+
+\begin{enumerate}
+    \item Execution Core publishes a service request to \texttt{pa\_execution\_service\_topic}
+    \item Negotiation Core receives the request and broadcasts CFP to \texttt{production\_negotiation}
+    \item Resource agents evaluate the CFP against their beliefs and respond with proposals or rejections
+    \item Negotiation Core collects all responses via \texttt{negotiation\_message\_topic}
+    \item Once all responses are received, the best-fit resource is selected
+    \item The selection result is published to \texttt{pa\_negotation\_result}
+    \item Execution Core receives the result and monitors execution via tracking topics
+\end{enumerate}
+
+\section{System Interaction}
+\label{sec:system_interaction}
+
+This section describes the interaction between the Production Agent's dual cores and the Resource Agents during the complete production cycle. The interaction follows a coordinated flow from user request through negotiation to task execution and completion. Figure~\ref{fig:system_interaction} illustrates the complete interaction state machine.
+
+\begin{landscape}
+    
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=20cm]{Images/PA_SM.pdf}
+    \caption{Production Agent - Resource Agent - System Interaction State Machine}
+    \label{fig:system_interaction}
+\end{figure}
+\end{landscape}
+
+\subsection{Execution Core Flow}
+
+The Execution Core operates as the entry point for production requests and manages the overall execution lifecycle:
+
+\textbf{Request Reception.} The flow begins when a user request arrives via the \texttt{pa\_user\_service\_request} topic. The Execution Core receives and parses the request, extracting the required skills, time slot preferences, and input parameters.
+
+\textbf{Service Delegation.} Upon receiving a valid request, the Execution Core publishes a service request to the \texttt{pa\_execution\_service\_topic}, delegating the negotiation task to the Negotiation Core. The Execution Core then enters a waiting state for the negotiation result.
+
+\textbf{Execution Monitoring.} After receiving a positive negotiation result, the Execution Core monitors task execution by subscribing to tracking events from the selected Resource Agent. It updates the Execution Tracking Submodel as operations progress through the process plan.
+
+\textbf{Completion Handling.} When the Resource Agent signals task completion via \texttt{job\_completion\_topic}, the Execution Core finalizes the production run and returns to waiting for the next user request.
+
+\subsection{Negotiation Core Flow}
+
+The Negotiation Core implements the Contract Net Protocol initiator role:
+
+\textbf{CFP Broadcast.} Upon receiving a service request from the Execution Core, the Negotiation Core broadcasts a Call-For-Proposal to all Resource Agents subscribed to the \texttt{production\_negotiation} topic.
+
+\textbf{Response Collection.} The Negotiation Core waits for responses from all subscribed Resource Agents. Each response is stored in a tracking dictionary, and the core checks whether all expected responses have been received.
+
+\textbf{Parallel Response Handling.} Resource Agents respond independently and potentially in parallel. The state machine shows two parallel response paths converging at a synchronization bar, representing the collection of multiple proposals.
+
+\textbf{Resource Selection.} Once all responses are collected, the Negotiation Core applies the best-fit selection algorithm:
+\begin{enumerate}
+    \item Filter responses without violations (valid proposals)
+    \item Evaluate remaining proposals based on selection criteria
+    \item Select the optimal resource for task execution
+\end{enumerate}
+
+\textbf{Execution Plan Creation.} After selecting a resource, the Negotiation Core creates an execution plan containing the selected resource identifier, allocated time slot, and task parameters.
+
+\textbf{Result Publication.} The Negotiation Core informs the Execution Core of the selection result via \texttt{pa\_negotation\_result} and returns to waiting for the next negotiation request.
+
+\subsection{Inter-Core Communication}
+
+The two cores communicate through \ac{XMPP} publish-subscribe topics, maintaining loose coupling:
+
+\begin{table}[ht]
+\centering
+\caption{Production Agent Internal Communication Topics}
+\label{tab:internal_topics}
+\begin{tabular}{lll}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Topic} & \textcolor{white}{Publisher} & \textcolor{white}{Subscriber} \\
+\midrule
+pa\_execution\_service\_topic & Execution Core & Negotiation Core \\
+pa\_negotation\_result & Negotiation Core & Execution Core \\
+\bottomrule
+\end{tabular}
+\end{table}
+\subsection{Resource Agent Interaction}
+
+The Production Agent interacts with Resource Agents through external \ac{XMPP} topics:
+
+\begin{table}[ht]
+\centering
+\caption{Production-Resource Communication Topics}
+\label{tab:external_topics}
+\begin{tabular}{lll}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Topic} & \textcolor{white}{Direction} & \textcolor{white}{Purpose} \\
+\midrule
+production\_negotiation & PA → RA & CFP broadcast \\
+negotiation\_message\_topic & RA → PA & Proposal responses \\
+execution\_tracking\_topic & RA → PA & Progress updates \\
+job\_completion\_topic & RA → PA & Task completion \\
+\bottomrule
+\end{tabular}
+\end{table}
+This event-driven architecture enables asynchronous coordination between the Production Agent and multiple Resource Agents, supporting scalable multi-resource scenarios without tight coupling between components.

@@ -1,0 +1,192 @@
+@startuml Repository_Architecture
+
+skinparam backgroundColor white
+skinparam classBackgroundColor #F5F5F5
+skinparam classBorderColor #333333
+skinparam arrowColor #333333
+skinparam stereotypeCBackgroundColor #E8E8E8
+
+title Resource Agent Repository Architecture
+
+package "Base Layer" #DDEEFF {
+    
+    abstract class RepositoryBase {
+        - _session : aiohttp.ClientSession
+        - loader : IdConfigLoader
+        - storage_path : pathlib.Path
+        __
+        + get_submodel_by_identifier(identifier: str) : model.Submodel
+        + update_submodel_by_identifier(identifier: str, submodel_data: model.Submodel) : Any
+        + create_submodel_base(submodel_data: model.Submodel) : Any
+        + delete_submodel_by_identifier_base(identifier: str) : Any
+        + get_shell_by_id(shell_id: str) : model.AssetAdministrationShell
+        + add_submodel_to_shell(shell_id: str, submodel: model.Submodel) : model.AssetAdministrationShell
+        __
+        - _b64url_no_pad(s: str) : str
+        - _update_shell_by_id(shell: model.AssetAdministrationShell) : Any
+        - __parse_submodel_for_update_create(raw: Any) : Dict
+        - __parse_shell_for_update_create(raw: Any) : Dict
+    }
+    
+    abstract class SubmodelElementRepositoryBase {
+        - _session : aiohttp.ClientSession
+        - loader : IdConfigLoader
+        __
+        + get_submodel_element_by_id(submodel_id: str, element_id: str) : Any
+        + get_submodel_elements_from_collection(submodel_id: str, collection_id: str, element_id: str) : Any
+        + get_submodel_element_value_by_id(submodel_id: str, element_id: str) : Any
+        + get_submodel_element_value_from_collection(submodel_id: str, collection_id: str, element_id: str) : Any
+        + update_submodel_element_value_by_id(submodel_id: str, element_id: str, value: Any) : None
+        + update_submodel_element_value_from_collection(submodel_id: str, collection_id: str, element_id: str, value: Any) : None
+        + invoke_operation_on_submodel_element(submodel_id: str, operation_id: str, payload: Dict, async_flag: str) : Any
+        + create_submodel_element(submodel_id: str, element: Any) : None
+        + create_submodel_element_in_collection(submodel_id: str, collection_id: str, element: Any) : None
+        + delete_submodel_element_by_id(submodel_id: str, element_id: str) : None
+        __
+        # _invoke_operation_payload(submodel_id: str, operation_id: str, values: Any) : Dict
+        # _element_exists(submodel_id: str, id_short_path: str) : bool
+        # _namespace_to_list(ns: Any) : List
+        - _b64url_no_pad(s: str) : str
+    }
+}
+
+package "Submodel Repositories" #E8FFE8 {
+    
+    class RepositorySubmodel {
+        - _object_store : model.DictObjectStore
+        - prefix : str
+        __
+        + get_Capabilities_submodel_and_store() : model.Submodel
+        + get_Interaction_submodel_and_store() : model.Submodel
+        + get_Operational_State_submodel_and_store() : model.Submodel
+        + get_Knowledge_submodel_and_store() : model.Submodel
+        + update_Capabilities_submodel(submodel_data: model.Submodel) : Any
+        + update_Interaction_submodel(submodel_data: model.Submodel) : Any
+        + update_Operational_State_submodel(submodel_data: model.Submodel) : Any
+        + update_Knowledge_submodel(submodel_data: model.Submodel) : Any
+        + create_submodel(submodel_data: model.Submodel) : Any
+        + delete_submodel_by_identifier(identifier: str) : Any
+        __
+        - _inject_prefix_for_submode(prefix: str, submodel_id: str) : str
+        - _inject_prefix_for_shell_id(prefix: str, shell_id: str) : str
+    }
+}
+
+package "SubmodelElement Repositories" #FFE8E8 {
+    
+    class SubmodelElementRepositoryGetters {
+        - prefix : str
+        __
+        .. Operational State ..
+        + get_Operational_State_Current_State() : model.Property
+        + getvalue_Operational_State_Current_State() : Any
+        + get_Operational_State_Free_Slots() : model.Property
+        + getvalue_Operational_State_Free_Slots() : Any
+        + get_Operational_State_Booked_Slots() : model.Property
+        + getvalue_Operational_State_Booked_Slots() : Any
+        + get_time_slot_manager_from_server() : TimeSlotDataType
+        .. Knowledge ..
+        + get_Knowledge_ResourceConstraints_Collection() : model.SubmodelElementCollection
+        + getvalue_Knowledge_MaxDepth_Collection_Value() : Any
+        + getvalue_Knowledge_MinDepth_Collection_Value() : Any
+        + getvalue_MaxMinDepth() : Any
+        + getvalue_Knowledge_Constraints_Type() : Any
+        .. Capabilities ..
+        + get_Capabilities_Drill_Capability() : model.Operation
+        + get_Capabilities_MoveXY_Capability() : model.Operation
+        + get_Capabilities_Supported_Skills() : model.Property
+        + getvalue_Capabilities_Supported_Skills() : Any
+        + invoke_drill(depth: float, speed: float) : Any
+        + invoke_move_xy(x: float, y: float) : Any
+        .. Interaction ..
+        + get_Interaction_Endpoints_Collection() : model.SubmodelElementCollection
+        + getvalue_Interaction_OPCUA_Endpoint() : Any
+        + getvalue_Interaction_MQTT_Endpoint() : Any
+        __
+        - _inject_prefix_for_submode(prefix: str, submodel_id: str) : str
+        - _inject_prefix_for_collection_id(prefix: str, collection_id: str) : str
+    }
+    
+    class SubmodelElementRepositoryUpdate {
+        - prefix : str
+        __
+        .. Operational State ..
+        + update_Operational_State_Current_State(new_state: str) : None
+        + update_Operational_State_Free_Slots(new_slots: str) : None
+        + update_Operational_State_Booked_Slots(new_slots: str) : None
+        + update_Operational_State_Slot_Duration(new_duration: str) : None
+        + update_time_manager_to_server(manager: TimeSlotDataType) : None
+        .. Knowledge ..
+        + update_Knowledge_MaxDepth_Collection_Value(new_value: str) : None
+        + update_Knowledge_MinDepth_Collection_Value(new_value: str) : None
+        .. Interaction ..
+        + update_Interaction_OPCUA_Endpoint(new_endpoint: str) : None
+        + update_Interaction_MQTT_Endpoint(new_endpoint: str) : None
+        __
+        - _inject_prefix_for_submodel(prefix: str, submodel_id: str) : str
+        - _inject_prefix_for_collection_id(prefix: str, collection_id: str) : str
+    }
+    
+    class SubmodelElementRepositoryCreateDelete {
+        __
+        + create_element(submodel_id: str, element: Any) : None
+        + create_element_in_collection(submodel_id: str, collection_id: str, element: Any) : None
+        + delete_element(submodel_id: str, element_id: str) : None
+        + delete_element_from_collection(submodel_id: str, collection_id: str, element_id: str) : None
+    }
+}
+
+package "Client Aggregation" #FFFFD0 {
+    
+    class ResourceAASClient {
+        - prefix : str
+        - session : aiohttp.ClientSession
+        + SubmodelRepository : RepositorySubmodel
+        + SubmodelElementRepositoryGetters : SubmodelElementRepositoryGetters
+        + SubmodelElementRepositoryUpdate : SubmodelElementRepositoryUpdate
+        + SubmodelElementRepositoryCreateDelete : SubmodelElementRepositoryCreateDelete
+        __
+        + initialize_aas_client() : None
+        + close() : None
+        + allocate_time_slot(slot: str) : bool
+        + release_time_slot(slot: str) : bool
+    }
+}
+
+' Inheritance relationships
+RepositoryBase <|-- RepositorySubmodel
+SubmodelElementRepositoryBase <|-- SubmodelElementRepositoryGetters
+SubmodelElementRepositoryBase <|-- SubmodelElementRepositoryUpdate
+SubmodelElementRepositoryBase <|-- SubmodelElementRepositoryCreateDelete
+
+' Aggregation relationships
+ResourceAASClient *-- RepositorySubmodel
+ResourceAASClient *-- SubmodelElementRepositoryGetters
+ResourceAASClient *-- SubmodelElementRepositoryUpdate
+ResourceAASClient *-- SubmodelElementRepositoryCreateDelete
+
+' Dependencies
+RepositoryBase ..> "aiohttp" : uses
+RepositoryBase ..> "IdConfigLoader" : uses
+RepositoryBase ..> "model.Submodel" : manages
+SubmodelElementRepositoryBase ..> "model.SubmodelElement" : manages
+
+note right of RepositoryBase
+    Provides base CRUD operations
+    for Submodel-level access
+    via BaSyx REST API
+end note
+
+note right of SubmodelElementRepositoryBase
+    Provides base operations for
+    SubmodelElement access including
+    nested collections and operations
+end note
+
+note bottom of ResourceAASClient
+    Aggregates all repositories
+    and provides high-level
+    convenience methods
+end note
+
+@enduml

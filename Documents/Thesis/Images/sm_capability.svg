@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="358px"
+   preserveAspectRatio="none"
+   style="width:1023px;height:358px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 1023 358"
+   width="1023px"
+   zoomAndPan="magnify"
+   id="svg235"
+   sodipodi:docname="sm_capability.svg"
+   inkscape:export-filename="sm_capability.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview237"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.398827"
+     inkscape:cx="512.57233"
+     inkscape:cy="181.22327"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg235" />
+  <defs
+     id="defs131" />
+  <g
+     id="g233">
+    <!--cluster <<Submodel>>\nCapability-->
+    <g
+       class="cluster"
+       data-entity="..Submodel...nCapability"
+       data-source-line="7"
+       data-uid="ent0002"
+       id="cluster_..Submodel...nCapability">
+      <path
+         d="M8.5,6 L106.1807,6 A3.75,3.75 0 0 1 108.6807,8.5 L115.6807,44.5938 L1013.5,44.5938 A2.5,2.5 0 0 1 1016,47.0938 L1016,348.5 A2.5,2.5 0 0 1 1013.5,351 L8.5,351 A2.5,2.5 0 0 1 6,348.5 L6,8.5 A2.5,2.5 0 0 1 8.5,6"
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path133" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="6"
+         x2="115.6807"
+         y1="44.5938"
+         y2="44.5938"
+         id="line135" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="96.6807"
+         x="10"
+         y="20.9951"
+         id="text137">«Submodel»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="79.4268"
+         x="18.627"
+         y="37.292"
+         id="text139">Capability</text>
+    </g>
+    <!--class Supported_Skills-->
+    <g
+       class="entity"
+       data-entity="Supported_Skills"
+       data-source-line="8"
+       data-uid="ent0003"
+       id="entity_Supported_Skills">
+      <rect
+         fill="#F1F1F1"
+         height="129.4844"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="195.6201"
+         x="146"
+         y="205.5"
+         id="rect142" />
+      <ellipse
+         cx="182.5187"
+         cy="221.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse144" />
+      <path
+         d="M186.6281,227.5 L178.9093,227.5 L178.9093,215.1094 L186.6281,215.1094 L186.6281,217.2656 L181.3625,217.2656 L181.3625,219.9375 L186.1281,219.9375 L186.1281,222.0938 L181.3625,222.0938 L181.3625,225.3438 L186.6281,225.3438 L186.6281,227.5 Z "
+         fill="#000000"
+         id="path146" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="201.3006"
+         y="226.3467"
+         id="text148">Supported_Skills</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="147"
+         x2="340.6201"
+         y1="237.5"
+         y2="237.5"
+         id="line150" />
+      <ellipse
+         cx="157"
+         cy="251.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse152" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="101.0557"
+         x="166"
+         y="254.4951"
+         id="text154">idShort :&quot;Skill&quot;</text>
+      <ellipse
+         cx="157"
+         cy="267.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse156" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.8008"
+         x="166"
+         y="270.792"
+         id="text158">kind : &quot;Instance&quot;</text>
+      <ellipse
+         cx="157"
+         cy="283.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse160" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="169.292"
+         x="166"
+         y="287.0889"
+         id="text162">category :&quot;PARAMETER&quot;</text>
+      <ellipse
+         cx="157"
+         cy="300.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse164" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="169.6201"
+         x="166"
+         y="303.3857"
+         id="text166">value :&quot;Drilling, Moving&quot;</text>
+      <ellipse
+         cx="157"
+         cy="316.3359"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse168" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="136.4043"
+         x="166"
+         y="319.6826"
+         id="text170">valueType :&quot;String&quot;</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="147"
+         x2="340.6201"
+         y1="326.9844"
+         y2="326.9844"
+         id="line172" />
+    </g>
+    <!--class Drill-->
+    <g
+       class="entity"
+       data-entity="Drill"
+       data-source-line="15"
+       data-uid="ent0004"
+       id="entity_Drill">
+      <rect
+         fill="#F1F1F1"
+         height="113.1875"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="444.4824"
+         x="22"
+         y="57.5"
+         id="rect175" />
+      <ellipse
+         cx="182.4873"
+         cy="73.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse177" />
+      <path
+         d="M186.5967,79.5 L178.8779,79.5 L178.8779,67.1094 L186.5967,67.1094 L186.5967,69.2656 L181.3311,69.2656 L181.3311,71.9375 L186.0967,71.9375 L186.0967,74.0938 L181.3311,74.0938 L181.3311,77.3438 L186.5967,77.3438 L186.5967,79.5 Z "
+         fill="#000000"
+         id="path179" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="115.0078"
+         x="202.9873"
+         y="78.3467"
+         id="text181">«Operation»Drill</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="23"
+         x2="465.4824"
+         y1="89.5"
+         y2="89.5"
+         id="line183" />
+      <ellipse
+         cx="33"
+         cy="103.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse185" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="177.748"
+         x="42"
+         y="106.4951"
+         id="text187">idShort :&quot;Drill_Capability&quot;</text>
+      <ellipse
+         cx="33"
+         cy="119.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse189" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="418.4824"
+         x="42"
+         y="122.792"
+         id="text191">qualifier : &quot;http://host.docker.internal:8090/drill_invocation&quot;</text>
+      <ellipse
+         cx="33"
+         cy="135.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse193" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="405.3984"
+         x="42"
+         y="139.0889"
+         id="text195">input_variable: Drill_Depth : Double , Drill_Speed : Double</text>
+      <ellipse
+         cx="33"
+         cy="152.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse197" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="253.3125"
+         x="42"
+         y="155.3857"
+         id="text199">output_variable: Drill_Result : String</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="23"
+         x2="465.4824"
+         y1="162.6875"
+         y2="162.6875"
+         id="line201" />
+    </g>
+    <!--class Move-->
+    <g
+       class="entity"
+       data-entity="Move"
+       data-source-line="21"
+       data-uid="ent0005"
+       id="entity_Move">
+      <rect
+         fill="#F1F1F1"
+         height="113.1875"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="473.8428"
+         x="526"
+         y="213.5"
+         id="rect204" />
+      <ellipse
+         cx="696.4985"
+         cy="229.5"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse206" />
+      <path
+         d="M700.6079,235.5 L692.8892,235.5 L692.8892,223.1094 L700.6079,223.1094 L700.6079,225.2656 L695.3423,225.2656 L695.3423,227.9375 L700.1079,227.9375 L700.1079,230.0938 L695.3423,230.0938 L695.3423,233.3438 L700.6079,233.3438 L700.6079,235.5 Z "
+         fill="#000000"
+         id="path208" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="124.3457"
+         x="716.9985"
+         y="234.3467"
+         id="text210">«Operation»Move</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="527"
+         x2="998.8428"
+         y1="245.5"
+         y2="245.5"
+         id="line212" />
+      <ellipse
+         cx="537"
+         cy="259.1484"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse214" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="205.2285"
+         x="546"
+         y="262.4951"
+         id="text216">idShort :&quot;MoveXY_Capability&quot;</text>
+      <ellipse
+         cx="537"
+         cy="275.4453"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse218" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="447.8428"
+         x="546"
+         y="278.792"
+         id="text220">qualifier : &quot;http://host.docker.internal:8090/movexy_invocation&quot;</text>
+      <ellipse
+         cx="537"
+         cy="291.7422"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse222" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="372.3535"
+         x="546"
+         y="295.0889"
+         id="text224">input_variable: Target_X : Double , Target_Y : Double</text>
+      <ellipse
+         cx="537"
+         cy="308.0391"
+         fill="#000000"
+         rx="3"
+         ry="3"
+         style="stroke:#000000;stroke-width:1;"
+         id="ellipse226" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="262.6504"
+         x="546"
+         y="311.3857"
+         id="text228">output_variable: Move_Result : String</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="527"
+         x2="998.8428"
+         y1="318.6875"
+         y2="318.6875"
+         id="line230" />
+    </g>
+    <!--SRC=[fP11QuD048Nl_eh1Omb9Zgs849eSUWWjCOS42hBHYIvkThVhQ2Cb_xthnhHfiQNGayFtnhTl7XD2lHxuaSlSypo1Um9IO7XU46JSO4fSIQjebfOiH_33CAvt1vMXYA9dUSyqst71gVNXpGD0INO6FwwrLeOmI-AI2r7vm2hu3jqV03V0ixYm0WI-4_mUbrnc483_82jYCiKBJnbXhanhzvzcgzboiLwiBbh3H8rMc1jhP8yQmL8rzlj5NxUwsud9zChfAdeOFceqhBixYfoD2- -cWSIE9rSzz1ilDHDypz5q5nH4EfXC2bNHE5DfYMRC9Q6HJ0Itqxlf97CkN3OgTIzVNBZKDIKDCvpj10Rd5CaSDHNMTwvgIs7KurWZPX-uTr0r3LciiAg5pG_d4dxhm1Q8he9k66YWmvljloiuM9jZ-uSEripaICdcke2URJ_PJ-TtQGUlFtdl]-->
+  </g>
+</svg>

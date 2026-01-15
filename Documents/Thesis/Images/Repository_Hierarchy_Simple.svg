@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="497.56354"
+   preserveAspectRatio="none"
+   version="1.1"
+   viewBox="0 0 1357.0986 497.56354"
+   width="1357.0986"
+   zoomAndPan="magnify"
+   id="svg875"
+   sodipodi:docname="Repository_Hierarchy_Simple.svg"
+   inkscape:export-filename="tester.pdf"
+   inkscape:export-xdpi="95.673332"
+   inkscape:export-ydpi="95.673332"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview877"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.67372263"
+     inkscape:cx="679.80498"
+     inkscape:cy="250.10292"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg875" />
+  <title
+     id="title516">Resource Agent Repository Class Hierarchy</title>
+  <defs
+     id="defs518" />
+  <g
+     id="g873"
+     transform="translate(-6.75,-12.358381)">
+    <g
+       class="title"
+       data-source-line="9"
+       id="g522">
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="342.63089"
+         x="506.98389"
+         y="22.9951"
+         id="text520">Resource Agent Repository Class Hierarchy</text>
+    </g>
+    <!--class RepositoryBase-->
+    <g
+       class="entity"
+       data-entity="RepositoryBase"
+       data-source-line="12"
+       data-uid="ent0002"
+       id="entity_RepositoryBase">
+      <rect
+         fill="#f8f8f8"
+         height="178.3438"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#444444;stroke-width:0.5"
+         width="291.0498"
+         x="34"
+         y="68.796898"
+         id="rect524" />
+      <circle
+         cx="120.6934"
+         cy="88.929703"
+         fill="#a9dcdf"
+         style="stroke:#181818;stroke-width:1"
+         id="ellipse526"
+         r="11" />
+      <path
+         d="m 120.8027,84.2734 -1.1562,5.0782 h 2.3281 z m -1.4843,-2.2343 h 2.9843 l 3.3594,12.3906 h -2.4531 l -0.7656,-3.0625 h -3.2813 l -0.75,3.0625 h -2.4375 z"
+         fill="#000000"
+         id="path528" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="64.330101"
+         x="163.60989"
+         y="84.935501"
+         id="text530">«abstract»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="109.1631"
+         x="141.19341"
+         y="100.7607"
+         id="text532">RepositoryBase</text>
+      <line
+         style="stroke:#444444;stroke-width:0.5"
+         x1="35"
+         x2="324.0498"
+         y1="109.0625"
+         y2="109.0625"
+         id="line534" />
+      <polygon
+         fill="none"
+         points="45,117.7109 49,121.7109 45,125.7109 41,121.7109 "
+         style="stroke:#b38d22;stroke-width:1"
+         id="polygon536" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="166.3867"
+         x="54"
+         y="126.0576"
+         id="text538">_session : ClientSession</text>
+      <polygon
+         fill="none"
+         points="45,134.0078 49,138.0078 45,142.0078 41,138.0078 "
+         style="stroke:#b38d22;stroke-width:1"
+         id="polygon540" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="164.04201"
+         x="54"
+         y="142.35451"
+         id="text542">loader : IdConfigLoader</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="35"
+         x2="324.0498"
+         y1="149.6563"
+         y2="149.6563"
+         id="line544" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="35"
+         x2="324.0498"
+         y1="151.6563"
+         y2="151.6563"
+         id="line546" />
+      <circle
+         cx="45"
+         cy="163.3047"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse548"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="203.5605"
+         x="54"
+         y="166.6514"
+         id="text550">get_submodel_by_identifier()</text>
+      <circle
+         cx="45"
+         cy="179.60159"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse552"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="229.8994"
+         x="54"
+         y="182.9482"
+         id="text554">update_submodel_by_identifier()</text>
+      <circle
+         cx="45"
+         cy="195.89841"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse556"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="171.69141"
+         x="54"
+         y="199.2451"
+         id="text558">create_submodel_base()</text>
+      <circle
+         cx="45"
+         cy="212.1953"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse560"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="265.0498"
+         x="54"
+         y="215.54201"
+         id="text562">delete_submodel_by_identifier_base()</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="35"
+         x2="324.0498"
+         y1="222.8438"
+         y2="222.8438"
+         id="line564" />
+      <polygon
+         fill="#ffff44"
+         points="45,231.4922 49,235.4922 45,239.4922 41,235.4922 "
+         style="stroke:#b38d22;stroke-width:1"
+         id="polygon566" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="120.9346"
+         x="54"
+         y="239.8389"
+         id="text568">_b64url_no_pad()</text>
+    </g>
+    <!--class SubmodelElementRepositoryBase-->
+    <g
+       class="entity"
+       data-entity="SubmodelElementRepositoryBase"
+       data-source-line="24"
+       data-uid="ent0003"
+       id="entity_SubmodelElementRepositoryBase">
+      <rect
+         fill="#f8f8f8"
+         height="227.23441"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#444444;stroke-width:0.5"
+         width="322.29001"
+         x="729.5"
+         y="44.296902"
+         id="rect571" />
+      <circle
+         cx="768.31659"
+         cy="64.429703"
+         fill="#a9dcdf"
+         style="stroke:#181818;stroke-width:1"
+         id="ellipse573"
+         r="11" />
+      <path
+         d="m 768.426,59.7734 -1.1563,5.0782 h 2.3282 z m -1.4844,-2.2343 h 2.9844 l 3.3594,12.3906 h -2.4532 l -0.7656,-3.0625 h -3.2812 l -0.75,3.0625 h -2.4375 z"
+         fill="#000000"
+         id="path575" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="64.330101"
+         x="874.12628"
+         y="60.435501"
+         id="text577">«abstract»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="237.3643"
+         x="787.60919"
+         y="76.260696"
+         id="text579">SubmodelElementRepositoryBase</text>
+      <line
+         style="stroke:#444444;stroke-width:0.5"
+         x1="730.5"
+         x2="1050.79"
+         y1="84.5625"
+         y2="84.5625"
+         id="line581" />
+      <polygon
+         fill="none"
+         points="740.5,93.2109 744.5,97.2109 740.5,101.2109 736.5,97.2109 "
+         style="stroke:#b38d22;stroke-width:1"
+         id="polygon583" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="166.3867"
+         x="749.5"
+         y="101.5576"
+         id="text585">_session : ClientSession</text>
+      <polygon
+         fill="none"
+         points="740.5,109.5078 744.5,113.5078 740.5,117.5078 736.5,113.5078 "
+         style="stroke:#b38d22;stroke-width:1"
+         id="polygon587" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="164.04201"
+         x="749.5"
+         y="117.8545"
+         id="text589">loader : IdConfigLoader</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="730.5"
+         x2="1050.79"
+         y1="125.1563"
+         y2="125.1563"
+         id="line591" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="730.5"
+         x2="1050.79"
+         y1="127.1563"
+         y2="127.1563"
+         id="line593" />
+      <circle
+         cx="740.5"
+         cy="138.8047"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse595"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="218.2373"
+         x="749.5"
+         y="142.1514"
+         id="text597">get_submodel_element_by_id()</text>
+      <circle
+         cx="740.5"
+         cy="155.10159"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse599"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="263.47751"
+         x="749.5"
+         y="158.4482"
+         id="text601">get_submodel_element_value_by_id()</text>
+      <circle
+         cx="740.5"
+         cy="171.39841"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse603"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="289.81641"
+         x="749.5"
+         y="174.7451"
+         id="text605">update_submodel_element_value_by_id()</text>
+      <circle
+         cx="740.5"
+         cy="187.6953"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse607"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="296.29001"
+         x="749.5"
+         y="191.04201"
+         id="text609">invoke_operation_on_submodel_element()</text>
+      <circle
+         cx="740.5"
+         cy="203.9922"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse611"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="196.0479"
+         x="749.5"
+         y="207.3389"
+         id="text613">create_submodel_element()</text>
+      <circle
+         cx="740.5"
+         cy="220.28909"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse615"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="239.3535"
+         x="749.5"
+         y="223.6357"
+         id="text617">delete_submodel_element_by_id()</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="730.5"
+         x2="1050.79"
+         y1="230.9375"
+         y2="230.9375"
+         id="line619" />
+      <polygon
+         fill="#ffff44"
+         points="740.5,239.5859 744.5,243.5859 740.5,247.5859 736.5,243.5859 "
+         style="stroke:#b38d22;stroke-width:1"
+         id="polygon621" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="201.14751"
+         x="749.5"
+         y="247.9326"
+         id="text623">_invoke_operation_payload()</text>
+      <polygon
+         fill="#ffff44"
+         points="740.5,255.8828 744.5,259.8828 740.5,263.8828 736.5,259.8828 "
+         style="stroke:#b38d22;stroke-width:1"
+         id="polygon625" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="123.5186"
+         x="749.5"
+         y="264.22949"
+         id="text627">_element_exists()</text>
+    </g>
+    <!--class RepositorySubmodel-->
+    <g
+       class="entity"
+       data-entity="RepositorySubmodel"
+       data-source-line="40"
+       data-uid="ent0004"
+       id="entity_RepositorySubmodel">
+      <rect
+         fill="#f8f8f8"
+         height="178.375"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#444444;stroke-width:0.5"
+         width="344.81451"
+         x="7"
+         y="331.29691"
+         id="rect630" />
+      <circle
+         cx="102.5015"
+         cy="347.29691"
+         fill="#add1b2"
+         style="stroke:#181818;stroke-width:1"
+         id="ellipse632"
+         r="11" />
+      <path
+         d="m 105.4702,352.9375 q -0.5781,0.2969 -1.2187,0.4375 -0.6407,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7031,0 1.3438,0.1562 0.6562,0.1563 1.2187,0.4532 V 344 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2657 0.5937,-0.2812 1.2187,-0.8593 z"
+         fill="#000000"
+         id="path634" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="145.31149"
+         x="123.0015"
+         y="352.14359"
+         id="text636">RepositorySubmodel</text>
+      <line
+         style="stroke:#444444;stroke-width:0.5"
+         x1="8"
+         x2="350.81451"
+         y1="363.29691"
+         y2="363.29691"
+         id="line638" />
+      <rect
+         fill="none"
+         height="6"
+         style="stroke:#c82930;stroke-width:1"
+         width="6"
+         x="15"
+         y="373.94531"
+         id="rect640" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="72.515602"
+         x="27"
+         y="380.29199"
+         id="text642">prefix : str</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="8"
+         x2="350.81451"
+         y1="387.59381"
+         y2="387.59381"
+         id="line644" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="8"
+         x2="350.81451"
+         y1="389.59381"
+         y2="389.59381"
+         id="line646" />
+      <circle
+         cx="18"
+         cy="401.24219"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse648"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="274.27829"
+         x="27"
+         y="404.5889"
+         id="text650">get_Capabilities_submodel_and_store()</text>
+      <circle
+         cx="18"
+         cy="417.53909"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse652"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="269.5752"
+         x="27"
+         y="420.88571"
+         id="text654">get_Knowledge_submodel_and_store()</text>
+      <circle
+         cx="18"
+         cy="433.83591"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse656"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="318.81451"
+         x="27"
+         y="437.18259"
+         id="text658">get_Operational_State_submodel_and_store()</text>
+      <circle
+         cx="18"
+         cy="450.13281"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse660"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="268.57031"
+         x="27"
+         y="453.47949"
+         id="text662">get_Interaction_submodel_and_store()</text>
+      <circle
+         cx="18"
+         cy="466.42969"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse664"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="149.89841"
+         x="27"
+         y="469.7764"
+         id="text666">update_*_submodel()</text>
+      <circle
+         cx="18"
+         cy="482.72659"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse668"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="131.31841"
+         x="27"
+         y="486.07321"
+         id="text670">create_submodel()</text>
+      <circle
+         cx="18"
+         cy="499.02341"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse672"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="224.6768"
+         x="27"
+         y="502.37009"
+         id="text674">delete_submodel_by_identifier()</text>
+    </g>
+    <!--class SubmodelElementRepositoryGetters-->
+    <g
+       class="entity"
+       data-entity="SubmodelElementRepositoryGetters"
+       data-source-line="52"
+       data-uid="ent0005"
+       id="entity_SubmodelElementRepositoryGetters">
+      <rect
+         fill="#f8f8f8"
+         height="145.7813"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#444444;stroke-width:0.5"
+         width="291.9111"
+         x="387.5"
+         y="347.29691"
+         id="rect677" />
+      <circle
+         cx="404.54041"
+         cy="363.29691"
+         fill="#add1b2"
+         style="stroke:#181818;stroke-width:1"
+         id="ellipse679"
+         r="11" />
+      <path
+         d="m 407.5091,368.9375 q -0.5781,0.2969 -1.2187,0.4375 -0.6406,0.1563 -1.3438,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7032,0 1.3438,0.1562 0.6562,0.1563 1.2187,0.4532 V 360 q -0.625,-0.5781 -1.2187,-0.8437 -0.5938,-0.2813 -1.2188,-0.2813 -1.3437,0 -2.0312,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0312,1.0625 0.625,0 1.2188,-0.2657 0.5937,-0.2812 1.2187,-0.8593 z"
+         fill="#000000"
+         id="path681" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="255.377"
+         x="418.9938"
+         y="368.14359"
+         id="text683">SubmodelElementRepositoryGetters</text>
+      <line
+         style="stroke:#444444;stroke-width:0.5"
+         x1="388.5"
+         x2="678.41107"
+         y1="379.29691"
+         y2="379.29691"
+         id="line685" />
+      <rect
+         fill="none"
+         height="6"
+         style="stroke:#c82930;stroke-width:1"
+         width="6"
+         x="395.5"
+         y="389.94531"
+         id="rect687" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="72.515602"
+         x="407.5"
+         y="396.29199"
+         id="text689">prefix : str</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="388.5"
+         x2="678.41107"
+         y1="403.59381"
+         y2="403.59381"
+         id="line691" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="388.5"
+         x2="678.41107"
+         y1="405.59381"
+         y2="405.59381"
+         id="line693" />
+      <circle
+         cx="398.5"
+         cy="417.24219"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse695"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="237.7744"
+         x="407.5"
+         y="420.5889"
+         id="text697">get_*() : model.SubmodelElement</text>
+      <circle
+         cx="398.5"
+         cy="433.53909"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse699"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="126.5059"
+         x="407.5"
+         y="436.88571"
+         id="text701">getvalue_*() : Any</text>
+      <circle
+         cx="398.5"
+         cy="449.83591"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse703"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="90.569298"
+         x="407.5"
+         y="453.18259"
+         id="text705">invoke_drill()</text>
+      <circle
+         cx="398.5"
+         cy="466.13281"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse707"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="126.9297"
+         x="407.5"
+         y="469.47949"
+         id="text709">invoke_move_xy()</text>
+      <circle
+         cx="398.5"
+         cy="482.42969"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse711"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="265.9111"
+         x="407.5"
+         y="485.7764"
+         id="text713">get_time_slot_manager_from_server()</text>
+    </g>
+    <!--class SubmodelElementRepositoryUpdate-->
+    <g
+       class="entity"
+       data-entity="SubmodelElementRepositoryUpdate"
+       data-source-line="62"
+       data-uid="ent0006"
+       id="entity_SubmodelElementRepositoryUpdate">
+      <rect
+         fill="#f8f8f8"
+         height="129.48441"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#444444;stroke-width:0.5"
+         width="285.97559"
+         x="714.5"
+         y="355.79691"
+         id="rect716" />
+      <circle
+         cx="729.5"
+         cy="371.79691"
+         fill="#add1b2"
+         style="stroke:#181818;stroke-width:1"
+         id="ellipse718"
+         r="11" />
+      <path
+         d="m 732.4688,377.4375 q -0.5782,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8282,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3282,-1.6562 3.8282,-1.6562 0.7031,0 1.3437,0.1562 0.6563,0.1563 1.2188,0.4532 V 368.5 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2657 0.5938,-0.2812 1.2188,-0.8593 z"
+         fill="#000000"
+         id="path720" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="253.9756"
+         x="743.5"
+         y="376.64359"
+         id="text722">SubmodelElementRepositoryUpdate</text>
+      <line
+         style="stroke:#444444;stroke-width:0.5"
+         x1="715.5"
+         x2="999.47559"
+         y1="387.79691"
+         y2="387.79691"
+         id="line724" />
+      <rect
+         fill="none"
+         height="6"
+         style="stroke:#c82930;stroke-width:1"
+         width="6"
+         x="722.5"
+         y="398.44531"
+         id="rect726" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="72.515602"
+         x="734.5"
+         y="404.79199"
+         id="text728">prefix : str</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="715.5"
+         x2="999.47559"
+         y1="412.09381"
+         y2="412.09381"
+         id="line730" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="715.5"
+         x2="999.47559"
+         y1="414.09381"
+         y2="414.09381"
+         id="line732" />
+      <circle
+         cx="725.5"
+         cy="425.74219"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse734"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="207.4502"
+         x="734.5"
+         y="429.0889"
+         id="text736">update_Operational_State_*()</text>
+      <circle
+         cx="725.5"
+         cy="442.03909"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse738"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="158.21091"
+         x="734.5"
+         y="445.38571"
+         id="text740">update_Knowledge_*()</text>
+      <circle
+         cx="725.5"
+         cy="458.33591"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse742"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="157.2061"
+         x="734.5"
+         y="461.68259"
+         id="text744">update_Interaction_*()</text>
+      <circle
+         cx="725.5"
+         cy="474.63281"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse746"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="241.1787"
+         x="734.5"
+         y="477.97949"
+         id="text748">update_time_manager_to_server()</text>
+    </g>
+    <!--class SubmodelElementRepositoryCreateDelete-->
+    <g
+       class="entity"
+       data-entity="SubmodelElementRepositoryCreateDelete"
+       data-source-line="71"
+       data-uid="ent0007"
+       id="entity_SubmodelElementRepositoryCreateDelete">
+      <rect
+         fill="#f8f8f8"
+         height="113.1875"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#444444;stroke-width:0.5"
+         width="328.0986"
+         x="1035.5"
+         y="363.79691"
+         id="rect751" />
+      <circle
+         cx="1050.5"
+         cy="379.79691"
+         fill="#add1b2"
+         style="stroke:#181818;stroke-width:1"
+         id="ellipse753"
+         r="11" />
+      <path
+         d="m 1053.4688,385.4375 q -0.5782,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8282,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3282,-1.6562 3.8282,-1.6562 0.7031,0 1.3437,0.1562 0.6563,0.1563 1.2188,0.4532 V 376.5 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2657 0.5938,-0.2812 1.2188,-0.8593 z"
+         fill="#000000"
+         id="path755" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="296.0986"
+         x="1064.5"
+         y="384.64359"
+         id="text757">SubmodelElementRepositoryCreateDelete</text>
+      <line
+         style="stroke:#444444;stroke-width:0.5"
+         x1="1036.5"
+         x2="1362.5986"
+         y1="395.79691"
+         y2="395.79691"
+         id="line759" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="1036.5"
+         x2="1362.5986"
+         y1="403.79691"
+         y2="403.79691"
+         id="line761" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="1036.5"
+         x2="1362.5986"
+         y1="405.79691"
+         y2="405.79691"
+         id="line763" />
+      <circle
+         cx="1046.5"
+         cy="417.44531"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse765"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="120.4014"
+         x="1055.5"
+         y="420.79199"
+         id="text767">create_element()</text>
+      <circle
+         cx="1046.5"
+         cy="433.74219"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse769"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="214.334"
+         x="1055.5"
+         y="437.0889"
+         id="text771">create_element_in_collection()</text>
+      <circle
+         cx="1046.5"
+         cy="450.03909"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse773"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="119.7588"
+         x="1055.5"
+         y="453.38571"
+         id="text775">delete_element()</text>
+      <circle
+         cx="1046.5"
+         cy="466.33591"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse777"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="233.81641"
+         x="1055.5"
+         y="469.68259"
+         id="text779">delete_element_from_collection()</text>
+    </g>
+    <!--class ResourceAASClient-->
+    <g
+       class="entity"
+       data-entity="ResourceAASClient"
+       data-source-line="80"
+       data-uid="ent0008"
+       id="entity_ResourceAASClient">
+      <rect
+         fill="#f8f8f8"
+         height="227.23441"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#444444;stroke-width:0.5"
+         width="322.0986"
+         x="372.5"
+         y="44.296902"
+         id="rect782" />
+      <circle
+         cx="462.44379"
+         cy="64.429703"
+         fill="#add1b2"
+         style="stroke:#181818;stroke-width:1"
+         id="ellipse784"
+         r="11" />
+      <path
+         d="m 465.4126,70.0703 q -0.5781,0.2969 -1.2188,0.4375 -0.6406,0.1563 -1.3437,0.1563 -2.5,0 -3.8281,-1.6407 -1.3125,-1.6562 -1.3125,-4.7812 0,-3.125 1.3125,-4.7813 1.3281,-1.6562 3.8281,-1.6562 0.7031,0 1.3437,0.1562 0.6563,0.1563 1.2188,0.4532 v 2.7187 q -0.625,-0.5781 -1.2188,-0.8437 -0.5937,-0.2813 -1.2187,-0.2813 -1.3438,0 -2.0313,1.0781 -0.6875,1.0625 -0.6875,3.1563 0,2.0937 0.6875,3.1719 0.6875,1.0625 2.0313,1.0625 0.625,0 1.2187,-0.2657 0.5938,-0.2812 1.2188,-0.8593 z"
+         fill="#000000"
+         id="path786" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="55.341801"
+         x="522.12842"
+         y="60.435501"
+         id="text788">«facade»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="133.71091"
+         x="482.94379"
+         y="76.260696"
+         id="text790">ResourceAASClient</text>
+      <line
+         style="stroke:#444444;stroke-width:0.5"
+         x1="373.5"
+         x2="693.59857"
+         y1="84.5625"
+         y2="84.5625"
+         id="line792" />
+      <rect
+         fill="none"
+         height="6"
+         style="stroke:#c82930;stroke-width:1"
+         width="6"
+         x="380.5"
+         y="95.210899"
+         id="rect794" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="72.515602"
+         x="392.5"
+         y="101.5576"
+         id="text796">prefix : str</text>
+      <rect
+         fill="none"
+         height="6"
+         style="stroke:#c82930;stroke-width:1"
+         width="6"
+         x="380.5"
+         y="111.5078"
+         id="rect798" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="159.3867"
+         x="392.5"
+         y="117.8545"
+         id="text800">session : ClientSession</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="373.5"
+         x2="693.59857"
+         y1="125.1563"
+         y2="125.1563"
+         id="line802" />
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="373.5"
+         x2="693.59857"
+         y1="127.1563"
+         y2="127.1563"
+         id="line804" />
+      <circle
+         cx="383.5"
+         cy="138.8047"
+         fill="none"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse806"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="145.31149"
+         x="392.5"
+         y="142.1514"
+         id="text808">SubmodelRepository</text>
+      <circle
+         cx="383.5"
+         cy="155.10159"
+         fill="none"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse810"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="255.377"
+         x="392.5"
+         y="158.4482"
+         id="text812">SubmodelElementRepositoryGetters</text>
+      <circle
+         cx="383.5"
+         cy="171.39841"
+         fill="none"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse814"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="253.9756"
+         x="392.5"
+         y="174.7451"
+         id="text816">SubmodelElementRepositoryUpdate</text>
+      <circle
+         cx="383.5"
+         cy="187.6953"
+         fill="none"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse818"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="296.0986"
+         x="392.5"
+         y="191.04201"
+         id="text820">SubmodelElementRepositoryCreateDelete</text>
+      <line
+         style="stroke:#444444;stroke-width:1"
+         x1="373.5"
+         x2="693.59857"
+         y1="198.3438"
+         y2="198.3438"
+         id="line822" />
+      <circle
+         cx="383.5"
+         cy="211.9922"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse824"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="146.1797"
+         x="392.5"
+         y="215.3389"
+         id="text826">initialize_aas_client()</text>
+      <circle
+         cx="383.5"
+         cy="228.28909"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse828"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="137.0947"
+         x="392.5"
+         y="231.6357"
+         id="text830">allocate_time_slot()</text>
+      <circle
+         cx="383.5"
+         cy="244.58591"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse832"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="133.15041"
+         x="392.5"
+         y="247.9326"
+         id="text834">release_time_slot()</text>
+      <circle
+         cx="383.5"
+         cy="260.88281"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse836"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         lengthAdjust="spacing"
+         textLength="46.983398"
+         x="392.5"
+         y="264.22949"
+         id="text838">close()</text>
+    </g>
+    <!--reverse link RepositoryBase to RepositorySubmodel-->
+    <g
+       class="link"
+       data-entity-1="RepositoryBase"
+       data-entity-2="RepositorySubmodel"
+       data-source-line="96"
+       data-uid="lnk9"
+       id="link_RepositoryBase_RepositorySubmodel">
+      <path
+         codeLine="96"
+         d="m 179.5,264.9869 c 0,27.16 0,39.05 0,66.21"
+         fill="none"
+         id="RepositoryBase-backto-RepositorySubmodel"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="173.5,264.9869 185.5,264.9869 179.5,246.9869 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon842" />
+    </g>
+    <!--reverse link SubmodelElementRepositoryBase to SubmodelElementRepositoryGetters-->
+    <g
+       class="link"
+       data-entity-1="SubmodelElementRepositoryBase"
+       data-entity-2="SubmodelElementRepositoryGetters"
+       data-source-line="97"
+       data-uid="lnk10"
+       id="link_SubmodelElementRepositoryBase_SubmodelElementRepositoryGetters">
+      <path
+         codeLine="97"
+         d="m 721.7117,281.9599 c -35.26,25.74 -57.2817,41.797 -89.4717,65.287"
+         fill="none"
+         id="SubmodelElementRepositoryBase-backto-SubmodelElementRepositoryGetters"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="718.174,277.1138 725.2494,286.806 736.25,271.3469 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon846" />
+    </g>
+    <!--reverse link SubmodelElementRepositoryBase to SubmodelElementRepositoryUpdate-->
+    <g
+       class="link"
+       data-entity-1="SubmodelElementRepositoryBase"
+       data-entity-2="SubmodelElementRepositoryUpdate"
+       data-source-line="98"
+       data-uid="lnk11"
+       id="link_SubmodelElementRepositoryBase_SubmodelElementRepositoryUpdate">
+      <path
+         codeLine="98"
+         d="m 873.9583,289.3942 c -3.64,28.74 -5.1683,40.7827 -8.3783,66.1027"
+         fill="none"
+         id="SubmodelElementRepositoryBase-backto-SubmodelElementRepositoryUpdate"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="868.0059,288.6403 879.9108,290.1481 876.22,271.5369 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon850" />
+    </g>
+    <!--reverse link SubmodelElementRepositoryBase to SubmodelElementRepositoryCreateDelete-->
+    <g
+       class="link"
+       data-entity-1="SubmodelElementRepositoryBase"
+       data-entity-2="SubmodelElementRepositoryCreateDelete"
+       data-source-line="99"
+       data-uid="lnk12"
+       id="link_SubmodelElementRepositoryBase_SubmodelElementRepositoryCreateDelete">
+      <path
+         codeLine="99"
+         d="m 1037.9919,283.139 c 37.85,31.91 63.6181,53.6279 95.5381,80.5479"
+         fill="none"
+         id="SubmodelElementRepositoryBase-backto-SubmodelElementRepositoryCreateDelete"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="1034.1245,287.7263 1041.8593,278.5517 1024.23,271.5369 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon854" />
+    </g>
+    <!--reverse link ResourceAASClient to RepositorySubmodel-->
+    <g
+       class="link"
+       data-entity-1="ResourceAASClient"
+       data-entity-2="RepositorySubmodel"
+       data-source-line="102"
+       data-uid="lnk13"
+       id="link_ResourceAASClient_RepositorySubmodel">
+      <path
+         codeLine="102"
+         d="m 370.886,278.4608 c -27.21,20.03 -45.526,33.5061 -71.646,52.7161"
+         fill="none"
+         id="ResourceAASClient-backto-RepositorySubmodel"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="380.55,271.3469 373.3467,271.6825 370.886,278.4608 378.0893,278.1252 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon858" />
+    </g>
+    <!--reverse link ResourceAASClient to SubmodelElementRepositoryGetters-->
+    <g
+       class="link"
+       data-entity-1="ResourceAASClient"
+       data-entity-2="SubmodelElementRepositoryGetters"
+       data-source-line="103"
+       data-uid="lnk14"
+       id="link_ResourceAASClient_SubmodelElementRepositoryGetters">
+      <path
+         codeLine="103"
+         d="m 533.5,283.5369 c 0,25.58 0,40.07 0,63.44"
+         fill="none"
+         id="ResourceAASClient-backto-SubmodelElementRepositoryGetters"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="533.5,271.5369 529.5,277.5369 533.5,283.5369 537.5,277.5369 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon862" />
+    </g>
+    <!--reverse link ResourceAASClient to SubmodelElementRepositoryUpdate-->
+    <g
+       class="link"
+       data-entity-1="ResourceAASClient"
+       data-entity-2="SubmodelElementRepositoryUpdate"
+       data-source-line="104"
+       data-uid="lnk15"
+       id="link_ResourceAASClient_SubmodelElementRepositoryUpdate">
+      <path
+         codeLine="104"
+         d="m 683.0815,279.0568 c 35.74,28.74 63.5785,51.1201 95.0685,76.4401"
+         fill="none"
+         id="ResourceAASClient-backto-SubmodelElementRepositoryUpdate"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="673.73,271.5369 675.8991,278.414 683.0815,279.0568 680.9124,272.1797 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon866" />
+    </g>
+    <!--reverse link ResourceAASClient to SubmodelElementRepositoryCreateDelete-->
+    <g
+       class="link"
+       data-entity-1="ResourceAASClient"
+       data-entity-2="SubmodelElementRepositoryCreateDelete"
+       data-source-line="105"
+       data-uid="lnk16"
+       id="link_ResourceAASClient_SubmodelElementRepositoryCreateDelete">
+      <path
+         codeLine="105"
+         d="m 705.5844,269.0725 c 5.61,2.55 0.3056,-0.006 5.9156,2.2244 129.19,51.35 175.15,15.9 307,60 26.01,8.7 53.09,20.34 78.14,32.3"
+         fill="none"
+         id="ResourceAASClient-backto-SubmodelElementRepositoryCreateDelete"
+         style="stroke:#444444;stroke-width:1" />
+      <polygon
+         fill="none"
+         points="694.66,264.1069 698.467,270.2312 705.5844,269.0725 701.7774,262.9482 "
+         style="stroke:#444444;stroke-width:1"
+         id="polygon870" />
+    </g>
+    <!--SRC=[nLNRRjim37ttLmZeGoz3zbGCmz0MIBDRiG435lHPO6p65IfBXgIapIx_Fbg-n9RjEa4VPWS8B1vIF8SKPH-5oi50nbOGFwP6RrIoq58RzlGW74QsiSSIhBqDG2UVtnTl3wPDWgQ2NFgd1G5ZzDEOCQST8CN-HlFY7G2sjrhu9ugSS1BPJxHwOs9aynILeyzSM-6qsR55aIJxAj20YHzsKNJARi5YcJpQ25RM6OXTkT3ozAYhgzf-SyD-HuoU4yR9pmgjs0UABcY_PVbTcQK6IfECTqH8hKNwtIzuw_Mr_tl3KdJSRbQPJb3orOwBXEA8DQLvTbv1Dda23gTGiS4kYj9kZBI0eo7QqDcivhPwTxanaYlDSqZ8-ZSA9LfMqJv9p2ZMVr4CoxrBGWtTGSWMv0O3O2ZjIrYXjleHkSwfWnpbpEaNEevM8xI71HdYiQz5R-iSTeLM5P0GjJy-2-jiMQvJHY9I8cxVv65lroMi2ZHZkS6rUAOAKEdwiYyWXvMGmWcq-zn19TnIDEpe_qtf9ub9YbF07pKha7pfEgeDEzmfXqLVYNO1-j2gjXSDPgmuXvsIKjE9pl-2ZdAp1yfvSNPE9X_fRH1oZofRiOJErQxRZ8aHKeOTckajykTTHpCdCY8cjUCPA1gXXg-DpkWucks1rEwzd0SmgtJlb_KYBCs-HNgcTerxHa-cvk7qCImMllGVVQ4hBatYLLkC7ENwX0d5Ooqb-jp2rXavvhMlrxpZNHvJFmgRmrdUOFFvibodIRg6cEPWCqS7r9-nboPhGx7MPIz8O1Zhw2bOsHrJgBRwxH5Nj2uD5P3Y5t80osDFeP4HfDHnK_cYZHkJeM1qtGnOOgdzjUOblbCFQ8G35MCKNbH_PhE1aHXDN6-5rwHghubHIVgQ41szIOLvcXfC_QcC-dscXtKO1avIFzAjOdkaLuVWFm00]-->
+  </g>
+  <metadata
+     id="metadata1276">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Resource Agent Repository Class Hierarchy</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,81 @@
+@startuml Negotiation_Core_Simple
+
+skinparam backgroundColor white
+skinparam classBackgroundColor #F8F8F8
+skinparam classBorderColor #444444
+skinparam packageBackgroundColor #FAFAFA
+
+title Production Agent - Negotiation Core
+
+' External dependencies
+class PubSubMixin <<SPADE>> #E8E8E8
+class Agent <<SPADE>> #E8E8E8
+
+' Main Agent
+class NegotiationAgent {
+    - production_client : ProductionAASClient
+    - pubsub_owner : PubSubOwnerUtils
+    - agents_subscriptions : List[str]
+    - received_responses : Dict[str, str]
+    - selected_resource : dict
+    ==
+    + setup()
+    + add_behaviours()
+    + all_responses_received() : bool
+    --
+    - _on_pubsub_event(message)
+}
+
+' Behaviours
+package "Behaviours" #FFE8D0 {
+    class GetExecutionCoreServiceBehaviour {
+        Receives requests from
+        Execution Core and
+        broadcasts CFP to resources
+        --
+        + handle_execution_service_request(payload)
+    }
+    
+    class GetNegotiationResponseBehaviour {
+        Collects responses from
+        Resource Agents and
+        selects best-fit resource
+        --
+        + handle_negotiation_response(payload, sender)
+    }
+}
+
+' Related classes
+class ProductionAASClient <<facade>> #FFFFD0
+
+class FindBestFitResourceBehaviour <<helper>> #E8FFE8 {
+    Applies selection criteria
+    to choose optimal resource
+}
+
+class PublishNegotiationResultBehaviour <<helper>> #E8FFE8 {
+    Publishes selection result
+    to pa_negotation_result
+}
+
+' Subscribed Topics
+note right of NegotiationAgent
+    **Subscribed Topics:**
+    • pa_execution_service_topic
+    • negotiation_message_topic
+    
+    **Publishes To:**
+    • production_negotiation (CFP)
+    • pa_negotation_result
+end note
+
+' Relationships
+PubSubMixin <|-- NegotiationAgent
+Agent <|-- NegotiationAgent
+NegotiationAgent --> ProductionAASClient
+NegotiationAgent *-- GetExecutionCoreServiceBehaviour
+NegotiationAgent *-- GetNegotiationResponseBehaviour
+GetNegotiationResponseBehaviour ..> FindBestFitResourceBehaviour : uses
+GetNegotiationResponseBehaviour ..> PublishNegotiationResultBehaviour : uses
+
+@enduml

@@ -1,0 +1,49 @@
+@startuml sm_execution_tracking
+
+skinparam backgroundColor white
+skinparam classBorderColor #333333
+skinparam classBackgroundColor #F5F5F5
+skinparam stereotypeCBackgroundColor #E8E8E8
+
+title Execution Tracking Submodel
+
+package "Execution_Tracking_Submodel" <<Submodel>> #FFE8D0 {
+    
+    class "Current_Node" <<Property>> #E8FFE8 {
+        valueType: xs:string
+        value: "Node_ID"
+        category: VARIABLE
+        --
+        Current node being executed
+        in the process plan
+    }
+    
+    class "Token_Position" <<Property>> #E8E8FF {
+        valueType: xs:integer
+        value: 0
+        category: VARIABLE
+        --
+        Position of execution token
+        (steps completed)
+    }
+    
+    class "Time_Stamp" <<Property>> #FFFFD0 {
+        valueType: xs:dateTime
+        value: <timestamp>
+        category: VARIABLE
+        --
+        Timestamp of last
+        execution update
+    }
+    
+    class "Step_Status" <<Property>> #FFE8E8 {
+        valueType: xs:string
+        value: "Not Started"
+        category: VARIABLE
+        --
+        Status: Not Started |
+        running | completed | failed
+    }
+}
+
+@enduml

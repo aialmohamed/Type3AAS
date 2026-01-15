@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="354px"
+   preserveAspectRatio="none"
+   style="width:714px;height:354px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 714 354"
+   width="714px"
+   zoomAndPan="magnify"
+   id="svg431"
+   sodipodi:docname="sm_interface_endpoints.svg"
+   inkscape:export-filename="sm_interface_endpoints.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview433"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.2927171"
+     inkscape:cx="356.61322"
+     inkscape:cy="177.53304"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg431" />
+  <title
+     id="title349">Interface Endpoints Submodel</title>
+  <defs
+     id="defs351" />
+  <g
+     id="g429">
+    <g
+       class="title"
+       data-source-line="7"
+       id="g355">
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="238.9229"
+         x="230.5386"
+         y="22.9951"
+         id="text353">Interface Endpoints Submodel</text>
+    </g>
+    <!--cluster Interface_Endpoints_Submodel-->
+    <g
+       class="cluster"
+       data-entity="Interface_Endpoints_Submodel"
+       data-source-line="9"
+       data-uid="ent0002"
+       id="cluster_Interface_Endpoints_Submodel">
+      <path
+         d="M8.5,43.2969 L252.6748,43.2969 A3.75,3.75 0 0 1 255.1748,45.7969 L262.1748,65.5938 L704.5,65.5938 A2.5,2.5 0 0 1 707,68.0938 L707,344.7969 A2.5,2.5 0 0 1 704.5,347.2969 L8.5,347.2969 A2.5,2.5 0 0 1 6,344.7969 L6,45.7969 A2.5,2.5 0 0 1 8.5,43.2969"
+         fill="#E8DDFF"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path357" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="6"
+         x2="262.1748"
+         y1="65.5938"
+         y2="65.5938"
+         id="line359" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="243.1748"
+         x="10"
+         y="58.292"
+         id="text361">Interface_Endpoints_Submodel</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="87.5205"
+         x="316.7397"
+         y="80.5889"
+         id="text363">«Submodel»</text>
+    </g>
+    <!--cluster Interface_Endpoints-->
+    <g
+       class="cluster"
+       data-entity="Interface_Endpoints"
+       data-source-line="11"
+       data-uid="ent0003"
+       id="cluster_Interface_Endpoints">
+      <path
+         d="M32.5,102.2969 L191.082,102.2969 A3.75,3.75 0 0 1 193.582,104.7969 L200.582,124.5938 L680.5,124.5938 A2.5,2.5 0 0 1 683,127.0938 L683,320.7969 A2.5,2.5 0 0 1 680.5,323.2969 L32.5,323.2969 A2.5,2.5 0 0 1 30,320.7969 L30,104.7969 A2.5,2.5 0 0 1 32.5,102.2969"
+         fill="#F5F5F5"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path366" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="30"
+         x2="200.582"
+         y1="124.5938"
+         y2="124.5938"
+         id="line368" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="157.582"
+         x="34"
+         y="117.292"
+         id="text370">Interface_Endpoints</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="214.7305"
+         x="253.1348"
+         y="139.5889"
+         id="text372">«SubmodelElementCollection»</text>
+    </g>
+    <!--class Drill_Command_Invocation_Endpoint-->
+    <g
+       class="entity"
+       data-entity="Drill_Command_Invocation_Endpoint"
+       data-source-line="13"
+       data-uid="ent0004"
+       id="entity_Drill_Command_Invocation_Endpoint">
+      <rect
+         fill="#FFE8E8"
+         height="154.0469"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="288.416"
+         x="379"
+         y="153.2969"
+         id="rect375" />
+      <ellipse
+         cx="394"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse377" />
+      <path
+         d="M396.9688,179.0703 Q396.3906,179.3672 395.75,179.5078 Q395.1094,179.6641 394.4063,179.6641 Q391.9063,179.6641 390.5781,178.0234 Q389.2656,176.3672 389.2656,173.2422 Q389.2656,170.1172 390.5781,168.4609 Q391.9063,166.8047 394.4063,166.8047 Q395.1094,166.8047 395.75,166.9609 Q396.4063,167.1172 396.9688,167.4141 L396.9688,170.1328 Q396.3438,169.5547 395.75,169.2891 Q395.1563,169.0078 394.5313,169.0078 Q393.1875,169.0078 392.5,170.0859 Q391.8125,171.1484 391.8125,173.2422 Q391.8125,175.3359 392.5,176.4141 Q393.1875,177.4766 394.5313,177.4766 Q395.1563,177.4766 395.75,177.2109 Q396.3438,176.9297 396.9688,176.3516 L396.9688,179.0703 Z "
+         fill="#000000"
+         id="path379" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="503.1758"
+         y="169.4355"
+         id="text381">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="256.416"
+         x="408"
+         y="185.2607"
+         id="text383">Drill_Command_Invocation_Endpoint</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="380"
+         x2="666.416"
+         y1="193.5625"
+         y2="193.5625"
+         id="line385" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="385"
+         y="210.5576"
+         id="text387">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="199.7939"
+         x="385"
+         y="226.8545"
+         id="text389">value: &quot;https://0.0.0.0:8090&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="385"
+         y="243.1514"
+         id="text391">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:1;"
+         x1="380"
+         x2="666.416"
+         y1="250.4531"
+         y2="250.4531"
+         id="line393" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="183.5996"
+         x="385"
+         y="267.4482"
+         id="text395">REST API endpoint for drill</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="147.0342"
+         x="385"
+         y="283.7451"
+         id="text397">command invocation</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="170.666"
+         x="385"
+         y="300.042"
+         id="text399">(use /drill_invocation_id)</text>
+    </g>
+    <!--class Move_Command_Invocation_Endpoint-->
+    <g
+       class="entity"
+       data-entity="Move_Command_Invocation_Endpoint"
+       data-source-line="23"
+       data-uid="ent0005"
+       id="entity_Move_Command_Invocation_Endpoint">
+      <rect
+         fill="#E8FFE8"
+         height="154.0469"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="297.7539"
+         x="46"
+         y="153.2969"
+         id="rect402" />
+      <ellipse
+         cx="61"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse404" />
+      <path
+         d="M63.9688,179.0703 Q63.3906,179.3672 62.75,179.5078 Q62.1094,179.6641 61.4063,179.6641 Q58.9063,179.6641 57.5781,178.0234 Q56.2656,176.3672 56.2656,173.2422 Q56.2656,170.1172 57.5781,168.4609 Q58.9063,166.8047 61.4063,166.8047 Q62.1094,166.8047 62.75,166.9609 Q63.4063,167.1172 63.9688,167.4141 L63.9688,170.1328 Q63.3438,169.5547 62.75,169.2891 Q62.1563,169.0078 61.5313,169.0078 Q60.1875,169.0078 59.5,170.0859 Q58.8125,171.1484 58.8125,173.2422 Q58.8125,175.3359 59.5,176.4141 Q60.1875,177.4766 61.5313,177.4766 Q62.1563,177.4766 62.75,177.2109 Q63.3438,176.9297 63.9688,176.3516 L63.9688,179.0703 Z "
+         fill="#000000"
+         id="path406" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="174.8447"
+         y="169.4355"
+         id="text408">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="265.7539"
+         x="75"
+         y="185.2607"
+         id="text410">Move_Command_Invocation_Endpoint</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="47"
+         x2="342.7539"
+         y1="193.5625"
+         y2="193.5625"
+         id="line412" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="52"
+         y="210.5576"
+         id="text414">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="199.7939"
+         x="52"
+         y="226.8545"
+         id="text416">value: &quot;https://0.0.0.0:8092&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="52"
+         y="243.1514"
+         id="text418">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:1;"
+         x1="47"
+         x2="342.7539"
+         y1="250.4531"
+         y2="250.4531"
+         id="line420" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="196.3896"
+         x="52"
+         y="267.4482"
+         id="text422">REST API endpoint for move</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="147.0342"
+         x="52"
+         y="283.7451"
+         id="text424">command invocation</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="200.0264"
+         x="52"
+         y="300.042"
+         id="text426">(use /movexy_invocation_id)</text>
+    </g>
+    <!--SRC=[hP5HQy8m4CVV-ocE-h8zRCh6m1KHN6t1XpcPVI-nFMimJKgIEilmko-fsjd91C4x22ttk__b_b5hoWiYIGuBagmpAKgU-e892Lyhgj5HJJrXHAat8LEKUw3pNCSPyaUd4xxOFC6KHeb2LmNwPt3Gj-auccg6CE46NP848U1f8IZN2kRb8XSfCiSfJ3F94Dm6YniiFc8k30R7x-7G3XYFmn2-7J1H7vTaJhi3XZboRIxACD5KS2ktN-uWrqZQgCq0TomfOx4lyfpmD9xmZKY8RMvcs14pAGgKkgeLG-l0YQAD3M4bHiOn3xRAKrfIdfq37hWhhGlbTRkznpgzVk-rvxP8Cnup8IiF_8_fF1fDerRvuQ7r-ndC8nZD9e27wyBIF5DgbsghxXS4sYpOAj-L2g5RjyM_I4pJ-mRR_MlXkzZWDGu6VUlX3Hrykhs3kTdfUWDjrxQwxE3EsJa_]-->
+  </g>
+</svg>

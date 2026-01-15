@@ -96,7 +96,7 @@ class AAS_Submodel_Knowledge(AASSubmodelBase):
                 ]
               ),
               model.Property(
-              id_short= "ContraintType",
+              id_short= "ConstraintType",
               value_type=datatypes.String,
               value="Depth",
               category="CONSTANT",

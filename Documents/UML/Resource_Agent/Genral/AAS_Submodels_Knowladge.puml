@@ -1,0 +1,68 @@
+@startuml "Resource_Agent_Submodels_Knowladge"
+allowmixing
+
+
+left to right direction
+
+
+package "<<Submodel>>\nKnowledge" {
+  entity "ConstraintType" as ConstraintType {
+    * idShort :"Resource Constraints"
+    * kind : "Instance"
+    * category :"CONSTANT"
+    * value :"Depth"
+    * valueType :"String"
+  }
+  
+  package "<<SubmodelElementCollection>> DrillMachine_Resource_Constraints"
+  {
+    package "<<SubmodelElement>> Max_Depth" {
+      entity "Max Depth Value" as Max_Depth {
+        * idShort : "MaxDepth"
+        * kind : "Instance"
+        * category : "Property"
+        * value : 20.0
+        * valueType : "Double"
+      }
+      entity "Max Depth Unit" as Max_Depth_Unit {
+        * idShort : "MaxDepth_Unit"
+        * kind : "Instance"
+        * category : "Property"
+        * value : "cm"
+        * valueType : "String"
+      }
+      entity "Max Depth Unit short" as Max_Depth_Unit_short {
+        * idShort : "MaxDepth_Unit_short"
+        * kind : "Instance"
+        * category : "Property"
+        * value : "cm"
+        * valueType : "String"
+      }
+    }
+    package "<<SubmodelElement>> Min_Depth" {
+      entity "Min Depth Value" as Min_Depth {
+        * idShort : "MinDepth"
+        * kind : "Instance"
+        * category : "Property"
+        * value : 1.0
+        * valueType : "Double"
+      }
+      entity "Min Depth Unit" as Min_Depth_Unit {
+        * idShort : "MinDepth_Unit"
+        * kind : "Instance"
+        * category : "Property"
+        * value : "cm"
+        * valueType : "String"
+      }
+      entity "Min Depth Unit short" as Min_Depth_Unit_short {
+        * idShort : "MinDepth_Unit_short"
+        * kind : "Instance"
+        * category : "Property"
+        * value : "cm"
+        * valueType : "String"
+      }
+    }
+  }
+}
+
+@enduml

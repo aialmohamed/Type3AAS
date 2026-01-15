@@ -1,0 +1,55 @@
+@startuml Simulator_Architecture
+
+skinparam backgroundColor white
+skinparam componentBackgroundColor #F8F8F8
+skinparam databaseBackgroundColor #E8FFE8
+skinparam rectangleBackgroundColor #FFE8E8
+
+title Resource Simulator Integration
+
+' Agent side
+rectangle "ResourceAgent" as Agent #DDEEFF {
+    component "DrillInvokerBehaviour" as Drill
+    component "MoveXYInvokerBehaviour" as Move
+}
+
+' AAS Client
+component "ResourceAASClient" as Client
+
+' BaSyx Server
+database "BaSyx AAS Server" as BaSyx {
+    component "Capability\nSubmodel" as Cap
+    note right of Cap
+        invocationDelegation:
+        http://localhost:8090/
+        drill_invocation_1
+    end note
+}
+
+' Simulators
+package "Simulators (FastAPI + SimPy)" #FFE8E8 {
+    rectangle "DrillMachine1\n:8090" as Sim1 {
+        component "SimPy\nEnvironment" as Env1
+        component "drill_process()" as Proc1
+    }
+    
+    rectangle "MoveXYMachine1\n:8092" as Sim2 {
+        component "SimPy\nEnvironment" as Env2
+        component "move_process()" as Proc2
+    }
+}
+
+' Flow
+Agent --> Client : invoke_drill()
+Client --> BaSyx : POST /invoke
+BaSyx --> Sim1 : HTTP Delegate
+Sim1 --> BaSyx : OperationVariable
+BaSyx --> Client : Result
+Client --> Agent : drill_result
+
+Agent --> Client : invoke_move_xy()
+Client --> BaSyx : POST /invoke
+BaSyx --> Sim2 : HTTP Delegate
+Sim2 --> BaSyx : OperationVariable
+
+@enduml

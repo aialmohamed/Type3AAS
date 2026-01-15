@@ -1,0 +1,76 @@
+@startuml Execution_Core_Simple
+
+skinparam backgroundColor white
+skinparam classBackgroundColor #F8F8F8
+skinparam classBorderColor #444444
+skinparam packageBackgroundColor #FAFAFA
+
+title Production Agent - Execution Core
+
+' External dependencies
+class PubSubMixin <<SPADE>> #E8E8E8
+class Agent <<SPADE>> #E8E8E8
+
+' Main Agent
+class ExecutionAgent {
+    - production_client : ProductionAASClient
+    - pubsub_owner : PubSubOwnerUtils
+    - user_request_arrived : bool
+    - negotiation_result : dict
+    - token_position : int
+    - current_request : dict
+    ==
+    + setup()
+    + add_behaviours()
+    --
+    - _on_pubsub_event(message)
+    - _handle_negotiation_result(payload)
+    - _handle_tracking_update(payload)
+    - _handle_job_completion(payload)
+}
+
+' Behaviours
+package "Behaviours" #D5E8D4 {
+    class GetUserRequestBehaviour {
+        Receives user service requests
+        from pa_user_service_request
+        --
+        + handle_user_request(payload)
+    }
+    
+    class GetProccesPlanBehaviour {
+        Retrieves process plan
+        from Production AAS
+        --
+        + run()
+    }
+    
+    class GetNegotiationResultBehaviour {
+        Processes negotiation results
+        from Negotiation Core
+        --
+        + handle_negotiation_response(payload)
+    }
+}
+
+' Client
+class ProductionAASClient <<facade>> #FFFFD0
+
+' Subscribed Topics
+note right of ExecutionAgent
+    **Subscribed Topics:**
+    • pa_user_service_request
+    • pa_negotation_result
+    • execution_tracking_topic
+    • job_completion_topic
+end note
+
+' Relationships
+PubSubMixin <|-- ExecutionAgent
+Agent <|-- ExecutionAgent
+ExecutionAgent --> ProductionAASClient
+ExecutionAgent *-- GetUserRequestBehaviour
+ExecutionAgent *-- GetProccesPlanBehaviour
+ExecutionAgent *-- GetNegotiationResultBehaviour
+
+@enduml

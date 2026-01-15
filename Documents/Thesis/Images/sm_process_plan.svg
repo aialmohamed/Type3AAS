@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="446px"
+   preserveAspectRatio="none"
+   style="width:1339px;height:446px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 1339 446"
+   width="1339px"
+   zoomAndPan="magnify"
+   id="svg567"
+   sodipodi:docname="sm_process_plan.svg"
+   inkscape:export-filename="sm_process_plan.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview569"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.94846901"
+     inkscape:cx="669.5"
+     inkscape:cy="222.99094"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg567" />
+  <title
+     id="title362">Process Plan Submodel</title>
+  <defs
+     id="defs364" />
+  <g
+     id="g565">
+    <g
+       class="title"
+       data-source-line="7"
+       id="g368">
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="184.0576"
+         x="570.4712"
+         y="22.9951"
+         id="text366">Process Plan Submodel</text>
+    </g>
+    <!--cluster Process_Plan_Submodel-->
+    <g
+       class="cluster"
+       data-entity="Process_Plan_Submodel"
+       data-source-line="9"
+       data-uid="ent0002"
+       id="cluster_Process_Plan_Submodel">
+      <path
+         d="M8.5,43.2969 L197.8096,43.2969 A3.75,3.75 0 0 1 200.3096,45.7969 L207.3096,65.5938 L1329.5,65.5938 A2.5,2.5 0 0 1 1332,68.0938 L1332,436.7969 A2.5,2.5 0 0 1 1329.5,439.2969 L8.5,439.2969 A2.5,2.5 0 0 1 6,436.7969 L6,45.7969 A2.5,2.5 0 0 1 8.5,43.2969"
+         fill="#DDEEFF"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path370" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="6"
+         x2="207.3096"
+         y1="65.5938"
+         y2="65.5938"
+         id="line372" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="188.3096"
+         x="10"
+         y="58.292"
+         id="text374">Process_Plan_Submodel</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="87.5205"
+         x="629.2397"
+         y="80.5889"
+         id="text376">«Submodel»</text>
+    </g>
+    <!--cluster Nodes-->
+    <g
+       class="cluster"
+       data-entity="Nodes"
+       data-source-line="11"
+       data-uid="ent0003"
+       id="cluster_Nodes">
+      <path
+         d="M935.5,102.2969 L985.6846,102.2969 A3.75,3.75 0 0 1 988.1846,104.7969 L995.1846,124.5938 L1305.5,124.5938 A2.5,2.5 0 0 1 1308,127.0938 L1308,271.7969 A2.5,2.5 0 0 1 1305.5,274.2969 L935.5,274.2969 A2.5,2.5 0 0 1 933,271.7969 L933,104.7969 A2.5,2.5 0 0 1 935.5,102.2969"
+         fill="#E8FFE8"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path379" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="933"
+         x2="995.1846"
+         y1="124.5938"
+         y2="124.5938"
+         id="line381" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="49.1846"
+         x="937"
+         y="117.292"
+         id="text383">Nodes</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="214.7305"
+         x="1017.1348"
+         y="139.5889"
+         id="text385">«SubmodelElementCollection»</text>
+    </g>
+    <!--cluster Edges-->
+    <g
+       class="cluster"
+       data-entity="Edges"
+       data-source-line="25"
+       data-uid="ent0006"
+       id="cluster_Edges">
+      <path
+         d="M631.5,102.2969 L679.9346,102.2969 A3.75,3.75 0 0 1 682.4346,104.7969 L689.4346,124.5938 L906.5,124.5938 A2.5,2.5 0 0 1 909,127.0938 L909,271.7969 A2.5,2.5 0 0 1 906.5,274.2969 L631.5,274.2969 A2.5,2.5 0 0 1 629,271.7969 L629,104.7969 A2.5,2.5 0 0 1 631.5,102.2969"
+         fill="#FFE8E8"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path388" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="629"
+         x2="689.4346"
+         y1="124.5938"
+         y2="124.5938"
+         id="line390" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="47.4346"
+         x="633"
+         y="117.292"
+         id="text392">Edges</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="214.7305"
+         x="665.6348"
+         y="139.5889"
+         id="text394">«SubmodelElementCollection»</text>
+    </g>
+    <!--class Entry_Point-->
+    <g
+       class="entity"
+       data-entity="Entry_Point"
+       data-source-line="33"
+       data-uid="ent0008"
+       id="entity_Entry_Point">
+      <rect
+         fill="#FFFFD0"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="160.3467"
+         x="22"
+         y="153.2969"
+         id="rect397" />
+      <ellipse
+         cx="58.9771"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse399" />
+      <path
+         d="M61.9458,179.0703 Q61.3677,179.3672 60.7271,179.5078 Q60.0864,179.6641 59.3833,179.6641 Q56.8833,179.6641 55.5552,178.0234 Q54.2427,176.3672 54.2427,173.2422 Q54.2427,170.1172 55.5552,168.4609 Q56.8833,166.8047 59.3833,166.8047 Q60.0864,166.8047 60.7271,166.9609 Q61.3833,167.1172 61.9458,167.4141 L61.9458,170.1328 Q61.3208,169.5547 60.7271,169.2891 Q60.1333,169.0078 59.5083,169.0078 Q58.1646,169.0078 57.4771,170.0859 Q56.7896,171.1484 56.7896,173.2422 Q56.7896,175.3359 57.4771,176.4141 Q58.1646,177.4766 59.5083,177.4766 Q60.1333,177.4766 60.7271,177.2109 Q61.3208,176.9297 61.9458,176.3516 L61.9458,179.0703 Z "
+         fill="#000000"
+         id="path401" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="84.583"
+         y="169.4355"
+         id="text403">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="79.5088"
+         x="77.8608"
+         y="185.2607"
+         id="text405">Entry_Point</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="23"
+         x2="181.3467"
+         y1="193.5625"
+         y2="193.5625"
+         id="line407" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="28"
+         y="210.5576"
+         id="text409">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="141.3672"
+         x="28"
+         y="226.8545"
+         id="text411">value: &quot;Move_Node&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="28"
+         y="243.1514"
+         id="text413">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="23"
+         x2="181.3467"
+         y1="250.4531"
+         y2="250.4531"
+         id="line415" />
+    </g>
+    <!--class Exit_Point-->
+    <g
+       class="entity"
+       data-entity="Exit_Point"
+       data-source-line="39"
+       data-uid="ent0009"
+       id="entity_Exit_Point">
+      <rect
+         fill="#FFFFD0"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="160.3467"
+         x="217"
+         y="153.2969"
+         id="rect418" />
+      <ellipse
+         cx="258.8097"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse420" />
+      <path
+         d="M261.7785,179.0703 Q261.2003,179.3672 260.5597,179.5078 Q259.9191,179.6641 259.216,179.6641 Q256.716,179.6641 255.3878,178.0234 Q254.0753,176.3672 254.0753,173.2422 Q254.0753,170.1172 255.3878,168.4609 Q256.716,166.8047 259.216,166.8047 Q259.9191,166.8047 260.5597,166.9609 Q261.216,167.1172 261.7785,167.4141 L261.7785,170.1328 Q261.1535,169.5547 260.5597,169.2891 Q259.966,169.0078 259.341,169.0078 Q257.9972,169.0078 257.3097,170.0859 Q256.6222,171.1484 256.6222,173.2422 Q256.6222,175.3359 257.3097,176.4141 Q257.9972,177.4766 259.341,177.4766 Q259.966,177.4766 260.5597,177.2109 Q261.1535,176.9297 261.7785,176.3516 L261.7785,179.0703 Z "
+         fill="#000000"
+         id="path422" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="280.12"
+         y="169.4355"
+         id="text424">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="68.7695"
+         x="278.7674"
+         y="185.2607"
+         id="text426">Exit_Point</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="218"
+         x2="376.3467"
+         y1="193.5625"
+         y2="193.5625"
+         id="line428" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="223"
+         y="210.5576"
+         id="text430">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="132.0293"
+         x="223"
+         y="226.8545"
+         id="text432">value: &quot;Drill_Node&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="223"
+         y="243.1514"
+         id="text434">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="218"
+         x2="376.3467"
+         y1="250.4531"
+         y2="250.4531"
+         id="line436" />
+    </g>
+    <!--class Preconditions-->
+    <g
+       class="entity"
+       data-entity="Preconditions"
+       data-source-line="45"
+       data-uid="ent0010"
+       id="entity_Preconditions">
+      <rect
+         fill="#E8E8FF"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="197.8008"
+         x="412"
+         y="153.2969"
+         id="rect439" />
+      <ellipse
+         cx="459.2329"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse441" />
+      <path
+         d="M462.2017,179.0703 Q461.6235,179.3672 460.9829,179.5078 Q460.3423,179.6641 459.6392,179.6641 Q457.1392,179.6641 455.811,178.0234 Q454.4985,176.3672 454.4985,173.2422 Q454.4985,170.1172 455.811,168.4609 Q457.1392,166.8047 459.6392,166.8047 Q460.3423,166.8047 460.9829,166.9609 Q461.6392,167.1172 462.2017,167.4141 L462.2017,170.1328 Q461.5767,169.5547 460.9829,169.2891 Q460.3892,169.0078 459.7642,169.0078 Q458.4204,169.0078 457.7329,170.0859 Q457.0454,171.1484 457.0454,173.2422 Q457.0454,175.3359 457.7329,176.4141 Q458.4204,177.4766 459.7642,177.4766 Q460.3892,177.4766 460.9829,177.2109 Q461.5767,176.9297 462.2017,176.3516 L462.2017,179.0703 Z "
+         fill="#000000"
+         id="path443" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="494.1182"
+         y="169.4355"
+         id="text445">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="94.835"
+         x="479.7329"
+         y="185.2607"
+         id="text447">Preconditions</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="413"
+         x2="608.8008"
+         y1="193.5625"
+         y2="193.5625"
+         id="line449" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="418"
+         y="210.5576"
+         id="text451">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="185.8008"
+         x="418"
+         y="226.8545"
+         id="text453">value: &quot;Material Available&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="418"
+         y="243.1514"
+         id="text455">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="413"
+         x2="608.8008"
+         y1="250.4531"
+         y2="250.4531"
+         id="line457" />
+    </g>
+    <!--class Postconditions-->
+    <g
+       class="entity"
+       data-entity="Postconditions"
+       data-source-line="51"
+       data-uid="ent0011"
+       id="entity_Postconditions">
+      <rect
+         fill="#E8E8FF"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="222.7656"
+         x="21.5"
+         y="318.2969"
+         id="rect460" />
+      <ellipse
+         cx="77.7256"
+         cy="338.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse462" />
+      <path
+         d="M80.6943,344.0703 Q80.1162,344.3672 79.4756,344.5078 Q78.835,344.6641 78.1318,344.6641 Q75.6318,344.6641 74.3037,343.0234 Q72.9912,341.3672 72.9912,338.2422 Q72.9912,335.1172 74.3037,333.4609 Q75.6318,331.8047 78.1318,331.8047 Q78.835,331.8047 79.4756,331.9609 Q80.1318,332.1172 80.6943,332.4141 L80.6943,335.1328 Q80.0693,334.5547 79.4756,334.2891 Q78.8818,334.0078 78.2568,334.0078 Q76.9131,334.0078 76.2256,335.0859 Q75.5381,336.1484 75.5381,338.2422 Q75.5381,340.3359 76.2256,341.4141 Q76.9131,342.4766 78.2568,342.4766 Q78.8818,342.4766 79.4756,342.2109 Q80.0693,341.9297 80.6943,341.3516 L80.6943,344.0703 Z "
+         fill="#000000"
+         id="path464" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="116.1006"
+         y="334.4355"
+         id="text466">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="101.8145"
+         x="98.2256"
+         y="350.2607"
+         id="text468">Postconditions</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="22.5"
+         x2="243.2656"
+         y1="358.5625"
+         y2="358.5625"
+         id="line470" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="27.5"
+         y="375.5576"
+         id="text472">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="210.7656"
+         x="27.5"
+         y="391.8545"
+         id="text474">value: &quot;Operation Completed&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="27.5"
+         y="408.1514"
+         id="text476">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="22.5"
+         x2="243.2656"
+         y1="415.4531"
+         y2="415.4531"
+         id="line478" />
+    </g>
+    <!--class Required_Capabilities-->
+    <g
+       class="entity"
+       data-entity="Required_Capabilities"
+       data-source-line="57"
+       data-uid="ent0012"
+       id="entity_Required_Capabilities">
+      <rect
+         fill="#FFE8FF"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="330.3018"
+         x="280"
+         y="318.2969"
+         id="rect481" />
+      <ellipse
+         cx="364.9468"
+         cy="338.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse483" />
+      <path
+         d="M367.9155,344.0703 Q367.3374,344.3672 366.6968,344.5078 Q366.0562,344.6641 365.353,344.6641 Q362.853,344.6641 361.5249,343.0234 Q360.2124,341.3672 360.2124,338.2422 Q360.2124,335.1172 361.5249,333.4609 Q362.853,331.8047 365.353,331.8047 Q366.0562,331.8047 366.6968,331.9609 Q367.353,332.1172 367.9155,332.4141 L367.9155,335.1328 Q367.2905,334.5547 366.6968,334.2891 Q366.103,334.0078 365.478,334.0078 Q364.1343,334.0078 363.4468,335.0859 Q362.7593,336.1484 362.7593,338.2422 Q362.7593,340.3359 363.4468,341.4141 Q364.1343,342.4766 365.478,342.4766 Q366.103,342.4766 366.6968,342.2109 Q367.2905,341.9297 367.9155,341.3516 L367.9155,344.0703 Z "
+         fill="#000000"
+         id="path485" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="428.3687"
+         y="334.4355"
+         id="text487">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="151.9082"
+         x="385.4468"
+         y="350.2607"
+         id="text489">Required_Capabilities</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="281"
+         x2="609.3018"
+         y1="358.5625"
+         y2="358.5625"
+         id="line491" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="286"
+         y="375.5576"
+         id="text493">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="318.3018"
+         x="286"
+         y="391.8545"
+         id="text495">value: &quot;[Drill_Capability, MoveXY_Capability]&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="286"
+         y="408.1514"
+         id="text497">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="281"
+         x2="609.3018"
+         y1="415.4531"
+         y2="415.4531"
+         id="line499" />
+    </g>
+    <!--class Move_Node-->
+    <g
+       class="entity"
+       data-entity="Move_Node"
+       data-source-line="12"
+       data-uid="ent0004"
+       id="entity_Move_Node">
+      <rect
+         fill="#F5F5F5"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="154.2285"
+         x="1138"
+         y="153.2969"
+         id="rect502" />
+      <ellipse
+         cx="1171.5164"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse504" />
+      <path
+         d="M1174.4851,179.0703 Q1173.907,179.3672 1173.2664,179.5078 Q1172.6257,179.6641 1171.9226,179.6641 Q1169.4226,179.6641 1168.0945,178.0234 Q1166.782,176.3672 1166.782,173.2422 Q1166.782,170.1172 1168.0945,168.4609 Q1169.4226,166.8047 1171.9226,166.8047 Q1172.6257,166.8047 1173.2664,166.9609 Q1173.9226,167.1172 1174.4851,167.4141 L1174.4851,170.1328 Q1173.8601,169.5547 1173.2664,169.2891 Q1172.6726,169.0078 1172.0476,169.0078 Q1170.7039,169.0078 1170.0164,170.0859 Q1169.3289,171.1484 1169.3289,173.2422 Q1169.3289,175.3359 1170.0164,176.4141 Q1170.7039,177.4766 1172.0476,177.4766 Q1172.6726,177.4766 1173.2664,177.2109 Q1173.8601,176.9297 1174.4851,176.3516 L1174.4851,179.0703 Z "
+         fill="#000000"
+         id="path506" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="1197.1394"
+         y="169.4355"
+         id="text508">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="81.0811"
+         x="1189.6311"
+         y="185.2607"
+         id="text510">Move_Node</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="1139"
+         x2="1291.2285"
+         y1="193.5625"
+         y2="193.5625"
+         id="line512" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="1144"
+         y="210.5576"
+         id="text514">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="138.8174"
+         x="1144"
+         y="226.8545"
+         id="text516">value: &quot;Move Node&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="139.877"
+         x="1144"
+         y="243.1514"
+         id="text518">category: VARIABLE</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="1139"
+         x2="1291.2285"
+         y1="250.4531"
+         y2="250.4531"
+         id="line520" />
+    </g>
+    <!--class Drill_Node-->
+    <g
+       class="entity"
+       data-entity="Drill_Node"
+       data-source-line="18"
+       data-uid="ent0005"
+       id="entity_Drill_Node">
+      <rect
+         fill="#F5F5F5"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="154.2285"
+         x="949"
+         y="153.2969"
+         id="rect523" />
+      <ellipse
+         cx="986.7184"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse525" />
+      <path
+         d="M989.6872,179.0703 Q989.109,179.3672 988.4684,179.5078 Q987.8278,179.6641 987.1247,179.6641 Q984.6247,179.6641 983.2965,178.0234 Q981.984,176.3672 981.984,173.2422 Q981.984,170.1172 983.2965,168.4609 Q984.6247,166.8047 987.1247,166.8047 Q987.8278,166.8047 988.4684,166.9609 Q989.1247,167.1172 989.6872,167.4141 L989.6872,170.1328 Q989.0622,169.5547 988.4684,169.2891 Q987.8747,169.0078 987.2497,169.0078 Q985.9059,169.0078 985.2184,170.0859 Q984.5309,171.1484 984.5309,173.2422 Q984.5309,175.3359 985.2184,176.4141 Q985.9059,177.4766 987.2497,177.4766 Q987.8747,177.4766 988.4684,177.2109 Q989.0622,176.9297 989.6872,176.3516 L989.6872,179.0703 Z "
+         fill="#000000"
+         id="path527" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="1008.6063"
+         y="169.4355"
+         id="text529">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="71.7432"
+         x="1005.7669"
+         y="185.2607"
+         id="text531">Drill_Node</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="950"
+         x2="1102.2285"
+         y1="193.5625"
+         y2="193.5625"
+         id="line533" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="955"
+         y="210.5576"
+         id="text535">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="129.4795"
+         x="955"
+         y="226.8545"
+         id="text537">value: &quot;Drill Node&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="139.877"
+         x="955"
+         y="243.1514"
+         id="text539">category: VARIABLE</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="950"
+         x2="1102.2285"
+         y1="250.4531"
+         y2="250.4531"
+         id="line541" />
+    </g>
+    <!--class Edge_1-->
+    <g
+       class="entity"
+       data-entity="Edge_1"
+       data-source-line="26"
+       data-uid="ent0007"
+       id="entity_Edge_1">
+      <rect
+         fill="#F5F5F5"
+         height="105.1563"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#333333;stroke-width:0.5;"
+         width="248.0654"
+         x="645"
+         y="153.2969"
+         id="rect544" />
+      <ellipse
+         cx="733.7505"
+         cy="173.4297"
+         fill="#E8E8E8"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1;"
+         id="ellipse546" />
+      <path
+         d="M736.7192,179.0703 Q736.1411,179.3672 735.5005,179.5078 Q734.8599,179.6641 734.1567,179.6641 Q731.6567,179.6641 730.3286,178.0234 Q729.0161,176.3672 729.0161,173.2422 Q729.0161,170.1172 730.3286,168.4609 Q731.6567,166.8047 734.1567,166.8047 Q734.8599,166.8047 735.5005,166.9609 Q736.1567,167.1172 736.7192,167.4141 L736.7192,170.1328 Q736.0942,169.5547 735.5005,169.2891 Q734.9067,169.0078 734.2817,169.0078 Q732.938,169.0078 732.2505,170.0859 Q731.563,171.1484 731.563,173.2422 Q731.563,175.3359 732.2505,176.4141 Q732.938,177.4766 734.2817,177.4766 Q734.9067,177.4766 735.5005,177.2109 Q736.0942,176.9297 736.7192,176.3516 L736.7192,179.0703 Z "
+         fill="#000000"
+         id="path548" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="66.0645"
+         x="752.2505"
+         y="169.4355"
+         id="text550">«Property»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="51.1396"
+         x="759.7129"
+         y="185.2607"
+         id="text552">Edge_1</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="646"
+         x2="892.0654"
+         y1="193.5625"
+         y2="193.5625"
+         id="line554" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="142.2285"
+         x="651"
+         y="210.5576"
+         id="text556">valueType: xs:string</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="236.0654"
+         x="651"
+         y="226.8545"
+         id="text558">value: &quot;Move_Node to Drill_Node&quot;</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="148.3467"
+         x="651"
+         y="243.1514"
+         id="text560">category: CONSTANT</text>
+      <line
+         style="stroke:#333333;stroke-width:0.5;"
+         x1="646"
+         x2="892.0654"
+         y1="250.4531"
+         y2="250.4531"
+         id="line562" />
+    </g>
+    <!--SRC=[hPDXQy8m48Q_zrSS-dKVDiP0H0IjBGms5PMnCKQ9xT45Oz8bqLc6_tr9rThPEaHwXH9wTs-VUwzL2yeJ8iaIvYHSn5AiUEGA9YHyVrADZihp8IDAzOMCKEuAclTPb4fET9h-WxqAPKgZHA7J1DrIiTUob-DegXd2M8eGbO8n8nocg_bIHCWS9p5T94PexFE1pGU7V0CwdSEvsuNcOE1vlWy_3fZ8Rdd_qDIeOht7S8bS6nY6eQQ2Mm6lvVjUQozW8viJ6izYZO6Li0e69K6fKzDmBBIn9co5CpDi6pQghRIaF2uNj7ToaCdzIOT4OonaseQNtkInrt_oylGsFvsY3IHbh4QsJEyQk6s5wruKN-2wzRpATTiTtDLdUUOIQ045pyxCw8w6qrblE3i_uu6HQva6Oq6vFW4rO_d-uBO0_2zi2VI8TWQh0cP3TPqiLJvT33EM60eUKRjbTSfZ5vx_gPTxOzujAM7GMnFAo9nTnIMKhXjiPFg9rGDNB1E66gCho2RujQ8Iey0b2PbJPWXHbJTv3U3xRfMvS7e3zaDxVIiy-hW0UUly0W00]-->
+  </g>
+</svg>

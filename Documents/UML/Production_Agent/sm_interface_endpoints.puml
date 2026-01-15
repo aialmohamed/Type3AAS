@@ -1,0 +1,36 @@
+@startuml sm_interface_endpoints
+
+skinparam backgroundColor white
+skinparam classBorderColor #333333
+skinparam classBackgroundColor #F5F5F5
+skinparam stereotypeCBackgroundColor #E8E8E8
+
+title Interface Endpoints Submodel
+
+package "Interface_Endpoints_Submodel" <<Submodel>> #E8DDFF {
+    
+    package "Interface_Endpoints" <<SubmodelElementCollection>> #F5F5F5 {
+        
+        class "Drill_Command_Invocation_Endpoint" <<Property>> #FFE8E8 {
+            valueType: xs:string
+            value: "https://0.0.0.0:8090"
+            category: CONSTANT
+            --
+            REST API endpoint for drill
+            command invocation
+            (use /drill_invocation_id)
+        }
+        
+        class "Move_Command_Invocation_Endpoint" <<Property>> #E8FFE8 {
+            valueType: xs:string
+            value: "https://0.0.0.0:8092"
+            category: CONSTANT
+            --
+            REST API endpoint for move
+            command invocation
+            (use /movexy_invocation_id)
+        }
+    }
+}
+
+@enduml

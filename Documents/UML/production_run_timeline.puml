@@ -1,0 +1,80 @@
+@startuml Production_Run_Timeline
+
+skinparam backgroundColor white
+skinparam sequenceArrowThickness 2
+skinparam sequenceParticipantBorderColor #444444
+skinparam sequenceLifeLineBorderColor #888888
+
+title Production Run Event Timeline (Run ID: 20251209_110327)
+
+participant "User\nAgent" as User #FFFFD0
+participant "Execution\nCore" as Exec #DDEEFF
+participant "Negotiation\nCore" as Neg #DDEEFF
+participant "Resource\nAgent 1" as RA1 #E8FFE8
+participant "Resource\nAgent 2" as RA2 #E8FFE8
+participant "Production\nAAS" as PAAS #FFE8D0
+participant "Simulator" as Sim #FFE8E8
+
+== Phase 1: Request Reception (T+0.00s) ==
+
+User -> Exec : pa_user_service_request\n{skill: drill_capability,\ntime: 10:30-11:00,\nX:60, Y:50, Depth:5, RPM:1500}
+activate Exec
+
+== Phase 2: Negotiation (T+0.00s - T+1.66s) ==
+
+Exec -> Neg : pa_execution_service_topic
+activate Neg
+
+Neg -> RA1 : CFP (production_negotiation)
+Neg -> RA2 : CFP (production_negotiation)
+
+RA1 --> Neg : Proposal\n{available: true}
+RA2 --> Neg : Proposal\n{available: true}
+
+note right of Neg
+  Best-fit selection:
+  **resource_agent_1**
+end note
+
+Neg --> Exec : pa_negotation_result\n{selected: resource_agent_1}
+deactivate Neg
+
+== Phase 3: Execution (T+3.79s - T+9.00s) ==
+
+Exec -> RA1 : Execute task
+activate RA1
+
+RA1 -> Sim : invoke_movexy\n(X:60, Y:50)
+activate Sim
+RA1 --> Exec : execution_tracking_topic\n{node: move_xy, status: running}
+Exec -> PAAS : UPDATE Current_Node = "move_xy"\nUPDATE Step_Status = "running"
+
+Sim --> RA1 : Move completed (2.09s)
+deactivate Sim
+RA1 --> Exec : execution_tracking_topic\n{node: move_xy, status: completed}
+Exec -> PAAS : UPDATE Step_Status = "completed"
+
+RA1 -> Sim : invoke_drill\n(Depth:5, RPM:1500)
+activate Sim
+RA1 --> Exec : execution_tracking_topic\n{node: drill, status: running}
+Exec -> PAAS : UPDATE Current_Node = "drill"\nUPDATE Step_Status = "running"
+
+Sim --> RA1 : Drill completed (2.98s)
+deactivate Sim
+RA1 --> Exec : execution_tracking_topic\n{node: drill, status: completed}
+Exec -> PAAS : UPDATE Step_Status = "completed"
+
+== Phase 4: Completion (T+9.00s) ==
+
+RA1 --> Exec : job_completion_topic\n{status: success}
+deactivate RA1
+
+note right of Exec
+  Reports saved:
+  • JSON
+  • TXT
+end note
+
+deactivate Exec
+
+@enduml

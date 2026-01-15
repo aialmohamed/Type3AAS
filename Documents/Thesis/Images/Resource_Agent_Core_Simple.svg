@@ -1,0 +1,1739 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="4175px"
+   preserveAspectRatio="none"
+   style="width:2615px;height:4175px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 2615 4175"
+   width="2615.625px"
+   zoomAndPan="magnify"
+   id="svg957"
+   sodipodi:docname="Resource_Agent_Core_Simple.svg"
+   inkscape:export-filename="Resource_Agent_Core_Simple.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview959"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.18802395"
+     inkscape:cx="1308.3439"
+     inkscape:cy="2092.8185"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg957" />
+  <title
+     id="title557">Resource Agent Core - Class Overview</title>
+  <defs
+     id="defs559" />
+  <g
+     id="g955">
+    <g
+       class="title"
+       data-source-line="7"
+       id="g563">
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="941.6931"
+         x="815.0909"
+         y="71.8597"
+         id="text561">Resource Agent Core - Class Overview</text>
+    </g>
+    <!--cluster Initialization-->
+    <g
+       class="cluster"
+       data-entity="Initialization"
+       data-source-line="56"
+       data-uid="ent0007"
+       id="cluster_Initialization">
+      <path
+         d="M1710.9375,1163.4277 L2024.0082,1163.4277 A11.7188,11.7188 0 0 1 2031.8207,1171.2402 L2053.6957,1233.1055 L2514.0625,1233.1055 A7.8125,7.8125 0 0 1 2521.875,1240.918 L2521.875,1464.9902 A7.8125,7.8125 0 0 1 2514.0625,1472.8027 L1710.9375,1472.8027 A7.8125,7.8125 0 0 1 1703.125,1464.9902 L1703.125,1171.2402 A7.8125,7.8125 0 0 1 1710.9375,1163.4277"
+         fill="#FFE8E8"
+         style="stroke:#000000;stroke-width:4.6875;"
+         id="path565" />
+      <line
+         style="stroke:#000000;stroke-width:4.6875;"
+         x1="1703.125"
+         x2="2053.6957"
+         y1="1233.1055"
+         y2="1233.1055"
+         id="line567" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="309.9457"
+         x="1715.625"
+         y="1210.2875"
+         id="text569">Initialization</text>
+    </g>
+    <!--cluster Negotiation-->
+    <g
+       class="cluster"
+       data-entity="Negotiation"
+       data-source-line="60"
+       data-uid="ent0009"
+       id="cluster_Negotiation">
+      <path
+         d="M1676.5625,1547.8027 L1969.8944,1547.8027 A11.7188,11.7188 0 0 1 1977.7069,1555.6152 L1999.5819,1617.4805 L2548.4375,1617.4805 A7.8125,7.8125 0 0 1 2556.25,1625.293 L2556.25,2699.3652 A7.8125,7.8125 0 0 1 2548.4375,2707.1777 L1676.5625,2707.1777 A7.8125,7.8125 0 0 1 1668.75,2699.3652 L1668.75,1555.6152 A7.8125,7.8125 0 0 1 1676.5625,1547.8027"
+         fill="#E8FFE8"
+         style="stroke:#000000;stroke-width:4.6875;"
+         id="path572" />
+      <line
+         style="stroke:#000000;stroke-width:4.6875;"
+         x1="1668.75"
+         x2="1999.5819"
+         y1="1617.4805"
+         y2="1617.4805"
+         id="line574" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="290.2069"
+         x="1681.25"
+         y="1594.6625"
+         id="text576">Negotiation</text>
+    </g>
+    <!--cluster Execution-->
+    <g
+       class="cluster"
+       data-entity="Execution"
+       data-source-line="68"
+       data-uid="ent0015"
+       id="cluster_Execution">
+      <path
+         d="M1639.0625,2782.1777 L1884.1583,2782.1777 A11.7188,11.7188 0 0 1 1891.9708,2789.9902 L1913.8458,2851.8555 L2585.9375,2851.8555 A7.8125,7.8125 0 0 1 2593.75,2859.668 L2593.75,4146.2402 A7.8125,7.8125 0 0 1 2585.9375,4154.0527 L1639.0625,4154.0527 A7.8125,7.8125 0 0 1 1631.25,4146.2402 L1631.25,2789.9902 A7.8125,7.8125 0 0 1 1639.0625,2782.1777"
+         fill="#E8E8FF"
+         style="stroke:#000000;stroke-width:4.6875;"
+         id="path579" />
+      <line
+         style="stroke:#000000;stroke-width:4.6875;"
+         x1="1631.25"
+         x2="1913.8458"
+         y1="2851.8555"
+         y2="2851.8555"
+         id="line581" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="241.9708"
+         x="1643.75"
+         y="2829.0375"
+         id="text583">Execution</text>
+    </g>
+    <!--class InitBehaviour-->
+    <g
+       class="entity"
+       data-entity="InitBehaviour"
+       data-source-line="57"
+       data-uid="ent0008"
+       id="entity_InitBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="718.2892"
+         x="1753.125"
+         y="1272.8027"
+         id="rect586" />
+      <ellipse
+         cx="1800"
+         cy="1322.8027"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse588" />
+      <path
+         d="M1809.2773,1340.4297 Q1807.4707,1341.3574 1805.4688,1341.7969 Q1803.4668,1342.2852 1801.2695,1342.2852 Q1793.457,1342.2852 1789.3066,1337.1582 Q1785.2051,1331.9824 1785.2051,1322.2168 Q1785.2051,1312.4512 1789.3066,1307.2754 Q1793.457,1302.0996 1801.2695,1302.0996 Q1803.4668,1302.0996 1805.4688,1302.5879 Q1807.5195,1303.0762 1809.2773,1304.0039 L1809.2773,1312.5 Q1807.3242,1310.6934 1805.4688,1309.8633 Q1803.6133,1308.9844 1801.6602,1308.9844 Q1797.4609,1308.9844 1795.3125,1312.3535 Q1793.1641,1315.6738 1793.1641,1322.2168 Q1793.1641,1328.7598 1795.3125,1332.1289 Q1797.4609,1335.4492 1801.6602,1335.4492 Q1803.6133,1335.4492 1805.4688,1334.6191 Q1807.3242,1333.7402 1809.2773,1331.9336 L1809.2773,1340.4297 Z "
+         fill="#000000"
+         id="path590" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="618.2892"
+         x="1843.75"
+         y="1337.9486"
+         id="text592">AgentInitializationBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1756.25"
+         x2="2468.2892"
+         y1="1372.8027"
+         y2="1372.8027"
+         id="line594" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1756.25"
+         x2="2468.2892"
+         y1="1397.8027"
+         y2="1397.8027"
+         id="line596" />
+    </g>
+    <!--class ReqBehaviour-->
+    <g
+       class="entity"
+       data-entity="ReqBehaviour"
+       data-source-line="61"
+       data-uid="ent0010"
+       id="entity_ReqBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="736.1694"
+         x="1743.75"
+         y="1657.1777"
+         id="rect599" />
+      <ellipse
+         cx="1790.625"
+         cy="1707.1777"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse601" />
+      <path
+         d="M1799.9023,1724.8047 Q1798.0957,1725.7324 1796.0938,1726.1719 Q1794.0918,1726.6602 1791.8945,1726.6602 Q1784.082,1726.6602 1779.9316,1721.5332 Q1775.8301,1716.3574 1775.8301,1706.5918 Q1775.8301,1696.8262 1779.9316,1691.6504 Q1784.082,1686.4746 1791.8945,1686.4746 Q1794.0918,1686.4746 1796.0938,1686.9629 Q1798.1445,1687.4512 1799.9023,1688.3789 L1799.9023,1696.875 Q1797.9492,1695.0684 1796.0938,1694.2383 Q1794.2383,1693.3594 1792.2852,1693.3594 Q1788.0859,1693.3594 1785.9375,1696.7285 Q1783.7891,1700.0488 1783.7891,1706.5918 Q1783.7891,1713.1348 1785.9375,1716.5039 Q1788.0859,1719.8242 1792.2852,1719.8242 Q1794.2383,1719.8242 1796.0938,1718.9941 Q1797.9492,1718.1152 1799.9023,1716.3086 L1799.9023,1724.8047 Z "
+         fill="#000000"
+         id="path603" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="636.1694"
+         x="1834.375"
+         y="1722.3236"
+         id="text605">ProductionRequestBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1746.875"
+         x2="2476.7944"
+         y1="1757.1777"
+         y2="1757.1777"
+         id="line607" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1746.875"
+         x2="2476.7944"
+         y1="1782.1777"
+         y2="1782.1777"
+         id="line609" />
+    </g>
+    <!--class CFPBehaviour-->
+    <g
+       class="entity"
+       data-entity="CFPBehaviour"
+       data-source-line="62"
+       data-uid="ent0011"
+       id="entity_CFPBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="639.4409"
+         x="1792.1875"
+         y="1869.6777"
+         id="rect612" />
+      <ellipse
+         cx="1839.0625"
+         cy="1919.6777"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse614" />
+      <path
+         d="M1848.3398,1937.3047 Q1846.5332,1938.2324 1844.5313,1938.6719 Q1842.5293,1939.1602 1840.332,1939.1602 Q1832.5195,1939.1602 1828.3691,1934.0332 Q1824.2676,1928.8574 1824.2676,1919.0918 Q1824.2676,1909.3262 1828.3691,1904.1504 Q1832.5195,1898.9746 1840.332,1898.9746 Q1842.5293,1898.9746 1844.5313,1899.4629 Q1846.582,1899.9512 1848.3398,1900.8789 L1848.3398,1909.375 Q1846.3867,1907.5684 1844.5313,1906.7383 Q1842.6758,1905.8594 1840.7227,1905.8594 Q1836.5234,1905.8594 1834.375,1909.2285 Q1832.2266,1912.5488 1832.2266,1919.0918 Q1832.2266,1925.6348 1834.375,1929.0039 Q1836.5234,1932.3242 1840.7227,1932.3242 Q1842.6758,1932.3242 1844.5313,1931.4941 Q1846.3867,1930.6152 1848.3398,1928.8086 L1848.3398,1937.3047 Z "
+         fill="#000000"
+         id="path616" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="539.4409"
+         x="1882.8125"
+         y="1934.8236"
+         id="text618">CFPProcessingBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1795.3125"
+         x2="2428.5034"
+         y1="1969.6777"
+         y2="1969.6777"
+         id="line620" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1795.3125"
+         x2="2428.5034"
+         y1="1994.6777"
+         y2="1994.6777"
+         id="line622" />
+    </g>
+    <!--class SlotBehaviour-->
+    <g
+       class="entity"
+       data-entity="SlotBehaviour"
+       data-source-line="63"
+       data-uid="ent0012"
+       id="entity_SlotBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="749.6063"
+         x="1737.5"
+         y="2082.1777"
+         id="rect625" />
+      <ellipse
+         cx="1784.375"
+         cy="2132.1777"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse627" />
+      <path
+         d="M1793.6523,2149.8047 Q1791.8457,2150.7324 1789.8438,2151.1719 Q1787.8418,2151.6602 1785.6445,2151.6602 Q1777.832,2151.6602 1773.6816,2146.5332 Q1769.5801,2141.3574 1769.5801,2131.5918 Q1769.5801,2121.8262 1773.6816,2116.6504 Q1777.832,2111.4746 1785.6445,2111.4746 Q1787.8418,2111.4746 1789.8438,2111.9629 Q1791.8945,2112.4512 1793.6523,2113.3789 L1793.6523,2121.875 Q1791.6992,2120.0684 1789.8438,2119.2383 Q1787.9883,2118.3594 1786.0352,2118.3594 Q1781.8359,2118.3594 1779.6875,2121.7285 Q1777.5391,2125.0488 1777.5391,2131.5918 Q1777.5391,2138.1348 1779.6875,2141.5039 Q1781.8359,2144.8242 1786.0352,2144.8242 Q1787.9883,2144.8242 1789.8438,2143.9941 Q1791.6992,2143.1152 1793.6523,2141.3086 L1793.6523,2149.8047 Z "
+         fill="#000000"
+         id="path629" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="649.6063"
+         x="1828.125"
+         y="2147.3236"
+         id="text631">TimeSlotProcessingBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1740.625"
+         x2="2483.9813"
+         y1="2182.1777"
+         y2="2182.1777"
+         id="line633" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1740.625"
+         x2="2483.9813"
+         y1="2207.1777"
+         y2="2207.1777"
+         id="line635" />
+    </g>
+    <!--class InformBehaviour-->
+    <g
+       class="entity"
+       data-entity="InformBehaviour"
+       data-source-line="64"
+       data-uid="ent0013"
+       id="entity_InformBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="607.3975"
+         x="1809.375"
+         y="2294.6777"
+         id="rect638" />
+      <ellipse
+         cx="1856.25"
+         cy="2344.6777"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse640" />
+      <path
+         d="M1865.5273,2362.3047 Q1863.7207,2363.2324 1861.7188,2363.6719 Q1859.7168,2364.1602 1857.5195,2364.1602 Q1849.707,2364.1602 1845.5566,2359.0332 Q1841.4551,2353.8574 1841.4551,2344.0918 Q1841.4551,2334.3262 1845.5566,2329.1504 Q1849.707,2323.9746 1857.5195,2323.9746 Q1859.7168,2323.9746 1861.7188,2324.4629 Q1863.7695,2324.9512 1865.5273,2325.8789 L1865.5273,2334.375 Q1863.5742,2332.5684 1861.7188,2331.7383 Q1859.8633,2330.8594 1857.9102,2330.8594 Q1853.7109,2330.8594 1851.5625,2334.2285 Q1849.4141,2337.5488 1849.4141,2344.0918 Q1849.4141,2350.6348 1851.5625,2354.0039 Q1853.7109,2357.3242 1857.9102,2357.3242 Q1859.8633,2357.3242 1861.7188,2356.4941 Q1863.5742,2355.6152 1865.5273,2353.8086 L1865.5273,2362.3047 Z "
+         fill="#000000"
+         id="path642" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="507.3975"
+         x="1900"
+         y="2359.8236"
+         id="text644">InformProductionAgent</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1812.5"
+         x2="2413.6475"
+         y1="2394.6777"
+         y2="2394.6777"
+         id="line646" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1812.5"
+         x2="2413.6475"
+         y1="2419.6777"
+         y2="2419.6777"
+         id="line648" />
+    </g>
+    <!--class RespBehaviour-->
+    <g
+       class="entity"
+       data-entity="RespBehaviour"
+       data-source-line="65"
+       data-uid="ent0014"
+       id="entity_RespBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="788.1866"
+         x="1718.75"
+         y="2507.1777"
+         id="rect651" />
+      <ellipse
+         cx="1765.625"
+         cy="2557.1777"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse653" />
+      <path
+         d="M1774.9023,2574.8047 Q1773.0957,2575.7324 1771.0938,2576.1719 Q1769.0918,2576.6602 1766.8945,2576.6602 Q1759.082,2576.6602 1754.9316,2571.5332 Q1750.8301,2566.3574 1750.8301,2556.5918 Q1750.8301,2546.8262 1754.9316,2541.6504 Q1759.082,2536.4746 1766.8945,2536.4746 Q1769.0918,2536.4746 1771.0938,2536.9629 Q1773.1445,2537.4512 1774.9023,2538.3789 L1774.9023,2546.875 Q1772.9492,2545.0684 1771.0938,2544.2383 Q1769.2383,2543.3594 1767.2852,2543.3594 Q1763.0859,2543.3594 1760.9375,2546.7285 Q1758.7891,2550.0488 1758.7891,2556.5918 Q1758.7891,2563.1348 1760.9375,2566.5039 Q1763.0859,2569.8242 1767.2852,2569.8242 Q1769.2383,2569.8242 1771.0938,2568.9941 Q1772.9492,2568.1152 1774.9023,2566.3086 L1774.9023,2574.8047 Z "
+         fill="#000000"
+         id="path655" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="688.1866"
+         x="1809.375"
+         y="2572.3236"
+         id="text657">NegotiationResponseBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1721.875"
+         x2="2503.8116"
+         y1="2607.1777"
+         y2="2607.1777"
+         id="line659" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1721.875"
+         x2="2503.8116"
+         y1="2632.1777"
+         y2="2632.1777"
+         id="line661" />
+    </g>
+    <!--class PrepBehaviour-->
+    <g
+       class="entity"
+       data-entity="PrepBehaviour"
+       data-source-line="69"
+       data-uid="ent0016"
+       id="entity_PrepBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="862.4207"
+         x="1681.25"
+         y="2891.5527"
+         id="rect664" />
+      <ellipse
+         cx="1728.125"
+         cy="2941.5527"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse666" />
+      <path
+         d="M1737.4023,2959.1797 Q1735.5957,2960.1074 1733.5938,2960.5469 Q1731.5918,2961.0352 1729.3945,2961.0352 Q1721.582,2961.0352 1717.4316,2955.9082 Q1713.3301,2950.7324 1713.3301,2940.9668 Q1713.3301,2931.2012 1717.4316,2926.0254 Q1721.582,2920.8496 1729.3945,2920.8496 Q1731.5918,2920.8496 1733.5938,2921.3379 Q1735.6445,2921.8262 1737.4023,2922.7539 L1737.4023,2931.25 Q1735.4492,2929.4434 1733.5938,2928.6133 Q1731.7383,2927.7344 1729.7852,2927.7344 Q1725.5859,2927.7344 1723.4375,2931.1035 Q1721.2891,2934.4238 1721.2891,2940.9668 Q1721.2891,2947.5098 1723.4375,2950.8789 Q1725.5859,2954.1992 1729.7852,2954.1992 Q1731.7383,2954.1992 1733.5938,2953.3691 Q1735.4492,2952.4902 1737.4023,2950.6836 L1737.4023,2959.1797 Z "
+         fill="#000000"
+         id="path668" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="762.4207"
+         x="1771.875"
+         y="2956.6986"
+         id="text670">PreparationForExecutionBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1684.375"
+         x2="2540.5457"
+         y1="2991.5527"
+         y2="2991.5527"
+         id="line672" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1684.375"
+         x2="2540.5457"
+         y1="3016.5527"
+         y2="3016.5527"
+         id="line674" />
+    </g>
+    <!--class TaskBehaviour-->
+    <g
+       class="entity"
+       data-entity="TaskBehaviour"
+       data-source-line="70"
+       data-uid="ent0017"
+       id="entity_TaskBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="639.6973"
+         x="1792.1875"
+         y="3104.0527"
+         id="rect677" />
+      <ellipse
+         cx="1839.0625"
+         cy="3154.0527"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse679" />
+      <path
+         d="M1848.3398,3171.6797 Q1846.5332,3172.6074 1844.5313,3173.0469 Q1842.5293,3173.5352 1840.332,3173.5352 Q1832.5195,3173.5352 1828.3691,3168.4082 Q1824.2676,3163.2324 1824.2676,3153.4668 Q1824.2676,3143.7012 1828.3691,3138.5254 Q1832.5195,3133.3496 1840.332,3133.3496 Q1842.5293,3133.3496 1844.5313,3133.8379 Q1846.582,3134.3262 1848.3398,3135.2539 L1848.3398,3143.75 Q1846.3867,3141.9434 1844.5313,3141.1133 Q1842.6758,3140.2344 1840.7227,3140.2344 Q1836.5234,3140.2344 1834.375,3143.6035 Q1832.2266,3146.9238 1832.2266,3153.4668 Q1832.2266,3160.0098 1834.375,3163.3789 Q1836.5234,3166.6992 1840.7227,3166.6992 Q1842.6758,3166.6992 1844.5313,3165.8691 Q1846.3867,3164.9902 1848.3398,3163.1836 L1848.3398,3171.6797 Z "
+         fill="#000000"
+         id="path681" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="539.6973"
+         x="1882.8125"
+         y="3169.1986"
+         id="text683">TaskExecutionBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1795.3125"
+         x2="2428.7598"
+         y1="3204.0527"
+         y2="3204.0527"
+         id="line685" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1795.3125"
+         x2="2428.7598"
+         y1="3229.0527"
+         y2="3229.0527"
+         id="line687" />
+    </g>
+    <!--class DrillBehaviour-->
+    <g
+       class="entity"
+       data-entity="DrillBehaviour"
+       data-source-line="71"
+       data-uid="ent0018"
+       id="entity_DrillBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="573.6664"
+         x="1825"
+         y="3316.5527"
+         id="rect690" />
+      <ellipse
+         cx="1871.875"
+         cy="3366.5527"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse692" />
+      <path
+         d="M1881.1523,3384.1797 Q1879.3457,3385.1074 1877.3438,3385.5469 Q1875.3418,3386.0352 1873.1445,3386.0352 Q1865.332,3386.0352 1861.1816,3380.9082 Q1857.0801,3375.7324 1857.0801,3365.9668 Q1857.0801,3356.2012 1861.1816,3351.0254 Q1865.332,3345.8496 1873.1445,3345.8496 Q1875.3418,3345.8496 1877.3438,3346.3379 Q1879.3945,3346.8262 1881.1523,3347.7539 L1881.1523,3356.25 Q1879.1992,3354.4434 1877.3438,3353.6133 Q1875.4883,3352.7344 1873.5352,3352.7344 Q1869.3359,3352.7344 1867.1875,3356.1035 Q1865.0391,3359.4238 1865.0391,3365.9668 Q1865.0391,3372.5098 1867.1875,3375.8789 Q1869.3359,3379.1992 1873.5352,3379.1992 Q1875.4883,3379.1992 1877.3438,3378.3691 Q1879.1992,3377.4902 1881.1523,3375.6836 L1881.1523,3384.1797 Z "
+         fill="#000000"
+         id="path694" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="473.6664"
+         x="1915.625"
+         y="3381.6986"
+         id="text696">DrillInvokerBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1828.125"
+         x2="2395.5414"
+         y1="3416.5527"
+         y2="3416.5527"
+         id="line698" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1828.125"
+         x2="2395.5414"
+         y1="3441.5527"
+         y2="3441.5527"
+         id="line700" />
+    </g>
+    <!--class MoveBehaviour-->
+    <g
+       class="entity"
+       data-entity="MoveBehaviour"
+       data-source-line="72"
+       data-uid="ent0019"
+       id="entity_MoveBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="659.5428"
+         x="1782.8125"
+         y="3529.0527"
+         id="rect703" />
+      <ellipse
+         cx="1829.6875"
+         cy="3579.0527"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse705" />
+      <path
+         d="M1838.9648,3596.6797 Q1837.1582,3597.6074 1835.1563,3598.0469 Q1833.1543,3598.5352 1830.957,3598.5352 Q1823.1445,3598.5352 1818.9941,3593.4082 Q1814.8926,3588.2324 1814.8926,3578.4668 Q1814.8926,3568.7012 1818.9941,3563.5254 Q1823.1445,3558.3496 1830.957,3558.3496 Q1833.1543,3558.3496 1835.1563,3558.8379 Q1837.207,3559.3262 1838.9648,3560.2539 L1838.9648,3568.75 Q1837.0117,3566.9434 1835.1563,3566.1133 Q1833.3008,3565.2344 1831.3477,3565.2344 Q1827.1484,3565.2344 1825,3568.6035 Q1822.8516,3571.9238 1822.8516,3578.4668 Q1822.8516,3585.0098 1825,3588.3789 Q1827.1484,3591.6992 1831.3477,3591.6992 Q1833.3008,3591.6992 1835.1563,3590.8691 Q1837.0117,3589.9902 1838.9648,3588.1836 L1838.9648,3596.6797 Z "
+         fill="#000000"
+         id="path707" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="559.5428"
+         x="1873.4375"
+         y="3594.1986"
+         id="text709">MoveXYInvokerBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1785.9375"
+         x2="2439.2303"
+         y1="3629.0527"
+         y2="3629.0527"
+         id="line711" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1785.9375"
+         x2="2439.2303"
+         y1="3654.0527"
+         y2="3654.0527"
+         id="line713" />
+    </g>
+    <!--class DoneBehaviour-->
+    <g
+       class="entity"
+       data-entity="DoneBehaviour"
+       data-source-line="73"
+       data-uid="ent0020"
+       id="entity_DoneBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="499.2615"
+         x="1862.5"
+         y="3741.5527"
+         id="rect716" />
+      <ellipse
+         cx="1909.375"
+         cy="3791.5527"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse718" />
+      <path
+         d="M1918.6523,3809.1797 Q1916.8457,3810.1074 1914.8438,3810.5469 Q1912.8418,3811.0352 1910.6445,3811.0352 Q1902.832,3811.0352 1898.6816,3805.9082 Q1894.5801,3800.7324 1894.5801,3790.9668 Q1894.5801,3781.2012 1898.6816,3776.0254 Q1902.832,3770.8496 1910.6445,3770.8496 Q1912.8418,3770.8496 1914.8438,3771.3379 Q1916.8945,3771.8262 1918.6523,3772.7539 L1918.6523,3781.25 Q1916.6992,3779.4434 1914.8438,3778.6133 Q1912.9883,3777.7344 1911.0352,3777.7344 Q1906.8359,3777.7344 1904.6875,3781.1035 Q1902.5391,3784.4238 1902.5391,3790.9668 Q1902.5391,3797.5098 1904.6875,3800.8789 Q1906.8359,3804.1992 1911.0352,3804.1992 Q1912.9883,3804.1992 1914.8438,3803.3691 Q1916.6992,3802.4902 1918.6523,3800.6836 L1918.6523,3809.1797 Z "
+         fill="#000000"
+         id="path720" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="399.2615"
+         x="1953.125"
+         y="3806.6986"
+         id="text722">OnDoneBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1865.625"
+         x2="2358.6365"
+         y1="3841.5527"
+         y2="3841.5527"
+         id="line724" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1865.625"
+         x2="2358.6365"
+         y1="3866.5527"
+         y2="3866.5527"
+         id="line726" />
+    </g>
+    <!--class TrackBehaviour-->
+    <g
+       class="entity"
+       data-entity="TrackBehaviour"
+       data-source-line="74"
+       data-uid="ent0021"
+       id="entity_TrackBehaviour">
+      <rect
+         fill="#F8F8F8"
+         height="150"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="667.276"
+         x="1778.125"
+         y="3954.0527"
+         id="rect729" />
+      <ellipse
+         cx="1825"
+         cy="4004.0527"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse731" />
+      <path
+         d="M1834.2773,4021.6797 Q1832.4707,4022.6074 1830.4688,4023.0469 Q1828.4668,4023.5352 1826.2695,4023.5352 Q1818.457,4023.5352 1814.3066,4018.4082 Q1810.2051,4013.2324 1810.2051,4003.4668 Q1810.2051,3993.7012 1814.3066,3988.5254 Q1818.457,3983.3496 1826.2695,3983.3496 Q1828.4668,3983.3496 1830.4688,3983.8379 Q1832.5195,3984.3262 1834.2773,3985.2539 L1834.2773,3993.75 Q1832.3242,3991.9434 1830.4688,3991.1133 Q1828.6133,3990.2344 1826.6602,3990.2344 Q1822.4609,3990.2344 1820.3125,3993.6035 Q1818.1641,3996.9238 1818.1641,4003.4668 Q1818.1641,4010.0098 1820.3125,4013.3789 Q1822.4609,4016.6992 1826.6602,4016.6992 Q1828.6133,4016.6992 1830.4688,4015.8691 Q1832.3242,4014.9902 1834.2773,4013.1836 L1834.2773,4021.6797 Z "
+         fill="#000000"
+         id="path733" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="567.276"
+         x="1868.75"
+         y="4019.1986"
+         id="text735">PublishTrackingBehaviour</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1781.25"
+         x2="2442.276"
+         y1="4054.0527"
+         y2="4054.0527"
+         id="line737" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1781.25"
+         x2="2442.276"
+         y1="4079.0527"
+         y2="4079.0527"
+         id="line739" />
+    </g>
+    <!--class ResourceAgent-->
+    <g
+       class="entity"
+       data-entity="ResourceAgent"
+       data-source-line="16"
+       data-uid="ent0002"
+       id="entity_ResourceAgent">
+      <rect
+         fill="#F8F8F8"
+         height="837.0605"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="874.8383"
+         x="531.25"
+         y="1950.9277"
+         id="rect742" />
+      <ellipse
+         cx="788.858"
+         cy="2000.9277"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse744" />
+      <path
+         d="M798.1354,2018.5547 Q796.3287,2019.4824 794.3268,2019.9219 Q792.3248,2020.4102 790.1276,2020.4102 Q782.3151,2020.4102 778.1647,2015.2832 Q774.0631,2010.1074 774.0631,2000.3418 Q774.0631,1990.5762 778.1647,1985.4004 Q782.3151,1980.2246 790.1276,1980.2246 Q792.3248,1980.2246 794.3268,1980.7129 Q796.3776,1981.2012 798.1354,1982.1289 L798.1354,1990.625 Q796.1823,1988.8184 794.3268,1987.9883 Q792.4713,1987.1094 790.5182,1987.1094 Q786.319,1987.1094 784.1705,1990.4785 Q782.0221,1993.7988 782.0221,2000.3418 Q782.0221,2006.8848 784.1705,2010.2539 Q786.319,2013.5742 790.5182,2013.5742 Q792.4713,2013.5742 794.3268,2012.7441 Q796.1823,2011.8652 798.1354,2010.0586 L798.1354,2018.5547 Z "
+         fill="#000000"
+         id="path746" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="333.0597"
+         x="852.9205"
+         y="2016.0736"
+         id="text748">ResourceAgent</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="534.375"
+         x2="1402.9633"
+         y1="2050.9277"
+         y2="2050.9277"
+         id="line750" />
+      <rect
+         fill="none"
+         height="18.75"
+         style="stroke:#C82930;stroke-width:3.125;"
+         width="18.75"
+         x="556.25"
+         y="2084.2041"
+         id="rect752" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="793.5883"
+         x="593.75"
+         y="2104.0375"
+         id="text754">resource_client : ResourceAASClient</text>
+      <rect
+         fill="none"
+         height="18.75"
+         style="stroke:#C82930;stroke-width:3.125;"
+         width="18.75"
+         x="556.25"
+         y="2135.1318"
+         id="rect756" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="230.8197"
+         x="593.75"
+         y="2154.9652"
+         id="text758">utils : Utils</text>
+      <line
+         style="stroke:#444444;stroke-width:3.125;"
+         x1="534.375"
+         x2="1402.9633"
+         y1="2177.7832"
+         y2="2177.7832"
+         id="line760" />
+      <line
+         style="stroke:#444444;stroke-width:3.125;"
+         x1="534.375"
+         x2="1402.9633"
+         y1="2184.0332"
+         y2="2184.0332"
+         id="line762" />
+      <ellipse
+         cx="565.625"
+         cy="2220.4346"
+         fill="#84BE84"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse764" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="156.5002"
+         x="593.75"
+         y="2230.8929"
+         id="text766">setup()</text>
+      <ellipse
+         cx="565.625"
+         cy="2271.3623"
+         fill="#84BE84"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse768" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="478.8147"
+         x="593.75"
+         y="2281.8207"
+         id="text770">add_custom_actions()</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="534.375"
+         x2="1402.9633"
+         y1="2304.6387"
+         y2="2304.6387"
+         id="line772" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="356.8359"
+         x="550"
+         y="2357.7484"
+         id="text774">Custom Actions:</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="344.5099"
+         x="550"
+         y="2408.6761"
+         id="text776">.initialize_agent</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="331.1371"
+         x="550"
+         y="2459.6039"
+         id="text778">.check_request</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="272.0917"
+         x="550"
+         y="2510.5316"
+         id="text780">.process_cfp</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="427.2461"
+         x="550"
+         y="2561.4594"
+         id="text782">.process_time_slots</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="423.2513"
+         x="550"
+         y="2612.3871"
+         id="text784">.prepare_execution</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="303.4515"
+         x="550"
+         y="2663.3148"
+         id="text786">.execute_task</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="348.4406"
+         x="550"
+         y="2714.2426"
+         id="text788">.drill / .move_xy</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="199.4598"
+         x="550"
+         y="2765.1703"
+         id="text790">.on_done</text>
+    </g>
+    <!--class ASL-->
+    <g
+       class="entity"
+       data-entity="ASL"
+       data-source-line="35"
+       data-uid="ent0003"
+       id="entity_ASL">
+      <rect
+         fill="#F8F8F8"
+         height="736.0352"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="582.666"
+         x="1821.875"
+         y="138.4277"
+         id="rect793" />
+      <ellipse
+         cx="1899.1684"
+         cy="201.3428"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse795" />
+      <path
+         d="M1908.4457,218.9697 Q1906.6391,219.8975 1904.6371,220.3369 Q1902.6352,220.8252 1900.4379,220.8252 Q1892.6254,220.8252 1888.475,215.6982 Q1884.3735,210.5225 1884.3735,200.7568 Q1884.3735,190.9912 1888.475,185.8154 Q1892.6254,180.6396 1900.4379,180.6396 Q1902.6352,180.6396 1904.6371,181.1279 Q1906.6879,181.6162 1908.4457,182.5439 L1908.4457,191.04 Q1906.4926,189.2334 1904.6371,188.4033 Q1902.7817,187.5244 1900.8286,187.5244 Q1896.6293,187.5244 1894.4809,190.8936 Q1892.3325,194.2139 1892.3325,200.7568 Q1892.3325,207.2998 1894.4809,210.6689 Q1896.6293,213.9893 1900.8286,213.9893 Q1902.7817,213.9893 1904.6371,213.1592 Q1906.4926,212.2803 1908.4457,210.4736 L1908.4457,218.9697 Z "
+         fill="#000000"
+         id="path797" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="37.5"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="116.6382"
+         x="2098.8937"
+         y="188.8611"
+         id="text799">«ASL»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="415.0696"
+         x="1949.678"
+         y="238.3148"
+         id="text801">resource_agent.asl</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1825"
+         x2="2401.416"
+         y1="264.2578"
+         y2="264.2578"
+         id="line803" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="136.5265"
+         x="1840.625"
+         y="317.3676"
+         id="text805">Goals</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="139.9017"
+         x="1840.625"
+         y="368.2953"
+         id="text807">!setup</text>
+      <line
+         style="stroke:#444444;stroke-width:3.125;"
+         x1="1825"
+         x2="2401.416"
+         y1="391.1133"
+         y2="391.1133"
+         id="line809" />
+      <line
+         style="stroke:#444444;stroke-width:3.125;"
+         x1="1825"
+         x2="2401.416"
+         y1="397.3633"
+         y2="397.3633"
+         id="line811" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="289.1388"
+         x="1884.375"
+         y="444.223"
+         id="text813">Event Plans</text>
+      <ellipse
+         cx="1856.25"
+         cy="484.6924"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse815" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="334.5337"
+         x="1884.375"
+         y="495.1508"
+         id="text817">is_cfp_received</text>
+      <ellipse
+         cx="1856.25"
+         cy="535.6201"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse819" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="453.1799"
+         x="1884.375"
+         y="546.0785"
+         id="text821">is_negotiation_ready</text>
+      <ellipse
+         cx="1856.25"
+         cy="586.5479"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse823" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="449.9756"
+         x="1884.375"
+         y="597.0062"
+         id="text825">is_response_positive</text>
+      <ellipse
+         cx="1856.25"
+         cy="637.4756"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse827" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="501.416"
+         x="1884.375"
+         y="647.934"
+         id="text829">is_ready_for_execution</text>
+      <ellipse
+         cx="1856.25"
+         cy="688.4033"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse831" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="304.8401"
+         x="1884.375"
+         y="698.8617"
+         id="text833">execute_skills</text>
+      <ellipse
+         cx="1856.25"
+         cy="739.3311"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse835" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="336.2213"
+         x="1884.375"
+         y="749.7894"
+         id="text837">drill_completed</text>
+      <ellipse
+         cx="1856.25"
+         cy="790.2588"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse839" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="449.8474"
+         x="1884.375"
+         y="800.7172"
+         id="text841">move_xy_completed</text>
+      <ellipse
+         cx="1856.25"
+         cy="841.1865"
+         fill="none"
+         rx="9.375"
+         ry="9.375"
+         style="stroke:#038048;stroke-width:3.125;"
+         id="ellipse843" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="409.8358"
+         x="1884.375"
+         y="851.6449"
+         id="text845">execution_finished</text>
+    </g>
+    <!--class ResourceAASClient-->
+    <g
+       class="entity"
+       data-entity="ResourceAASClient"
+       data-source-line="51"
+       data-uid="ent0004"
+       id="entity_ResourceAASClient">
+      <rect
+         fill="#F8F8F8"
+         height="175.8301"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="517.8467"
+         x="1853.125"
+         y="938.4277"
+         id="rect848" />
+      <ellipse
+         cx="1900"
+         cy="1001.3428"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse850" />
+      <path
+         d="M1909.2773,1018.9697 Q1907.4707,1019.8975 1905.4688,1020.3369 Q1903.4668,1020.8252 1901.2695,1020.8252 Q1893.457,1020.8252 1889.3066,1015.6982 Q1885.2051,1010.5225 1885.2051,1000.7568 Q1885.2051,990.9912 1889.3066,985.8154 Q1893.457,980.6396 1901.2695,980.6396 Q1903.4668,980.6396 1905.4688,981.1279 Q1907.5195,981.6162 1909.2773,982.5439 L1909.2773,991.04 Q1907.3242,989.2334 1905.4688,988.4033 Q1903.6133,987.5244 1901.6602,987.5244 Q1897.4609,987.5244 1895.3125,990.8936 Q1893.1641,994.2139 1893.1641,1000.7568 Q1893.1641,1007.2998 1895.3125,1010.6689 Q1897.4609,1013.9893 1901.6602,1013.9893 Q1903.6133,1013.9893 1905.4688,1013.1592 Q1907.3242,1012.2803 1909.2773,1010.4736 L1909.2773,1018.9697 Z "
+         fill="#000000"
+         id="path852" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="37.5"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="172.9431"
+         x="2066.2018"
+         y="988.8611"
+         id="text854">«facade»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="417.8467"
+         x="1943.75"
+         y="1038.3148"
+         id="text856">ResourceAASClient</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1856.25"
+         x2="2367.8467"
+         y1="1064.2578"
+         y2="1064.2578"
+         id="line858" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="1856.25"
+         x2="2367.8467"
+         y1="1089.2578"
+         y2="1089.2578"
+         id="line860" />
+    </g>
+    <!--class BDIAgent-->
+    <g
+       class="entity"
+       data-entity="BDIAgent"
+       data-source-line="52"
+       data-uid="ent0005"
+       id="entity_BDIAgent">
+      <rect
+         fill="#F8F8F8"
+         height="175.8301"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="306.1035"
+         x="59.375"
+         y="2163.4277"
+         id="rect863" />
+      <ellipse
+         cx="106.25"
+         cy="2226.3428"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse865" />
+      <path
+         d="M115.5273,2243.9697 Q113.7207,2244.8975 111.7188,2245.3369 Q109.7168,2245.8252 107.5195,2245.8252 Q99.707,2245.8252 95.5566,2240.6982 Q91.4551,2235.5225 91.4551,2225.7568 Q91.4551,2215.9912 95.5566,2210.8154 Q99.707,2205.6396 107.5195,2205.6396 Q109.7168,2205.6396 111.7188,2206.1279 Q113.7695,2206.6162 115.5273,2207.5439 L115.5273,2216.04 Q113.5742,2214.2334 111.7188,2213.4033 Q109.8633,2212.5244 107.9102,2212.5244 Q103.7109,2212.5244 101.5625,2215.8936 Q99.4141,2219.2139 99.4141,2225.7568 Q99.4141,2232.2998 101.5625,2235.6689 Q103.7109,2238.9893 107.9102,2238.9893 Q109.8633,2238.9893 111.7188,2238.1592 Q113.5742,2237.2803 115.5273,2235.4736 L115.5273,2243.9697 Z "
+         fill="#000000"
+         id="path867" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="37.5"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="170.929"
+         x="167.5873"
+         y="2213.8611"
+         id="text869">«SPADE»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="206.1035"
+         x="150"
+         y="2263.3148"
+         id="text871">BDIAgent</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="62.5"
+         x2="362.3535"
+         y1="2289.2578"
+         y2="2289.2578"
+         id="line873" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="62.5"
+         x2="362.3535"
+         y1="2314.2578"
+         y2="2314.2578"
+         id="line875" />
+    </g>
+    <!--class PubSubMixin-->
+    <g
+       class="entity"
+       data-entity="PubSubMixin"
+       data-source-line="53"
+       data-uid="ent0006"
+       id="entity_PubSubMixin">
+      <rect
+         fill="#F8F8F8"
+         height="175.8301"
+         rx="7.8125"
+         ry="7.8125"
+         style="stroke:#444444;stroke-width:1.5625;"
+         width="380.8289"
+         x="21.875"
+         y="2400.9277"
+         id="rect878" />
+      <ellipse
+         cx="68.75"
+         cy="2463.8428"
+         fill="#ADD1B2"
+         rx="34.375"
+         ry="34.375"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="ellipse880" />
+      <path
+         d="M78.0273,2481.4697 Q76.2207,2482.3975 74.2188,2482.8369 Q72.2168,2483.3252 70.0195,2483.3252 Q62.207,2483.3252 58.0566,2478.1982 Q53.9551,2473.0225 53.9551,2463.2568 Q53.9551,2453.4912 58.0566,2448.3154 Q62.207,2443.1396 70.0195,2443.1396 Q72.2168,2443.1396 74.2188,2443.6279 Q76.2695,2444.1162 78.0273,2445.0439 L78.0273,2453.54 Q76.0742,2451.7334 74.2188,2450.9033 Q72.3633,2450.0244 70.4102,2450.0244 Q66.2109,2450.0244 64.0625,2453.3936 Q61.9141,2456.7139 61.9141,2463.2568 Q61.9141,2469.7998 64.0625,2473.1689 Q66.2109,2476.4893 70.4102,2476.4893 Q72.3633,2476.4893 74.2188,2475.6592 Q76.0742,2474.7803 78.0273,2472.9736 L78.0273,2481.4697 Z "
+         fill="#000000"
+         id="path882" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="37.5"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="170.929"
+         x="167.45"
+         y="2451.3611"
+         id="text884">«SPADE»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="43.75"
+         lengthAdjust="spacing"
+         textLength="280.8289"
+         x="112.5"
+         y="2500.8148"
+         id="text886">PubSubMixin</text>
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="25"
+         x2="399.5789"
+         y1="2526.7578"
+         y2="2526.7578"
+         id="line888" />
+      <line
+         style="stroke:#444444;stroke-width:1.5625;"
+         x1="25"
+         x2="399.5789"
+         y1="2551.7578"
+         y2="2551.7578"
+         id="line890" />
+    </g>
+    <!--reverse link BDIAgent to ResourceAgent-->
+    <g
+       class="link"
+       data-entity-1="BDIAgent"
+       data-entity-2="ResourceAgent"
+       data-source-line="78"
+       data-uid="lnk22"
+       id="link_BDIAgent_ResourceAgent">
+      <path
+         codeLine="78"
+         d="M422.0579,2283.5994 C470.8079,2291.3182 472,2291.5215 530.7813,2300.834"
+         fill="none"
+         id="BDIAgent-backto-ResourceAgent"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="none"
+         points="366.5,2274.8027,419.1257,2302.1187,424.9901,2265.0801,366.5,2274.8027"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon894" />
+    </g>
+    <!--reverse link PubSubMixin to ResourceAgent-->
+    <g
+       class="link"
+       data-entity-1="PubSubMixin"
+       data-entity-2="ResourceAgent"
+       data-source-line="79"
+       data-uid="lnk23"
+       id="link_PubSubMixin_ResourceAgent">
+      <path
+         codeLine="79"
+         d="M459.4651,2449.8243 C498.9651,2443.5743 486.5938,2445.5215 530.9375,2438.4902"
+         fill="none"
+         id="PubSubMixin-backto-ResourceAgent"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="none"
+         points="403.9063,2458.6152,462.3954,2468.3439,456.5347,2431.3047,403.9063,2458.6152"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon898" />
+    </g>
+    <!--link ResourceAgent to ResourceAASClient-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="ResourceAASClient"
+       data-source-line="80"
+       data-uid="lnk24"
+       id="link_ResourceAgent_ResourceAASClient">
+      <path
+         codeLine="80"
+         d="M1124.2188,1950.4902 C1228.6563,1713.0527 1388.0313,1425.7402 1606.25,1232.1777 C1676.1563,1170.1777 1749.6744,1131.8029 1835.1119,1100.0529"
+         fill="none"
+         id="ResourceAgent-to-ResourceAASClient"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1852.6875,1093.5215,1821.9698,1091.6015,1838.0411,1098.9643,1830.6783,1115.0357,1852.6875,1093.5215"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon902" />
+    </g>
+    <!--link ResourceAgent to ASL-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="ASL"
+       data-source-line="81"
+       data-uid="lnk25"
+       id="link_ResourceAgent_ASL">
+      <path
+         codeLine="81"
+         d="M1092.5313,1950.7715 C1195.4063,1641.5215 1365.2188,1221.5215 1606.25,907.1777 C1666,829.2402 1729.3894,769.2407 1806.2019,708.8032"
+         fill="none"
+         id="ResourceAgent-to-ASL"
+         style="stroke:#181818;stroke-width:3.125;stroke-dasharray:21.875,21.875;" />
+      <polygon
+         fill="#181818"
+         points="1820.9375,697.209,1791.1047,704.7766,1808.6579,706.8708,1806.5636,724.424,1820.9375,697.209"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon906" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="40.625"
+         lengthAdjust="spacing"
+         textLength="107.9895"
+         x="1471.875"
+         y="929.2618"
+         id="text908">loads</text>
+    </g>
+    <!--link ResourceAgent to InitBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="InitBehaviour"
+       data-source-line="83"
+       data-uid="lnk26"
+       id="link_ResourceAgent_InitBehaviour">
+      <path
+         codeLine="83"
+         d="M1276.9688,1950.5527 C1374.0313,1833.8652 1487.3438,1712.834 1606.25,1616.5527 C1704.375,1537.084 1812.579,1478.0602 1913.5165,1430.8414"
+         fill="none"
+         id="ResourceAgent-to-InitBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1930.5,1422.8965,1899.7281,1423.4915,1916.3471,1429.5173,1910.3213,1446.1362,1930.5,1422.8965"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon912" />
+    </g>
+    <!--link ResourceAgent to ReqBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="ReqBehaviour"
+       data-source-line="84"
+       data-uid="lnk27"
+       id="link_ResourceAgent_ReqBehaviour">
+      <path
+         codeLine="84"
+         d="M1406.7813,1960.1152 C1470.4688,1913.9902 1537.7813,1871.7402 1606.25,1838.4277 C1649.1875,1817.5527 1678.1536,1805.8724 1725.5911,1792.3724"
+         fill="none"
+         id="ResourceAgent-to-ReqBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1743.625,1787.2402,1713.1526,1782.9159,1728.5967,1791.5171,1719.9955,1806.9611,1743.625,1787.2402"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon916" />
+    </g>
+    <!--link ResourceAgent to CFPBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="CFPBehaviour"
+       data-source-line="85"
+       data-uid="lnk28"
+       id="link_ResourceAgent_CFPBehaviour">
+      <path
+         codeLine="85"
+         d="M1406.5625,2132.9902 C1472.3125,2102.584 1540.2188,2074.0527 1606.25,2050.9277 C1665.2188,2030.2715 1711.2815,2017.1263 1773.6565,2002.9075"
+         fill="none"
+         id="ResourceAgent-to-CFPBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1791.9375,1998.7402,1761.7378,1992.8038,1776.7033,2002.213,1767.2941,2017.1785,1791.9375,1998.7402"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon920" />
+    </g>
+    <!--link ResourceAgent to SlotBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="SlotBehaviour"
+       data-source-line="86"
+       data-uid="lnk29"
+       id="link_ResourceAgent_SlotBehaviour">
+      <path
+         codeLine="86"
+         d="M1406.7813,2288.4277 C1515.5938,2268.1152 1612.9129,2249.9351 1718.4129,2230.2163"
+         fill="none"
+         id="ResourceAgent-to-SlotBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1736.8438,2226.7715,1706.9009,2219.6516,1721.4847,2229.6422,1711.4941,2244.226,1736.8438,2226.7715"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon924" />
+    </g>
+    <!--link ResourceAgent to InformBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="InformBehaviour"
+       data-source-line="87"
+       data-uid="lnk30"
+       id="link_ResourceAgent_InformBehaviour">
+      <path
+         codeLine="87"
+         d="M1406.7813,2369.6777 C1541,2369.6777 1667,2369.6777 1790.0625,2369.6777"
+         fill="none"
+         id="ResourceAgent-to-InformBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1808.8125,2369.6777,1780.6875,2357.1777,1793.1875,2369.6777,1780.6875,2382.1777,1808.8125,2369.6777"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon928" />
+    </g>
+    <!--link ResourceAgent to RespBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="RespBehaviour"
+       data-source-line="88"
+       data-uid="lnk31"
+       id="link_ResourceAgent_RespBehaviour">
+      <path
+         codeLine="88"
+         d="M1406.7813,2450.9277 C1509.3438,2470.084 1599.5995,2486.9567 1700.0682,2505.7067"
+         fill="none"
+         id="ResourceAgent-to-RespBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1718.5,2509.1465,1693.1456,2491.6989,1703.1402,2506.28,1688.5591,2516.2746,1718.5,2509.1465"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon932" />
+    </g>
+    <!--link ResourceAgent to PrepBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="PrepBehaviour"
+       data-source-line="89"
+       data-uid="lnk32"
+       id="link_ResourceAgent_PrepBehaviour">
+      <path
+         codeLine="89"
+         d="M1406.5938,2571.0527 C1466.6563,2603.7402 1526.4688,2639.084 1581.25,2675.9277 C1593.5,2684.1777 1594.0938,2689.3965 1606.25,2697.8027 C1714.1875,2772.3965 1828.3469,2833.5279 1929.5969,2883.0904"
+         fill="none"
+         id="ResourceAgent-to-PrepBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1946.4375,2891.334,1926.6723,2867.7415,1932.4037,2884.4643,1915.6809,2890.1957,1946.4375,2891.334"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon936" />
+    </g>
+    <!--link ResourceAgent to TaskBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="TaskBehaviour"
+       data-source-line="90"
+       data-uid="lnk33"
+       id="link_ResourceAgent_TaskBehaviour">
+      <path
+         codeLine="90"
+         d="M1406.8125,2661.6152 C1474.875,2725.6465 1537.1875,2798.6465 1581.25,2879.0527 C1623,2955.1777 1547.3438,3009.0215 1606.25,3072.8027 C1654.6875,3125.2715 1703.7572,3151.0025 1773.3822,3167.5338"
+         fill="none"
+         id="ResourceAgent-to-TaskBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1791.625,3171.8652,1767.1484,3153.2062,1776.4226,3168.2557,1761.3731,3177.53,1791.625,3171.8652"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon940" />
+    </g>
+    <!--link ResourceAgent to DrillBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="DrillBehaviour"
+       data-source-line="91"
+       data-uid="lnk34"
+       id="link_ResourceAgent_DrillBehaviour">
+      <path
+         codeLine="91"
+         d="M1325.3125,2789.334 C1418.4063,2914.8652 1512.0313,3056.8027 1581.25,3197.8027 C1599.0625,3234.1152 1576.6563,3257.7402 1606.25,3285.3027 C1665.3438,3340.3965 1727.1117,3366.2981 1806.1117,3381.3293"
+         fill="none"
+         id="ResourceAgent-to-DrillBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1824.5313,3384.834,1799.2384,3367.2973,1809.1816,3381.9134,1794.5655,3391.8567,1824.5313,3384.834"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon944" />
+    </g>
+    <!--link ResourceAgent to MoveBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="MoveBehaviour"
+       data-source-line="92"
+       data-uid="lnk35"
+       id="link_ResourceAgent_MoveBehaviour">
+      <path
+         codeLine="92"
+         d="M1108.2188,2789.3027 C1208.4375,3032.2715 1368.9688,3323.584 1606.25,3497.8027 C1657.6875,3535.584 1701.5145,3555.8158 1764.1082,3572.1595"
+         fill="none"
+         id="ResourceAgent-to-MoveBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1782.25,3576.8965,1758.1953,3557.6965,1767.1319,3572.949,1751.8794,3581.8855,1782.25,3576.8965"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon948" />
+    </g>
+    <!--link ResourceAgent to DoneBehaviour-->
+    <g
+       class="link"
+       data-entity-1="ResourceAgent"
+       data-entity-2="DoneBehaviour"
+       data-source-line="93"
+       data-uid="lnk36"
+       id="link_ResourceAgent_DoneBehaviour">
+      <path
+         codeLine="93"
+         d="M1053.5625,2788.959 C1137.0938,3097.2715 1299.8125,3498.1152 1606.25,3710.3027 C1680.75,3761.8965 1756.7467,3786.2397 1843.7155,3800.4897"
+         fill="none"
+         id="ResourceAgent-to-DoneBehaviour"
+         style="stroke:#181818;stroke-width:3.125;" />
+      <polygon
+         fill="#181818"
+         points="1862.2188,3803.5215,1836.4851,3786.6383,1846.7994,3800.995,1832.4427,3811.3093,1862.2188,3803.5215"
+         style="stroke:#181818;stroke-width:3.125;"
+         id="polygon952" />
+    </g>
+    <!--SRC=[XLLTRzem57tFh_3OmpOGhDhwW2gAH2cjAgqhWaxQdYmtkGGBOwUsaxRx-E-xTaA8QSQ8H9Hpl-pZSn8IcGsN6TDiInvOl4crocKoLK9fyhJc5XhnM31ZBWwItbuDtVKgJUa4T9Lowd-Db0oRi1HUzvguAueijmB80epATGnaaeAqPAeqa3wPklRahW1TS7XgD4qoJZwVd4JHEtAbN1ccM1upGGHxKRd5MicqLa-WIS9PYZMHW9KbLX7DqxL5L4DikPADhb8bO20ZdquQe6Pouy1JF-sMSLckCV9xhnTUhljNHF3N9xf2QIoumy_sUPFbr6DLPcwvC1Z_vkuUEp_tjnunOFFi_OVgYIK9ZNDZrPOolt1JXIZrjwcFaKaPE_FOW4jkEHFy9r2MxeOEuZN46whXCGTJGPbMCHX3urKM0fPlWHgXhDdXWBm0XMU8Sy-VXyj7e9QPJOaacWj1FfB1LXL0drzAL4cQA0dH7qVcPFc5p0MJfkAoKzFc5pjWHdG8CpvlDCB_yRXYkDkzLaoORjS_lV5CDSdhTcU5uzrthx9wt6yFznq3Bo2fGGcfGfRSPZ38afSwWkl9a4oWcJ98P06D2ERHbT87HFHsHA20H7MWFKy5ZTKs4s1tWojQ3k6w7LtXuParufwhsRC5BL7WVP895aD2c5DpTYZ3dRoGi1MBMGBZSPLoSNbJYdGqMiudbxCwCCyVbld3BNz6QUzZEFC2rgpWs9TSetCpWxEDHH_Zy9tVn4jK6PnqRdPYyrHsqE9Ni-5iM1rPESlbxDlYsNRyciBIEg7Zzbxt_xe_9sm-6xhsGVC5F8QzvrebkJV4eXHxe_E-R7er3yiGc9Vovp9jBLcY8SAQU_I9G_zJU2DHCzkmjCJsQ_MCT89zcImiQL2ng3Jw3z9cEprvoXnf0MLpjFCXPyxWlZM-MklorjtSeziFQ43aUCsbCqDOvA4RMQWDwDQQM_HAMEAGxp-ErLpYQoQikPC15cn48ry7FEGF0ltd8-5fUZykG7YEp9fd9jfxwtU_7tuJei1UhyFX1wJV7xTyAiASmM3iNubdH2YMcAYbHM2prX6Fny9DHxI40_MtJWz4thx5x5Wya6LBF11UIpmKMKj2eAYs1asbH7y1]-->
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+@startuml "Resource_Agent_Submodels_Interaction"
+allowmixing
+
+
+left to right direction
+
+
+package "<<Submodel>>\nCapability" {
+  
+  package "<<SubmodelElementCollection>> DrillMachine_Endpoints" {
+    entity "Machine_OPCUA_Endpoint" as Machine_OPCUA_Endpoint {
+      * idShort :"Machine_OPCUA_Endpoint"
+      * kind : "Instance"
+      * category : "CONSTANT"
+      * value : "opc.tcp://Place_Holder:4840/freeopcua/server/"
+      * valueType : "String"
+    }
+    entity "MQTT_Broker_Endpoint" as MQTT_Broker_Endpoint {
+      * idShort :"MQTT_Broker_Endpoint"
+      * kind : "Instance"
+      * category : "CONSTANT"
+      * value : "tcp://Place_Holder:1883"
+      * valueType : "String"
+    }
+  }
+}
+
+@enduml

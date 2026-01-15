@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg976"
+   sodipodi:docname="OP_State_SM.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview978"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.3986392"
+     inkscape:cx="381.79969"
+     inkscape:cy="476.53463"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1316" />
+  <defs
+     id="defs973" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1426"
+       transform="translate(18.538854,6.4318471)">
+      <path
+         d="m 7.038244,71.595556 h 37.405733 a 0.99218749,0.99218749 0 0 1 0.661458,0.661458 l 1.852084,9.549818 H 164.72991 a 0.66145832,0.66145832 0 0 1 0.66146,0.661458 v 92.71164 a 0.66145832,0.66145832 0 0 1 -0.66146,0.66146 H 7.038244 A 0.66145832,0.66145832 0 0 1 6.3767857,175.17993 V 72.257014 A 0.66145832,0.66145832 0 0 1 7.038244,71.595556"
+         fill="none"
+         style="stroke:#000000;stroke-width:0.396875"
+         id="path20" />
+      <line
+         style="stroke:#000000;stroke-width:0.396875"
+         x1="6.3767858"
+         x2="46.95752"
+         y1="81.806831"
+         y2="81.806831"
+         id="line22" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="96.680702"
+         x="112.8477"
+         y="122.9951"
+         id="text24"
+         transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">«Submodel»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14px"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="140.37601"
+         x="91"
+         y="139.29201"
+         id="text26"
+         transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">Operational State</text>
+      <g
+         id="g1316">
+        <g
+           id="g1675">
+          <rect
+             fill="#f1f1f1"
+             height="38.571301"
+             rx="0.66145831"
+             ry="0.66145831"
+             style="stroke:#181818;stroke-width:0.132292"
+             width="150.4319"
+             x="10.610119"
+             y="132.97888"
+             id="rect130" />
+          <circle
+             cx="71.265846"
+             cy="137.21222"
+             fill="#add1b2"
+             style="stroke:#181818;stroke-width:0.264583"
+             id="ellipse132"
+             r="2.9104166" />
+          <path
+             d="M 72.353126,138.79972 H 70.31086 v -3.27834 h 2.042266 v 0.57049 h -1.39319 v 0.70694 h 1.260898 v 0.57052 h -1.260898 v 0.8599 h 1.39319 z"
+             fill="#000000"
+             id="path134"
+             style="stroke-width:0.264583" />
+          <text
+             fill="#000000"
+             font-family="sans-serif"
+             font-size="14px"
+             lengthAdjust="spacing"
+             textLength="101.5615"
+             x="352.75"
+             y="360.84671"
+             id="text136"
+             transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)"><tspan
+               sodipodi:role="line"
+               id="tspan1599"
+               x="352.75"
+               y="360.84671">Timeslots</tspan></text>
+          <line
+             style="stroke:#181818;stroke-width:0.132292"
+             x1="10.874702"
+             x2="160.77744"
+             y1="141.44556"
+             y2="141.44556"
+             id="line138" />
+          <circle
+             cx="13.520535"
+             cy="145.0567"
+             fill="#000000"
+             style="stroke:#000000;stroke-width:0.264583"
+             id="ellipse140"
+             r="0.79374999" />
+          <text
+             fill="#000000"
+             font-family="sans-serif"
+             font-size="14px"
+             lengthAdjust="spacing"
+             textLength="233.8027"
+             x="123"
+             y="388.99509"
+             id="text142"
+             transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">idShort : String : &quot;Historical data&quot;</text>
+          <circle
+             cx="13.520535"
+             cy="149.36859"
+             fill="#000000"
+             style="stroke:#000000;stroke-width:0.264583"
+             id="ellipse144"
+             r="0.79374999" />
+          <text
+             fill="#000000"
+             font-family="sans-serif"
+             font-size="14px"
+             lengthAdjust="spacing"
+             textLength="68.174797"
+             x="123"
+             y="405.29199"
+             id="text146"
+             transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">id : String</text>
+          <circle
+             cx="13.520535"
+             cy="153.68047"
+             fill="#000000"
+             style="stroke:#000000;stroke-width:0.264583"
+             id="ellipse148"
+             r="0.79374999" />
+          <text
+             fill="#000000"
+             font-family="sans-serif"
+             font-size="14px"
+             lengthAdjust="spacing"
+             textLength="171.1992"
+             x="123"
+             y="421.5889"
+             id="text150"
+             transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">kind : String : &quot;Instance&quot;</text>
+          <circle
+             cx="13.520535"
+             cy="157.99236"
+             fill="#000000"
+             style="stroke:#000000;stroke-width:0.264583"
+             id="ellipse152"
+             r="0.79374999" />
+          <text
+             fill="#000000"
+             font-family="sans-serif"
+             font-size="14px"
+             lengthAdjust="spacing"
+             textLength="217.23241"
+             x="123"
+             y="437.88571"
+             id="text154"
+             transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">category : String : &quot;Parameter&quot;</text>
+          <circle
+             cx="13.520535"
+             cy="162.30421"
+             fill="#000000"
+             style="stroke:#000000;stroke-width:0.264583"
+             id="ellipse156"
+             r="0.79374999" />
+          <text
+             fill="#000000"
+             font-family="sans-serif"
+             font-size="14px"
+             lengthAdjust="spacing"
+             textLength="542.56152"
+             x="123"
+             y="454.18259"
+             id="text158"
+             transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">value : String : &quot;2023-10-01T12:00:00Z:Idle;2023-10-01T12:05:00Z:Running&quot;</text>
+          <circle
+             cx="13.520535"
+             cy="166.6161"
+             fill="#000000"
+             style="stroke:#000000;stroke-width:0.264583"
+             id="ellipse160"
+             r="0.79374999" />
+          <text
+             fill="#000000"
+             font-family="sans-serif"
+             font-size="14px"
+             lengthAdjust="spacing"
+             textLength="196.2529"
+             x="123"
+             y="470.47949"
+             id="text162"
+             transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">valueType : String : &quot;String&quot;</text>
+          <line
+             style="stroke:#181818;stroke-width:0.132292"
+             x1="10.874702"
+             x2="160.77744"
+             y1="169.43353"
+             y2="169.43353"
+             id="line164" />
+        </g>
+      </g>
+      <g
+         id="g1295">
+        <rect
+           fill="#f1f1f1"
+           height="38.571301"
+           rx="0.66145831"
+           ry="0.66145831"
+           style="stroke:#181818;stroke-width:0.132292"
+           width="66.909103"
+           x="52.414284"
+           y="85.089302"
+           id="rect93" />
+        <circle
+           cx="72.223801"
+           cy="89.322639"
+           fill="#add1b2"
+           style="stroke:#181818;stroke-width:0.264583"
+           id="ellipse95"
+           r="2.9104166" />
+        <path
+           d="m 73.311077,90.910139 h -2.042266 v -3.278346 h 2.042266 v 0.570494 h -1.39319 v 0.70694 h 1.260898 v 0.570521 h -1.260898 v 0.859896 h 1.39319 z"
+           fill="#000000"
+           id="path97"
+           style="stroke-width:0.264583" />
+        <text
+           fill="#000000"
+           font-family="sans-serif"
+           font-size="14px"
+           lengthAdjust="spacing"
+           textLength="94.6436"
+           x="356.37061"
+           y="179.84669"
+           id="text99"
+           transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">Current State</text>
+        <line
+           style="stroke:#181818;stroke-width:0.132292"
+           x1="52.678867"
+           x2="119.05882"
+           y1="93.555969"
+           y2="93.555969"
+           id="line101" />
+        <circle
+           cx="55.324703"
+           cy="97.167114"
+           fill="#000000"
+           style="stroke:#000000;stroke-width:0.264583"
+           id="ellipse103"
+           r="0.79374999" />
+        <text
+           fill="#000000"
+           font-family="sans-serif"
+           font-size="14px"
+           lengthAdjust="spacing"
+           textLength="226.8848"
+           x="281"
+           y="207.9951"
+           id="text105"
+           transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">idShort : String : &quot;Current State&quot;</text>
+        <circle
+           cx="55.324703"
+           cy="101.479"
+           fill="#000000"
+           style="stroke:#000000;stroke-width:0.264583"
+           id="ellipse107"
+           r="0.79374999" />
+        <text
+           fill="#000000"
+           font-family="sans-serif"
+           font-size="14px"
+           lengthAdjust="spacing"
+           textLength="68.174797"
+           x="281"
+           y="224.29201"
+           id="text109"
+           transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">id : String</text>
+        <circle
+           cx="55.324703"
+           cy="105.79089"
+           fill="#000000"
+           style="stroke:#000000;stroke-width:0.264583"
+           id="ellipse111"
+           r="0.79374999" />
+        <text
+           fill="#000000"
+           font-family="sans-serif"
+           font-size="14px"
+           lengthAdjust="spacing"
+           textLength="171.1992"
+           x="281"
+           y="240.5889"
+           id="text113"
+           transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">kind : String : &quot;Instance&quot;</text>
+        <circle
+           cx="55.324703"
+           cy="110.10278"
+           fill="#000000"
+           style="stroke:#000000;stroke-width:0.264583"
+           id="ellipse115"
+           r="0.79374999" />
+        <text
+           fill="#000000"
+           font-family="sans-serif"
+           font-size="14px"
+           lengthAdjust="spacing"
+           textLength="212.60451"
+           x="281"
+           y="256.88571"
+           id="text117"
+           transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">category : String : &quot;VARIABLE&quot;</text>
+        <circle
+           cx="55.324703"
+           cy="114.41464"
+           fill="#000000"
+           style="stroke:#000000;stroke-width:0.264583"
+           id="ellipse119"
+           r="0.79374999" />
+        <text
+           fill="#000000"
+           font-family="sans-serif"
+           font-size="14px"
+           lengthAdjust="spacing"
+           textLength="145.65331"
+           x="281"
+           y="273.18259"
+           id="text121"
+           transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">value : String : &quot;Idle&quot;</text>
+        <circle
+           cx="55.324703"
+           cy="118.72653"
+           fill="#000000"
+           style="stroke:#000000;stroke-width:0.264583"
+           id="ellipse123"
+           r="0.79374999" />
+        <text
+           fill="#000000"
+           font-family="sans-serif"
+           font-size="14px"
+           lengthAdjust="spacing"
+           textLength="196.2529"
+           x="281"
+           y="289.47949"
+           id="text125"
+           transform="matrix(0.26458333,0,0,0.26458333,-16.641964,43.020556)">valueType : String : &quot;String&quot;</text>
+        <line
+           style="stroke:#181818;stroke-width:0.132292"
+           x1="52.678867"
+           x2="119.05882"
+           y1="121.54395"
+           y2="121.54395"
+           id="line127" />
+      </g>
+    </g>
+  </g>
+</svg>

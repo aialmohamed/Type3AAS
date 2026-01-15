@@ -1,0 +1,30 @@
+@startuml "Resource_Agent_Submodels_Capability"
+allowmixing
+
+
+left to right direction
+
+
+package "<<Submodel>>\nCapability" {
+  entity "Supported_Skills" as Supported_Skills {
+    * idShort :"Skill"
+    * kind : "Instance"
+    * category :"PARAMETER"
+    * value :"Drilling, Moving"
+    * valueType :"String"
+  }
+  entity "<<Operation>>Drill" as Drill {
+    * idShort :"Drill_Capability"
+    * qualifier : "http://host.docker.internal:8090/drill_invocation"
+    * input_variable: Drill_Depth : Double , Drill_Speed : Double
+    * output_variable: Drill_Result : String
+  }
+  entity "<<Operation>>Move" as Move {
+    * idShort :"MoveXY_Capability"
+    * qualifier : "http://host.docker.internal:8090/movexy_invocation"
+    * input_variable: Target_X : Double , Target_Y : Double 
+    * output_variable: Move_Result : String
+  }
+}
+
+@enduml

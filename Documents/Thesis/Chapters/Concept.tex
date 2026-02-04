@@ -73,7 +73,100 @@ A key contribution of this design is the bidirectional integration between \ac{B
 
 This bidirectional integration ensures that the autonomous behavior provided by the \ac{BDI} architecture operates within the standardized framework defined by the \ac{AAS} specification, addressing the interoperability requirements identified in Chapter~\ref{ch:literature}.
 
+\subsection{Mapping to RAMI4.0}
+\label{subsec:rami40_mapping}
 
+The proposed Type 3 \ac{AAS} architecture can be positioned within the \ac{RAMI4.0} reference model introduced in Chapter~\ref{ch:introduction}. Figure~\ref{fig:RAMI4.0} presents the three-dimensional RAMI4.0 structure consisting of Hierarchy Levels, Life Cycle \& Value Stream, and Layers. This subsection maps the system components to each axis.
+
+\subsubsection{Hierarchy Levels Axis}
+
+The system operates across multiple hierarchy levels as defined by IEC 62264:
+
+\begin{table}[ht]
+\centering
+\caption{System Components Mapped to RAMI4.0 Hierarchy Levels}
+\label{tab:rami_hierarchy}
+\begin{tabular}{p{0.20\textwidth}p{0.25\textwidth}p{0.45\textwidth}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Hierarchy Level} & \textcolor{white}{Component} & \textcolor{white}{Role} \\
+\midrule
+Work Centers & Production Agent & Coordinates production orders, orchestrates resources \\
+\rowcolor{lightgray}
+Station & Resource Agent & Manages individual drill machine operations \\
+Field Device & Simulators / PLCs & Executes physical operations (drill, move) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Production Agent operates at the \textit{Work Centers} level, receiving production orders and coordinating their execution across available resources. Resource Agents operate at the \textit{Station} level, each representing a single manufacturing resource (drill machine). The simulators (or physical PLCs in a production deployment) represent the \textit{Field Device} level, executing the actual machining operations.
+
+\subsubsection{Life Cycle \& Value Stream Axis}
+
+The RAMI4.0 life cycle axis distinguishes between \textit{Type} (design-time definitions) and \textit{Instance} (runtime representations):
+
+\begin{table}[ht]
+\centering
+\caption{System Elements Mapped to RAMI4.0 Life Cycle Phases}
+\label{tab:rami_lifecycle}
+\begin{tabular}{p{0.15\textwidth}p{0.35\textwidth}p{0.40\textwidth}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Phase} & \textcolor{white}{Type (Design)} & \textcolor{white}{Instance (Runtime)} \\
+\midrule
+Development & Submodel templates, Capability definitions & -- \\
+\rowcolor{lightgray}
+Maintenance & Process Plan structure, Knowledge constraints & -- \\
+Production & -- & AAS instances, Agent beliefs, Execution state \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The submodel structures (Capability, Knowledge, Process Plan) represent \textit{Type} information reusable templates that define what a resource can do and how processes are structured. At runtime, these become \textit{Instance} data: concrete AAS instances with actual parameter values, agent beliefs reflecting current state, and execution tracking data that changes during operation.
+
+\subsubsection{Layer Axis}
+
+The six RAMI4.0 layers describe different aspects of an \ac{I4.0} component. Table~\ref{tab:rami_layers} maps the system implementation to each layer:
+
+\begin{table}[ht]
+\centering
+\caption{System Implementation Mapped to RAMI4.0 Layers}
+\label{tab:rami_layers}
+\begin{tabular}{p{0.18\textwidth}p{0.72\textwidth}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Layer} & \textcolor{white}{Implementation} \\
+\midrule
+Business & Production orders (User Requests) triggering manufacturing processes \\
+\rowcolor{lightgray}
+Functional & BDI agent logic: goal-directed reasoning, plan execution, CNP negotiation \\
+Information & AAS submodels: Capability, Knowledge, Process Plan, Execution Tracking \\
+\rowcolor{lightgray}
+Communication & XMPP PubSub (agent messaging), REST API (AAS access), HTTP (skill invocation) \\
+Integration & ResourceAASClient, invocationDelegation pattern, BaSyx SDK \\
+\rowcolor{lightgray}
+Asset & Drill machine simulators (proof-of-concept) / Physical PLCs (production) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Business Layer.} Production orders represent business-level requests that initiate the manufacturing process. The User Request message defines what capability is needed and when.
+
+\textbf{Functional Layer.} The \ac{BDI} agent architecture provides the functional logic. Agents reason about their beliefs (from submodels), form desires (respond to CFP, execute skills), and commit to intentions (negotiate, invoke operations). This layer realizes the ``proactive'' behavior that distinguishes Type 3 from Type 1/2 \ac{AAS}.
+
+\textbf{Information Layer.} The \ac{AAS} submodels provide the standardized information model. All data exchanged between components conforms to the \ac{AAS} meta-model, ensuring interoperability with other I4.0-compliant systems.
+
+\textbf{Communication Layer.} Three protocols handle different communication needs: XMPP PubSub for asynchronous agent messaging and event notification, the \ac{AAS} REST API for submodel access, and HTTP for skill invocation via the invocationDelegation pattern.
+
+\textbf{Integration Layer.} The ResourceAASClient and ProductionAASClient classes bridge the gap between the \ac{AAS} server and the agent runtime. The invocationDelegation qualifier pattern connects \ac{AAS} Operations to external execution endpoints.
+
+\textbf{Asset Layer.} The physical drill machines (represented by simulators in the proof-of-concept) form the asset layer. These execute the actual manufacturing operations when invoked through the integration layer.
+
+\subsubsection{Type 3 AAS in the RAMI4.0 Context}
+
+The key contribution of this work within the RAMI4.0 framework is the enhancement of the \textit{Functional Layer}. While Type 1 and Type 2 \ac{AAS} implementations primarily address the Information, Communication, and Integration layers, the Type 3 \ac{AAS} adds autonomous decision-making capabilities at the Functional Layer through \ac{BDI} agent integration.
+
+This positions the Type 3 \ac{AAS} as an enabler for the RAMI4.0 vision of intelligent, self-organizing production systems where I4.0 components can autonomously coordinate without centralized control.
 \section{Resource Agent Concept}
 \label{sec:resource_agent}
 
@@ -94,7 +187,7 @@ The ResourceAAS combines three main architectural elements: the \ac{AAS} structu
 
 \textbf{Asset Administration Shell.} The \ac{AAS} component provides the standardized digital representation of the drill machine using the Eclipse BaSyx Python SDK. It contains the shell information (identification, asset kind, global asset ID) and a collection of submodels that describe different aspects of the resource. The \ac{AAS} is deployed to a BaSyx AAS Environment server, exposing a REST API that enables external access to submodel data and operation invocation, compliant with the \ac{AAS} API specification defined in Part 2 of the standard.
 
-\textbf{BDI Core.} The \ac{BDI} core implements the agent's autonomous behavior using the SPADE framework combined with the spade\_bdi extension. SPADE (Smart Python Agent Development Environment) provides asynchronous agent communication over \ac{XMPP}, while spade\_bdi adds AgentSpeak-based \ac{BDI} reasoning capabilities. The agent maintains beliefs derived from submodel data, processes desires triggered by external events (such as Call-For-Proposals), and executes intentions through SPADE Behaviours. Agent plans are defined in AgentSpeak Language (ASL) files that specify reactive rules for handling events and achieving goals.
+\textbf{BDI Core.} The \ac{BDI} core implements the agent's autonomous behavior using the SPADE framework combined with the spade\_bdi extension. SPADE (Smart Python Agent Development Environment) provides asynchronous agent communication over \ac{XMPP}, while spade\_bdi adds AgentSpeak-based \ac{BDI} reasoning capabilities. The agent maintains beliefs derived from submodel data, processes desires triggered by external events (such as Call-For-Proposals), and executes intentions through SPADE behaviors. Agent plans are defined in AgentSpeak Language (ASL) files that specify reactive rules for handling events and achieving goals.
 
 \textbf{AAS-Agent Interface (ResourceAASClient).} The ResourceAASClient serves as the translation layer between the \ac{AAS} REST API and the agent's internal representation. This component implements an asynchronous HTTP client using aiohttp that communicates with the BaSyx server via GET and POST requests. It provides repository classes for reading submodel elements (SubmodelElementRepositoryGetters), updating values (SubmodelElementRepositoryUpdate), and invoking operations. The interface translates \ac{AAS} data structures into Python dictionaries that can be converted to agent beliefs.
 
@@ -112,11 +205,11 @@ Figure~\ref{fig:resource_internal} illustrates the internal connections and data
 
 The architecture supports three primary data flows:
 
-\textbf{Belief Acquisition.} During agent initialization, the AgentInitializationBehaviour reads submodel data via the ResourceAASClient and populates the agent's belief base. Beliefs include: \texttt{current\_state} from the Operational State Submodel, \texttt{supported\_skills} from the Capabilities Submodel, \texttt{skills\_constraints} from the Knowledge Submodel, and \texttt{free\_time\_slots} / \texttt{booked\_time\_slots} from the Operational State time slot collection.
+\textbf{Belief Acquisition.} During agent initialization, the AgentInitializationbehavior reads submodel data via the ResourceAASClient and populates the agent's belief base. Beliefs include: \texttt{current\_state} from the Operational State Submodel, \texttt{supported\_skills} from the Capabilities Submodel, \texttt{skills\_constraints} from the Knowledge Submodel, and \texttt{free\_time\_slots} / \texttt{booked\_time\_slots} from the Operational State time slot collection.
 
-\textbf{Event Processing.} When the agent receives a Call-For-Proposal (CFP) from the ProductionAAS via \ac{XMPP} publish-subscribe, the CFPProcessingBehaviour validates the request against current beliefs. It checks whether the resource state allows execution, whether the requested skill is supported, and whether input parameters fall within the constraints defined in the Knowledge Submodel.
+\textbf{Event Processing.} When the agent receives a Call-For-Proposal (CFP) from the ProductionAAS via \ac{XMPP} publish-subscribe, the CFPProcessingbehavior validates the request against current beliefs. It checks whether the resource state allows execution, whether the requested skill is supported, and whether input parameters fall within the constraints defined in the Knowledge Submodel.
 
-\textbf{Operation Execution.} When the agent commits to executing a task, the corresponding invoker behaviour (e.g., DrillInvokerBehaviour) retrieves input parameters from beliefs, calls the operation through the ResourceAASClient, and updates beliefs with the result. The operation invocation follows the \ac{AAS} standard, passing through the BaSyx server to the delegated FastAPI endpoint.
+\textbf{Operation Execution.} When the agent commits to executing a task, the corresponding invoker behavior (e.g., DrillInvokerbehavior) retrieves input parameters from beliefs, calls the operation through the ResourceAASClient, and updates beliefs with the result. The operation invocation follows the \ac{AAS} standard, passing through the BaSyx server to the delegated FastAPI endpoint.
 
 \subsection{Resource Agent Submodels}
 \label{subsec:resource_submodels}
@@ -217,7 +310,258 @@ The Interaction and Scheduling Submodel provides the communication endpoints thr
 The ProductionAAS retrieves these endpoints during the discovery phase to establish appropriate communication channels for negotiation and task assignment.
 
 
+\subsection{BDI-Submodel Integration}
+\label{sec:bdi_submodel_integration}
 
+This section explicitly describes how the \ac{BDI} architecture manifests in the Type 3 \ac{AAS} implementation. The title of this thesis references \ac{BDI} agents, and this section clarifies how Beliefs, Desires, and Intentions are concretely realized through the \ac{AAS} submodels and AgentSpeak plans.
+\subsubsection{Conceptual Mapping}
+
+The \ac{BDI} model defines three mental attitudes that govern agent behavior:
+\begin{itemize}
+    \item \textbf{Beliefs}: The agent's knowledge about itself, other agents, and the environment
+    \item \textbf{Desires}: The agent's objectives or goals it wishes to achieve
+    \item \textbf{Intentions}: The agent's committed plans for achieving its goals
+\end{itemize}
+In the Type 3 \ac{AAS} architecture, these mental attitudes are distributed between the \ac{AAS} submodels (persistent, shared state) and the AgentSpeak plans (reactive behavior). Table~\ref{tab:bdi_mapping} provides the concrete mapping.
+
+\begin{table}[p]
+\centering
+\caption{BDI to AAS-Agent Mapping}
+\label{tab:bdi_mapping}
+\begin{tabular}{p{0.12\textwidth}p{0.28\textwidth}p{0.48\textwidth}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{BDI Element} & \textcolor{white}{AAS/Agent Component} & \textcolor{white}{Concrete Example} \\
+\midrule
+Beliefs & Operational State Submodel & \texttt{current\_state}, \texttt{free\_time\_slots} \\
+        & Knowledge Submodel & \texttt{skills\_constraints}, \texttt{skills\_constraints\_types} \\
+        & Capability Submodel & \texttt{supported\_skills} \\
+        & Runtime Beliefs & \texttt{is\_cfp\_received}, \texttt{cfp\_skill}, \texttt{cfp\_at\_time} \\
+\midrule
+\rowcolor{lightgray}
+Desires & AgentSpeak Goals & \texttt{!setup} (initialization goal) \\
+\rowcolor{lightgray}
+        & Event-triggered Goals & Respond to CFP, execute skills \\
+\rowcolor{lightgray}
+        & Process Plan & Reach \texttt{Exit\_Point} from \texttt{Entry\_Point} \\
+\midrule
+Intentions & AgentSpeak Plans & Plans triggered by belief additions \\
+           & Custom Actions & \texttt{.initialize\_agent}, \texttt{.process\_cfp}, \texttt{.drill} \\
+           & SPADE behaviors & \texttt{DrillInvokerbehavior}, \texttt{MoveXYInvokerbehavior} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Beliefs: AAS Submodels as Knowledge Base}
+
+The agent's beliefs are loaded from \ac{AAS} submodels during initialization via the \texttt{AgentInitializationbehavior}. This behavior reads submodel data and converts it to agent beliefs:
+
+\begin{lstlisting}[language=Python, caption={Belief Loading from AAS Submodels}, label={lst:belief_loading}]
+class AgentInitializationbehavior(OneShotbehavior):
+    async def run(self):
+        # Load beliefs from AAS submodels concurrently
+        current_state, skills, constraints, ... = await asyncio.gather(
+            self.agent.resource_client.getvalue_Current_State(),
+            self.agent.resource_client.getvalue_Supported_Skills(),
+            self.agent.resource_client.getvalue_MaxMinDepth(),
+            self.agent.resource_client.getvalue_Free_Slots(),
+            ...
+        )
+        # Set beliefs in BDI agent
+        self.agent.bdi.set_belief("current_state", current_state)
+        self.agent.bdi.set_belief("supported_skills", skills)
+        self.agent.bdi.set_belief("skills_constraints", constraints)
+        self.agent.bdi.set_belief("free_time_slots", free_time_slots)
+\end{lstlisting}
+Table~\ref{tab:belief_sources} shows the mapping between \ac{AAS} submodel elements and agent beliefs:
+
+\begin{table}[p]
+\centering
+\caption{AAS Submodel Elements to Agent Beliefs}
+\label{tab:belief_sources}
+\begin{tabular}{lll}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Submodel} & \textcolor{white}{Element} & \textcolor{white}{Belief Predicate} \\
+\midrule
+Operational State & Current\_State & \texttt{current\_state(State)} \\
+Operational State & Free\_Slots & \texttt{free\_time\_slots(Slots)} \\
+Operational State & Booked\_Slots & \texttt{booked\_time\_slots(Slots)} \\
+\rowcolor{lightgray}
+Capability & Supported\_Skills & \texttt{supported\_skills(Skills)} \\
+\rowcolor{lightgray}
+Knowledge & Constraints & \texttt{skills\_constraints(Values)} \\
+Knowledge & Constraints\_Type & \texttt{skills\_constraints\_types(Types)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\textbf{Runtime Beliefs.} In addition to persistent beliefs from submodels, the agent maintains runtime beliefs that change during execution:
+\begin{itemize}
+    \item \texttt{is\_cfp\_received(true/false)}: Set when a CFP message arrives
+    \item \texttt{cfp\_skill(Skill)}: The requested capability from the CFP
+    \item \texttt{cfp\_at\_time(TimeSlot)}: The requested time slot
+    \item \texttt{current\_operation(drill/movexy)}: Tracks which operation is executing
+    \item \texttt{drill\_completed(true)}, \texttt{move\_xy\_completed(true)}: Operation completion flags
+\end{itemize}
+
+\subsubsection{Desires: Goals in AgentSpeak}
+
+Desires represent what the agent wants to achieve. In the implementation, desires are expressed through AgentSpeak achievement goals and event-triggered responses:
+
+\textbf{Initialization Goal.} The agent starts with an explicit goal:
+\begin{lstlisting}[language=Prolog, caption={Initial Goal in AgentSpeak}, label={lst:initial_goal}]
+!setup.
+
++!setup <-
+  .print("Agent started : Drilling Machine 1");
+  .initialize_agent;
+  .check_request.
+\end{lstlisting}
+
+\textbf{Event-Triggered Desires.} Most desires emerge from belief changes rather than explicit goal statements. When a belief is added, it triggers a plan that implicitly represents a desire:
+
+\begin{lstlisting}[language=Prolog, caption={Desire: Respond to CFP}, label={lst:cfp_desire}]
+// Desire: When CFP received, respond appropriately
++is_cfp_received(true) <-
+  -is_cfp_received(true);
+  .print("EVENT: CFP received, processing Time slots");
+  .process_time_slots;
+  .process_cfp.
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, caption={Desire: Execute Skills}, label={lst:execute_desire}]
+// Desire: When selected, execute the requested skills
++excute_skills(drill_capability) <-
+  -excute_skills(drill_capability);
+  +current_operation(drill);
+  .print("Drilling - starting move_xy");
+  .move_xy.
+\end{lstlisting}
+
+\subsubsection{Intentions: Committed Plans and Actions}
+Intentions are the plans the agent commits to execute. They bridge desires to concrete actions through custom actions and SPADE behaviors:
+
+\textbf{Custom Actions.} The \texttt{ResourceAgent} class registers custom actions that map AgentSpeak action calls to SPADE behaviors:
+
+\begin{lstlisting}[language=Python, caption={Custom Action Registration}, label={lst:custom_actions}]
+def add_custom_actions(self, actions):
+    @actions.add(".initialize_agent", 0)
+    def _initialize_agent(agent, term, intention):
+        agent_init_behavior = AgentInitializationbehavior()              
+        self.add_behavior(agent_init_behavior)
+        yield
+        
+    @actions.add(".drill", 0)
+    def _drill(agent, term, intention):
+        drill_behavior = DrillInvokerbehavior()
+        self.add_behavior(drill_behavior)
+        yield
+        
+    @actions.add(".move_xy", 0)
+    def _move_xy(agent, term, intention):
+        move_xy_behavior = MoveXYInvokerbehavior()
+        self.add_behavior(move_xy_behavior)
+        yield
+\end{lstlisting}
+
+\textbf{Intention Execution Flow.} When an AgentSpeak plan executes an action like \texttt{.drill}, the following occurs:
+\begin{enumerate}
+    \item AgentSpeak interpreter calls the registered custom action
+    \item Custom action instantiates the corresponding SPADE behavior
+    \item behavior executes asynchronously, invoking the \ac{AAS} Operation
+    \item Upon completion, behavior sets a belief (e.g., \texttt{drill\_completed(true)})
+    \item Belief change triggers the next plan in the sequence
+\end{enumerate}
+
+\textbf{Context-Dependent Plans.} AgentSpeak supports context conditions that select different plans based on current beliefs:
+
+\begin{lstlisting}[language=Prolog, caption={Context-Dependent Intention Selection}, label={lst:context_plans}]
+// When move completes during drill operation -> continue to drill
++move_xy_completed(true) : current_operation(drill) <-
+  -move_xy_completed(true);
+  .print("Move completed, now drilling");
+  .drill.
+
+// When move completes during movexy-only operation -> done
++move_xy_completed(true) : current_operation(movexy) <-
+  -move_xy_completed(true);
+  -current_operation(movexy);
+  .print("Move completed, operation done");
+  .operation_done.
+\end{lstlisting}
+
+This demonstrates how the agent's current beliefs (context) determine which intention is formed, a key characteristic of \ac{BDI} reasoning.
+\subsubsection{BDI Reasoning Cycle}
+Figure~\ref{fig:bdi_cycle} illustrates how the \ac{BDI} reasoning cycle operates within the Type 3 \ac{AAS}:
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto,
+    box/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=1cm, align=center, font=\small},
+    arrow/.style={->, thick}]
+    
+    \node[box, fill=blue!20] (beliefs) {Beliefs\\(AAS + Runtime)};
+    \node[box, fill=green!20, right=of beliefs] (desires) {Desires\\(Goals + Events)};
+    \node[box, fill=orange!20, right=of desires] (intentions) {Intentions\\(Plans)};
+    \node[box, fill=red!20, below=of intentions] (actions) {Actions\\(behaviors)};
+    \node[box, fill=gray!20, below=of beliefs] (environment) {Environment\\(AAS + Asset)};
+    
+    \draw[arrow] (beliefs) -- (desires) node[midway, above, font=\scriptsize] {trigger};
+    \draw[arrow] (desires) -- (intentions) node[midway, above, font=\scriptsize] {select};
+    \draw[arrow] (intentions) -- (actions) node[midway, right, font=\scriptsize] {execute};
+    \draw[arrow] (actions) -- (environment) node[midway, below, font=\scriptsize] {invoke};
+    \draw[arrow] (environment) -- (beliefs) node[midway, left, font=\scriptsize] {update};
+    
+\end{tikzpicture}
+\caption{BDI Reasoning Cycle in Type 3 AAS}
+\label{fig:bdi_cycle}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Beliefs}: Agent loads beliefs from \ac{AAS} submodels and receives runtime belief updates
+    \item \textbf{Trigger}: Belief additions trigger AgentSpeak plan selection
+    \item \textbf{Select}: Agent selects applicable plan based on context conditions
+    \item \textbf{Execute}: Plan body executes, calling custom actions
+    \item \textbf{Invoke}: Custom actions invoke SPADE behaviors that call \ac{AAS} Operations
+    \item \textbf{Update}: Operation results update beliefs, continuing the cycle
+\end{enumerate}
+
+\subsubsection{Example: Complete CFP Response Cycle}
+To illustrate the \ac{BDI} cycle, consider how a Resource Agent responds to a Call-For-Proposal:
+\begin{enumerate}
+    \item \textbf{Belief}: \texttt{ProductionRequestbehavior} receives CFP message, sets \texttt{is\_cfp\_received(true)}
+    
+    \item \textbf{Plan Triggered}: AgentSpeak matches plan for \texttt{+is\_cfp\_received(true)}
+    
+    \item \textbf{Intention}: Agent commits to plan body:
+    \begin{lstlisting}[language=Prolog, numbers=none]
+.process_time_slots;
+.process_cfp.
+    \end{lstlisting}
+    
+    \item \textbf{Action}: \texttt{.process\_time\_slots} $\rightarrow$ \texttt{TimeSlotProcessingbehavior}
+    \begin{itemize}
+        \item Checks \texttt{free\_time\_slots} belief against requested time
+        \item Sets \texttt{is\_negotiation\_message\_ready(true)}
+    \end{itemize}
+    
+    \item \textbf{Next Plan}: \texttt{+is\_negotiation\_message\_ready(true)} triggers response plan
+    
+    \item \textbf{Action}: \texttt{.inform\_production\_agent} $\rightarrow$ \texttt{InformProductionAgent}
+    \begin{itemize}
+        \item Publishes proposal to XMPP topic
+    \end{itemize}
+    
+    \item \textbf{Belief Update}: Production Agent's decision arrives, setting either:
+    \begin{itemize}
+        \item \texttt{is\_negotiation\_response\_positive(true)} $\rightarrow$ prepare execution
+        \item \texttt{is\_negotiation\_response\_positive(false)} $\rightarrow$ return to waiting
+    \end{itemize}
+\end{enumerate}
+This cycle demonstrates how \ac{BDI} mental attitudes beliefs from \ac{AAS} submodels, desires expressed as reactive plans, and intentions executed through behaviors combine to produce autonomous, goal-directed behavior in the Type 3 \ac{AAS}.
+%%%%%%%%%%%%%%%%%%%% 
+
+\newpage
 \subsection{Resource Agent Repositories}
 \label{subsec:resource_repositories}
 
@@ -250,7 +594,7 @@ The communication between the \ac{BDI} agent and the \ac{AAS} server requires a 
 
 \textbf{SubmodelElementRepositoryCreateDelete} handles element lifecycle management, supporting dynamic addition and removal of submodel elements during runtime.
 
-\textbf{ResourceAASClient} acts as a facade that aggregates all repository instances. It is initialized with a resource prefix and provides a single entry point for agent behaviours to access \ac{AAS} data:
+\textbf{ResourceAASClient} acts as a facade that aggregates all repository instances. It is initialized with a resource prefix and provides a single entry point for agent behaviors to access \ac{AAS} data:
 
 \begin{verbatim}
 class ResourceAASClient:
@@ -271,7 +615,7 @@ This layered architecture ensures that the agent core remains decoupled from RES
 \subsection{Resource Agent Core}
 \label{subsec:resource_agent_core}
 
-The Resource Agent Core implements the \ac{BDI} reasoning cycle that enables autonomous behavior. This subsection describes the agent class structure, the AgentSpeak plans, and the SPADE behaviours that execute agent actions. Figure~\ref{fig:resource_agent_core} illustrates the class architecture.
+The Resource Agent Core implements the \ac{BDI} reasoning cycle that enables autonomous behavior. This subsection describes the agent class structure, the AgentSpeak plans, and the SPADE behaviors that execute agent actions. Figure~\ref{fig:resource_agent_core} illustrates the class architecture.
 
     
 
@@ -284,9 +628,9 @@ The Resource Agent Core implements the \ac{BDI} reasoning cycle that enables aut
 
 \subsubsection{ResourceAgent Class}
 
-The \texttt{ResourceAgent} class extends both \texttt{BDIAgent} and \texttt{PubSubMixin} from the SPADE framework. This dual inheritance combines AgentSpeak-based reasoning with \ac{XMPP} publish-subscribe messaging. The agent maintains a reference to the \texttt{ResourceAASClient} for \ac{AAS} communication and registers custom actions that map AgentSpeak plan actions to SPADE behaviours.
+The \texttt{ResourceAgent} class extends both \texttt{BDIAgent} and \texttt{PubSubMixin} from the SPADE framework. This dual inheritance combines AgentSpeak-based reasoning with \ac{XMPP} publish-subscribe messaging. The agent maintains a reference to the \texttt{ResourceAASClient} for \ac{AAS} communication and registers custom actions that map AgentSpeak plan actions to SPADE behaviors.
 
-Custom actions are registered in the \texttt{add\_custom\_actions()} method. Each action corresponds to a specific behaviour class. For example, when an AgentSpeak plan executes \texttt{.drill}, the agent instantiates and adds a \texttt{DrillInvokerBehaviour} to its execution queue.
+Custom actions are registered in the \texttt{add\_custom\_actions()} method. Each action corresponds to a specific behavior class. For example, when an AgentSpeak plan executes \texttt{.drill}, the agent instantiates and adds a \texttt{DrillInvokerbehavior} to its execution queue.
 \subsubsection{AgentSpeak Plans}
 
 The agent's reactive behavior is defined in the \texttt{resource\_agent.asl} file using AgentSpeak syntax. Plans follow the pattern \texttt{+trigger : context <- body}, where the trigger is a belief change, the context is an optional condition, and the body contains actions to execute.
@@ -300,29 +644,29 @@ The agent's reactive behavior is defined in the \texttt{resource\_agent.asl} fil
 +move_xy_completed(true) : current_operation(drill) <-
     .drill.
 \end{verbatim}
-\subsubsection{SPADE Behaviours}
+\subsubsection{SPADE behaviors}
 
-Behaviours implement the actual logic for each agent action. They are organized into three categories:
+behaviors implement the actual logic for each agent action. They are organized into three categories:
 
-\textbf{Initialization Behaviours.} \texttt{AgentInitializationBehaviour} reads beliefs from all four submodels concurrently using \texttt{asyncio.gather()}, populating the agent's belief base with current state, supported skills, constraints, and time slot availability.
+\textbf{Initialization behaviors.} \texttt{AgentInitializationbehavior} reads beliefs from all four submodels concurrently using \texttt{asyncio.gather()}, populating the agent's belief base with current state, supported skills, constraints, and time slot availability.
 
-\textbf{Negotiation Behaviours.} These behaviours handle the Contract Net Protocol interaction:
+\textbf{Negotiation behaviors.} These behaviors handle the Contract Net Protocol interaction:
 \begin{itemize}
-    \item \texttt{ProductionRequestBehaviour}: Listens for CFP messages via \ac{XMPP} PubSub
-    \item \texttt{TimeSlotProcessingBehaviour}: Validates requested time slot availability
-    \item \texttt{CFPProcessingBehaviour}: Validates state, skills, and constraints against the CFP
+    \item \texttt{ProductionRequestbehavior}: Listens for CFP messages via \ac{XMPP} PubSub
+    \item \texttt{TimeSlotProcessingbehavior}: Validates requested time slot availability
+    \item \texttt{CFPProcessingbehavior}: Validates state, skills, and constraints against the CFP
     \item \texttt{InformProductionAgent}: Sends the negotiation response with any violations
-    \item \texttt{NegotiationResponseBehaviour}: Processes the ProductionAAS decision
+    \item \texttt{NegotiationResponsebehavior}: Processes the ProductionAAS decision
 \end{itemize}
 
-\textbf{Execution Behaviours.} These behaviours execute the actual operations:
+\textbf{Execution behaviors.} These behaviors execute the actual operations:
 \begin{itemize}
-    \item \texttt{PreparationForExecutionBehaviour}: Prepares the resource (e.g., allocates time slot)
-    \item \texttt{TaskExecutionBehaviour}: Determines which skill to execute based on the CFP
-    \item \texttt{DrillInvokerBehaviour}: Invokes the drill operation via the \ac{AAS} API
-    \item \texttt{MoveXYInvokerBehaviour}: Invokes the positioning operation
-    \item \texttt{PublishTrackingBehaviour}: Publishes execution status events
-    \item \texttt{OnDoneBehaviour}: Performs cleanup and releases allocated resources
+    \item \texttt{PreparationForExecutionbehavior}: Prepares the resource (e.g., allocates time slot)
+    \item \texttt{TaskExecutionbehavior}: Determines which skill to execute based on the CFP
+    \item \texttt{DrillInvokerbehavior}: Invokes the drill operation via the \ac{AAS} API
+    \item \texttt{MoveXYInvokerbehavior}: Invokes the positioning operation
+    \item \texttt{PublishTrackingbehavior}: Publishes execution status events
+    \item \texttt{OnDonebehavior}: Performs cleanup and releases allocated resources
 \end{itemize}
 
 
@@ -332,7 +676,9 @@ Figure~\ref{fig:resource_agent_statemachine} shows the complete state machine of
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=1.1\textwidth,keepaspectratio]{Images/Resource_Agent_State_Machine.pdf}
+    \makebox[\textwidth][c]{%
+        \includegraphics[width=1.3\textwidth]{Images/Resource_Agent_State_Machine.pdf}%
+    }
     \caption{Resource Agent State Machine}
     \label{fig:resource_agent_statemachine}
 \end{figure}
@@ -381,7 +727,7 @@ Similar to the drill formula, this is a simplified simulation model where moveme
 Simulators integrate with the \ac{AAS} infrastructure through the invocationDelegation pattern:
 
 \begin{enumerate}
-    \item The ResourceAgent behaviour calls \texttt{invoke\_drill()} on the ResourceAASClient
+    \item The ResourceAgent behavior calls \texttt{invoke\_drill()} on the ResourceAASClient
     \item The client sends an invocation request to the BaSyx server
     \item BaSyx reads the invocationDelegation qualifier from the Operation element
     \item BaSyx forwards the request to the simulator endpoint\\
@@ -561,7 +907,7 @@ During setup, the agent initializes the ProductionAASClient and subscribes to fo
 
 The \texttt{\_on\_pubsub\_event()} method routes incoming messages to appropriate handlers based on the topic:
 
-\textbf{User Request Handling.} When a message arrives on \texttt{pa\_user\_service\_request}, the agent delegates to \texttt{GetUserRequestBehaviour}, which parses the CFP message and forwards it to the Negotiation Core.
+\textbf{User Request Handling.} When a message arrives on \texttt{pa\_user\_service\_request}, the agent delegates to \texttt{GetUserRequestbehavior}, which parses the CFP message and forwards it to the Negotiation Core.
 
 \textbf{Negotiation Result Handling.} The \texttt{\_handle\_negotiation\_result()} method processes the selected resource information, logs the negotiation summary, and triggers execution preparation.
 
@@ -569,15 +915,15 @@ The \texttt{\_on\_pubsub\_event()} method routes incoming messages to appropriat
 
 \textbf{Job Completion Handling.} The \texttt{\_handle\_job\_completion()} method finalizes the production run by logging completion status and saving execution reports.
 
-\subsubsection{Behaviours}
+\subsubsection{behaviors}
 
-The Execution Core uses three behaviours to handle different aspects of request processing:
+The Execution Core uses three behaviors to handle different aspects of request processing:
 
-\textbf{GetUserRequestBehaviour.} Receives and parses user service requests from the \texttt{pa\_user\_service\_request} topic. It extracts the skill requirements, time slot preferences, and input parameters, then publishes the request to the Negotiation Core via \texttt{pa\_execution\_service\_topic}.
+\textbf{GetUserRequestbehavior.} Receives and parses user service requests from the \texttt{pa\_user\_service\_request} topic. It extracts the skill requirements, time slot preferences, and input parameters, then publishes the request to the Negotiation Core via \texttt{pa\_execution\_service\_topic}.
 
-\textbf{GetProccesPlanBehaviour.} Retrieves the process plan from the Production AAS, providing the Execution Core with information about the sequence of operations, entry/exit points, and required capabilities.
+\textbf{GetProccesPlanbehavior.} Retrieves the process plan from the Production AAS, providing the Execution Core with information about the sequence of operations, entry/exit points, and required capabilities.
 
-\textbf{GetNegotiationResultBehaviour.} Processes negotiation results received from the Negotiation Core. Upon receiving a positive result with a selected resource, it prepares the execution context and waits for tracking updates as the resource agent executes the task.
+\textbf{GetNegotiationResultbehavior.} Processes negotiation results received from the Negotiation Core. Upon receiving a positive result with a selected resource, it prepares the execution context and waits for tracking updates as the resource agent executes the task.
 \subsection{Production Agent Negotiation Core}
 \label{subsec:production_negotiation}
 
@@ -619,18 +965,18 @@ The agent publishes to:
 
 The \texttt{all\_responses\_received()} method checks whether all expected resource agents have responded. It compares the set of received response keys against the set of subscribed agents, returning true only when all expected responses have arrived. This ensures the selection algorithm has complete information before making a decision.
 
-\subsubsection{Behaviours}
+\subsubsection{behaviors}
 
-The Negotiation Core uses two main behaviours and two helper behaviours:
+The Negotiation Core uses two main behaviors and two helper behaviors:
 
-\textbf{GetExecutionCoreServiceBehaviour.} Receives negotiation requests from the Execution Core via \texttt{pa\_execution\_service\_topic}. Upon receiving a request, it:
+\textbf{GetExecutionCoreServicebehavior.} Receives negotiation requests from the Execution Core via \texttt{pa\_execution\_service\_topic}. Upon receiving a request, it:
 \begin{enumerate}
     \item Parses the CFP message containing skill requirements and parameters
     \item Broadcasts the CFP to all resource agents via the \texttt{production\_negotiation} topic
     \item Initializes the response tracking dictionary
 \end{enumerate}
 
-\textbf{GetNegotiationResponseBehaviour.} Collects and processes responses from resource agents. For each incoming response on \texttt{negotiation\_message\_topic}, it:
+\textbf{GetNegotiationResponsebehavior.} Collects and processes responses from resource agents. For each incoming response on \texttt{negotiation\_message\_topic}, it:
 \begin{enumerate}
     \item Extracts the sender identifier and response payload
     \item Stores the response in the \texttt{received\_responses} dictionary
@@ -638,14 +984,14 @@ The Negotiation Core uses two main behaviours and two helper behaviours:
     \item When complete, triggers the resource selection process
 \end{enumerate}
 
-\textbf{FindBestFitResourceBehaviour.} Applies the selection criteria to choose the optimal resource from the collected responses. The selection algorithm:
+\textbf{FindBestFitResourcebehavior.} Applies the selection criteria to choose the optimal resource from the collected responses. The selection algorithm:
 \begin{enumerate}
     \item Filters out responses with violations (invalid proposals)
     \item Among valid proposals, evaluates based on criteria such as time slot availability
     \item Returns the best-fit resource identifier
 \end{enumerate}
 
-\textbf{PublishNegotiationResultBehaviour.} Publishes the selection result to \texttt{pa\_negotation\_result}, informing the Execution Core of the chosen resource. The result includes the selected resource identifier, allocated time slot, and original request parameters.
+\textbf{PublishNegotiationResultbehavior.} Publishes the selection result to \texttt{pa\_negotation\_result}, informing the Execution Core of the chosen resource. The result includes the selected resource identifier, allocated time slot, and original request parameters.
 
 \subsubsection{Contract Net Protocol Flow}
 
@@ -660,6 +1006,8 @@ The complete negotiation flow follows the Contract Net Protocol pattern:
     \item The selection result is published to \texttt{pa\_negotation\_result}
     \item Execution Core receives the result and monitors execution via tracking topics
 \end{enumerate}
+
+
 
 \section{System Interaction}
 \label{sec:system_interaction}
@@ -749,3 +1097,297 @@ job\_completion\_topic & RA → PA & Task completion \\
 \end{tabular}
 \end{table}
 This event-driven architecture enables asynchronous coordination between the Production Agent and multiple Resource Agents, supporting scalable multi-resource scenarios without tight coupling between components.
+
+%%%%%%%%%%%%%%%
+\section{Submodel Design Considerations}
+
+\label{sec:submodel_design}
+
+This section addresses design decisions and scope limitations of the proposed submodel structures. It differentiates between generic (reusable) and scenario-specific elements, discusses current limitations, and provides guidance for extending the system.
+\subsection{Generic vs. Scenario-Specific Elements}
+\label{subsec:generic_vs_specific}
+
+The submodel structures are designed with separation between reusable patterns and scenario-specific content. Table~\ref{tab:generic_specific} identifies which elements are transferable to other domains.
+
+\begin{table}[ht]
+\centering
+\caption{Generic vs. Scenario-Specific Submodel Elements}
+\label{tab:generic_specific}
+\begin{tabular}{p{0.22\textwidth}p{0.35\textwidth}p{0.33\textwidth}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Submodel} & \textcolor{white}{Generic (Reusable)} & \textcolor{white}{Scenario-Specific} \\
+\midrule
+Operational State & Current\_State, Free\_Slots, Booked\_Slots structure & -- \\
+\rowcolor{lightgray}
+Knowledge & Constraints collection pattern, Constraint\_Type structure & Max\_Depth, Min\_Depth (drilling) \\
+Capability & Operation with invocationDelegation, Supported\_Skills list & Drill\_Capability, MoveXY\_Capability \\
+\rowcolor{lightgray}
+Interaction & Time\_Slots structure, XMPP\_Endpoint & Specific time slot values \\
+Process Plan & Nodes, Edges, Entry/Exit\_Point, Required\_Capabilities & Move\_Node, Drill\_Node \\
+\rowcolor{lightgray}
+Execution Tracking & Current\_Node, Token\_Position, Step\_Status & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+\textbf{Integrating New Resources.} To add a new resource with different capabilities (e.g., a welding machine), the following steps are required:
+
+\begin{enumerate}
+    \item \textbf{Define Capability Operations}: Create new \texttt{Operation} elements (e.g., \texttt{Welding\_Capability}) with appropriate input/output parameters and \texttt{invocationDelegation} endpoints.
+    
+    \item \textbf{Implement Skill Invoker}: Create a simulator or hardware interface that responds to the delegated operation calls.
+    
+    \item \textbf{Configure Knowledge Constraints}: Define resource-specific constraints (e.g., \texttt{Max\_Weld\_Length}, \texttt{Supported\_Materials}).
+    
+    \item \textbf{Register Capability String}: Add the capability identifier to \texttt{Supported\_Skills} using the same naming convention.
+    
+    \item \textbf{Create AgentSpeak Plans}: Add plans for the new skill execution (e.g., \texttt{+excute\_skills(welding\_capability)}).
+\end{enumerate}
+
+The submodel \textit{structure} remains unchanged; only the \textit{content} is adapted.
+\subsection{Capability Matching Mechanism}
+\label{subsec:capability_matching}
+
+The current implementation uses \textbf{string-based capability matching}. The Process Plan specifies required capabilities as strings (e.g., \texttt{"Drill\_Capability"}), and Resource Agents advertise their capabilities in the \texttt{Supported\_Skills} property. During negotiation, string comparison determines compatibility.
+
+\textbf{Limitation}: This approach is susceptible to errors:
+\begin{itemize}
+    \item Typographical errors (e.g., \texttt{"Drill\_Capbility"} vs. \texttt{"Drill\_Capability"})
+    \item Inconsistent naming conventions across resources
+    \item No semantic understanding of capability equivalence
+\end{itemize}
+
+\textbf{Recommended Extension}: Future implementations should adopt a formal capability ontology or taxonomy. Options include:
+\begin{itemize}
+    \item \textbf{ECLASS}: Standardized classification for products and services
+    \item \textbf{IEC CDD}: Common Data Dictionary for industrial terminology
+    \item \textbf{Custom OWL Ontology}: Domain-specific capability definitions with semantic reasoning
+\end{itemize}
+
+Using semantic identifiers (IRIs) instead of plain strings would enable:
+\begin{itemize}
+    \item Capability subsumption (e.g., \texttt{HighSpeedDrilling} is-a \texttt{Drilling})
+    \item Equivalence detection across different naming conventions
+    \item Automated validation of process plan feasibility
+\end{itemize}
+\subsection{Process Plan Structure and Limitations}
+\label{subsec:process_plan_limitations}
+
+\subsubsection{Linear vs. Precedence Graph Execution}
+
+The current implementation supports \textbf{linear process plans} with sequential node execution. The Process Plan Submodel stores nodes and edges, but the execution logic processes nodes in a fixed sequence (Entry\_Point $\rightarrow$ ... $\rightarrow$ Exit\_Point).
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto,
+    node/.style={circle, draw, minimum size=1cm}]
+    \node[node] (A) {Move};
+    \node[node, right of=A] (B) {Drill};
+    \draw[->] (A) -- (B);
+    \node[below=0.3cm of A, font=\scriptsize] {Entry};
+    \node[below=0.3cm of B, font=\scriptsize] {Exit};
+\end{tikzpicture}
+\caption{Current Implementation: Linear Process Plan}
+\label{fig:linear_plan}
+\end{figure}
+
+\textbf{Limitation}: True precedence graphs with parallel branches are \textbf{not supported} in the current prototype:
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto,
+    node/.style={circle, draw, minimum size=0.8cm, font=\scriptsize}]
+    \node[node] (A) {A};
+    \node[node, above right of=A] (B) {B};
+    \node[node, below right of=A] (C) {C};
+    \node[node, below right of=B] (D) {D};
+    \draw[->] (A) -- (B);
+    \draw[->] (A) -- (C);
+    \draw[->] (B) -- (D);
+    \draw[->] (C) -- (D);
+    \node[right=0.3cm of D, font=\scriptsize, text=red] {Not Supported};
+\end{tikzpicture}
+\caption{Precedence Graph with Parallel Branches (Not Implemented)}
+\label{fig:precedence_graph}
+\end{figure}
+
+Extending to full precedence graph support would require:
+\begin{itemize}
+    \item Multiple token positions (see Section~\ref{subsec:token_position})
+    \item Fork/join synchronization logic
+    \item Parallel resource allocation and negotiation
+\end{itemize}
+\subsubsection{Capability-Node Association}
+
+In the current design, \texttt{Required\_Capabilities} is a property at the \textbf{Process Plan level}, not associated with individual nodes:
+
+\begin{lstlisting}[language=Python]
+sm_required_capabilities = model.Property(
+    id_short="Required_Capabilities",
+    value="[Drill_Capability, MoveXY_Capability]"  # Plan-level
+)
+\end{lstlisting}
+
+\textbf{Limitation}: This does not explicitly link which capability is needed for which node. The association is implicit through naming conventions (\texttt{Move\_Node} $\leftrightarrow$ \texttt{MoveXY\_Capability}).
+
+\textbf{Recommended Extension}: Each node should explicitly reference its required capability:
+
+\begin{lstlisting}[language=Python]
+sm_move_node = model.SubmodelElementCollection(
+    id_short="Move_Node",
+    value=[
+        model.Property(id_short="Required_Capability", 
+                       value="MoveXY_Capability"),
+        model.Property(id_short="Sequence_Number", value="1"),
+        ...
+    ]
+)
+\end{lstlisting}
+\subsection{Token Position and Execution State}
+\label{subsec:token_position}
+
+The Execution Tracking Submodel uses a \textbf{single} \texttt{Token\_Position} and \texttt{Current\_Node} property:
+
+\begin{lstlisting}[language=Python]
+model.Property(id_short="Token_Position", value="1")
+model.Property(id_short="Current_Node", value="Move_Node")
+\end{lstlisting}
+
+\textbf{Design Decision}: This models a single execution thread, analogous to a Petri net with one token.
+
+\textbf{Limitation}: In a full Petri net or precedence graph, multiple tokens can exist simultaneously (parallel execution). The current design cannot represent:
+\begin{itemize}
+    \item Concurrent operations on different resources
+    \item Fork states where execution splits
+    \item Join states requiring synchronization
+\end{itemize}
+
+\textbf{Justification}: For the proof-of-concept with linear plans, a single token is sufficient. Extending to multiple tokens would require refactoring \texttt{Token\_Position} into a collection of token objects.
+\subsection{Knowledge Submodel Simplifications}
+\label{subsec:knowledge_limitations}
+
+The Knowledge Submodel stores constraints as simple min/max value pairs:
+
+\begin{lstlisting}[language=Python]
+model.Property(id_short="Max_Depth", value="100.0")
+model.Property(id_short="Min_Depth", value="1.0")
+model.Property(id_short="Constraints_Type", value="[Max_Depth, Min_Depth]")
+\end{lstlisting}
+
+\textbf{Limitation}: This cannot express \textbf{functional dependencies} between parameters. For example:
+\begin{itemize}
+    \item A crane's maximum load depends on the boom extension
+    \item Drilling speed limits depend on material hardness
+    \item Tool wear affects achievable tolerances over time
+\end{itemize}
+
+\textbf{Recommended Extension}: Complex constraints could be modeled as:
+\begin{itemize}
+    \item Mathematical expressions (e.g., \texttt{MaxLoad = f(BoomLength)})
+    \item Lookup tables stored as \texttt{SubmodelElementCollection}
+    \item References to external constraint models (e.g., FMU/FMI)
+\end{itemize}
+\subsection{Assembly Processes and Bill of Materials}
+\label{subsec:assembly_bom}
+
+The current submodels include a \texttt{Preconditions} property with value \texttt{"Material Available"}, but \textbf{do not model explicit Bill of Materials (BOM)} structures.
+
+\textbf{Scope Limitation}: The proof-of-concept focuses on machining operations (drilling, positioning) where a single workpiece is processed. Assembly scenarios with:
+\begin{itemize}
+    \item Multiple input parts per operation
+    \item Part tracking through production stages
+    \item Component-product relationships
+\end{itemize}
+are \textbf{not covered} by the current submodel design.
+
+\textbf{Extension Approach}: Supporting assembly would require:
+\begin{itemize}
+    \item BOM Submodel with part references
+    \item Material tracking in Operational State
+    \item Precondition evaluation logic checking part availability
+\end{itemize}
+\subsection{User Request Definition}
+\label{subsec:user_request}
+
+A \textbf{User Request} is a production order submitted to the Production Agent. In the implementation, it is a message containing:
+
+\begin{table}[ht]
+\centering
+\caption{User Request Message Structure}
+\label{tab:user_request}
+\begin{tabular}{lll}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Field} & \textcolor{white}{Type} & \textcolor{white}{Description} \\
+\midrule
+\texttt{skills\_required} & String & Capability needed (e.g., \texttt{"drill\_capability"}) \\
+\texttt{at\_time} & String & Requested time slot (e.g., \texttt{"10:30-11:00"}) \\
+\texttt{input\_arguments} & Dictionary & Operation parameters (X, Y, Depth, RPM) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The User Request is published to the \texttt{pa\_user\_service\_request} XMPP topic and received by the Execution Core, which initiates the negotiation process.
+\subsection{Concrete Example: Drill Operation}
+\label{subsec:concrete_example}
+
+To illustrate how the submodels work together, consider a complete drill operation request:
+
+\textbf{Step 1: User Request}
+\begin{lstlisting}
+{
+  "skills_required": "drill_capability",
+  "at_time": "10:30-11:00",
+  "input_arguments": {"X": 60, "Y": 50, "Depth": 5, "RPM": 1500}
+}
+\end{lstlisting}
+
+\textbf{Step 2: Process Plan Lookup}
+
+The Production Agent reads the Process Plan Submodel:
+\begin{itemize}
+    \item \texttt{Entry\_Point}: \texttt{"Move\_Node"}
+    \item \texttt{Exit\_Point}: \texttt{"Drill\_Node"}
+    \item \texttt{Edges}: \texttt{"Move\_Node to Drill\_Node"}
+    \item \texttt{Required\_Capabilities}: \texttt{"[Drill\_Capability, MoveXY\_Capability]"}
+\end{itemize}
+
+\textbf{Step 3: Resource Discovery}
+
+The Negotiation Core broadcasts a CFP. Resource Agent 1 checks its Capability Submodel:
+\begin{itemize}
+    \item \texttt{Supported\_Skills}: \texttt{"drill\_capability, movexy\_capability"} \checkmark
+\end{itemize}
+
+And its Interaction Submodel:
+\begin{itemize}
+    \item \texttt{Free\_Slots}: includes \texttt{"10:30-11:00"} \checkmark
+\end{itemize}
+
+And its Knowledge Submodel:
+\begin{itemize}
+    \item \texttt{Max\_Depth}: 100mm $\geq$ requested 5mm \checkmark
+\end{itemize}
+
+\textbf{Step 4: Execution}
+
+After selection, the Resource Agent executes:
+\begin{enumerate}
+    \item Invoke \texttt{MoveXY\_Capability} with X=60, Y=50
+    \item Update \texttt{Current\_Node} = \texttt{"Move\_Node"}, \texttt{Step\_Status} = \texttt{"running"}
+    \item On completion: \texttt{Step\_Status} = \texttt{"completed"}
+    \item Invoke \texttt{Drill\_Capability} with Depth=5, RPM=1500
+    \item Update \texttt{Current\_Node} = \texttt{"Drill\_Node"}, \texttt{Step\_Status} = \texttt{"running"}
+    \item On completion: \texttt{Step\_Status} = \texttt{"completed"}
+\end{enumerate}
+
+\textbf{Step 5: Completion}
+
+The Execution Tracking Submodel final state:
+\begin{itemize}
+    \item \texttt{Token\_Position}: 2 (at Exit\_Point)
+    \item \texttt{Current\_Node}: \texttt{"Drill\_Node"}
+    \item \texttt{Step\_Status}: \texttt{"completed"}
+\end{itemize}
+
+This example demonstrates how the generic submodel structures are populated with scenario-specific content to execute a concrete production task.

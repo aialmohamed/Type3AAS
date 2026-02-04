@@ -87,6 +87,22 @@ The \ac{MAS}/\ac{BDI} requirements specify the integration between agent concept
 \subsection{Non-Functional Requirements (NFR\_1 -- NFR\_5)}
 
 Beyond functional capabilities, the system must satisfy quality requirements essential for industrial deployment. The interoperability requirement mandates compliance with IDTA \ac{AAS} specifications to ensure compatibility with the broader Industry 4.0 ecosystem. Scalability requirements ensure that new ResourceAAS can be added without modifying existing components. Reliability requirements specify graceful handling of component failures with appropriate error messages. Maintainability requirements call for modular architecture supporting future extensions. Finally, performance requirements specify that agent negotiations must complete within acceptable time bounds for the proof-of-concept demonstration.
+\subsection{Considerations for Production Deployment}
+\label{subsec:production_considerations}
+
+The requirements defined above focus on demonstrating the feasibility of \ac{Type3AAS} in a proof-of-concept context. A production-ready system deployed in an industrial environment would need to address additional requirements that are beyond the scope of this thesis but are acknowledged here for completeness.
+
+\textbf{Availability and Fault Tolerance.} Production systems require high availability, often specified as 99.9\% uptime or higher. This necessitates redundant components, failover mechanisms, and the ability to recover from partial system failures without losing production data or state. The current prototype does not implement redundancy or automatic recovery.
+
+\textbf{Information Security.} Industrial systems must protect against unauthorized access, data manipulation, and cyber attacks. This includes authentication and authorization for all \ac{AAS} access, encrypted communication channels (TLS/SSL), audit logging of all operations, and compliance with standards such as IEC 62443 (Industrial Cybersecurity). The prototype uses unencrypted communication and does not implement access control.
+
+\textbf{Performance and Scalability.} While NFR\_5 specifies negotiation completion within 5 seconds for the proof-of-concept, production systems may require sub-second response times for real-time control scenarios. Additionally, the system must scale to hundreds or thousands of resources while maintaining performance. Load testing and performance optimization are not addressed in this work.
+
+\textbf{Integration with Enterprise Systems.} Production deployments typically require integration with Manufacturing Execution Systems (MES), Enterprise Resource Planning (ERP), and other business systems. This includes standardized interfaces, data format transformations, and transaction management.
+
+\textbf{Regulatory Compliance.} Depending on the industry, additional requirements may arise from regulations such as FDA 21 CFR Part 11 (pharmaceutical), ISO 13485 (medical devices), or automotive quality standards (IATF 16949).
+
+These considerations are discussed further in the outlook (Chapter~\ref{ch:outlook}), where future work directions are identified for transitioning the proof-of-concept toward production readiness.
 
 \section{Requirements Traceability}
 \label{sec:traceability}

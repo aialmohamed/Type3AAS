@@ -1,0 +1,52 @@
+@startuml Resource_Agent_State_Machine
+' Optimized for readable A4 landscape printing
+skinparam backgroundColor white
+skinparam dpi 300
+skinparam defaultFontSize 14
+skinparam ActivityFontSize 13
+skinparam ArrowFontSize 12
+skinparam swimlaneWidth 280
+skinparam conditionStyle diamond
+skinparam ActivityBorderThickness 2
+
+title <size:18>Resource Agent - State Machine</size>
+
+|#fff2cc| **Initialization** |
+start
+:Get RA_CurrentState,\nRA_Skills, RA_FreeTimeSlots;
+:Update Beliefs;
+:Subscribe to PA_Request;
+
+|#d5e8d4| **Negotiation** |
+while (Agent Running?) is (Yes)
+    :Wait for Request;
+    note right: Idle state:\nListening for CFP
+    
+    :Check Current State\n& Skills Constraints;
+    :Build & Send Response;
+    :Wait for Reply;
+    
+    if (Response\nPositive?) then (Yes)
+        :Book Time Slot\n& Set State = Busy;
+        :Parse Request to Skills\n& Set Skills Order;
+        
+        |#99ccff| **Execution** |
+        :Invoke Skills;
+        :Wait for Service Done;
+        
+        if (Result?) then (Done)
+            :Report Success to PA\nSet State = Free\nFree Time Slot;
+        else (Error)
+            :Report Error to PA;
+        endif
+        
+        |#d5e8d4| **Negotiation** |
+    else (No)
+        :Log: Proposal Rejected;
+        note right: Return to Waiting
+    endif
+endwhile (Shutdown)
+
+stop
+
+@enduml

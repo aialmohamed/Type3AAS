@@ -7,6 +7,7 @@
 \setstretch{1.5}
 \usepackage{geometry}
 \usepackage{hyperref}
+\usepackage{multirow}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -30,6 +31,8 @@
 \usepackage{xcolor}
 \usepackage{colortbl}
 \usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
 \usepackage{longtable}  % For tables that span multiple pages
 % Define colors
 \definecolor{headerblue}{RGB}{41, 65, 114}
@@ -68,6 +71,12 @@
                 {\ -\ }{{\mdseries\ -\ }}3,
 }
 \newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
+\lstset{
+    breaklines=true,
+    basicstyle=\ttfamily\small,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
 % switch to key style at EOL
 \lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
 \makeatother

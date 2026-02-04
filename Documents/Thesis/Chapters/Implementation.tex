@@ -1,12 +1,12 @@
 \chapter{Implementation}
 \label{chap:implementation}
 
-This chapter describes the implementation details of the Type 3 \ac{AAS} prototype, including the infrastructure setup, technology choices, and solutions to technical challenges encountered during development. While Chapter~\ref{ch:concept} presented the conceptual design, this chapter focuses on the practical realization of the system.
+This chapter describes the implementation of the Type 3 \ac{AAS} prototype, focusing on key architectural decisions and solutions to technical challenges. Detailed configuration instructions and code listings are provided in Appendix~\ref{app:implementation_details}.
 
 \section{Infrastructure Overview}
 \label{sec:infrastructure}
 
-The implementation uses a combination of open-source tools and frameworks to realize the Type 3 \ac{AAS} architecture. Figure~\ref{fig:infrastructure} illustrates the deployment architecture.
+The implementation uses a combination of open-source tools and frameworks to realize the Type 3 \ac{AAS} architecture. Figure~\ref{fig:infrastructure} illustrates the deployment architecture, and Table~\ref{tab:tech_stack} summarizes the technology stack.
 
 \begin{landscape}
 \begin{figure}[p]
@@ -38,250 +38,107 @@ Containerization & Docker Compose & Service orchestration \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The system consists of containerized services (BaSyx, MongoDB, MQTT) orchestrated via Docker Compose, while the SPADE agents and Prosody \ac{XMPP} server run on the host system. This hybrid approach simplifies development while maintaining production-like service isolation.
+
 \section{Asset Administration Shell Server}
 \label{sec:aas_server}
-\subsection{Eclipse BaSyx Server}
 
-The implementation uses the Java-based \ac{AAS} server provided by the Eclipse BaSyx project. This server offers several features essential for the Type 3 \ac{AAS} implementation:
-
-\textbf{MongoDB Storage.} The server persists Asset Administration Shells and Submodels to MongoDB, enabling data retention across server restarts and supporting queries over stored assets.
-
-\textbf{MQTT Eventing.} The server publishes events to an MQTT broker upon changes, updates, or deletions of \ac{AAS} data. This enables reactive architectures where components can subscribe to relevant changes without polling.
-
-\textbf{REST API Endpoints.} The server exposes a comprehensive REST API following the \ac{AAS} specification, enabling programmatic access to shells, submodels, and submodel elements.
-
-\textbf{Web UI.} A browser-based user interface allows monitoring and manual inspection of the \ac{AAS} registry, useful for debugging and demonstration purposes.
-
-\textbf{Docker Deployment.} The server is distributed as Docker images, simplifying deployment and ensuring consistent environments across development and production systems.
+The implementation uses the Eclipse BaSyx \ac{AAS} server, which provides MongoDB-based persistence, MQTT event notification on data changes, REST API endpoints compliant with the \ac{AAS} specification, and a web-based monitoring interface. The server is deployed as a Docker container for consistent environments.
 
 \subsection{Operation Invocation Delegation}
 \label{subsec:invocation_delegation}
-A key implementation challenge was enabling \ac{AAS} Operations to delegate execution to external services. The BaSyx server supports this through the \texttt{invocationDelegation} qualifier pattern.
 
-\subsubsection{Docker Network Configuration}
+A key implementation pattern is the \texttt{invocationDelegation} qualifier, which enables \ac{AAS} Operations to delegate execution to external services. When an Operation is invoked via the \ac{AAS} REST API, the BaSyx server forwards the request to an external HTTP endpoint specified in the qualifier.
 
-To enable the containerized BaSyx server to communicate with host-based invoker services, the Docker Compose configuration requires network bridging:
+This pattern connects the standardized \ac{AAS} interface to the physical asset simulators (or real PLCs in production). The invoker services are implemented as FastAPI applications that:
+\begin{enumerate}
+    \item Receive the operation request with input parameters
+    \item Execute the corresponding machine operation
+    \item Return results in \ac{AAS}-compliant format
+\end{enumerate}
 
-\begin{lstlisting}[language=yaml, caption={Docker Compose Network Configuration}, label={lst:docker_network}]
-services:
-  aas-env:
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-  aas-web-ui:
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-\end{lstlisting}
+The detailed configuration for Docker networking and invoker implementation is provided in Appendix~\ref{app:invocation_delegation}.
 
-This configuration maps \texttt{host.docker.internal} to the host machine's gateway address, allowing containers to reach services running on the host.
-
-\subsubsection{Qualifier Configuration}
-
-Operations in submodels are configured with an \texttt{invocationDelegation} qualifier that specifies the target endpoint:
-
-\begin{lstlisting}[language=Python, caption={Operation Invocation Delegation Qualifier}, label={lst:qualifier}]
-qualifier=[model.Qualifier(
-    kind=model.QualifierKind.CONCEPT_QUALIFIER,
-    type_="invocationDelegation",
-    value_type=datatypes.String,
-    value="http://host.docker.internal:8090/drill_invocation"
-)]
-\end{lstlisting}
-
-The hostname \texttt{host.docker.internal} must remain unchanged, while the port (e.g., 8090) can be configured per invoker service.
-
-\subsubsection{Invoker Implementation}
-
-External invoker services are implemented as FastAPI applications that receive operation requests from the BaSyx server and return \ac{AAS}-compliant responses:
-
-\begin{lstlisting}[language=Python, caption={Operation Invoker Endpoint Structure}, label={lst:invoker}]
-@app.post("/drill_invocation")
-async def invoke_operation(request: Request):
-    body = await request.json()
-    properties = _opvars_to_properties(body)
-    
-    # Execute operation logic
-    result = execute_drill(properties)
-    
-    # Return AAS-compliant response
-    return [{
-        "modelType": "OperationVariable",
-        "value": {
-            "modelType": "Property",
-            "idShort": "Drill_Result",
-            "value": str(result),
-            "valueType": "xs:string"
-        }
-    }]
-\end{lstlisting}
-
-The invoker must parse the incoming \texttt{OperationVariable} array, execute the requested operation, and return results in the same format.
-\section{XMPP Server Configuration}
+\section{Agent Communication Infrastructure}
 \label{sec:xmpp_config}
 
-\subsection{Prosody Server}
+The implementation uses Prosody as the \ac{XMPP} server for agent communication. Prosody was selected over alternatives (e.g., ejabberd) due to better compatibility with the SPADE Python framework and straightforward PubSub configuration.
 
-The implementation uses Prosody as the \ac{XMPP} server for agent communication. Prosody was selected over alternatives like ejabberd due to better compatibility with the SPADE Python framework.
+The server provides:
+\begin{itemize}
+    \item Point-to-point messaging between agents
+    \item Publish-subscribe functionality for event distribution
+    \item SSL/TLS encryption for secure communication
+\end{itemize}
 
-\subsubsection{Installation}
+Agents are registered as \ac{XMPP} users and configured with administrator privileges to enable PubSub node creation. The detailed server configuration is provided in Appendix~\ref{app:xmpp_config}.
 
-\begin{lstlisting}[language=bash, caption={Prosody Installation}, label={lst:prosody_install}]
-sudo apt update 
-sudo apt install prosody
-\end{lstlisting}
-
-\subsubsection{Configuration}
-
-The Prosody configuration file (\texttt{/etc/prosody/prosody.cfg.lua}) requires several modifications:
-
-\textbf{Localhost Binding.} Configure the server to bind to localhost:
-
-\begin{lstlisting}[language={[5.0]Lua}, caption={Prosody Host Configuration}, label={lst:prosody_host}]
-Host "*"
-    c2s_interface = "127.0.0.1"
-    s2s_interface = "127.0.0.1"
-\end{lstlisting}
-
-\textbf{PubSub Component.} Enable the publish-subscribe component for event distribution:
-
-\begin{lstlisting}[language={[5.0]Lua}, caption={PubSub Component Configuration}, label={lst:pubsub_config}]
-Component "pubsub.localhost" "pubsub"
-\end{lstlisting}
-
-\textbf{SSL Certificates.} Generate and configure SSL certificates for secure communication:
-
-\begin{lstlisting}[language=bash, caption={Certificate Generation}, label={lst:cert_gen}]
-cd /etc/prosody/certs
-openssl genrsa -out localhost.key 2048
-openssl req -x509 -nodes -days 365 -new \
--key localhost.key -out localhost.crt -subj "/CN=localhost"
-sudo chown root:prosody /etc/prosody/certs/localhost.key
-sudo chmod 640 /etc/prosody/certs/localhost.key
-\end{lstlisting}
-
-\subsubsection{User Management}
-
-Agents must be registered as users on the \ac{XMPP} server:
-
-\begin{lstlisting}[language=bash, caption={XMPP User Creation}, label={lst:user_create}]
-prosodyctl shell
-> user:create("resource_agent_1@localhost", "password123")
-> user:create("negotiation_agent@localhost", "password123")
-> user:list("localhost")
-\end{lstlisting}
-\subsubsection{Admin Privileges}
-
-To enable PubSub node creation and management, agents must be configured as administrators in the Prosody configuration:
-
-\begin{lstlisting}[language={[5.0]Lua}, caption={Admin Configuration}, label={lst:admin_config}]
-admins = {
-    "resource_agent_1@localhost",
-    "resource_agent_2@localhost",
-    "negotiation_agent@localhost",
-    "execution_agent@localhost"
-}
-\end{lstlisting}
 \section{Agent Implementation Challenges}
 \label{sec:agent_challenges}
 
+Several technical challenges were encountered during agent implementation. This section documents the issues and their solutions, as they provide insights for future implementations.
+
 \subsection{BDI vs. Finite State Machine}
 
-During initial development, an attempt was made to implement agent behavior using a Finite State Machine (FSM) pattern. This approach proved to be an anti-pattern for BDI agents for several reasons:
+During initial development, an attempt was made to implement agent behavior using a Finite State Machine (FSM) pattern. This approach proved problematic for \ac{BDI} agents:
 
-\textbf{Rigidity.} FSMs enforce a fixed state transition graph, preventing plans from flowing dynamically based on beliefs and goals.
+\begin{itemize}
+    \item \textbf{Rigidity}: FSMs enforce fixed state transitions, preventing dynamic plan selection based on beliefs and goals.
+    \item \textbf{Loss of Reactivity}: \ac{BDI} agents should react to belief changes opportunistically; FSMs constrain behavior to explicit transitions.
+    \item \textbf{Commitment Conflict}: FSMs require commitment to a predefined structure, contradicting the \ac{BDI} principle of deliberation over intentions.
+\end{itemize}
 
-\textbf{Commitment to Structure.} Implementing an FSM forces the agent to commit to predefined transitions, removing the flexibility that BDI reasoning provides.
-
-\textbf{Loss of Reactivity.} BDI agents should react to belief changes and pursue goals opportunistically; FSMs constrain this behavior to explicit transitions.
-
-The final implementation uses AgentSpeak plans triggered by belief changes, allowing the agent to select appropriate plans based on current context rather than following a predetermined path.
+The final implementation uses AgentSpeak plans triggered by belief changes, allowing context-dependent plan selection rather than predetermined paths.
 
 \subsection{SPADE Belief Storage Limitation}
 
-A technical limitation was discovered in the SPADE BDI implementation regarding list storage in beliefs. Storing values as string representations of lists (e.g., \texttt{"[data1, data2, ...]"}) does not work correctly due to internal parsing in the \texttt{bdi.py} module:
+A limitation was discovered in the SPADE \ac{BDI} implementation: storing list-like strings as belief values causes incorrect parsing due to internal string splitting. For example, a belief containing \texttt{"[08:00-08:30, 08:30-09:00]"} is truncated at the first bracket.
 
-\begin{lstlisting}[language=Python, caption={SPADE Source Removal Method}, label={lst:spade_bug}]
-@staticmethod
-def _remove_source(belief, source):
-    if ")[source" in belief and not source:
-        belief = belief.split("[")[0].replace('"', "")
-    return belief
-\end{lstlisting}
-
-When a belief contains a list-like string, the \texttt{split("[")} operation incorrectly truncates the value. For example:
-
-\begin{lstlisting}[language={}, caption={Belief Parsing Issue}, label={lst:belief_issue}]
-# Original belief
-free_time_slots(["08:00-08:30","08:30-09:00"])[source=python]
-
-# After split at '[' 
-# Returns: 'free_time_slots(' - inner content lost
-\end{lstlisting}
-
-\textbf{Workaround.} The implementation avoids storing complex data structures directly in beliefs. Instead, lists are either stored as individual belief entries or managed through the AAS submodels where the full data structure is preserved.
+\textbf{Workaround}: Complex data structures are stored in \ac{AAS} submodels rather than directly in beliefs. The agent retrieves structured data through the ResourceAASClient when needed, ensuring data integrity.
 
 \subsection{PubSub Subscriber Crosstalk}
 
-A bug was identified in the initial PubSub implementation where multiple topic subscriptions interfered with each other. Calling \texttt{self.agent.pubsub.set\_on\_item\_published} registers a single global callback; each subsequent call overwrites the previous handler, causing messages from one topic to be delivered to the wrong handler.
+The SPADE PubSub implementation uses a single global callback for all subscriptions. Multiple calls to \texttt{set\_on\_item\_published()} overwrite previous handlers, causing messages from different topics to be delivered to incorrect handlers.
 
-\textbf{Solution.} Subscribe once and implement a shared callback that dispatches based on the topic node:
+\textbf{Solution}: A single callback is registered that dispatches messages based on the topic node identifier. This pattern ensures each topic's messages reach the appropriate handler without interference. The implementation is shown in Appendix~\ref{app:pubsub_dispatch}.
 
-\begin{lstlisting}[language=Python, caption={PubSub Topic Dispatch Pattern}, label={lst:pubsub_dispatch}]
-async def callback(self, message):
-    event = message['pubsub_event']
-    node = event['items']['node']
-    payload = event['items']['substanzas'][0]['payload'].text
-    
-    if node == 'production_negotiation':
-        await self._handle_cfp(payload)
-    elif node == 'negotiation_message_topic':
-        await self._handle_response(payload)
-    elif node == 'execution_tracking_topic':
-        await self._handle_tracking(payload)
-\end{lstlisting}
-
-By dispatching on the \texttt{node} field within a single callback, each topic's handler receives only its own payloads, eliminating the crosstalk issue.
-
-\section{Deployment Configuration}
+\section{Deployment Architecture}
 \label{sec:deployment}
 
-\subsection{Docker Compose Setup}
+The complete system is deployed using Docker Compose for containerized services and host-based execution for agents. Table~\ref{tab:deployment_components} summarizes the deployment configuration.
 
-The complete system is deployed using Docker Compose, orchestrating the following services:
+\begin{table}[ht]
+\centering
+\caption{Deployment Components}
+\label{tab:deployment_components}
+\begin{tabular}{lll}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Component} & \textcolor{white}{Deployment} & \textcolor{white}{Communication} \\
+\midrule
+BaSyx AAS Server & Docker container & REST API (port 8081) \\
+AAS Registry & Docker container & REST API (port 8082) \\
+MongoDB & Docker container & Internal (port 27017) \\
+Mosquitto MQTT & Docker container & MQTT (port 1883) \\
+\rowcolor{lightgray}
+Prosody XMPP & Host system & XMPP (port 5222) \\
+Resource Agents & Host system & XMPP + REST \\
+Production Agent & Host system & XMPP + REST \\
+Simulators & Host system & HTTP (port 8090+) \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{itemize}
-    \item \textbf{aas-env}: Eclipse BaSyx AAS Environment server
-    \item \textbf{aas-registry}: AAS Registry for shell discovery
-    \item \textbf{aas-web-ui}: Web-based monitoring interface
-    \item \textbf{mongodb}: Database for AAS persistence
-    \item \textbf{mosquitto}: MQTT broker for AAS events
-\end{itemize}
-
-The SPADE agents and Prosody \ac{XMPP} server run on the host system, communicating with containerized services through the \texttt{host.docker.internal} bridge.
-
-\subsection{Startup Sequence}
-
-The system requires a specific startup order to ensure dependencies are available:
-
-\begin{enumerate}
-    \item Start Docker Compose services (MongoDB, BaSyx, MQTT)
-    \item Start Prosody \ac{XMPP} server
-    \item Initialize AAS shells and submodels via Python scripts
-    \item Start Resource Agent simulators
-    \item Start Resource Agents
-    \item Start Production Agent (Execution and Negotiation cores)
-\end{enumerate}
+The startup sequence ensures dependencies are available before dependent services start: Docker services first, then Prosody, followed by \ac{AAS} initialization, simulators, and finally agents. The complete Docker Compose configuration and startup scripts are provided in Appendix~\ref{app:deployment_config}.
 
 \section{Summary}
 
-This chapter presented the implementation details of the Type 3 \ac{AAS} prototype, including:
-
+This chapter presented the implementation of the Type 3 \ac{AAS} prototype, highlighting:
 \begin{itemize}
-    \item Eclipse BaSyx server configuration for \ac{AAS} hosting
-    \item Operation invocation delegation pattern for external skill execution
-    \item Prosody \ac{XMPP} server setup for agent communication
-    \item Solutions to technical challenges in BDI agent implementation
-    \item Deployment architecture using Docker Compose
+    \item The hybrid deployment architecture combining Docker containers with host-based agents
+    \item The \texttt{invocationDelegation} pattern for connecting \ac{AAS} Operations to external execution
+    \item Technical challenges in \ac{BDI} agent implementation and their solutions
 \end{itemize}
 
-The implementation demonstrates the feasibility of integrating BDI agents with the \ac{AAS} infrastructure, while highlighting practical considerations for future deployments.
-
+The implementation demonstrates that integrating \ac{BDI} agents with \ac{AAS} infrastructure is feasible using existing open-source tools, though framework-specific workarounds are required. Detailed configuration files and code listings are provided in Appendix~\ref{app:implementation_details} for reproducibility.

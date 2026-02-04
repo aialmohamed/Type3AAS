@@ -10,7 +10,7 @@ and its role in enabling interoperability within Industry 4.0 ecosystems.
 This section cover the specifications in \cite{plattformi40_aas_part1_v3}, \cite{plattformI40_aas_part2} that are of relevance
 to this thesis.
 
-\subsection{Basic concept of AAS}
+\subsection{Basic concept of Asset Administration Shell}
 
 The \ac{AAS} is a standardized digital representation of an asset,
 which can be a physical or virtual entity within an industrial environment.
@@ -185,7 +185,7 @@ Those \textit{data types} are divided into three main categories:
     \item \textbf{PrimitiveTypes}: This category includes specialized data types like \textit{DateTime}, \textit{Date}, \textit{Time}, \textit{base64Binary}, etc., which provide more specific representations for certain kinds of data.
 \end{itemize}
 
-\subsection{Types of AAS}
+\subsection{Types of Asset Administration Shells}
 The \ac{AAS} can be classified into three types based on the interaction between the \ac{AAS}s \cite{plattformI40_aas_part2}.
 In Figure~\ref{fig:AAS_Types}, the three types of \ac{AAS} are illustrated.
 
@@ -241,7 +241,7 @@ Eventing  & subscribe and unsubscribe to events & \cite{plattformi40_aas_part1_v
 \end{figure}
 
 \newpage
-\subsection{AAS Type3}
+\subsection{Asset Administration Shell Type3}
 \label{subsec:aas_type3}
 The \textit{type3} \ac{AAS} builds upon the capabilities of \textit{type2} \ac{AAS} by introducing a peer-to-peer network of \ac{AAS}s \cite{Sakurada2025_MAS_AAS_Type3}.
 The \textit{type3} represents a more advanced and extended form of \ac{AAS}, 
@@ -378,6 +378,8 @@ In \ac{MAS}, agents must coordinate their activities to achieve common goals and
 
 \textbf{Organizational Structures}: Agents can be organized into hierarchies, teams, or coalitions with defined roles and responsibilities. Organizational models such as Moise+ \cite{hubner2007moise} provide formal frameworks for specifying agent organizations.
 
+\textbf{Terminology Clarification.} The Contract Net Protocol is classified as a \textit{negotiation} mechanism rather than an auction because it involves a dialogue between the manager and contractors: contractors submit proposals, and the manager selects based on criteria that may include non-price factors such as availability, capability match, and reliability. In contrast, pure auctions typically determine allocation solely based on price/bid value. This thesis implements the Contract Net Protocol for resource allocation and therefore uses the term ``negotiation'' throughout to describe the coordination process between Production Agent and Resource Agents.
+
 \subsection{Industrial Agents}
 \label{subsec:industrial_agents}
 
@@ -410,7 +412,7 @@ This section has introduced the fundamental concepts of agents and \ac{MAS}, inc
 \section{BDI (Belief-Desire-Intention) Approach}
 \label{sec:bdi}
 The \ac{BDI} architecture represents one of the most influential and well-established models for implementing rational agents capable of autonomous decision-making \cite{wooldridge1995intelligent}. Originally rooted in the philosophical theory of human practical reasoning developed by Bratman \cite{bratman1987intention}, the \ac{BDI} model has been successfully adapted into a computational framework for programming intelligent agents that exhibit goal-directed behavior \cite{rao1995bdi}.
-\subsection{Foundations of the BDI Model}
+\subsection{Foundations of the Belief-Desire-Intention Model}
 
 The \ac{BDI} architecture is grounded in three core mental attitudes that guide an agent's reasoning and behavior \cite{bratman1987intention}:
 
@@ -424,7 +426,7 @@ The \ac{BDI} architecture is grounded in three core mental attitudes that guide 
 
 The interplay between these three attitudes enables agents to reason about their goals, select appropriate plans, and execute actions in a rational manner \cite{rao1995bdi}. This separation of concerns allows for a clear distinction between what the agent knows (beliefs), what it wants to achieve (desires), and what it is currently trying to do (intentions).
 
-\subsection{The BDI Reasoning Cycle}
+\subsection{The Belief-Desire-Intention Reasoning Cycle}
 
 A \ac{BDI} agent operates through a continuous reasoning cycle that processes perceptions from the environment and generates actions \cite{bordini2007programming}. The typical reasoning cycle consists of the following steps:
 
@@ -451,7 +453,7 @@ This cycle enables \ac{BDI} agents to exhibit both reactive behavior (responding
 \end{figure}
 
 \newpage
-\subsection{BDI for Industrial and Cyber-Physical Systems}
+\subsection{Belief-Desire-Intention for Industrial and Cyber-Physical Systems}
 
 The application of \ac{BDI} agents in industrial settings has gained significant attention due to their ability to handle complex decision-making in dynamic environments \cite{leitao2021recommendation}. In the context of \ac{CPS} and Industry 4.0, \ac{BDI} agents offer several advantages:
 
@@ -508,9 +510,54 @@ BaSyx is widely adopted in research and industry due to its open-source nature a
     \item Testing interoperability between different \ac{AAS} implementations
 \end{itemize}
 
-\textbf{Limitations for Type~3 AAS}: All current \ac{AAS} frameworks focus on Type~1 and Type~2 functionality. None provide native support for the autonomous, proactive behavior required by \ac{Type3AAS}. This gap motivates the integration with agent-based technologies explored in this thesis.
 
+\textbf{Limitations for Type~3 AAS.} 
+While current \ac{AAS} frameworks provide the technical infrastructure for Type~2 functionality including event notification (via MQTT) and operation invocation (via REST API) they lack the higher-level capabilities required for truly autonomous, proactive behavior. Table~\ref{tab:type3_gap} clarifies what is present in existing frameworks and what is missing for Type~3 realization.
 
+\begin{table}[ht]
+\centering
+\caption{Gap Analysis: Type 2 Capabilities vs. Type 3 Requirements}
+\label{tab:type3_gap}
+\begin{tabular}{p{0.30\textwidth}p{0.30\textwidth}p{0.30\textwidth}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Aspect} & \textcolor{white}{Type 2 (Available)} & \textcolor{white}{Type 3 (Missing)} \\
+\midrule
+Event Handling & Publish/subscribe via MQTT; external systems react to events & Internal goal generation from events; autonomous decision which goals to pursue \\
+\rowcolor{lightgray}
+Operation Invocation & External clients call AAS Operations & AAS autonomously decides \textit{when} and \textit{which} operations to invoke \\
+Data Access & Submodel read/write via API & Submodel data interpreted as beliefs for reasoning \\
+\rowcolor{lightgray}
+Coordination & Point-to-point request/response & Multi-agent negotiation protocols (e.g., CNP) \\
+Behavior & Reactive: responds when called & Proactive: initiates actions based on internal goals \\
+\rowcolor{lightgray}
+Decision Logic & External (in MES, ERP, or human) & Internal (embedded reasoning engine) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The fundamental distinction is \textit{where} the decision-making logic resides:
+
+\begin{itemize}
+    \item \textbf{Type 2}: The \ac{AAS} exposes data and operations, but an \textit{external} system (MES, orchestrator, or human operator) decides what to do and when. The \ac{AAS} is a \textit{servant} that executes commands.
+    
+    \item \textbf{Type 3}: The \ac{AAS} contains an \textit{internal} reasoning engine that autonomously decides what goals to pursue based on its current beliefs and desires. The \ac{AAS} is an \textit{agent} that acts on its own behalf.
+\end{itemize}
+
+Concretely, existing frameworks lack:
+\begin{enumerate}
+    \item \textbf{Goal-Oriented Reasoning}: No mechanism to represent goals, evaluate alternatives, and commit to intentions. Frameworks provide \textit{mechanisms} (events, operations) but not \textit{policies} for when to use them.
+    
+    \item \textbf{Belief Management}: Submodel data exists, but there is no inference engine to derive new beliefs, detect inconsistencies, or reason about uncertain information.
+    
+    \item \textbf{Plan Libraries}: No way to define reusable plans that specify how to achieve goals under different conditions.
+    
+    \item \textbf{Negotiation Protocols}: While messaging infrastructure exists (MQTT, HTTP), there are no built-in protocols for multi-party negotiation such as Contract Net Protocol, auctions, or coalition formation.
+    
+    \item \textbf{Autonomy Lifecycle}: No support for agent initialization, goal adoption, plan selection, intention execution, and replanning on failure.
+\end{enumerate}
+
+This analysis confirms that realizing Type~3 \ac{AAS} requires integration with agent technologies that provide these missing capabilities. The \ac{BDI} architecture, in particular, offers a well-established model for goal-oriented reasoning, belief management, and intention execution filling precisely the gaps identified above. This motivates the approach taken in this thesis: combining the standardized data model and communication infrastructure of \ac{AAS} frameworks with the autonomous reasoning capabilities of \ac{BDI} agents.
 \subsection{Multi-Agent System Frameworks}
 \label{subsec:mas_frameworks}
 
@@ -598,21 +645,138 @@ JADEX & Java/\ac{XML} & Yes (native) & FIPA \ac{ACL} \\
 \bottomrule
 \end{tabular}
 \end{table}
-\subsection{Summary}
+\subsection{Summary and Framework Selection}
 \label{subsec:frameworks_summary}
 
-This section has reviewed the current landscape of software frameworks for \ac{AAS},
-\ac{MAS}, and \ac{BDI} agent development. 
-While mature frameworks exist for each domain individually, 
-no single framework provides integrated support for 
-\ac{Type3AAS} implementations. 
-\ac{AAS} frameworks such as Eclipse BaSyx offer comprehensive support for Type~1 and Type~2 functionality but lack autonomous behavior capabilities. 
-\ac{MAS} frameworks provide the agent infrastructure needed for autonomy and collaboration, with platforms like SPADE offering modern, asynchronous communication.
-This fragmented landscape necessitates a custom integration approach, which is developed in subsequent chapters of this thesis.
+This section has reviewed the current landscape of software frameworks for \ac{AAS}, \ac{MAS}, and \ac{BDI} agent development. While mature frameworks exist for each domain individually, no single framework provides integrated support for \ac{Type3AAS} implementations. \ac{AAS} frameworks such as Eclipse BaSyx offer comprehensive support for Type~1 and Type~2 functionality but lack autonomous behavior capabilities. \ac{MAS} frameworks provide the agent infrastructure needed for autonomy and collaboration, with platforms like SPADE offering modern, asynchronous communication.
 
+\textbf{Selected Technology Stack.} Based on the framework comparison and the requirements of this thesis, the following technologies were selected for the \ac{Type3AAS} implementation:
+
+\begin{itemize}
+    \item \textbf{Eclipse BaSyx} for \ac{AAS} hosting, providing a mature, standards-compliant server with REST API, registry services, and MongoDB persistence. The BaSyx Python SDK enables programmatic submodel creation and access.
+    
+    \item \textbf{SPADE with spade-bdi extension} for the agent runtime, combining Python's asyncio-based execution with \ac{BDI} reasoning capabilities. SPADE's \ac{XMPP} foundation provides robust publish-subscribe messaging essential for multi-agent coordination.
+    
+    \item \textbf{Prosody} as the \ac{XMPP} server, selected for its compatibility with SPADE and support for the PubSub extension (XEP-0060) required for event-driven agent communication.
+\end{itemize}
+
+This combination bridges the gap between \ac{AAS} and \ac{MAS} domains: BaSyx provides the standardized digital twin infrastructure while SPADE enables the autonomous, goal-directed behavior characteristic of \ac{Type3AAS}. The detailed configuration and integration of these components is presented in Chapter~\ref{chap:implementation}.
 
 \newpage
-\section{Integration of AAS with MAS}
+\section{Capability-Skill-Service Information Model}
+\label{sec:css_model}
+
+The Plattform Industrie 4.0 and IDTA working groups have developed a standardized information model for describing manufacturing capabilities, skills, and services. This model, published in the document ``Information Model for Capabilities, Skills \& Services''~\cite{css_model_2022}, provides a technology-independent framework for flexible manufacturing systems. Understanding this model establishes the theoretical foundation for capability-based production coordination.
+
+\subsection{Model Overview}
+
+The Capability-Skill-Service (CSS) information model organizes manufacturing functionality into three distinct abstraction layers, as illustrated in Figure~\ref{fig:css_model}. Each layer serves a specific purpose in describing what a manufacturing system can do, how it does it, and how these functions are offered to external requesters.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Images/css_model.png}
+    \caption{Capability-Skill-Service Information Model~\cite{css_model_2022}}
+    \label{fig:css_model}
+\end{figure}
+
+\subsection{Product-Process-Resource (PPR)}
+
+The left side of the model represents the classic manufacturing triad:
+
+\textbf{Product.} The item being manufactured, defined by its required inputs and expected outputs. Products specify which capabilities are needed for their production through the \textit{requires} relationship.
+
+\textbf{Process.} The sequence of manufacturing steps that transform inputs into outputs. Processes control resources and conform to defined behavioral specifications.
+
+\textbf{Resource.} The physical or virtual equipment that performs manufacturing operations. Resources \textit{provide} both capabilities (abstract) and skills (concrete), establishing the link between what is required and what is available.
+
+\subsection{Capability Layer}
+
+Capabilities represent \textbf{what} a resource can do at an abstract, technology-independent level:
+
+\textbf{Capability.} A machine-interpretable specification of a function that can potentially be performed. Capabilities are described in terms of their effects rather than their implementation. For example, a ``drilling'' capability specifies the ability to create holes without defining the specific machine or method.
+
+\textbf{CapabilityConstraint.} Restrictions that limit a capability's applicability, such as maximum drilling depth, material constraints, or dimensional tolerances. These constraints enable capability matching during production planning.
+
+The key characteristic of capabilities is their \textbf{technology neutrality}---they describe manufacturing functions independently of how these functions are realized. This abstraction enables:
+\begin{itemize}
+    \item Capability matching between product requirements and resource offerings
+    \item Resource substitution when multiple resources provide equivalent capabilities
+    \item Long-term production planning without binding to specific equipment
+\end{itemize}
+
+\subsection{Skill Layer}
+
+Skills represent \textbf{how} a capability is concretely implemented on a specific resource:
+
+\textbf{Skill.} An executable implementation of a capability bound to a particular resource. A skill is the actual function that can be invoked to perform work. Multiple skills may realize the same capability (e.g., different drilling machines implementing the drilling capability).
+
+\textbf{SkillParameter.} Input and output parameters that configure skill execution. Parameters define the interface contract for skill invocation (e.g., target coordinates, drilling depth, spindle speed).
+
+\textbf{SkillInterface.} The technical interface through which a skill is accessible. This specifies the communication protocol (REST, OPC UA, MQTT) and endpoint information required for invocation.
+
+\textbf{StateMachine.} Defines the behavioral specification of a skill, including its states (idle, executing, completed, error) and valid transitions. Skills conform to their state machine specification, enabling predictable execution monitoring.
+
+The relationship \textit{Capability isRealizedBy Skill} connects the abstract and concrete layers, allowing production systems to reason about capabilities while executing skills.
+\subsection{Service Layer}
+
+Services provide a business-oriented view for coordinating manufacturing functions:
+
+\textbf{Service.} A higher-level offering that combines one or more capabilities into a coherent function. Services represent what is offered to external systems or users.
+
+\textbf{ServiceProvider.} An entity (resource, agent, or system) that offers services to requesters. Providers advertise their services and respond to service requests.
+
+\textbf{ServiceRequester.} An entity that demands services to fulfill production goals. Requesters discover available services and negotiate with providers.
+
+\textbf{ServiceOffer.} A concrete proposal from a provider in response to a service request, including availability, constraints, and terms.
+
+The service layer enables market-like coordination where requesters discover providers, negotiate terms, and establish agreements---patterns well-suited to multi-agent systems.
+\subsection{Key Relationships}
+
+Table~\ref{tab:css_relationships} summarizes the principal relationships in the CSS model:
+
+\begin{table}[ht]
+\centering
+\caption{Key Relationships in the CSS Information Model}
+\label{tab:css_relationships}
+\begin{tabular}{lll}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{Relationship} & \textcolor{white}{From → To} & \textcolor{white}{Meaning} \\
+\midrule
+requires & Product → Capability & Product needs this capability \\
+\rowcolor{lightgray}
+provides & Resource → Capability & Resource offers this capability \\
+provides & Resource → Skill & Resource has this implementation \\
+\rowcolor{lightgray}
+isRealizedBy & Capability → Skill & Abstract is implemented by concrete \\
+isRestrictedBy & Capability → Constraint & Capability has limitations \\
+\rowcolor{lightgray}
+hasParameter & Skill → SkillParameter & Skill has input/output parameters \\
+accessibleThrough & Skill → SkillInterface & How to invoke the skill \\
+\rowcolor{lightgray}
+behaviorConformsTo & Skill → StateMachine & Skill follows state behavior \\
+offersUseOf & Service → Capability & Service provides access to capability \\
+\bottomrule
+\end{tabular}
+\end{table}
+\subsection{Relevance for Type 3 AAS}
+
+The CSS information model provides a theoretical foundation for autonomous \ac{AAS} implementations:
+
+\begin{itemize}
+    \item \textbf{Capability Matching}: Agents can reason about abstract capabilities to find suitable resources without knowledge of specific skill implementations.
+    
+    \item \textbf{Service Negotiation}: The ServiceRequester/ServiceProvider pattern aligns with multi-agent negotiation protocols like the Contract Net Protocol.
+    
+    \item \textbf{Skill Invocation}: The SkillInterface concept maps directly to the \ac{AAS} Operation invocation mechanism.
+    
+    \item \textbf{State Tracking}: The StateMachine concept supports execution monitoring and agent belief updates.
+\end{itemize}
+
+The IDTA has published submodel templates that implement portions of this model within the \ac{AAS} framework, enabling standardized capability and skill descriptions across Industry 4.0 systems.
+
+\newpage
+\section{Integration of Asset Administration Shell with Multi-Agent Systems}
 
 \label{sec:aas_mas_integration}
 

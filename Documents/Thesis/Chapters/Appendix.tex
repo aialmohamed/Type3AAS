@@ -324,3 +324,237 @@ NFR\_5 & Performance & Agent negotiation shall complete within $<$ 5 seconds for
 
 \vspace{0.5cm}
 \noindent\textbf{Legend:} \checkmark\ = Fulfilled, -- = Not implemented (out of scope), \textsuperscript{*} = Partially fulfilled with alternative approach
+
+\section{Implementation Details}
+\label{app:implementation_details}
+
+This appendix provides detailed configuration files, code listings, and installation instructions for reproducing the Type 3 \ac{AAS} prototype described in Chapter~\ref{chap:implementation}.
+
+\subsection{Operation Invocation Delegation}
+\label{app:invocation_delegation}
+
+\subsubsection{Docker Network Configuration}
+
+To enable the containerized BaSyx server to communicate with host-based invoker services, the Docker Compose configuration requires network bridging:
+
+\begin{lstlisting}[language=yaml, caption={Docker Compose Network Configuration}, label={lst:docker_network}]
+services:
+  aas-env:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  aas-web-ui:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+\end{lstlisting}
+
+This configuration maps \texttt{host.docker.internal} to the host machine's gateway address, allowing containers to reach services running on the host.
+
+\subsubsection{Qualifier Configuration}
+
+Operations in submodels are configured with an \texttt{invocationDelegation} qualifier that specifies the target endpoint:
+
+\begin{lstlisting}[language=Python, caption={Operation Invocation Delegation Qualifier}, label={lst:qualifier}]
+qualifier=[model.Qualifier(
+    kind=model.QualifierKind.CONCEPT_QUALIFIER,
+    type_="invocationDelegation",
+    value_type=datatypes.String,
+    value="http://host.docker.internal:8090/drill_invocation"
+)]
+\end{lstlisting}
+
+The hostname \texttt{host.docker.internal} must remain unchanged, while the port (e.g., 8090) can be configured per invoker service.
+
+\subsubsection{Invoker Implementation}
+
+External invoker services are implemented as FastAPI applications that receive operation requests from the BaSyx server and return \ac{AAS}-compliant responses:
+
+\begin{lstlisting}[language=Python, caption={Operation Invoker Endpoint Structure}, label={lst:invoker}]
+@app.post("/drill_invocation")
+async def invoke_operation(request: Request):
+    body = await request.json()
+    properties = _opvars_to_properties(body)
+    
+    # Execute operation logic
+    result = execute_drill(properties)
+    
+    # Return AAS-compliant response
+    return [{
+        "modelType": "OperationVariable",
+        "value": {
+            "modelType": "Property",
+            "idShort": "Drill_Result",
+            "value": str(result),
+            "valueType": "xs:string"
+        }
+    }]
+\end{lstlisting}
+
+The invoker must parse the incoming \texttt{OperationVariable} array, execute the requested operation, and return results in the same format.
+
+\subsection{XMPP Server Configuration}
+\label{app:xmpp_config}
+
+\subsubsection{Prosody Installation}
+
+\begin{lstlisting}[language=bash, caption={Prosody Installation}, label={lst:prosody_install}]
+sudo apt update 
+sudo apt install prosody
+\end{lstlisting}
+
+\subsubsection{Server Configuration}
+
+The Prosody configuration file (\texttt{/etc/prosody/prosody.cfg.lua}) requires the following modifications:
+
+\textbf{Localhost Binding:}
+\begin{lstlisting}[language={[5.0]Lua}, caption={Prosody Host Configuration}, label={lst:prosody_host}]
+Host "*"
+    c2s_interface = "127.0.0.1"
+    s2s_interface = "127.0.0.1"
+\end{lstlisting}
+
+\textbf{PubSub Component:}
+\begin{lstlisting}[language={[5.0]Lua}, caption={PubSub Component Configuration}, label={lst:pubsub_config}]
+Component "pubsub.localhost" "pubsub"
+\end{lstlisting}
+
+\textbf{Admin Configuration:}
+\begin{lstlisting}[language={[5.0]Lua}, caption={Admin Configuration}, label={lst:admin_config}]
+admins = {
+    "resource_agent_1@localhost",
+    "resource_agent_2@localhost",
+    "negotiation_agent@localhost",
+    "execution_agent@localhost"
+}
+\end{lstlisting}
+
+\subsubsection{SSL Certificate Generation}
+
+\begin{lstlisting}[language=bash, caption={Certificate Generation}, label={lst:cert_gen}]
+cd /etc/prosody/certs
+openssl genrsa -out localhost.key 2048
+openssl req -x509 -nodes -days 365 -new \
+    -key localhost.key -out localhost.crt -subj "/CN=localhost"
+sudo chown root:prosody /etc/prosody/certs/localhost.key
+sudo chmod 640 /etc/prosody/certs/localhost.key
+\end{lstlisting}
+
+\subsubsection{User Management}
+
+Agents must be registered as users on the \ac{XMPP} server:
+
+\begin{lstlisting}[language=bash, caption={XMPP User Creation}, label={lst:user_create}]
+prosodyctl shell
+> user:create("resource_agent_1@localhost", "password123")
+> user:create("negotiation_agent@localhost", "password123")
+> user:list("localhost")
+\end{lstlisting}
+
+\subsection{PubSub Dispatch Pattern}
+\label{app:pubsub_dispatch}
+
+To avoid subscriber crosstalk when subscribing to multiple PubSub topics, implement a single callback that dispatches based on the topic node:
+
+\begin{lstlisting}[language=Python, caption={PubSub Topic Dispatch Pattern}, label={lst:pubsub_dispatch}]
+async def callback(self, message):
+    event = message['pubsub_event']
+    node = event['items']['node']
+    payload = event['items']['substanzas'][0]['payload'].text
+    
+    if node == 'production_negotiation':
+        await self._handle_cfp(payload)
+    elif node == 'negotiation_message_topic':
+        await self._handle_response(payload)
+    elif node == 'execution_tracking_topic':
+        await self._handle_tracking(payload)
+\end{lstlisting}
+
+\subsection{Deployment Configuration}
+\label{app:deployment_config}
+
+\subsubsection{Docker Compose Services}
+
+\begin{lstlisting}[language=yaml, caption={Docker Compose Configuration (excerpt)}, label={lst:docker_compose}]
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+
+  aas-env:
+    image: eclipsebasyx/aas-environment:2.0.0-milestone-03
+    ports:
+      - "8081:8081"
+    environment:
+      - BASYX_MONGODB_HOST=mongodb
+      - BASYX_MQTT_HOST=mosquitto
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - mongodb
+      - mosquitto
+
+  aas-registry:
+    image: eclipsebasyx/aas-registry-kafka-mongodb:2.0.0
+    ports:
+      - "8082:8080"
+    depends_on:
+      - mongodb
+
+  aas-web-ui:
+    image: eclipsebasyx/aas-gui:v2-240801
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  mongodb_data:
+\end{lstlisting}
+
+\subsubsection{Startup Sequence}
+
+The system requires the following startup order:
+
+\begin{enumerate}
+    \item Start Docker Compose services:
+    \begin{lstlisting}[language=bash, numbers=none]
+docker compose up -d
+    \end{lstlisting}
+    
+    \item Start Prosody \ac{XMPP} server:
+    \begin{lstlisting}[language=bash, numbers=none]
+sudo systemctl start prosody
+    \end{lstlisting}
+    
+    \item Initialize AAS shells and submodels:
+    \begin{lstlisting}[language=bash, numbers=none]
+python -m aastype3.Core.Submodels_base.Resource_Base.Entry_Point
+python -m aastype3.Core.Submodels_base.Production_Base.Entry_Point
+    \end{lstlisting}
+    
+    \item Start simulators:
+    \begin{lstlisting}[language=bash, numbers=none]
+python -m aastype3.code.Simulators.DrillMachine1 &
+python -m aastype3.code.Simulators.MoveXYMachine1 &
+    \end{lstlisting}
+    
+    \item Start Resource Agents:
+    \begin{lstlisting}[language=bash, numbers=none]
+python -m aastype3.Core.Resource_Agent.Agent_Core.Resource_Agent &
+    \end{lstlisting}
+    
+    \item Start Production Agent:
+    \begin{lstlisting}[language=bash, numbers=none]
+python -m aastype3.Core.Production_Agent.Agent_Core.agent_entrypoint
+    \end{lstlisting}
+\end{enumerate}

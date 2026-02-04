@@ -27,4 +27,23 @@ then the req from the usecases .
 
 paper.
 
+# 2 review
 
+skills , caps in the fundmentles there is a good quelle (need to add them in ).
+so that we could motivate our model better ( see plattform industry 4.0).
+
+Also the outlook chapter is not sperated from the chapter 6( it is enlisted as 6.5 instead of chapter 7)
+
+Also in fundementels the chapter where we go over the frameworks dose not include what is our stack that we chose .
+
+## presentation 
+
+we dont have to do every detail 
+we have to go through the problem , our concept , the soultion and evaluation 
+take in the eye that the other prof did not read your work yet , this should be the tone of the presentation .
+after the presentation is around.
+a part of your work was the software , you have to think what to represnt in the presentation . 
+mabye a video our somthing like that . 
+important is that the software works in the prof env ! on his machine .
+he want to see that too .
+( really important that we take in that the presentation is for some one who is not familiar with the work )
